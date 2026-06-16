@@ -24,11 +24,13 @@
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scrollbar-gutter:stable}/* reserve scrollbar space so short<->tall pages don't shift horizontally */
+html{scroll-behavior:smooth;scrollbar-gutter:stable;background:#070b16;color-scheme:dark}/* reserve scrollbar space so short<->tall pages don't shift horizontally; dark canvas + color-scheme kill the white flash between page navigations */
 body{
   margin:0;background:var(--bg);color:var(--txt);
   font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,system-ui,sans-serif;
-  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  /* overflow-x:clip (not hidden) — clip horizontal overflow WITHOUT making <body> a
+     scroll container, which would make the sticky sidebar + TOC jitter on scroll. */
+  line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased;
 }
 /* bilingual toggle: hide the other language */
 body.lang-en .vi{display:none !important}
@@ -54,14 +56,16 @@ section{position:relative;padding:96px 24px;}
 .glow.g2{width:520px;height:520px;background:#7c3aed;top:38%;right:-180px}
 .glow.g3{width:480px;height:480px;background:#0f766e;bottom:-160px;left:30%}
 /* frosted-glass panels over the 3D hero — translucent --panel surfaces get a blur
-   so the animated background reads through them as glass. Layout unchanged. */
+   so the animated background reads through them as glass. Layout unchanged.
+   Blur kept small (3px): a larger radius samples the bright constellation past the
+   card edge and paints a visible halo ring just inside the border (a double-border look). */
 .card,.callout,.honest,.stat,.faq details,.cs-more,.wu,.hero-ex{
-  -webkit-backdrop-filter:blur(6px) saturate(115%); backdrop-filter:blur(6px) saturate(115%)}
+  -webkit-backdrop-filter:blur(3px) saturate(115%); backdrop-filter:blur(3px) saturate(115%)}
 
 /* ===================== NAV ===================== */
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
-  background:linear-gradient(180deg,rgba(7,11,22,.92),rgba(7,11,22,.66));
-  border-bottom:1px solid var(--stroke)}
+/* The top bar is .app-header (styled below); the only <nav> on a page is the right-rail
+   TOC, which must stay fully transparent over the 3D background and carry no blur of its
+   own (a blur here repaints every scroll frame and reads as jitter). So: no bare nav{} rule. */
 .nav-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:18px;padding:12px 24px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}
 .brand .dot{width:11px;height:11px;border-radius:50%;background:conic-gradient(from 0deg,var(--spec),var(--rel),var(--crit),var(--tel),var(--spec));box-shadow:0 0 14px var(--spec)}
@@ -120,8 +124,8 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--ac),transparent);opacity:.4;margin:0 0 34px}
 
 .cards{display:grid;gap:16px}
-.grid-2{grid-template-columns:1fr 1fr}
-.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:860px){.grid-2,.grid-3{grid-template-columns:1fr}}
 .card{background:var(--panel);border:1px solid var(--stroke);border-radius:var(--r);padding:22px;position:relative;transition:.3s var(--ease)}
 .card:hover{border-color:var(--stroke-2)}
@@ -176,14 +180,14 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
 .lens::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--lc)}
 
 /* autonomy dial (reused voice-dial chrome) */
-.dial-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center;margin-top:6px}
+.dial-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:stretch;margin-top:6px}
 @media(max-width:860px){.dial-wrap{grid-template-columns:1fr}}
-.dial-readout{border:1px solid var(--stroke);border-radius:15px;padding:20px;background:var(--panel-solid);min-height:180px}
-.dial-readout .lv{font-size:2.2rem;font-weight:800;font-family:monospace;line-height:1}
+.dial-readout{border:1px solid var(--stroke);border-radius:15px;padding:20px;background:var(--panel);-webkit-backdrop-filter:blur(3px) saturate(115%);backdrop-filter:blur(3px) saturate(115%);min-height:180px;display:flex;flex-direction:column;justify-content:center}
+.dial-readout .lv{font-size:2.2rem;font-weight:800;font-family:monospace;line-height:1;margin-bottom:12px}
 .dial-readout .nm{font-weight:800;font-size:1.05rem;margin:.2em 0}
 .dial-readout .ds{font-size:.86rem;color:var(--txt-dim)}
 .dial-readout .alias{font-family:monospace;font-size:.74rem;color:var(--rel)}
-.dangertag{display:inline-block;margin-top:10px;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:7px}
+.dangertag{display:inline-block;align-self:flex-start;margin-top:10px;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:7px}
 .dangertag.safe{color:var(--ok);background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3)}
 .dangertag.danger{color:var(--bad);background:rgba(251,94,126,.12);border:1px solid rgba(251,94,126,.35)}
 
@@ -275,6 +279,11 @@ footer a{color:var(--txt-dim);display:block;font-size:.88rem;padding:3px 0}
 footer a:hover{color:var(--spec)}
 .lic{font-size:.82rem;color:var(--txt-faint);margin-top:14px;max-width:46ch}
 .sectitle{font-size:clamp(1.5rem,3.2vw,2.1rem);margin-bottom:10px}
+/* breathing room between sections on detail pages. Sections start with either an
+   .eyebrow (Step N) or the .sectitle directly; give whichever leads the gap, and
+   collapse it when a sectitle follows its own eyebrow so the pair stays tight. */
+body.view-guide .sectitle,body.view-guide .eyebrow{margin-top:48px}
+body.view-guide .eyebrow+.sectitle{margin-top:6px}
 .callout{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:13px;border:1px solid var(--stroke);background:var(--panel);margin-top:16px}
 .callout .ci{font-size:1.4rem;flex:none}
 
@@ -288,7 +297,7 @@ footer a:hover{color:var(--spec)}
 .crumb .sep{opacity:.55}
 .crumb .cur{color:var(--txt);font-weight:600}
 /* per-skill footer nav (prev · hub · next) */
-.skill-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:40px;padding-top:26px;border-top:1px solid var(--stroke)}
+.skill-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:40px;margin-bottom:64px;padding-top:26px;border-top:1px solid var(--stroke)}
 .skill-nav a{flex:1;border:1px solid var(--stroke);background:var(--panel);border-radius:13px;padding:14px 16px;transition:.25s var(--ease);color:var(--txt-dim)}
 .skill-nav a:hover{border-color:var(--ac,var(--spec));color:var(--txt);text-decoration:none;transform:translateY(-3px)}
 .skill-nav a.nx{text-align:right}
@@ -444,12 +453,14 @@ body.view-home .docs-side{display:none}
 .tielist{margin:.2em 0 0;padding-left:1.1em;font-size:.88rem;color:var(--txt-dim);line-height:1.75}
 .tielist li{margin-bottom:7px}
 .tielist li:last-child{margin-bottom:0}
-/* skill tier badges (catalog) + persona group tags (voice) */
-.tier,.ptag{display:inline-block;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;
+/* skill tier badges (catalog) + persona group tags (voice).
+   Named .ttag — NOT .tier — so they never collide with the hook-tier cards
+   (.tier in the rig/vision pages), which would otherwise inherit the pill radius. */
+.ttag,.ptag{display:inline-block;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;
   padding:2px 7px;border-radius:999px;vertical-align:middle;margin-left:6px;border:1px solid}
-.tier.workflow{color:#7dd3fc;border-color:rgba(125,211,252,.4);background:rgba(125,211,252,.10)}
-.tier.knowledge{color:#a7f3d0;border-color:rgba(167,243,208,.35);background:rgba(167,243,208,.08)}
-.tier.gate{color:#fda4af;border-color:rgba(253,164,175,.42);background:rgba(253,164,175,.10)}
+.ttag.workflow{color:#7dd3fc;border-color:rgba(125,211,252,.4);background:rgba(125,211,252,.10)}
+.ttag.knowledge{color:#a7f3d0;border-color:rgba(167,243,208,.35);background:rgba(167,243,208,.08)}
+.ttag.gate{color:#fda4af;border-color:rgba(253,164,175,.42);background:rgba(253,164,175,.10)}
 .ptag.base{color:var(--txt-faint);border-color:var(--stroke);background:transparent}
 .ptag.work{color:#7dd3fc;border-color:rgba(125,211,252,.4);background:rgba(125,211,252,.10)}
 .ptag.fun{color:#fcd34d;border-color:rgba(252,211,77,.4);background:rgba(252,211,77,.10)}

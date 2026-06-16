@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="dark" />
+<meta name="theme-color" content="#070b16" />
 <title>SDLC Harness — Interactive Showcase</title>
 <meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 49 hs:* skills, nineteen hooks, a compliance gate, and honest telemetry." />
 <style>
@@ -32,11 +34,13 @@
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scrollbar-gutter:stable}/* reserve scrollbar space so short<->tall pages don't shift horizontally */
+html{scroll-behavior:smooth;scrollbar-gutter:stable;background:#070b16;color-scheme:dark}/* reserve scrollbar space so short<->tall pages don't shift horizontally; dark canvas + color-scheme kill the white flash between page navigations */
 body{
   margin:0;background:var(--bg);color:var(--txt);
   font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,system-ui,sans-serif;
-  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  /* overflow-x:clip (not hidden) — clip horizontal overflow WITHOUT making <body> a
+     scroll container, which would make the sticky sidebar + TOC jitter on scroll. */
+  line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased;
 }
 /* bilingual toggle: hide the other language */
 body.lang-en .vi{display:none !important}
@@ -62,14 +66,16 @@ section{position:relative;padding:96px 24px;}
 .glow.g2{width:520px;height:520px;background:#7c3aed;top:38%;right:-180px}
 .glow.g3{width:480px;height:480px;background:#0f766e;bottom:-160px;left:30%}
 /* frosted-glass panels over the 3D hero — translucent --panel surfaces get a blur
-   so the animated background reads through them as glass. Layout unchanged. */
+   so the animated background reads through them as glass. Layout unchanged.
+   Blur kept small (3px): a larger radius samples the bright constellation past the
+   card edge and paints a visible halo ring just inside the border (a double-border look). */
 .card,.callout,.honest,.stat,.faq details,.cs-more,.wu,.hero-ex{
-  -webkit-backdrop-filter:blur(6px) saturate(115%); backdrop-filter:blur(6px) saturate(115%)}
+  -webkit-backdrop-filter:blur(3px) saturate(115%); backdrop-filter:blur(3px) saturate(115%)}
 
 /* ===================== NAV ===================== */
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
-  background:linear-gradient(180deg,rgba(7,11,22,.92),rgba(7,11,22,.66));
-  border-bottom:1px solid var(--stroke)}
+/* The top bar is .app-header (styled below); the only <nav> on a page is the right-rail
+   TOC, which must stay fully transparent over the 3D background and carry no blur of its
+   own (a blur here repaints every scroll frame and reads as jitter). So: no bare nav{} rule. */
 .nav-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:18px;padding:12px 24px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}
 .brand .dot{width:11px;height:11px;border-radius:50%;background:conic-gradient(from 0deg,var(--spec),var(--rel),var(--crit),var(--tel),var(--spec));box-shadow:0 0 14px var(--spec)}
@@ -128,8 +134,8 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--ac),transparent);opacity:.4;margin:0 0 34px}
 
 .cards{display:grid;gap:16px}
-.grid-2{grid-template-columns:1fr 1fr}
-.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:860px){.grid-2,.grid-3{grid-template-columns:1fr}}
 .card{background:var(--panel);border:1px solid var(--stroke);border-radius:var(--r);padding:22px;position:relative;transition:.3s var(--ease)}
 .card:hover{border-color:var(--stroke-2)}
@@ -184,14 +190,14 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
 .lens::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--lc)}
 
 /* autonomy dial (reused voice-dial chrome) */
-.dial-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center;margin-top:6px}
+.dial-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:stretch;margin-top:6px}
 @media(max-width:860px){.dial-wrap{grid-template-columns:1fr}}
-.dial-readout{border:1px solid var(--stroke);border-radius:15px;padding:20px;background:var(--panel-solid);min-height:180px}
-.dial-readout .lv{font-size:2.2rem;font-weight:800;font-family:monospace;line-height:1}
+.dial-readout{border:1px solid var(--stroke);border-radius:15px;padding:20px;background:var(--panel);-webkit-backdrop-filter:blur(3px) saturate(115%);backdrop-filter:blur(3px) saturate(115%);min-height:180px;display:flex;flex-direction:column;justify-content:center}
+.dial-readout .lv{font-size:2.2rem;font-weight:800;font-family:monospace;line-height:1;margin-bottom:12px}
 .dial-readout .nm{font-weight:800;font-size:1.05rem;margin:.2em 0}
 .dial-readout .ds{font-size:.86rem;color:var(--txt-dim)}
 .dial-readout .alias{font-family:monospace;font-size:.74rem;color:var(--rel)}
-.dangertag{display:inline-block;margin-top:10px;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:7px}
+.dangertag{display:inline-block;align-self:flex-start;margin-top:10px;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:7px}
 .dangertag.safe{color:var(--ok);background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3)}
 .dangertag.danger{color:var(--bad);background:rgba(251,94,126,.12);border:1px solid rgba(251,94,126,.35)}
 
@@ -283,6 +289,11 @@ footer a{color:var(--txt-dim);display:block;font-size:.88rem;padding:3px 0}
 footer a:hover{color:var(--spec)}
 .lic{font-size:.82rem;color:var(--txt-faint);margin-top:14px;max-width:46ch}
 .sectitle{font-size:clamp(1.5rem,3.2vw,2.1rem);margin-bottom:10px}
+/* breathing room between sections on detail pages. Sections start with either an
+   .eyebrow (Step N) or the .sectitle directly; give whichever leads the gap, and
+   collapse it when a sectitle follows its own eyebrow so the pair stays tight. */
+body.view-guide .sectitle,body.view-guide .eyebrow{margin-top:48px}
+body.view-guide .eyebrow+.sectitle{margin-top:6px}
 .callout{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:13px;border:1px solid var(--stroke);background:var(--panel);margin-top:16px}
 .callout .ci{font-size:1.4rem;flex:none}
 
@@ -296,7 +307,7 @@ footer a:hover{color:var(--spec)}
 .crumb .sep{opacity:.55}
 .crumb .cur{color:var(--txt);font-weight:600}
 /* per-skill footer nav (prev · hub · next) */
-.skill-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:40px;padding-top:26px;border-top:1px solid var(--stroke)}
+.skill-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:40px;margin-bottom:64px;padding-top:26px;border-top:1px solid var(--stroke)}
 .skill-nav a{flex:1;border:1px solid var(--stroke);background:var(--panel);border-radius:13px;padding:14px 16px;transition:.25s var(--ease);color:var(--txt-dim)}
 .skill-nav a:hover{border-color:var(--ac,var(--spec));color:var(--txt);text-decoration:none;transform:translateY(-3px)}
 .skill-nav a.nx{text-align:right}
@@ -452,12 +463,14 @@ body.view-home .docs-side{display:none}
 .tielist{margin:.2em 0 0;padding-left:1.1em;font-size:.88rem;color:var(--txt-dim);line-height:1.75}
 .tielist li{margin-bottom:7px}
 .tielist li:last-child{margin-bottom:0}
-/* skill tier badges (catalog) + persona group tags (voice) */
-.tier,.ptag{display:inline-block;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;
+/* skill tier badges (catalog) + persona group tags (voice).
+   Named .ttag — NOT .tier — so they never collide with the hook-tier cards
+   (.tier in the rig/vision pages), which would otherwise inherit the pill radius. */
+.ttag,.ptag{display:inline-block;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;
   padding:2px 7px;border-radius:999px;vertical-align:middle;margin-left:6px;border:1px solid}
-.tier.workflow{color:#7dd3fc;border-color:rgba(125,211,252,.4);background:rgba(125,211,252,.10)}
-.tier.knowledge{color:#a7f3d0;border-color:rgba(167,243,208,.35);background:rgba(167,243,208,.08)}
-.tier.gate{color:#fda4af;border-color:rgba(253,164,175,.42);background:rgba(253,164,175,.10)}
+.ttag.workflow{color:#7dd3fc;border-color:rgba(125,211,252,.4);background:rgba(125,211,252,.10)}
+.ttag.knowledge{color:#a7f3d0;border-color:rgba(167,243,208,.35);background:rgba(167,243,208,.08)}
+.ttag.gate{color:#fda4af;border-color:rgba(253,164,175,.42);background:rgba(253,164,175,.10)}
 .ptag.base{color:var(--txt-faint);border-color:var(--stroke);background:transparent}
 .ptag.work{color:#7dd3fc;border-color:rgba(125,211,252,.4);background:rgba(125,211,252,.10)}
 .ptag.fun{color:#fcd34d;border-color:rgba(252,211,77,.4);background:rgba(252,211,77,.10)}
@@ -550,6 +563,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,
 </style>
 </head>
 <body class="lang-en view-home">
+<script>try{if(localStorage.getItem('hs-lang')==='vi')document.body.classList.replace('lang-en','lang-vi');}catch(e){}</script>
 <!-- GENERATED by build.py — edit showcase/partials/ + assets/, never this file -->
 <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
 <canvas id="net"></canvas>
@@ -2094,8 +2108,8 @@ exit: 0 (0 = winner)
     <div class="callout" style="--ac:var(--rel);margin-bottom:28px">
       <span class="ci">🏷️</span>
       <div>
-        <span class="en">Invoke any skill with <code>/hs:&lt;name&gt;</code>. The badge on each card is its enforcement tier: <span class="tier workflow">workflow</span> has gates &amp; artifacts (can block the pipeline) · <span class="tier knowledge">knowledge</span> is advisory (generates output, never blocks) · <span class="tier gate">gate</span> writes a hard verdict the pipeline reads. <b>38 workflow · 10 knowledge · 1 gate</b>.</span>
-        <span class="vi">Gọi skill bằng <code>/hs:&lt;tên&gt;</code>. Badge trên mỗi thẻ là hạng cưỡng chế: <span class="tier workflow">workflow</span> có gate &amp; artifact (chặn pipeline được) · <span class="tier knowledge">knowledge</span> là tư vấn (tạo output, không chặn) · <span class="tier gate">gate</span> ghi verdict cứng pipeline đọc. <b>38 workflow · 10 knowledge · 1 gate</b>.</span>
+        <span class="en">Invoke any skill with <code>/hs:&lt;name&gt;</code>. The badge on each card is its enforcement tier: <span class="ttag workflow">workflow</span> has gates &amp; artifacts (can block the pipeline) · <span class="ttag knowledge">knowledge</span> is advisory (generates output, never blocks) · <span class="ttag gate">gate</span> writes a hard verdict the pipeline reads. <b>38 workflow · 10 knowledge · 1 gate</b>.</span>
+        <span class="vi">Gọi skill bằng <code>/hs:&lt;tên&gt;</code>. Badge trên mỗi thẻ là hạng cưỡng chế: <span class="ttag workflow">workflow</span> có gate &amp; artifact (chặn pipeline được) · <span class="ttag knowledge">knowledge</span> là tư vấn (tạo output, không chặn) · <span class="ttag gate">gate</span> ghi verdict cứng pipeline đọc. <b>38 workflow · 10 knowledge · 1 gate</b>.</span>
       </div>
     </div>
 
@@ -2103,109 +2117,109 @@ exit: 0 (0 = winner)
     <div class="eyebrow" style="margin-top:8px"><span class="en">SDLC Spine</span><span class="vi">Xương sống SDLC</span></div>
     <h2 class="sectitle" id="cat-spine" style="font-size:1.15rem;margin-bottom:12px"><span class="en">The enforced four-step loop</span><span class="vi">Vòng bốn bước được cưỡng chế</span></h2>
     <div class="cards grid-2">
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:plan <span class="tier workflow">workflow</span></h3><p><span class="en">Create a verified implementation plan — research, constraint-scan, phase design, red-team, validate. Produces a human-approvable plan file.</span><span class="vi">Tạo kế hoạch triển khai có kiểm tra — research, constraint-scan, thiết kế phase, red-team, validate. Tạo file plan để người duyệt.</span></p></div>
-      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:cook <span class="tier workflow">workflow</span></h3><p><span class="en">Execute an approved plan phase by phase, TDD red→green. Each phase emits a verification artifact and a trace event.</span><span class="vi">Thực thi plan đã duyệt từng phase, TDD đỏ→xanh. Mỗi phase emit artifact verification và sự kiện trace.</span></p></div>
-      <div class="card" style="--ac:var(--crit)"><h3><span class="pin"></span>hs:test <span class="tier workflow">workflow</span></h3><p><span class="en">Run and validate tests — unit / integration profiles — and produce a QA report with a machine-readable verdict in <code>verification.json</code>.</span><span class="vi">Chạy và validate test — profile unit/integration — tạo QA report với verdict đọc được bởi máy trong <code>verification.json</code>.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:ship <span class="tier workflow">workflow</span></h3><p><span class="en">Gated ship pipeline: code-review → verification → human approval → push/pr. Each gate is a hard stop.</span><span class="vi">Pipeline ship có gate: review code → verification → người duyệt → push/pr. Mỗi gate là điểm dừng cứng.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:plan <span class="ttag workflow">workflow</span></h3><p><span class="en">Create a verified implementation plan — research, constraint-scan, phase design, red-team, validate. Produces a human-approvable plan file.</span><span class="vi">Tạo kế hoạch triển khai có kiểm tra — research, constraint-scan, thiết kế phase, red-team, validate. Tạo file plan để người duyệt.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:cook <span class="ttag workflow">workflow</span></h3><p><span class="en">Execute an approved plan phase by phase, TDD red→green. Each phase emits a verification artifact and a trace event.</span><span class="vi">Thực thi plan đã duyệt từng phase, TDD đỏ→xanh. Mỗi phase emit artifact verification và sự kiện trace.</span></p></div>
+      <div class="card" style="--ac:var(--crit)"><h3><span class="pin"></span>hs:test <span class="ttag workflow">workflow</span></h3><p><span class="en">Run and validate tests — unit / integration profiles — and produce a QA report with a machine-readable verdict in <code>verification.json</code>.</span><span class="vi">Chạy và validate test — profile unit/integration — tạo QA report với verdict đọc được bởi máy trong <code>verification.json</code>.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:ship <span class="ttag workflow">workflow</span></h3><p><span class="en">Gated ship pipeline: code-review → verification → human approval → push/pr. Each gate is a hard stop.</span><span class="vi">Pipeline ship có gate: review code → verification → người duyệt → push/pr. Mỗi gate là điểm dừng cứng.</span></p></div>
     </div>
 
     <!-- ── Orchestrators ── -->
     <div class="eyebrow" style="margin-top:30px"><span class="en">Orchestrators</span><span class="vi">Điều phối</span></div>
     <h2 class="sectitle" id="cat-orchestrators" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Shape the work before you execute</span><span class="vi">Định hình công việc trước khi thực thi</span></h2>
     <div class="cards grid-3">
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:discover <span class="tier workflow">workflow</span></h3><p><span class="en">Shape an ambiguous problem into a discovery brief — research and brainstorm chained, then synthesized.</span><span class="vi">Biến vấn đề mơ hồ thành discovery brief — research và brainstorm nối, rồi tổng hợp.</span></p></div>
-      <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>hs:triage <span class="tier workflow">workflow</span></h3><p><span class="en">Defect lifecycle: reproduce → classify → gate. Ensures a bug is understood before a fix is written.</span><span class="vi">Vòng đời defect: reproduce → phân loại → gate. Đảm bảo hiểu bug trước khi viết fix.</span></p></div>
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:understand <span class="tier workflow">workflow</span></h3><p><span class="en">Codebase comprehension before touching code — maps structure, contracts, and risks.</span><span class="vi">Hiểu codebase trước khi sửa code — lập bản đồ cấu trúc, contract và rủi ro.</span></p></div>
-      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:team <span class="tier workflow">workflow</span></h3><p><span class="en">Run parallel Agent Teams for complex phased work with file-ownership boundaries.</span><span class="vi">Chạy Agent Team song song cho công việc phức tạp nhiều phase với ranh giới ownership file.</span></p></div>
-      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:find-skills <span class="tier workflow">workflow</span></h3><p><span class="en">Route to the right <code>hs:*</code> skill for a given task — prevents mis-use of the suite.</span><span class="vi">Định tuyến đến skill <code>hs:*</code> phù hợp cho task — ngăn dùng sai bộ skill.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:discover <span class="ttag workflow">workflow</span></h3><p><span class="en">Shape an ambiguous problem into a discovery brief — research and brainstorm chained, then synthesized.</span><span class="vi">Biến vấn đề mơ hồ thành discovery brief — research và brainstorm nối, rồi tổng hợp.</span></p></div>
+      <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>hs:triage <span class="ttag workflow">workflow</span></h3><p><span class="en">Defect lifecycle: reproduce → classify → gate. Ensures a bug is understood before a fix is written.</span><span class="vi">Vòng đời defect: reproduce → phân loại → gate. Đảm bảo hiểu bug trước khi viết fix.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:understand <span class="ttag workflow">workflow</span></h3><p><span class="en">Codebase comprehension before touching code — maps structure, contracts, and risks.</span><span class="vi">Hiểu codebase trước khi sửa code — lập bản đồ cấu trúc, contract và rủi ro.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:team <span class="ttag workflow">workflow</span></h3><p><span class="en">Run parallel Agent Teams for complex phased work with file-ownership boundaries.</span><span class="vi">Chạy Agent Team song song cho công việc phức tạp nhiều phase với ranh giới ownership file.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:find-skills <span class="ttag workflow">workflow</span></h3><p><span class="en">Route to the right <code>hs:*</code> skill for a given task — prevents mis-use of the suite.</span><span class="vi">Định tuyến đến skill <code>hs:*</code> phù hợp cho task — ngăn dùng sai bộ skill.</span></p></div>
     </div>
 
     <!-- ── Quality / review ── -->
     <div class="eyebrow" style="margin-top:30px"><span class="en">Quality &amp; Review</span><span class="vi">Chất lượng &amp; Review</span></div>
     <h2 class="sectitle" id="cat-quality" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Catch problems before they ship</span><span class="vi">Bắt vấn đề trước khi ship</span></h2>
     <div class="cards grid-3">
-      <div class="card" style="--ac:var(--crit)"><h3><span class="pin"></span>hs:code-review <span class="tier gate">gate</span></h3><p><span class="en">Bugs, regressions, and security findings — structured review with a PASS/FAIL verdict.</span><span class="vi">Bug, regression và phát hiện bảo mật — review có cấu trúc với verdict PASS/FAIL.</span></p></div>
-      <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>hs:critique <span class="tier workflow">workflow</span></h3><p><span class="en">Multi-lens adversarial critique consolidated into one ranked verdict — writes <code>critique-consensus.json</code>, required at pr/ship.</span><span class="vi">Critique đối nghịch nhiều lăng kính gộp thành một verdict xếp hạng — ghi <code>critique-consensus.json</code>, bị đòi ở pr/ship.</span></p></div>
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:review-pr <span class="tier workflow">workflow</span></h3><p><span class="en">GitHub PR review — fetches diff, checks standards, posts a structured comment.</span><span class="vi">Review GitHub PR — lấy diff, kiểm standards, đăng comment có cấu trúc.</span></p></div>
-      <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>hs:security-scan <span class="tier workflow">workflow</span></h3><p><span class="en">Secrets, CVEs, injection, and authorization checks across the diff or whole codebase.</span><span class="vi">Kiểm secrets, CVE, injection và authorization trên diff hoặc toàn codebase.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:scenario <span class="tier knowledge">knowledge</span></h3><p><span class="en">Decompose a feature across 12 dimensions for edge cases — boundary, concurrency, security, UX, and more.</span><span class="vi">Phân tách tính năng qua 12 chiều để tìm edge case — boundary, concurrency, bảo mật, UX và hơn nữa.</span></p></div>
-      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:predict <span class="tier knowledge">knowledge</span></h3><p><span class="en">Five expert personas debate a proposed change before it lands — adversarial pre-flight for risky diffs.</span><span class="vi">Năm persona chuyên gia tranh luận thay đổi đề xuất trước khi áp — pre-flight đối nghịch cho diff rủi ro.</span></p></div>
+      <div class="card" style="--ac:var(--crit)"><h3><span class="pin"></span>hs:code-review <span class="ttag gate">gate</span></h3><p><span class="en">Bugs, regressions, and security findings — structured review with a PASS/FAIL verdict.</span><span class="vi">Bug, regression và phát hiện bảo mật — review có cấu trúc với verdict PASS/FAIL.</span></p></div>
+      <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>hs:critique <span class="ttag workflow">workflow</span></h3><p><span class="en">Multi-lens adversarial critique consolidated into one ranked verdict — writes <code>critique-consensus.json</code>, required at pr/ship.</span><span class="vi">Critique đối nghịch nhiều lăng kính gộp thành một verdict xếp hạng — ghi <code>critique-consensus.json</code>, bị đòi ở pr/ship.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:review-pr <span class="ttag workflow">workflow</span></h3><p><span class="en">GitHub PR review — fetches diff, checks standards, posts a structured comment.</span><span class="vi">Review GitHub PR — lấy diff, kiểm standards, đăng comment có cấu trúc.</span></p></div>
+      <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>hs:security-scan <span class="ttag workflow">workflow</span></h3><p><span class="en">Secrets, CVEs, injection, and authorization checks across the diff or whole codebase.</span><span class="vi">Kiểm secrets, CVE, injection và authorization trên diff hoặc toàn codebase.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:scenario <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Decompose a feature across 12 dimensions for edge cases — boundary, concurrency, security, UX, and more.</span><span class="vi">Phân tách tính năng qua 12 chiều để tìm edge case — boundary, concurrency, bảo mật, UX và hơn nữa.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:predict <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Five expert personas debate a proposed change before it lands — adversarial pre-flight for risky diffs.</span><span class="vi">Năm persona chuyên gia tranh luận thay đổi đề xuất trước khi áp — pre-flight đối nghịch cho diff rủi ro.</span></p></div>
     </div>
 
     <!-- ── Debug / fix ── -->
     <div class="eyebrow" style="margin-top:30px"><span class="en">Debug &amp; Fix</span><span class="vi">Debug &amp; Fix</span></div>
     <h2 class="sectitle" id="cat-debug" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Diagnose before you patch</span><span class="vi">Chẩn đoán trước khi vá</span></h2>
     <div class="cards grid-3">
-      <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>hs:debug <span class="tier workflow">workflow</span></h3><p><span class="en">Root-cause investigation before fixing — proves the cause, then writes a targeted fix.</span><span class="vi">Điều tra nguyên nhân gốc trước khi fix — chứng minh nguyên nhân, rồi viết fix đúng mục tiêu.</span></p></div>
-      <div class="card" style="--ac:var(--ok)"><h3><span class="pin"></span>hs:fix <span class="tier workflow">workflow</span></h3><p><span class="en">Evidence-based bug or CI fix — reads the failure, proposes the minimal safe change.</span><span class="vi">Fix bug hoặc CI dựa trên bằng chứng — đọc failure, đề xuất thay đổi tối thiểu an toàn.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:problem-solving <span class="tier workflow">workflow</span></h3><p><span class="en">Structured unblocking — decomposes a blocker into sub-problems, explores solutions, recommends.</span><span class="vi">Gỡ rối có cấu trúc — phân tách blocker thành bài toán con, khám phá giải pháp, đề xuất.</span></p></div>
+      <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>hs:debug <span class="ttag workflow">workflow</span></h3><p><span class="en">Root-cause investigation before fixing — proves the cause, then writes a targeted fix.</span><span class="vi">Điều tra nguyên nhân gốc trước khi fix — chứng minh nguyên nhân, rồi viết fix đúng mục tiêu.</span></p></div>
+      <div class="card" style="--ac:var(--ok)"><h3><span class="pin"></span>hs:fix <span class="ttag workflow">workflow</span></h3><p><span class="en">Evidence-based bug or CI fix — reads the failure, proposes the minimal safe change.</span><span class="vi">Fix bug hoặc CI dựa trên bằng chứng — đọc failure, đề xuất thay đổi tối thiểu an toàn.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:problem-solving <span class="ttag workflow">workflow</span></h3><p><span class="en">Structured unblocking — decomposes a blocker into sub-problems, explores solutions, recommends.</span><span class="vi">Gỡ rối có cấu trúc — phân tách blocker thành bài toán con, khám phá giải pháp, đề xuất.</span></p></div>
     </div>
 
     <!-- ── Research / knowledge ── -->
     <div class="eyebrow" style="margin-top:30px"><span class="en">Research &amp; Knowledge</span><span class="vi">Nghiên cứu &amp; Kiến thức</span></div>
     <h2 class="sectitle" id="cat-research" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Know before you build</span><span class="vi">Biết trước khi xây</span></h2>
     <div class="cards grid-3">
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:research <span class="tier workflow">workflow</span></h3><p><span class="en">Verified multi-source research — synthesizes findings with confidence levels and source citations.</span><span class="vi">Nghiên cứu nhiều nguồn có kiểm tra — tổng hợp phát hiện với mức độ tin cậy và trích dẫn nguồn.</span></p></div>
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:autoresearch <span class="tier knowledge">knowledge</span></h3><p><span class="en">Autonomous iteration router — loops research until a quality threshold is met.</span><span class="vi">Router tự động lặp — vòng lặp research đến khi đạt ngưỡng chất lượng.</span></p></div>
-      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:scout <span class="tier workflow">workflow</span></h3><p><span class="en">Fast parallel codebase exploration — maps files, contracts, and entry points without modifying anything.</span><span class="vi">Khám phá codebase song song nhanh — lập bản đồ file, contract và điểm vào mà không sửa gì.</span></p></div>
-      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:repomix <span class="tier workflow">workflow</span></h3><p><span class="en">Pack a repo or subtree for LLM analysis — produces a single structured context file.</span><span class="vi">Đóng gói repo hoặc subtree để phân tích LLM — tạo một file context có cấu trúc.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:docs-seeker <span class="tier knowledge">knowledge</span></h3><p><span class="en">Look up library docs via llms.txt / context7 — finds the right version before you code against it.</span><span class="vi">Tra cứu docs thư viện qua llms.txt / context7 — tìm đúng phiên bản trước khi code.</span></p></div>
-      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:graphify <span class="tier knowledge">knowledge</span></h3><p><span class="en">Build a queryable knowledge graph from code or docs — traversable for dependency and impact analysis.</span><span class="vi">Xây đồ thị kiến thức có thể truy vấn từ code hoặc docs — duyệt được để phân tích phụ thuộc và tác động.</span></p></div>
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:tech-graph <span class="tier knowledge">knowledge</span></h3><p><span class="en">Publish-grade static technical diagrams from code structure — architecture maps, dependency graphs.</span><span class="vi">Sơ đồ kỹ thuật tĩnh chất lượng xuất bản từ cấu trúc code — bản đồ kiến trúc, đồ thị phụ thuộc.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:context-engineering <span class="tier workflow">workflow</span></h3><p><span class="en">Assemble optimal context for a task — selects files, snippets, and docs that fit the token budget.</span><span class="vi">Lắp ráp context tối ưu cho task — chọn file, snippet và docs vừa ngân sách token.</span></p></div>
-      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:sequential-thinking <span class="tier workflow">workflow</span></h3><p><span class="en">Multi-step analysis with revision — thinks out loud in numbered steps and corrects itself.</span><span class="vi">Phân tích nhiều bước với revision — nghĩ ra lớn theo bước đánh số và tự sửa.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:research <span class="ttag workflow">workflow</span></h3><p><span class="en">Verified multi-source research — synthesizes findings with confidence levels and source citations.</span><span class="vi">Nghiên cứu nhiều nguồn có kiểm tra — tổng hợp phát hiện với mức độ tin cậy và trích dẫn nguồn.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:autoresearch <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Autonomous iteration router — loops research until a quality threshold is met.</span><span class="vi">Router tự động lặp — vòng lặp research đến khi đạt ngưỡng chất lượng.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:scout <span class="ttag workflow">workflow</span></h3><p><span class="en">Fast parallel codebase exploration — maps files, contracts, and entry points without modifying anything.</span><span class="vi">Khám phá codebase song song nhanh — lập bản đồ file, contract và điểm vào mà không sửa gì.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:repomix <span class="ttag workflow">workflow</span></h3><p><span class="en">Pack a repo or subtree for LLM analysis — produces a single structured context file.</span><span class="vi">Đóng gói repo hoặc subtree để phân tích LLM — tạo một file context có cấu trúc.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:docs-seeker <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Look up library docs via llms.txt / context7 — finds the right version before you code against it.</span><span class="vi">Tra cứu docs thư viện qua llms.txt / context7 — tìm đúng phiên bản trước khi code.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:graphify <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build a queryable knowledge graph from code or docs — traversable for dependency and impact analysis.</span><span class="vi">Xây đồ thị kiến thức có thể truy vấn từ code hoặc docs — duyệt được để phân tích phụ thuộc và tác động.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:tech-graph <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Publish-grade static technical diagrams from code structure — architecture maps, dependency graphs.</span><span class="vi">Sơ đồ kỹ thuật tĩnh chất lượng xuất bản từ cấu trúc code — bản đồ kiến trúc, đồ thị phụ thuộc.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:context-engineering <span class="ttag workflow">workflow</span></h3><p><span class="en">Assemble optimal context for a task — selects files, snippets, and docs that fit the token budget.</span><span class="vi">Lắp ráp context tối ưu cho task — chọn file, snippet và docs vừa ngân sách token.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:sequential-thinking <span class="ttag workflow">workflow</span></h3><p><span class="en">Multi-step analysis with revision — thinks out loud in numbered steps and corrects itself.</span><span class="vi">Phân tích nhiều bước với revision — nghĩ ra lớn theo bước đánh số và tự sửa.</span></p></div>
     </div>
 
     <!-- ── Ideation / decision ── -->
     <div class="eyebrow" style="margin-top:30px"><span class="en">Ideation &amp; Decision</span><span class="vi">Ý tưởng &amp; Quyết định</span></div>
     <h2 class="sectitle" id="cat-ideation" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Think before you commit</span><span class="vi">Suy nghĩ trước khi cam kết</span></h2>
     <div class="cards grid-2">
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:brainstorm <span class="tier workflow">workflow</span></h3><p><span class="en">Honest trade-off analysis — generates options, evaluates each, and recommends with explicit caveats.</span><span class="vi">Phân tích đánh đổi trung thực — tạo options, đánh giá từng cái, và đề xuất với cảnh báo rõ ràng.</span></p></div>
-      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:loop <span class="tier workflow">workflow</span></h3><p><span class="en">In-session self-optimization loop against a metric — iterate until the target is met or a limit hit.</span><span class="vi">Vòng lặp tự tối ưu trong phiên theo metric — lặp đến khi đạt mục tiêu hoặc chạm giới hạn.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:bakeoff <span class="tier workflow">workflow</span></h3><p><span class="en">Empirical bake-off — run 2–4 candidate probes on one mechanical metric and pick the winner by numbers, or refuse to when the gap is inside the measured noise band.</span><span class="vi">Bake-off thực nghiệm — chạy 2–4 probe trên một metric cơ học, chọn kẻ thắng bằng số, hoặc từ chối khi chênh lệch nằm trong vùng nhiễu đo được.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:brainstorm <span class="ttag workflow">workflow</span></h3><p><span class="en">Honest trade-off analysis — generates options, evaluates each, and recommends with explicit caveats.</span><span class="vi">Phân tích đánh đổi trung thực — tạo options, đánh giá từng cái, và đề xuất với cảnh báo rõ ràng.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:loop <span class="ttag workflow">workflow</span></h3><p><span class="en">In-session self-optimization loop against a metric — iterate until the target is met or a limit hit.</span><span class="vi">Vòng lặp tự tối ưu trong phiên theo metric — lặp đến khi đạt mục tiêu hoặc chạm giới hạn.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:bakeoff <span class="ttag workflow">workflow</span></h3><p><span class="en">Empirical bake-off — run 2–4 candidate probes on one mechanical metric and pick the winner by numbers, or refuse to when the gap is inside the measured noise band.</span><span class="vi">Bake-off thực nghiệm — chạy 2–4 probe trên một metric cơ học, chọn kẻ thắng bằng số, hoặc từ chối khi chênh lệch nằm trong vùng nhiễu đo được.</span></p></div>
     </div>
 
     <!-- ── Docs / diagrams ── -->
     <div class="eyebrow" style="margin-top:30px"><span class="en">Docs &amp; Diagrams</span><span class="vi">Docs &amp; Sơ đồ</span></div>
     <h2 class="sectitle" id="cat-docs" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Explain what you built</span><span class="vi">Giải thích cái bạn đã xây</span></h2>
     <div class="cards grid-3">
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:docs <span class="tier workflow">workflow</span></h3><p><span class="en">Manage project documentation — create, update, or audit docs against the codebase.</span><span class="vi">Quản lý tài liệu dự án — tạo, cập nhật hoặc audit docs theo codebase.</span></p></div>
-      <div class="card" style="--ac:var(--txt-dim)"><h3><span class="pin"></span>hs:journal <span class="tier workflow">workflow</span></h3><p><span class="en">Technical journal entries — capture decisions, blockers, and lessons with structured metadata.</span><span class="vi">Ghi nhật ký kỹ thuật — nắm bắt quyết định, blocker và bài học với metadata có cấu trúc.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:retro <span class="tier workflow">workflow</span></h3><p><span class="en">Data-driven retrospective from git history — surfaces trends in velocity, blockers, and rework.</span><span class="vi">Retrospective dựa trên dữ liệu từ lịch sử git — hiển thị xu hướng về tốc độ, blocker và làm lại.</span></p></div>
-      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:preview <span class="tier workflow">workflow</span></h3><p><span class="en">Explain a change with a diagram — visual diff of what changed and why it matters.</span><span class="vi">Giải thích thay đổi bằng sơ đồ — diff trực quan về cái gì thay đổi và tại sao quan trọng.</span></p></div>
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:mermaidjs <span class="tier knowledge">knowledge</span></h3><p><span class="en">Inline Mermaid diagrams — flowcharts, sequence, ER, and Gantt, rendered from code.</span><span class="vi">Sơ đồ Mermaid nội tuyến — flowchart, sequence, ER và Gantt, render từ code.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:excalidraw <span class="tier knowledge">knowledge</span></h3><p><span class="en">Editable <code>.excalidraw</code> canvases — hand-drawn-style diagrams that stay in the repo.</span><span class="vi">Canvas <code>.excalidraw</code> chỉnh sửa được — sơ đồ phong cách vẽ tay lưu trong repo.</span></p></div>
-      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:document-skills <span class="tier knowledge">knowledge</span></h3><p><span class="en">Read and write <code>.docx</code> / <code>.pdf</code> / <code>.pptx</code> / <code>.xlsx</code> — bridge between repo and office formats.</span><span class="vi">Đọc và ghi <code>.docx</code> / <code>.pdf</code> / <code>.pptx</code> / <code>.xlsx</code> — cầu nối giữa repo và định dạng office.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:docs <span class="ttag workflow">workflow</span></h3><p><span class="en">Manage project documentation — create, update, or audit docs against the codebase.</span><span class="vi">Quản lý tài liệu dự án — tạo, cập nhật hoặc audit docs theo codebase.</span></p></div>
+      <div class="card" style="--ac:var(--txt-dim)"><h3><span class="pin"></span>hs:journal <span class="ttag workflow">workflow</span></h3><p><span class="en">Technical journal entries — capture decisions, blockers, and lessons with structured metadata.</span><span class="vi">Ghi nhật ký kỹ thuật — nắm bắt quyết định, blocker và bài học với metadata có cấu trúc.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:retro <span class="ttag workflow">workflow</span></h3><p><span class="en">Data-driven retrospective from git history — surfaces trends in velocity, blockers, and rework.</span><span class="vi">Retrospective dựa trên dữ liệu từ lịch sử git — hiển thị xu hướng về tốc độ, blocker và làm lại.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:preview <span class="ttag workflow">workflow</span></h3><p><span class="en">Explain a change with a diagram — visual diff of what changed and why it matters.</span><span class="vi">Giải thích thay đổi bằng sơ đồ — diff trực quan về cái gì thay đổi và tại sao quan trọng.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:mermaidjs <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Inline Mermaid diagrams — flowcharts, sequence, ER, and Gantt, rendered from code.</span><span class="vi">Sơ đồ Mermaid nội tuyến — flowchart, sequence, ER và Gantt, render từ code.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:excalidraw <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Editable <code>.excalidraw</code> canvases — hand-drawn-style diagrams that stay in the repo.</span><span class="vi">Canvas <code>.excalidraw</code> chỉnh sửa được — sơ đồ phong cách vẽ tay lưu trong repo.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:document-skills <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Read and write <code>.docx</code> / <code>.pdf</code> / <code>.pptx</code> / <code>.xlsx</code> — bridge between repo and office formats.</span><span class="vi">Đọc và ghi <code>.docx</code> / <code>.pdf</code> / <code>.pptx</code> / <code>.xlsx</code> — cầu nối giữa repo và định dạng office.</span></p></div>
     </div>
 
     <!-- ── Build the harness ── -->
     <div class="eyebrow" style="margin-top:30px"><span class="en">Build the Harness Itself</span><span class="vi">Xây dựng chính Harness</span></div>
     <h2 class="sectitle" id="cat-extend" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Extend and create harness primitives</span><span class="vi">Mở rộng và tạo primitive harness</span></h2>
     <div class="cards grid-3">
-      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:skill-creator <span class="tier workflow">workflow</span></h3><p><span class="en">Create or update <code>hs:*</code> skills — scaffolds the SKILL.md structure with routing, references, and examples.</span><span class="vi">Tạo hoặc cập nhật skill <code>hs:*</code> — tạo khung cấu trúc SKILL.md với routing, references và ví dụ.</span></p></div>
-      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:harness-creator <span class="tier workflow">workflow</span></h3><p><span class="en">Create hook, rule, schema, data, script, or agent primitives — the meta-skill for extending the harness.</span><span class="vi">Tạo primitive hook, rule, schema, data, script hoặc agent — meta-skill để mở rộng harness.</span></p></div>
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:mcp-builder <span class="tier knowledge">knowledge</span></h3><p><span class="en">Build MCP servers — scaffolds transport, tool declarations, and handler stubs.</span><span class="vi">Xây MCP server — tạo khung transport, khai báo tool và handler stub.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:agentize <span class="tier workflow">workflow</span></h3><p><span class="en">Turn existing code into an agent-friendly CLI or MCP — adds structured I/O and tool declarations.</span><span class="vi">Biến code hiện có thành CLI hoặc MCP thân thiện với agent — thêm I/O có cấu trúc và khai báo tool.</span></p></div>
-      <div class="card" style="--ac:var(--ok)"><h3><span class="pin"></span>hs:bootstrap <span class="tier workflow">workflow</span></h3><p><span class="en">Bootstrap a new project with harness integration — scaffolds structure, CI, and hook registration.</span><span class="vi">Khởi tạo dự án mới với tích hợp harness — tạo khung cấu trúc, CI và đăng ký hook.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:skill-creator <span class="ttag workflow">workflow</span></h3><p><span class="en">Create or update <code>hs:*</code> skills — scaffolds the SKILL.md structure with routing, references, and examples.</span><span class="vi">Tạo hoặc cập nhật skill <code>hs:*</code> — tạo khung cấu trúc SKILL.md với routing, references và ví dụ.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:harness-creator <span class="ttag workflow">workflow</span></h3><p><span class="en">Create hook, rule, schema, data, script, or agent primitives — the meta-skill for extending the harness.</span><span class="vi">Tạo primitive hook, rule, schema, data, script hoặc agent — meta-skill để mở rộng harness.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:mcp-builder <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build MCP servers — scaffolds transport, tool declarations, and handler stubs.</span><span class="vi">Xây MCP server — tạo khung transport, khai báo tool và handler stub.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:agentize <span class="ttag workflow">workflow</span></h3><p><span class="en">Turn existing code into an agent-friendly CLI or MCP — adds structured I/O and tool declarations.</span><span class="vi">Biến code hiện có thành CLI hoặc MCP thân thiện với agent — thêm I/O có cấu trúc và khai báo tool.</span></p></div>
+      <div class="card" style="--ac:var(--ok)"><h3><span class="pin"></span>hs:bootstrap <span class="ttag workflow">workflow</span></h3><p><span class="en">Bootstrap a new project with harness integration — scaffolds structure, CI, and hook registration.</span><span class="vi">Khởi tạo dự án mới với tích hợp harness — tạo khung cấu trúc, CI và đăng ký hook.</span></p></div>
     </div>
 
     <!-- ── Project ops ── -->
     <div class="eyebrow" style="margin-top:30px"><span class="en">Project Ops</span><span class="vi">Vận hành dự án</span></div>
     <h2 class="sectitle" id="cat-ops" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Keep the repo tidy and the team moving</span><span class="vi">Giữ repo gọn gàng và nhóm di chuyển</span></h2>
     <div class="cards grid-3">
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:project-management <span class="tier workflow">workflow</span></h3><p><span class="en">Track plan progress, tasks, and reports — reads plan files and surfaces status across the team.</span><span class="vi">Theo dõi tiến độ plan, task và báo cáo — đọc file plan và hiển thị trạng thái toàn nhóm.</span></p></div>
-      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:project-organization <span class="tier workflow">workflow</span></h3><p><span class="en">Organize files and structure — proposes and applies consistent directory and naming conventions.</span><span class="vi">Tổ chức file và cấu trúc — đề xuất và áp dụng quy ước thư mục và đặt tên nhất quán.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:plans-kanban <span class="tier workflow">workflow</span></h3><p><span class="en">File-based kanban for <code>plans/</code> — visualizes plan status columns from the filesystem.</span><span class="vi">Kanban file-based cho <code>plans/</code> — trực quan hóa cột trạng thái plan từ filesystem.</span></p></div>
-      <div class="card" style="--ac:var(--txt-dim)"><h3><span class="pin"></span>hs:git <span class="tier workflow">workflow</span></h3><p><span class="en">Conventional commits, auto-split — writes clean commit messages and splits large diffs into logical units.</span><span class="vi">Conventional commit, auto-split — viết commit message gọn và chia diff lớn thành đơn vị logic.</span></p></div>
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:worktree <span class="tier workflow">workflow</span></h3><p><span class="en">Isolated git worktrees — create, use, and clean up parallel working trees for safe experimentation.</span><span class="vi">Git worktree cách ly — tạo, dùng và dọn dẹp working tree song song để thử nghiệm an toàn.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:voice <span class="tier workflow">workflow</span></h3><p><span class="en">Switch the terminal voice for the session — persona, harshness level, explanation depth, plain-text mode.</span><span class="vi">Đổi giọng terminal cho phiên — persona, mức gắt, độ sâu giải thích, chế độ chữ thuần.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:project-management <span class="ttag workflow">workflow</span></h3><p><span class="en">Track plan progress, tasks, and reports — reads plan files and surfaces status across the team.</span><span class="vi">Theo dõi tiến độ plan, task và báo cáo — đọc file plan và hiển thị trạng thái toàn nhóm.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:project-organization <span class="ttag workflow">workflow</span></h3><p><span class="en">Organize files and structure — proposes and applies consistent directory and naming conventions.</span><span class="vi">Tổ chức file và cấu trúc — đề xuất và áp dụng quy ước thư mục và đặt tên nhất quán.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:plans-kanban <span class="ttag workflow">workflow</span></h3><p><span class="en">File-based kanban for <code>plans/</code> — visualizes plan status columns from the filesystem.</span><span class="vi">Kanban file-based cho <code>plans/</code> — trực quan hóa cột trạng thái plan từ filesystem.</span></p></div>
+      <div class="card" style="--ac:var(--txt-dim)"><h3><span class="pin"></span>hs:git <span class="ttag workflow">workflow</span></h3><p><span class="en">Conventional commits, auto-split — writes clean commit messages and splits large diffs into logical units.</span><span class="vi">Conventional commit, auto-split — viết commit message gọn và chia diff lớn thành đơn vị logic.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:worktree <span class="ttag workflow">workflow</span></h3><p><span class="en">Isolated git worktrees — create, use, and clean up parallel working trees for safe experimentation.</span><span class="vi">Git worktree cách ly — tạo, dùng và dọn dẹp working tree song song để thử nghiệm an toàn.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:voice <span class="ttag workflow">workflow</span></h3><p><span class="en">Switch the terminal voice for the session — persona, harshness level, explanation depth, plain-text mode.</span><span class="vi">Đổi giọng terminal cho phiên — persona, mức gắt, độ sâu giải thích, chế độ chữ thuần.</span></p></div>
     </div>
 
     <!-- ── Autonomy ── -->
     <div class="eyebrow" style="margin-top:30px"><span class="en">Autonomy</span><span class="vi">Tự chủ</span></div>
     <h2 class="sectitle" id="cat-autonomy" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Run plans unattended</span><span class="vi">Chạy plan không cần giám sát</span></h2>
     <div class="cards grid-2">
-      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:afk <span class="tier workflow">workflow</span></h3><p><span class="en">Run a plan or PRD unattended — preflight readiness check, then route to a Ralph sandbox loop. The harness gates still fire; <code>HARNESS_AUTONOMY=god</code> is the typical pairing.</span><span class="vi">Chạy plan hoặc PRD không cần giám sát — kiểm tra preflight, rồi định tuyến vào vòng lặp sandbox Ralph. Gate harness vẫn kích hoạt; <code>HARNESS_AUTONOMY=god</code> thường đi kèm.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:afk <span class="ttag workflow">workflow</span></h3><p><span class="en">Run a plan or PRD unattended — preflight readiness check, then route to a Ralph sandbox loop. The harness gates still fire; <code>HARNESS_AUTONOMY=god</code> is the typical pairing.</span><span class="vi">Chạy plan hoặc PRD không cần giám sát — kiểm tra preflight, rồi định tuyến vào vòng lặp sandbox Ralph. Gate harness vẫn kích hoạt; <code>HARNESS_AUTONOMY=god</code> thường đi kèm.</span></p></div>
     </div>
 
     <div class="honest" style="margin-top:26px">

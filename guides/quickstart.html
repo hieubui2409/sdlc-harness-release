@@ -33,6 +33,7 @@
   <a href="index.html" class="side-link side-top" data-nav="guides"><span class="en">All guides</span><span class="vi">Mục lục</span></a>
   <div class="side-cat"><span class="en">Start here</span><span class="vi">Bắt đầu</span></div>
   <a href="quickstart.html" class="side-link active" data-nav="quickstart"><span class="en">Quick start</span><span class="vi">Bắt đầu</span></a>
+  <a href="install.html" class="side-link" data-nav="install"><span class="en">Install</span><span class="vi">Cài đặt</span></a>
   <a href="journey.html" class="side-link" data-nav="journey"><span class="en">Journey</span><span class="vi">Hành trình</span></a>
   <div class="side-cat"><span class="en">Core pipeline</span><span class="vi">Quy trình lõi</span></div>
   <a href="plan.html" class="side-link" data-nav="plan"><span class="en">hs:plan</span><span class="vi">hs:plan</span></a>
@@ -93,7 +94,7 @@
     <div style="margin-top:28px">
       <span class="eyebrow" style="display:block">Step 2 · <span class="en">shell</span><span class="vi">shell</span></span>
       <h2 class="sectitle" id="qs-install" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Install into your repo</span><span class="vi">Cài vào repo của bạn</span></h2>
-      <p class="muted" style="font-size:.9rem"><span class="en">From a release bundle, one script verifies the checksum, extracts it, and installs into the target — even with no <code>.git</code> in the bundle:</span><span class="vi">Từ một bản release, một script kiểm checksum, giải nén, và cài vào repo đích — kể cả khi bundle không có <code>.git</code>:</span></p>
+      <p class="muted" style="font-size:.9rem"><span class="en">From a release bundle, <b>one command does it all</b>: verify checksum → extract → check deps → install + verify → run the suite (skip with <code>--skip-tests</code>). No follow-up scripts to chain. Full walkthrough and options: the <a href="install.html">Install</a> page.</span><span class="vi">Từ một bản release, <b>một lệnh làm tất</b>: kiểm checksum → giải nén → kiểm deps → cài + verify → chạy bộ test (bỏ qua bằng <code>--skip-tests</code>). Không phải nối script. Hướng dẫn đầy đủ và tùy chọn: trang <a href="install.html">Cài đặt</a>.</span></p>
       <div class="cmdline"><code>sh release/install.sh harness-v1.1.0.tar.gz ../my-repo</code></div>
       <p class="muted" style="font-size:.9rem;margin-top:12px"><span class="en">Or run the installer directly from a clone. It copies <code>harness/</code>, merges hooks into <code>.claude/settings.json</code> <b>additively</b> (your own hooks survive), installs the pre-push gate, writes the reviewer roster, adds a <code>.gitignore</code> block for runtime state, then runs <code>verify_install</code> as the final gate. On a TTY it prompts for reviewers and suggests one from your git email; <code>--non-interactive</code> (alias <code>--yes</code>) is the CI path. Idempotent — preview with <code>--dry-run</code>, reverse with <code>--uninstall</code>. <span class="realtag">real output</span></span><span class="vi">Hoặc chạy thẳng trình cài từ một clone. Nó copy <code>harness/</code>, gộp hook vào <code>.claude/settings.json</code> theo kiểu <b>cộng thêm</b> (hook của bạn vẫn còn), cài pre-push gate, ghi roster người duyệt, thêm khối <code>.gitignore</code> cho trạng thái runtime, rồi chạy <code>verify_install</code> chốt cuối. Trên TTY nó hỏi reviewer và gợi ý từ git email của bạn; <code>--non-interactive</code> (alias <code>--yes</code>) là đường CI. Idempotent — xem trước bằng <code>--dry-run</code>, gỡ bằng <code>--uninstall</code>. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
@@ -224,7 +225,7 @@
   </div>
 </section>
 
-<div class="wrap"><div class="skill-nav" style="--ac:var(--ok)"><a class="pv" href="index.html"><span class="k">← <span class="en">Prev</span><span class="vi">Trước</span></span><span class="v"><span class="en">All guides</span><span class="vi">Mục lục</span></span></a><a class="nx" href="journey.html"><span class="k"><span class="en">Next</span><span class="vi">Sau</span> →</span><span class="v"><span class="en">Journey</span><span class="vi">Hành trình</span></span></a></div></div>
+<div class="wrap"><div class="skill-nav" style="--ac:var(--ok)"><a class="pv" href="index.html"><span class="k">← <span class="en">Prev</span><span class="vi">Trước</span></span><span class="v"><span class="en">All guides</span><span class="vi">Mục lục</span></span></a><a class="nx" href="install.html"><span class="k"><span class="en">Next</span><span class="vi">Sau</span> →</span><span class="v"><span class="en">Install</span><span class="vi">Cài đặt</span></span></a></div></div>
 </main>
 <nav class="toc" data-toc aria-label="On this page"></nav>
 </div>

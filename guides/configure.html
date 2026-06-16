@@ -33,6 +33,7 @@
   <a href="index.html" class="side-link side-top" data-nav="guides"><span class="en">All guides</span><span class="vi">Mục lục</span></a>
   <div class="side-cat"><span class="en">Start here</span><span class="vi">Bắt đầu</span></div>
   <a href="quickstart.html" class="side-link" data-nav="quickstart"><span class="en">Quick start</span><span class="vi">Bắt đầu</span></a>
+  <a href="install.html" class="side-link" data-nav="install"><span class="en">Install</span><span class="vi">Cài đặt</span></a>
   <a href="journey.html" class="side-link" data-nav="journey"><span class="en">Journey</span><span class="vi">Hành trình</span></a>
   <div class="side-cat"><span class="en">Core pipeline</span><span class="vi">Quy trình lõi</span></div>
   <a href="plan.html" class="side-link" data-nav="plan"><span class="en">hs:plan</span><span class="vi">hs:plan</span></a>
@@ -61,39 +62,12 @@
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--tel)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="6" stroke="var(--tel)" stroke-width="2"/><path d="M20 4v5M20 31v5M4 20h5M31 20h5M8.5 8.5l3.5 3.5M28 28l3.5 3.5M31.5 8.5 28 12M12 28l-3.5 3.5" stroke="var(--tel)" stroke-width="2" stroke-linecap="round"/></svg></div>
-      <div class="ttl"><div class="who"><span class="en">Install · autonomy · gate policy</span><span class="vi">Cài đặt · tự chủ · chính sách gate</span></div><h2><span class="en">Configure &amp; operate</span><span class="vi">Cấu hình &amp; vận hành</span></h2></div>
+      <div class="ttl"><div class="who"><span class="en">Autonomy · gate policy · branch protection</span><span class="vi">Tự chủ · chính sách gate · bảo vệ nhánh</span></div><h2><span class="en">Configure &amp; operate</span><span class="vi">Cấu hình &amp; vận hành</span></h2></div>
       <div class="ver">setup</div>
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
 
-    <p class="lead"><span class="en">Three knobs decide how the harness feels in your repo: <b>where</b> it's installed, <b>how much</b> it pauses for you (autonomy), and <b>how hard</b> each guard pushes back (policy). Every change is a human-edited YAML file and a git-visible diff — nothing is hidden in a binary or a database.</span><span class="vi">Ba núm quyết định cảm giác của harness trong repo bạn: <b>cài ở đâu</b>, <b>dừng cho bạn bao nhiêu</b> (tự chủ), và <b>đẩy lại mạnh cỡ nào</b> ở mỗi guard (policy). Mọi thay đổi là một file YAML người-sửa và một diff git thấy được — không gì giấu trong binary hay database.</span></p>
-
-    <!-- install -->
-    <h2 class="sectitle" id="cfg-install"><span class="en">Install into your repo</span><span class="vi">Cài vào repo của bạn</span></h2>
-    <p class="muted" style="margin:-2px 0 14px"><span class="en">One Python script, no dependencies. It copies the harness tree, wires the pre-push hook, registers hooks in <code>settings.json</code>, writes the reviewer roster, and adds a <code>.gitignore</code> block so harness runtime state never lands in your git. On a TTY with no <code>--reviewers</code> it prompts and suggests one from your <code>git config user.email</code>. Every mutation is idempotent and previewable.</span><span class="vi">Một script Python, không phụ thuộc. Nó copy cây harness, nối pre-push hook, đăng ký hook trong <code>settings.json</code>, ghi roster reviewer, và thêm một khối <code>.gitignore</code> để trạng thái runtime của harness không lọt vào git. Trên TTY mà không có <code>--reviewers</code>, nó hỏi và gợi ý một email từ <code>git config user.email</code>. Mọi thay đổi là idempotent và xem-trước được.</span></p>
-    <div class="cmdline"><code>python3 harness/install/install.py --target ../my-repo --reviewers a@x.com,b@y.com</code></div>
-    <table class="modetable" style="--ac:var(--tel);margin-top:14px">
-      <thead><tr><th><span class="en">Flag</span><span class="vi">Cờ</span></th><th><span class="en">Effect</span><span class="vi">Tác dụng</span></th></tr></thead>
-      <tbody>
-        <tr><td><code>--target &lt;repo&gt;</code></td><td><span class="en">Repo root to install into (default: cwd).</span><span class="vi">Gốc repo để cài vào (mặc định: cwd).</span></td></tr>
-        <tr><td><code>--reviewers a@x,b@y</code></td><td><span class="en">Comma-separated reviewer emails for the roster. Omit it on a TTY and the installer prompts, seeding a suggestion from your git email and warning that the gate needs a reviewer who is <i>not</i> the change author.</span><span class="vi">Email reviewer cách nhau dấu phẩy cho roster. Bỏ trống trên TTY thì trình cài hỏi, gợi ý sẵn từ git email của bạn và nhắc rằng gate cần một reviewer <i>khác</i> tác giả thay đổi.</span></td></tr>
-        <tr><td><code>--non-interactive</code> / <code>--yes</code></td><td><span class="en">Never prompt, even on a TTY — the CI / automation path. Uses <code>--reviewers</code> if given, else an empty roster.</span><span class="vi">Không bao giờ hỏi, kể cả trên TTY — đường CI / tự động. Dùng <code>--reviewers</code> nếu có, không thì roster rỗng.</span></td></tr>
-        <tr><td><code>--local</code></td><td><span class="en">Wire into <code>settings.local.json</code> instead of <code>settings.json</code>.</span><span class="vi">Nối vào <code>settings.local.json</code> thay vì <code>settings.json</code>.</span></td></tr>
-        <tr><td><code>--dry-run</code></td><td><span class="en">Plan the writes, change nothing.</span><span class="vi">Lập kế hoạch ghi, không đổi gì.</span></td></tr>
-        <tr><td><code>--strict</code></td><td><span class="en">Exit non-zero if the final verify reports drift.</span><span class="vi">Thoát khác 0 nếu verify cuối báo lệch.</span></td></tr>
-        <tr><td><code>--uninstall</code></td><td><span class="en">Reverse the settings + pre-push edits (<code>harness/</code> is left in place).</span><span class="vi">Đảo ngược chỉnh settings + pre-push (<code>harness/</code> vẫn để nguyên).</span></td></tr>
-      </tbody>
-    </table>
-    <p class="muted" style="font-size:.9rem;margin-top:14px"><span class="en">After installing, confirm the wiring is intact:</span><span class="vi">Sau khi cài, xác nhận wiring còn nguyên:</span></p>
-    <div class="term">
-      <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 harness/scripts/verify_install.py --strict</span></div>
-      <pre>verify_install OK: manifest + hook registration consistent
-</pre>
-    </div>
-    <div class="callout" style="--ac:var(--txt-faint);margin-top:14px">
-      <span class="ci">📐</span>
-      <div><span class="en">The installer never fabricates your standards — it warns when <code>harness/standards/</code> is missing or thin. Run <code>scaffold_standards.py --type system-architecture|code-standards</code> for a TBD skeleton to fill. Every tunable knob (file, default, how to change it, env override) is mapped in <code>harness/rules/config-reference.md</code>.</span><span class="vi">Trình cài không bao giờ bịa standards của bạn — nó cảnh báo khi <code>harness/standards/</code> trống hoặc sơ sài. Chạy <code>scaffold_standards.py --type system-architecture|code-standards</code> để có khung TBD mà điền. Mọi núm chỉnh được (file, mặc định, đổi cách nào, env override) được liệt kê trong <code>harness/rules/config-reference.md</code>.</span></div>
-    </div>
+    <p class="lead"><span class="en">Already installed? This is where you tune how the harness <i>feels</i>: <b>how much</b> it pauses for you (autonomy), <b>how hard</b> each guard pushes back (policy), and <b>which branches</b> are protected. Every change is a human-edited YAML file and a git-visible diff — nothing is hidden in a binary or a database. Not installed yet? Start on the <a href="install.html">Install</a> page.</span><span class="vi">Đã cài rồi? Đây là chỗ chỉnh <i>cảm giác</i> của harness: <b>dừng cho bạn bao nhiêu</b> (tự chủ), <b>đẩy lại mạnh cỡ nào</b> ở mỗi guard (policy), và <b>nhánh nào</b> được bảo vệ. Mọi thay đổi là một file YAML người-sửa và một diff git thấy được — không gì giấu trong binary hay database. Chưa cài? Bắt đầu ở trang <a href="install.html">Cài đặt</a>.</span></p>
 
     <!-- autonomy -->
     <h2 class="sectitle" id="cfg-autonomy"><span class="en">Pick an autonomy level</span><span class="vi">Chọn mức tự chủ</span></h2>

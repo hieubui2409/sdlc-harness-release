@@ -24,7 +24,7 @@
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scrollbar-gutter:stable}/* reserve scrollbar space so short<->tall pages don't shift horizontally */
 body{
   margin:0;background:var(--bg);color:var(--txt);
   font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,system-ui,sans-serif;
@@ -406,7 +406,9 @@ footer a:hover{color:var(--spec)}
 .toc a:hover{color:var(--txt);text-decoration:none;border-left-color:var(--stroke-2)}
 .toc a.active{color:var(--txt);border-left-color:var(--spec);font-weight:600}
 @media(min-width:1201px){
-  .docs-layout.has-toc{max-width:1340px;grid-template-columns:var(--side-w) minmax(0,1fr) var(--toc-w)}
+  /* reserve the 3-column geometry for EVERY docs page (TOC column included) so the
+     main content keeps one constant width — landing <-> guide navigation never jumps */
+  .docs-layout{max-width:1340px;grid-template-columns:var(--side-w) minmax(0,1fr) var(--toc-w)}
   .docs-layout.has-toc .toc{display:block;position:sticky;top:var(--hh);align-self:start;
     max-height:calc(100dvh - var(--hh));overflow-y:auto;padding:24px 0 48px}
 }
@@ -438,6 +440,18 @@ body.view-home .docs-side{display:none}
 .tielist{margin:.2em 0 0;padding-left:1.1em;font-size:.88rem;color:var(--txt-dim);line-height:1.75}
 .tielist li{margin-bottom:7px}
 .tielist li:last-child{margin-bottom:0}
+/* skill tier badges (catalog) + persona group tags (voice) */
+.tier,.ptag{display:inline-block;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;
+  padding:2px 7px;border-radius:999px;vertical-align:middle;margin-left:6px;border:1px solid}
+.tier.workflow{color:#7dd3fc;border-color:rgba(125,211,252,.4);background:rgba(125,211,252,.10)}
+.tier.knowledge{color:#a7f3d0;border-color:rgba(167,243,208,.35);background:rgba(167,243,208,.08)}
+.tier.gate{color:#fda4af;border-color:rgba(253,164,175,.42);background:rgba(253,164,175,.10)}
+.ptag.base{color:var(--txt-faint);border-color:var(--stroke);background:transparent}
+.ptag.work{color:#7dd3fc;border-color:rgba(125,211,252,.4);background:rgba(125,211,252,.10)}
+.ptag.fun{color:#fcd34d;border-color:rgba(252,211,77,.4);background:rgba(252,211,77,.10)}
+/* universal-harm floor IN/OUT cells (voice) */
+.keepish{color:#34d399;font-weight:700}
+.outish{color:#fb7185;font-weight:800;letter-spacing:.05em}
 /* tighten the marketing section rhythm when content sits in the reading column */
 body.view-guide section{padding:34px 0}
 body.view-guide .docs-main .wrap{max-width:none;margin:0}

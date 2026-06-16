@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Cheatsheet — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — ~47 hs:* skills, fourteen hooks, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 49 hs:* skills, nineteen hooks, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="lang-en view-guide">
@@ -41,12 +41,14 @@
   <a href="catalog.html" class="side-link" data-nav="catalog"><span class="en">All skills</span><span class="vi">Toàn bộ skill</span></a>
   <div class="side-cat"><span class="en">Configure & operate</span><span class="vi">Cấu hình & vận hành</span></div>
   <a href="configure.html" class="side-link" data-nav="configure"><span class="en">Configure</span><span class="vi">Cấu hình</span></a>
+  <a href="voice.html" class="side-link" data-nav="voice"><span class="en">Terminal voice</span><span class="vi">Giọng terminal</span></a>
   <div class="side-cat"><span class="en">Quick reference</span><span class="vi">Tra cứu nhanh</span></div>
   <a href="cheatsheet.html" class="side-link active" data-nav="cheatsheet"><span class="en">Cheatsheet</span><span class="vi">Tra cứu nhanh</span></a>
   <a href="finder.html" class="side-link" data-nav="finder"><span class="en">Command finder</span><span class="vi">Chọn skill</span></a>
   <a href="glossary.html" class="side-link" data-nav="glossary"><span class="en">Glossary</span><span class="vi">Thuật ngữ</span></a>
   <div class="side-cat"><span class="en">Deep dives</span><span class="vi">Bên trong</span></div>
   <a href="harness.html" class="side-link" data-nav="harness"><span class="en">The rig</span><span class="vi">Bộ máy</span></a>
+  <a href="agents.html" class="side-link" data-nav="agents"><span class="en">Agents</span><span class="vi">Agent</span></a>
   <a href="vision.html" class="side-link" data-nav="vision"><span class="en">Vision</span><span class="vi">Tầm nhìn</span></a>
 </aside>
 <main class="docs-main">
@@ -70,6 +72,12 @@
     <div class="divider" style="--ac:var(--spec)"></div>
 
     <p class="lead"><span class="en">Every command, gate stage, gating artifact, and environment variable on one page — scannable, no prose to wade through. Need the <i>why</i> behind a row? Each links to its full guide. Need to <i>pick</i> a skill? Use the <a href="finder.html">command finder</a>.</span><span class="vi">Mọi lệnh, stage gate, artifact gác cổng, và biến môi trường trên một trang — liếc là thấy, không phải lội qua prose. Cần biết <i>tại sao</i> một dòng tồn tại? Mỗi dòng dẫn tới guide đầy đủ. Cần <i>chọn</i> skill? Dùng <a href="finder.html">bộ chọn lệnh</a>.</span></p>
+
+    <!-- reading a command -->
+    <div class="callout" style="--ac:var(--spec);margin-top:18px;margin-bottom:8px">
+      <span class="ci">🔣</span>
+      <div><span class="en"><b>Reading a command:</b> <code>/hs:&lt;name&gt;</code> invokes a skill · free text after it is your request · <code>--flags</code> tune it. Example: <code>/hs:plan add a rate limit <b>--fast</b></code> — skill <code>plan</code>, request "add a rate limit", flag <code>--fast</code> (skip research + red-team).</span><span class="vi"><b>Đọc một lệnh:</b> <code>/hs:&lt;tên&gt;</code> gọi một skill · chữ tự do sau đó là yêu cầu của bạn · <code>--cờ</code> điều chỉnh. Ví dụ: <code>/hs:plan thêm rate limit <b>--fast</b></code> — skill <code>plan</code>, yêu cầu "thêm rate limit", cờ <code>--fast</code> (bỏ research + red-team).</span></div>
+    </div>
 
     <!-- ── 1. Pipeline at a glance ── -->
     <h2 class="sectitle" id="cs-spine"><span class="en">Pipeline at a glance</span><span class="vi">Quy trình một liếc</span></h2>
@@ -269,7 +277,7 @@
   </div>
 </section>
 
-<div class="wrap"><div class="skill-nav" style="--ac:var(--spec)"><a class="pv" href="configure.html"><span class="k">← <span class="en">Prev</span><span class="vi">Trước</span></span><span class="v"><span class="en">Configure</span><span class="vi">Cấu hình</span></span></a><a class="nx" href="finder.html"><span class="k"><span class="en">Next</span><span class="vi">Sau</span> →</span><span class="v"><span class="en">Command finder</span><span class="vi">Chọn skill</span></span></a></div></div>
+<div class="wrap"><div class="skill-nav" style="--ac:var(--spec)"><a class="pv" href="voice.html"><span class="k">← <span class="en">Prev</span><span class="vi">Trước</span></span><span class="v"><span class="en">Terminal voice</span><span class="vi">Giọng terminal</span></span></a><a class="nx" href="finder.html"><span class="k"><span class="en">Next</span><span class="vi">Sau</span> →</span><span class="v"><span class="en">Command finder</span><span class="vi">Chọn skill</span></span></a></div></div>
 </main>
 <nav class="toc" data-toc aria-label="On this page"></nav>
 </div>

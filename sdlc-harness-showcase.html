@@ -847,23 +847,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,
     </div>
     <div class="divider" style="--ac:var(--ok)"></div>
 
-    <p class="lead"><span class="en">This page takes you from an empty repo to your <b>first change shipped through the gate</b>. Five steps: two in the shell (check, install), three in Claude Code (plan, build, ship). The whole walkthrough uses one worked example so the plan slug stays the same throughout. No package manager, no build step — requirements: <b>Linux</b>, <b>Python ≥ 3.9</b>, <b>git</b>, and <b>Claude Code</b>.</span><span class="vi">Trang này đưa bạn từ một repo trống đến <b>thay đổi đầu tiên được ship qua gate</b>. Năm bước: hai bước ở shell (kiểm tra, cài), ba bước trong Claude Code (plan, build, ship). Cả mạch dùng chung một ví dụ nên slug của plan giữ nguyên xuyên suốt. Không package manager, không bước build — yêu cầu: <b>Linux</b>, <b>Python ≥ 3.9</b>, <b>git</b>, và <b>Claude Code</b>.</span></p>
+    <p class="lead"><span class="en">This page takes you from an empty repo to your <b>first change shipped through the gate</b>. Four steps: one in the shell (install), three in Claude Code (plan, build, ship). The whole walkthrough uses one worked example so the plan slug stays the same throughout. No package manager, no build step — requirements: <b>Linux</b>, <b>Python ≥ 3.9</b>, <b>git</b>, and <b>Claude Code</b>.</span><span class="vi">Trang này đưa bạn từ một repo trống đến <b>thay đổi đầu tiên được ship qua gate</b>. Bốn bước: một bước ở shell (cài), ba bước trong Claude Code (plan, build, ship). Cả mạch dùng chung một ví dụ nên slug của plan giữ nguyên xuyên suốt. Không package manager, không bước build — yêu cầu: <b>Linux</b>, <b>Python ≥ 3.9</b>, <b>git</b>, và <b>Claude Code</b>.</span></p>
 
-    <!-- Step 1: preflight -->
-    <div style="margin-top:32px">
-      <span class="eyebrow" style="display:block">Step 1 · <span class="en">shell</span><span class="vi">shell</span></span>
-      <h2 class="sectitle" id="qs-deps" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Check dependencies</span><span class="vi">Kiểm tra phụ thuộc</span></h2>
-      <p class="muted" style="font-size:.9rem"><span class="en">From the cloned harness, the preflight script confirms Python, pytest, pyyaml, and git are present and prints exact fix commands if anything is missing. Nothing is installed yet — this just checks the ground is solid. <span class="realtag">real output</span></span><span class="vi">Trong harness vừa clone, script preflight xác nhận Python, pytest, pyyaml và git có sẵn, và in đúng lệnh sửa nếu thiếu. Chưa cài gì cả — bước này chỉ kiểm tra nền móng chắc chưa. <span class="realtag">đầu ra thật</span></span></p>
-      <div class="term">
-        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 harness/scripts/preflight_deps.py</span></div>
-        <pre>preflight OK: pytest, pyyaml
-</pre>
-      </div>
-    </div>
-
-    <!-- Step 2: install -->
+    <!-- Step 1: install -->
     <div style="margin-top:28px">
-      <span class="eyebrow" style="display:block">Step 2 · <span class="en">shell</span><span class="vi">shell</span></span>
+      <span class="eyebrow" style="display:block">Step 1 · <span class="en">shell</span><span class="vi">shell</span></span>
       <h2 class="sectitle" id="qs-install" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Install into your repo</span><span class="vi">Cài vào repo của bạn</span></h2>
       <p class="muted" style="font-size:.9rem"><span class="en">Download the bundle and the standalone <code>install.sh</code> from the release into one folder. <b>One command does it all</b>: verify checksum → extract → check deps → install + verify → run the suite (skip with <code>--skip-tests</code>). No follow-up scripts to chain. Full walkthrough and options: the <a href="#install">Install</a> page.</span><span class="vi">Tải bundle và <code>install.sh</code> độc lập từ bản release vào cùng một thư mục. <b>Một lệnh làm tất</b>: kiểm checksum → giải nén → kiểm deps → cài + verify → chạy bộ test (bỏ qua bằng <code>--skip-tests</code>). Không phải nối script. Hướng dẫn đầy đủ và tùy chọn: trang <a href="#install">Cài đặt</a>.</span></p>
       <div class="cmdline"><code>sh install.sh harness-v1.1.0.tar.gz ../my-repo</code></div>
@@ -876,9 +864,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,
       <p class="muted" style="font-size:.82rem;margin-top:8px"><span class="en">After installing, enable the plugin with <code>/reload-plugins</code> in Claude Code. Full options: <code>docs/deployment-guide.md</code>; every config knob: <code>harness/rules/config-reference.md</code>.</span><span class="vi">Sau khi cài, bật plugin bằng <code>/reload-plugins</code> trong Claude Code. Tùy chọn đầy đủ: <code>docs/deployment-guide.md</code>; mọi núm cấu hình: <code>harness/rules/config-reference.md</code>.</span></p>
     </div>
 
-    <!-- Step 3: plan -->
+    <!-- Step 2: plan -->
     <div style="margin-top:28px">
-      <span class="eyebrow" style="display:block">Step 3 · <span class="en">Claude Code</span><span class="vi">Claude Code</span></span>
+      <span class="eyebrow" style="display:block">Step 2 · <span class="en">Claude Code</span><span class="vi">Claude Code</span></span>
       <h2 class="sectitle" id="qs-plan" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Plan your first task</span><span class="vi">Lập plan cho task đầu tiên</span></h2>
       <p class="muted" style="font-size:.9rem"><span class="en">In Claude Code, run <code>/hs:plan</code> and describe what you want. The harness researches, scans constraints, red-teams, and writes a plan under <code>plans/&lt;slug&gt;/</code> (plan.md + phase files). <b>You approve it</b> — cook will not run until a human does. Then <code>/clear</code> so cook starts from a clean context. <span class="realtag">real output</span></span><span class="vi">Trong Claude Code, chạy <code>/hs:plan</code> và mô tả điều bạn muốn. Harness nghiên cứu, quét ràng buộc, red-team, rồi ghi plan dưới <code>plans/&lt;slug&gt;/</code> (plan.md + file phase). <b>Bạn duyệt</b> — cook không chạy cho tới khi một con người duyệt. Rồi <code>/clear</code> để cook bắt đầu từ context sạch. <span class="realtag">đầu ra thật</span></span></p>
       <div class="cmdline"><span class="en">In Claude Code:</span><span class="vi">Trong Claude Code:</span> <code>/hs:plan add a token-bucket rate limit to the public API</code></div>
@@ -900,9 +888,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,
       </div>
     </div>
 
-    <!-- Step 4: cook -->
+    <!-- Step 3: cook -->
     <div style="margin-top:28px">
-      <span class="eyebrow" style="display:block">Step 4 · <span class="en">Claude Code</span><span class="vi">Claude Code</span></span>
+      <span class="eyebrow" style="display:block">Step 3 · <span class="en">Claude Code</span><span class="vi">Claude Code</span></span>
       <h2 class="sectitle" id="qs-cook" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Build it — and write the acceptance artifact</span><span class="vi">Build — và ghi artifact nghiệm thu</span></h2>
       <p class="muted" style="font-size:.9rem"><span class="en">Run <code>/hs:cook</code> with the <b>absolute path</b> to the approved plan. It executes phase by phase in TDD red→green, then on the final phase writes <code>verification.json</code> — the exact artifact the gate will look for. <code>/hs:test</code> can re-run the suite and refresh the verdict any time. <span class="realtag">real output</span></span><span class="vi">Chạy <code>/hs:cook</code> với <b>đường dẫn tuyệt đối</b> tới plan đã duyệt. Nó thực thi từng phase theo TDD đỏ→xanh, rồi ở phase cuối ghi <code>verification.json</code> — đúng artifact mà gate sẽ tìm. <code>/hs:test</code> có thể chạy lại bộ test và làm mới verdict bất cứ lúc nào. <span class="realtag">đầu ra thật</span></span></p>
       <div class="cmdline"><span class="en">In Claude Code:</span><span class="vi">Trong Claude Code:</span> <code>/hs:cook /abs/path/plans/260612-1237-harness-w2-horizontal-1/plan.md</code></div>
@@ -946,9 +934,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,
       </div>
     </div>
 
-    <!-- Step 5: ship -->
+    <!-- Step 4: ship -->
     <div style="margin-top:28px">
-      <span class="eyebrow" style="display:block">Step 5 · <span class="en">shell</span><span class="vi">shell</span></span>
+      <span class="eyebrow" style="display:block">Step 4 · <span class="en">shell</span><span class="vi">shell</span></span>
       <h2 class="sectitle" id="qs-ship" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Ship through the gate</span><span class="vi">Ship qua gate</span></h2>
       <p class="muted" style="font-size:.9rem"><span class="en">Now push. If the artifact is missing, the pre-push gate blocks with <code>exit 2</code> and names the <b>exact path to create</b> — never a dead end. Once Step 4 has written <code>verification.json</code>, the same push passes. That block-then-pass is the whole point. <span class="realtag">real output</span></span><span class="vi">Giờ push. Nếu thiếu artifact, pre-push gate chặn với <code>exit 2</code> và nêu <b>đúng đường cần tạo</b> — không bao giờ là ngõ cụt. Khi Bước 4 đã ghi <code>verification.json</code>, chính lệnh push đó vượt qua. Chặn-rồi-vượt chính là cốt lõi. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">

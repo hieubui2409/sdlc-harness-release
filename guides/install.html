@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="dark" />
 <meta name="theme-color" content="#070b16" />
 <title>Install — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 49 hs:* skills, nineteen hooks, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 54 hs:* skills, twenty hooks, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="lang-en view-guide">
@@ -72,8 +72,8 @@
     <!-- one-shot -->
     <h2 class="sectitle" id="install-oneshot"><span class="en">Install in one command</span><span class="vi">Cài trong một lệnh</span></h2>
     <p class="muted" style="margin:-2px 0 14px"><span class="en">Point the installer at a release bundle and the target repo. It runs five steps for you: <b>① verify</b> the sha256 sidecar → <b>② extract</b> → <b>③ check deps</b> (and print the exact <code>pip</code> command if any are missing) → <b>④ install + verify</b> (<code>--strict</code> fails on any drift) → <b>⑤ run the test suite</b> against the freshly installed copy. The integrity check in step ④ already proves the install; step ⑤ is the extra "does it run green in <i>my</i> environment" pass, and you can skip it with <code>--skip-tests</code>.</span><span class="vi">Trỏ trình cài vào một bản release và repo đích. Nó chạy năm bước hộ bạn: <b>① kiểm</b> sha256 → <b>② giải nén</b> → <b>③ kiểm deps</b> (và in đúng lệnh <code>pip</code> nếu thiếu) → <b>④ cài + verify</b> (<code>--strict</code> lỗi khi có lệch) → <b>⑤ chạy bộ test</b> trên bản vừa cài. Bước ④ đã chứng minh cài đúng; bước ⑤ là lượt kiểm thêm "chạy có xanh trong môi trường <i>của tôi</i> không", và bạn bỏ qua được bằng <code>--skip-tests</code>.</span></p>
-    <p class="muted" style="font-size:.9rem;margin:-2px 0 10px"><span class="en">The release ships two files: the bundle <code>harness-v1.1.0.tar.gz</code> (with its <code>.sha256</code>) and a standalone <code>install.sh</code>. Download them into the same folder, then run:</span><span class="vi">Bản release kèm hai file: bundle <code>harness-v1.1.0.tar.gz</code> (cùng <code>.sha256</code>) và một <code>install.sh</code> độc lập. Tải cả hai vào cùng một thư mục, rồi chạy:</span></p>
-    <div class="cmdline"><code>sh install.sh harness-v1.1.0.tar.gz ../my-repo</code></div>
+    <p class="muted" style="font-size:.9rem;margin:-2px 0 10px"><span class="en">The release ships two files: the bundle <code>harness-v1.2.0.tar.gz</code> (with its <code>.sha256</code>) and a standalone <code>install.sh</code>. Download them into the same folder, then run:</span><span class="vi">Bản release kèm hai file: bundle <code>harness-v1.2.0.tar.gz</code> (cùng <code>.sha256</code>) và một <code>install.sh</code> độc lập. Tải cả hai vào cùng một thư mục, rồi chạy:</span></p>
+    <div class="cmdline"><code>sh install.sh harness-v1.2.0.tar.gz ../my-repo</code></div>
 
     <p class="muted" style="font-size:.9rem;margin-top:16px"><span class="en"><b>Step ③ — check dependencies.</b> Deps are checked <i>before</i> anything is installed, so a missing one stops the run early with the command to fix it. <span class="realtag">real output</span></span><span class="vi"><b>Bước ③ — kiểm phụ thuộc.</b> Deps được kiểm <i>trước</i> khi cài, nên thiếu cái gì là dừng sớm kèm lệnh sửa. <span class="realtag">đầu ra thật</span></span></p>
     <div class="term">
@@ -82,9 +82,9 @@
 </pre>
     </div>
 
-    <p class="muted" style="font-size:.9rem;margin-top:16px"><span class="en"><b>Step ④ — install + verify.</b> The installer copies <code>harness/</code>, merges hooks into <code>.claude/settings.json</code> <b>additively</b> (your own hooks survive), installs the pre-push gate, writes the reviewer roster, adds a <code>.gitignore</code> block for runtime state, then runs <code>verify_install</code> as the closing gate. <span class="realtag">real output</span></span><span class="vi"><b>Bước ④ — cài + verify.</b> Trình cài copy <code>harness/</code>, gộp hook vào <code>.claude/settings.json</code> theo kiểu <b>cộng thêm</b> (hook của bạn vẫn còn), cài pre-push gate, ghi roster reviewer, thêm khối <code>.gitignore</code> cho trạng thái runtime, rồi chạy <code>verify_install</code> làm gate chốt. <span class="realtag">đầu ra thật</span></span></p>
+    <p class="muted" style="font-size:.9rem;margin-top:16px"><span class="en"><b>Step ④ — install + verify.</b> The installer copies <code>harness/</code>, merges hooks into <code>.claude/settings.json</code> <b>additively</b> (your own hooks survive), installs the pre-push gate, writes the reviewer roster, adds a <code>.gitignore</code> block for runtime state, injects a self-loading harness onboarding block into <code>CLAUDE.md</code> (replace-between-markers, your prose preserved), then runs <code>verify_install</code> as the closing gate. Pass <code>--no-track</code> to run the harness without committing <code>harness/</code> into your product git. <span class="realtag">real output</span></span><span class="vi"><b>Bước ④ — cài + verify.</b> Trình cài copy <code>harness/</code>, gộp hook vào <code>.claude/settings.json</code> theo kiểu <b>cộng thêm</b> (hook của bạn vẫn còn), cài pre-push gate, ghi roster reviewer, thêm khối <code>.gitignore</code> cho trạng thái runtime, chèn khối onboarding harness tự-nạp vào <code>CLAUDE.md</code> (thay-giữa-mốc, giữ nguyên prose của bạn), rồi chạy <code>verify_install</code> làm gate chốt. Dùng <code>--no-track</code> để chạy harness mà không commit <code>harness/</code> vào git sản phẩm. <span class="realtag">đầu ra thật</span></span></p>
     <div class="term">
-      <div class="tbar"><i></i><i></i><i></i><span class="tcmd">sh install.sh harness-v1.1.0.tar.gz ../my-repo</span></div>
+      <div class="tbar"><i></i><i></i><i></i><span class="tcmd">sh install.sh harness-v1.2.0.tar.gz ../my-repo</span></div>
       <pre>verify_install OK: manifest + hook registration consistent
 </pre>
     </div>

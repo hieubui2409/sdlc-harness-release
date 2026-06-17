@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="dark" />
 <meta name="theme-color" content="#070b16" />
 <title>Quick start — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 49 hs:* skills, nineteen hooks, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 54 hs:* skills, twenty hooks, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="lang-en view-guide">
@@ -83,7 +83,7 @@
       <span class="eyebrow" style="display:block">Step 1 · <span class="en">shell</span><span class="vi">shell</span></span>
       <h2 class="sectitle" id="qs-install" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Install into your repo</span><span class="vi">Cài vào repo của bạn</span></h2>
       <p class="muted" style="font-size:.9rem"><span class="en">Download the bundle and the standalone <code>install.sh</code> from the release into one folder. <b>One command does it all</b>: verify checksum → extract → check deps → install + verify → run the suite (skip with <code>--skip-tests</code>). No follow-up scripts to chain. Full walkthrough and options: the <a href="install.html">Install</a> page.</span><span class="vi">Tải bundle và <code>install.sh</code> độc lập từ bản release vào cùng một thư mục. <b>Một lệnh làm tất</b>: kiểm checksum → giải nén → kiểm deps → cài + verify → chạy bộ test (bỏ qua bằng <code>--skip-tests</code>). Không phải nối script. Hướng dẫn đầy đủ và tùy chọn: trang <a href="install.html">Cài đặt</a>.</span></p>
-      <div class="cmdline"><code>sh install.sh harness-v1.1.0.tar.gz ../my-repo</code></div>
+      <div class="cmdline"><code>sh install.sh harness-v1.2.0.tar.gz ../my-repo</code></div>
       <p class="muted" style="font-size:.9rem;margin-top:12px"><span class="en">Or run the installer directly from a clone. It copies <code>harness/</code>, merges hooks into <code>.claude/settings.json</code> <b>additively</b> (your own hooks survive), installs the pre-push gate, writes the reviewer roster, adds a <code>.gitignore</code> block for runtime state, then runs <code>verify_install</code> as the final gate. On a TTY it prompts for reviewers and suggests one from your git email; <code>--non-interactive</code> (alias <code>--yes</code>) is the CI path. Idempotent — preview with <code>--dry-run</code>, reverse with <code>--uninstall</code>. <span class="realtag">real output</span></span><span class="vi">Hoặc chạy thẳng trình cài từ một clone. Nó copy <code>harness/</code>, gộp hook vào <code>.claude/settings.json</code> theo kiểu <b>cộng thêm</b> (hook của bạn vẫn còn), cài pre-push gate, ghi roster người duyệt, thêm khối <code>.gitignore</code> cho trạng thái runtime, rồi chạy <code>verify_install</code> chốt cuối. Trên TTY nó hỏi reviewer và gợi ý từ git email của bạn; <code>--non-interactive</code> (alias <code>--yes</code>) là đường CI. Idempotent — xem trước bằng <code>--dry-run</code>, gỡ bằng <code>--uninstall</code>. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 harness/install/install.py --target ../my-repo --reviewers a@x,b@y</span></div>

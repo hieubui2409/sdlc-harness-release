@@ -139,8 +139,8 @@ section{position:relative;padding:96px 24px;}
 @media(max-width:860px){.grid-2,.grid-3{grid-template-columns:1fr}}
 .card{background:var(--panel);border:1px solid var(--stroke);border-radius:var(--r);padding:22px;position:relative;transition:.3s var(--ease)}
 .card:hover{border-color:var(--stroke-2)}
-.card h3{font-size:1.06rem;display:flex;align-items:center;gap:9px}
-.card h3 .pin{width:9px;height:9px;border-radius:3px;background:var(--ac)}
+.card h3{font-size:1.06rem;display:flex;align-items:flex-start;gap:9px}
+.card h3 .pin{width:9px;height:9px;border-radius:3px;background:var(--ac);flex:none;margin-top:.4em}
 .card p{font-size:.9rem;color:var(--txt-dim);margin:.3em 0 0}
 
 /* flag chips */
@@ -626,8 +626,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,
       <span class="en"><b>Observe</b></span><span class="vi"><b>Quan sát</b></span>
     </div>
     <p class="lead">
-      <span class="en">Not prose reminders — a coordinated <code>.claude</code>-style rig that enforces the workflow at runtime: 54 <code>hs:*</code> skills, twenty hooks in three tiers, fifty-eight scripts, and a compliance gate that <b>blocks</b> push / pr / ship when the acceptance artifact is missing. Every gate, approval, and decision is traced with an <code>actor</code>.</span>
-      <span class="vi">Không phải lời nhắc — mà cả một bộ kiểu <code>.claude</code> phối hợp, ép quy trình ngay lúc chạy: 54 skill <code>hs:*</code>, hai mươi hook ba hạng, năm mươi tám script, và một gate compliance <b>chặn</b> push / pr / ship khi thiếu artifact nghiệm thu. Mọi gate, duyệt và quyết định đều được trace kèm <code>actor</code>.</span>
+      <span class="en">Not prose reminders — a coordinated <code>.claude</code>-style rig that enforces the workflow at runtime: 96 <code>hs:*</code> skills, thirty-seven hooks in three tiers, eighty scripts, and a compliance gate that <b>blocks</b> push / pr / ship when the acceptance artifact is missing. Every gate, approval, and decision is traced with an <code>actor</code>.</span>
+      <span class="vi">Không phải lời nhắc — mà cả một bộ kiểu <code>.claude</code> phối hợp, ép quy trình ngay lúc chạy: 96 skill <code>hs:*</code>, ba mươi bảy hook ba hạng, tám mươi script, và một gate compliance <b>chặn</b> push / pr / ship khi thiếu artifact nghiệm thu. Mọi gate, duyệt và quyết định đều được trace kèm <code>actor</code>.</span>
     </p>
 
     <div class="cta-row">
@@ -707,9 +707,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="n" data-count="54">54</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
+      <div class="stat"><div class="n" data-count="96">96</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
       <div class="stat"><div class="n" data-count="20">20</div><div class="l"><span class="en">hooks · 3 tiers</span><span class="vi">hook · 3 hạng</span></div></div>
-      <div class="stat"><div class="n" data-count="1454">1454</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
+      <div class="stat"><div class="n" data-count="2508">2508</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
       <div class="stat"><div class="n" data-count="0">0</div><div class="l"><span class="en">network calls in the gate path</span><span class="vi">lần gọi mạng trong đường gate</span></div></div>
     </div>
   </div>
@@ -720,12 +720,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible,
   <div class="wrap reveal">
     <div class="eyebrow"><span class="en">Under the hood</span><span class="vi">Bên trong</span></div>
     <h2 class="sectitle"><span class="en">What lives in <code>harness/</code> — the whole rig</span><span class="vi">Cái gì nằm trong <code>harness/</code> — cả bộ</span></h2>
-    <p class="lead"><span class="en">The product is the <code>harness/</code> tree: skills, hooks, scripts, rules, data, schemas, install, tests. Delete the directory and the harness is gone — it never touches the ClaudeKit <code>.claude/</code> toolkit (a CI invariant forbids the string <code>.claude/skills/</code> inside <code>harness/</code>).</span><span class="vi">Sản phẩm là cây <code>harness/</code>: skills, hooks, scripts, rules, data, schemas, install, tests. Xóa thư mục là gỡ sạch — không bao giờ chạm bộ ClaudeKit <code>.claude/</code> (một invariant CI cấm chuỗi <code>.claude/skills/</code> trong <code>harness/</code>).</span></p>
+    <p class="lead"><span class="en">The product is the <code>harness/</code> tree: skills, hooks, scripts, rules, data, schemas, install, tests. Delete the directory and the harness is gone — a CI invariant forbids the string <code>.claude/skills/</code> inside <code>harness/</code>.</span><span class="vi">Sản phẩm là cây <code>harness/</code>: skills, hooks, scripts, rules, data, schemas, install, tests. Xóa thư mục là gỡ sạch — một invariant CI cấm chuỗi <code>.claude/skills/</code> trong <code>harness/</code>.</span></p>
 
     <div class="rig">
-      <div class="rcell"><div class="rt">🧩 <span class="en">54 skills</span><span class="vi">54 skill</span><span class="rn">plugins/hs</span></div><ul><li><span class="en">SDLC spine: plan · cook · test · ship</span><span class="vi">Xương sống: plan · cook · test · ship</span></li><li><span class="en">orchestrators, review, debug, research, ideation, docs</span><span class="vi">điều phối, review, debug, nghiên cứu, ý tưởng, docs</span></li><li><span class="en">packaged as plugin <code>hs</code> → <code>/hs:plan</code></span><span class="vi">đóng gói plugin <code>hs</code> → <code>/hs:plan</code></span></li></ul></div>
-      <div class="rcell"><div class="rt">🪝 <span class="en">20 hooks · 3 tiers</span><span class="vi">20 hook · 3 hạng</span><span class="rn">/hooks</span></div><ul><li><span class="en">telemetry sinks (ON, fail-open)</span><span class="vi">sink telemetry (ON, fail-open)</span></li><li><span class="en">memory-gap nudge (OFF)</span><span class="vi">memory-gap nudge (OFF)</span></li><li><span class="en">gate_stage · write_guard (compliance)</span><span class="vi">gate_stage · write_guard (compliance)</span></li></ul></div>
-      <div class="rcell"><div class="rt">🛠️ <span class="en">58 scripts</span><span class="vi">58 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · task_store · plan_approval</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
+      <div class="rcell"><div class="rt">🧩 <span class="en">96 skills</span><span class="vi">96 skill</span><span class="rn">plugins/hs</span></div><ul><li><span class="en">SDLC spine: plan · cook · test · ship</span><span class="vi">Xương sống: plan · cook · test · ship</span></li><li><span class="en">orchestrators, review, debug, research, ideation, docs</span><span class="vi">điều phối, review, debug, nghiên cứu, ý tưởng, docs</span></li><li><span class="en">packaged as plugin <code>hs</code> → <code>/hs:plan</code></span><span class="vi">đóng gói plugin <code>hs</code> → <code>/hs:plan</code></span></li></ul></div>
+      <div class="rcell"><div class="rt">🪝 <span class="en">37 hooks · 3 tiers</span><span class="vi">37 hook · 3 hạng</span><span class="rn">/hooks</span></div><ul><li><span class="en">telemetry sinks (ON, fail-open)</span><span class="vi">sink telemetry (ON, fail-open)</span></li><li><span class="en">memory-gap nudge (OFF)</span><span class="vi">memory-gap nudge (OFF)</span></li><li><span class="en">gate_stage · write_guard (compliance)</span><span class="vi">gate_stage · write_guard (compliance)</span></li></ul></div>
+      <div class="rcell"><div class="rt">🛠️ <span class="en">82 scripts</span><span class="vi">82 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · task_store · plan_approval</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
       <div class="rcell"><div class="rt">📐 <span class="en">11 rules</span><span class="vi">11 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤60 lines, always-load)</span><span class="vi">(≤60 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · terminal-voice</li></ul></div>
       <div class="rcell"><div class="rt">🧪 <span class="en">7 schemas</span><span class="vi">7 schema</span><span class="rn">/schemas</span></div><ul><li><code>artifact-verification</code> · <code>review-decision</code></li><li><code>plan-approval</code> · <code>critique-consensus</code></li><li><code>bakeoff-verdict</code> · <code>harness-release</code></li></ul></div>
       <div class="rcell"><div class="rt">📦 <span class="en">Install + manifest</span><span class="vi">Cài + manifest</span><span class="rn">/install</span></div><ul><li><code>install.py --target</code> <span class="en">(one command)</span><span class="vi">(một lệnh)</span></li><li><code>manifest.json</code> <span class="en">(sha256 tracked files)</span><span class="vi">(sha256 file tracked)</span></li><li><code>verify_install.py --strict</code></li></ul></div>
@@ -854,7 +854,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,
       <span class="eyebrow" style="display:block">Step 1 · <span class="en">shell</span><span class="vi">shell</span></span>
       <h2 class="sectitle" id="qs-install" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Install into your repo</span><span class="vi">Cài vào repo của bạn</span></h2>
       <p class="muted" style="font-size:.9rem"><span class="en">Download the bundle and the standalone <code>install.sh</code> from the release into one folder. <b>One command does it all</b>: verify checksum → extract → check deps → install + verify → run the suite (skip with <code>--skip-tests</code>). No follow-up scripts to chain. Full walkthrough and options: the <a href="#install">Install</a> page.</span><span class="vi">Tải bundle và <code>install.sh</code> độc lập từ bản release vào cùng một thư mục. <b>Một lệnh làm tất</b>: kiểm checksum → giải nén → kiểm deps → cài + verify → chạy bộ test (bỏ qua bằng <code>--skip-tests</code>). Không phải nối script. Hướng dẫn đầy đủ và tùy chọn: trang <a href="#install">Cài đặt</a>.</span></p>
-      <div class="cmdline"><code>sh install.sh harness-v1.2.0.tar.gz ../my-repo</code></div>
+      <div class="cmdline"><code>sh install.sh harness-&lt;version&gt;.tar.gz ../my-repo</code></div>
       <p class="muted" style="font-size:.9rem;margin-top:12px"><span class="en">Or run the installer directly from a clone. It copies <code>harness/</code>, merges hooks into <code>.claude/settings.json</code> <b>additively</b> (your own hooks survive), installs the pre-push gate, writes the reviewer roster, adds a <code>.gitignore</code> block for runtime state, then runs <code>verify_install</code> as the final gate. On a TTY it prompts for reviewers and suggests one from your git email; <code>--non-interactive</code> (alias <code>--yes</code>) is the CI path. Idempotent — preview with <code>--dry-run</code>, reverse with <code>--uninstall</code>. <span class="realtag">real output</span></span><span class="vi">Hoặc chạy thẳng trình cài từ một clone. Nó copy <code>harness/</code>, gộp hook vào <code>.claude/settings.json</code> theo kiểu <b>cộng thêm</b> (hook của bạn vẫn còn), cài pre-push gate, ghi roster người duyệt, thêm khối <code>.gitignore</code> cho trạng thái runtime, rồi chạy <code>verify_install</code> chốt cuối. Trên TTY nó hỏi reviewer và gợi ý từ git email của bạn; <code>--non-interactive</code> (alias <code>--yes</code>) là đường CI. Idempotent — xem trước bằng <code>--dry-run</code>, gỡ bằng <code>--uninstall</code>. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 harness/install/install.py --target ../my-repo --reviewers a@x,b@y</span></div>
@@ -1002,8 +1002,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,
     <!-- one-shot -->
     <h2 class="sectitle" id="install-oneshot"><span class="en">Install in one command</span><span class="vi">Cài trong một lệnh</span></h2>
     <p class="muted" style="margin:-2px 0 14px"><span class="en">Point the installer at a release bundle and the target repo. It runs five steps for you: <b>① verify</b> the sha256 sidecar → <b>② extract</b> → <b>③ check deps</b> (and print the exact <code>pip</code> command if any are missing) → <b>④ install + verify</b> (<code>--strict</code> fails on any drift) → <b>⑤ run the test suite</b> against the freshly installed copy. The integrity check in step ④ already proves the install; step ⑤ is the extra "does it run green in <i>my</i> environment" pass, and you can skip it with <code>--skip-tests</code>.</span><span class="vi">Trỏ trình cài vào một bản release và repo đích. Nó chạy năm bước hộ bạn: <b>① kiểm</b> sha256 → <b>② giải nén</b> → <b>③ kiểm deps</b> (và in đúng lệnh <code>pip</code> nếu thiếu) → <b>④ cài + verify</b> (<code>--strict</code> lỗi khi có lệch) → <b>⑤ chạy bộ test</b> trên bản vừa cài. Bước ④ đã chứng minh cài đúng; bước ⑤ là lượt kiểm thêm "chạy có xanh trong môi trường <i>của tôi</i> không", và bạn bỏ qua được bằng <code>--skip-tests</code>.</span></p>
-    <p class="muted" style="font-size:.9rem;margin:-2px 0 10px"><span class="en">The release ships two files: the bundle <code>harness-v1.2.0.tar.gz</code> (with its <code>.sha256</code>) and a standalone <code>install.sh</code>. Download them into the same folder, then run:</span><span class="vi">Bản release kèm hai file: bundle <code>harness-v1.2.0.tar.gz</code> (cùng <code>.sha256</code>) và một <code>install.sh</code> độc lập. Tải cả hai vào cùng một thư mục, rồi chạy:</span></p>
-    <div class="cmdline"><code>sh install.sh harness-v1.2.0.tar.gz ../my-repo</code></div>
+    <p class="muted" style="font-size:.9rem;margin:-2px 0 10px"><span class="en">The release ships two files: the bundle <code>harness-&lt;version&gt;.tar.gz</code> (with its <code>.sha256</code>) and a standalone <code>install.sh</code>. Download them into the same folder, then run:</span><span class="vi">Bản release kèm hai file: bundle <code>harness-&lt;version&gt;.tar.gz</code> (cùng <code>.sha256</code>) và một <code>install.sh</code> độc lập. Tải cả hai vào cùng một thư mục, rồi chạy:</span></p>
+    <div class="cmdline"><code>sh install.sh harness-&lt;version&gt;.tar.gz ../my-repo</code></div>
 
     <p class="muted" style="font-size:.9rem;margin-top:16px"><span class="en"><b>Step ③ — check dependencies.</b> Deps are checked <i>before</i> anything is installed, so a missing one stops the run early with the command to fix it. <span class="realtag">real output</span></span><span class="vi"><b>Bước ③ — kiểm phụ thuộc.</b> Deps được kiểm <i>trước</i> khi cài, nên thiếu cái gì là dừng sớm kèm lệnh sửa. <span class="realtag">đầu ra thật</span></span></p>
     <div class="term">
@@ -1014,7 +1014,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,
 
     <p class="muted" style="font-size:.9rem;margin-top:16px"><span class="en"><b>Step ④ — install + verify.</b> The installer copies <code>harness/</code>, merges hooks into <code>.claude/settings.json</code> <b>additively</b> (your own hooks survive), installs the pre-push gate, writes the reviewer roster, adds a <code>.gitignore</code> block for runtime state, injects a self-loading harness onboarding block into <code>CLAUDE.md</code> (replace-between-markers, your prose preserved), then runs <code>verify_install</code> as the closing gate. Pass <code>--no-track</code> to run the harness without committing <code>harness/</code> into your product git. <span class="realtag">real output</span></span><span class="vi"><b>Bước ④ — cài + verify.</b> Trình cài copy <code>harness/</code>, gộp hook vào <code>.claude/settings.json</code> theo kiểu <b>cộng thêm</b> (hook của bạn vẫn còn), cài pre-push gate, ghi roster reviewer, thêm khối <code>.gitignore</code> cho trạng thái runtime, chèn khối onboarding harness tự-nạp vào <code>CLAUDE.md</code> (thay-giữa-mốc, giữ nguyên prose của bạn), rồi chạy <code>verify_install</code> làm gate chốt. Dùng <code>--no-track</code> để chạy harness mà không commit <code>harness/</code> vào git sản phẩm. <span class="realtag">đầu ra thật</span></span></p>
     <div class="term">
-      <div class="tbar"><i></i><i></i><i></i><span class="tcmd">sh install.sh harness-v1.2.0.tar.gz ../my-repo</span></div>
+      <div class="tbar"><i></i><i></i><i></i><span class="tcmd">sh install.sh harness-&lt;version&gt;.tar.gz ../my-repo</span></div>
       <pre>verify_install OK: manifest + hook registration consistent
 </pre>
     </div>
@@ -2171,7 +2171,7 @@ exit: 0 (0 = winner)
         <div class="who" style="color:var(--rel)"><span class="en">The full hs:* suite — grouped by family</span><span class="vi">Toàn bộ bộ hs:* — nhóm theo họ</span></div>
         <h2><span class="en">All skills</span><span class="vi">Toàn bộ skill</span></h2>
       </div>
-      <div class="ver">54 skills</div>
+      <div class="ver">96 skills</div>
     </div>
     <div class="divider" style="--ac:var(--rel)"></div>
 
@@ -2203,8 +2203,8 @@ exit: 0 (0 = winner)
     <div class="callout" style="--ac:var(--rel);margin-bottom:28px">
       <span class="ci">🏷️</span>
       <div>
-        <span class="en">Invoke any skill with <code>/hs:&lt;name&gt;</code>. The badge on each card is its enforcement tier: <span class="ttag workflow">workflow</span> has gates &amp; artifacts (can block the pipeline) · <span class="ttag knowledge">knowledge</span> is advisory (generates output, never blocks) · <span class="ttag gate">gate</span> writes a hard verdict the pipeline reads. <b>43 workflow · 10 knowledge · 1 gate</b>.</span>
-        <span class="vi">Gọi skill bằng <code>/hs:&lt;tên&gt;</code>. Badge trên mỗi thẻ là hạng cưỡng chế: <span class="ttag workflow">workflow</span> có gate &amp; artifact (chặn pipeline được) · <span class="ttag knowledge">knowledge</span> là tư vấn (tạo output, không chặn) · <span class="ttag gate">gate</span> ghi verdict cứng pipeline đọc. <b>43 workflow · 10 knowledge · 1 gate</b>.</span>
+        <span class="en">Invoke any skill with <code>/hs:&lt;name&gt;</code>. The badge on each card is its enforcement tier: <span class="ttag workflow">workflow</span> has gates &amp; artifacts (can block the pipeline) · <span class="ttag knowledge">knowledge</span> is advisory (generates output, never blocks) · <span class="ttag gate">gate</span> writes a hard verdict the pipeline reads. <b>Most skills are knowledge or workflow; only a few write a hard gate verdict.</b></span>
+        <span class="vi">Gọi skill bằng <code>/hs:&lt;tên&gt;</code>. Badge trên mỗi thẻ là hạng cưỡng chế: <span class="ttag workflow">workflow</span> có gate &amp; artifact (chặn pipeline được) · <span class="ttag knowledge">knowledge</span> là tư vấn (tạo output, không chặn) · <span class="ttag gate">gate</span> ghi verdict cứng pipeline đọc. <b>Phần lớn skill là knowledge hoặc workflow; chỉ một số ít ghi verdict gate cứng.</b></span>
       </div>
     </div>
 
@@ -2286,6 +2286,7 @@ exit: 0 (0 = winner)
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:mermaidjs <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Inline Mermaid diagrams — flowcharts, sequence, ER, and Gantt, rendered from code.</span><span class="vi">Sơ đồ Mermaid nội tuyến — flowchart, sequence, ER và Gantt, render từ code.</span></p></div>
       <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:excalidraw <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Editable <code>.excalidraw</code> canvases — hand-drawn-style diagrams that stay in the repo.</span><span class="vi">Canvas <code>.excalidraw</code> chỉnh sửa được — sơ đồ phong cách vẽ tay lưu trong repo.</span></p></div>
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:document-skills <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Read and write <code>.docx</code> / <code>.pdf</code> / <code>.pptx</code> / <code>.xlsx</code> — bridge between repo and office formats.</span><span class="vi">Đọc và ghi <code>.docx</code> / <code>.pdf</code> / <code>.pptx</code> / <code>.xlsx</code> — cầu nối giữa repo và định dạng office.</span></p></div>
+      <div class="card" style="--ac:var(--ok)"><h3><span class="pin"></span>hs:remember <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Capture the session's real knowledge — decisions, non-obvious facts, user feedback — into the DEC ledger, memory, or backlog after you approve each entry.</span><span class="vi">Ghi lại kiến thức thật của phiên — quyết định, sự thật không hiển nhiên, feedback người dùng — vào ledger DEC, memory hoặc backlog sau khi bạn duyệt từng mục.</span></p></div>
     </div>
 
     <!-- ── Build the harness ── -->
@@ -2320,6 +2321,83 @@ exit: 0 (0 = winner)
     <h2 class="sectitle" id="cat-autonomy" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Run plans unattended</span><span class="vi">Chạy plan không cần giám sát</span></h2>
     <div class="cards grid-2">
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:afk <span class="ttag workflow">workflow</span></h3><p><span class="en">Run a plan or PRD unattended — preflight readiness check, then route to a Ralph sandbox loop. The harness gates still fire; <code>HARNESS_AUTONOMY=god</code> is the typical pairing.</span><span class="vi">Chạy plan hoặc PRD không cần giám sát — kiểm tra preflight, rồi định tuyến vào vòng lặp sandbox Ralph. Gate harness vẫn kích hoạt; <code>HARNESS_AUTONOMY=god</code> thường đi kèm.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:autonomous-bell <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Arm a self-ending unattended run — a reminder cron carries a post-check protocol and a consecutive-empty counter whose STOP is deterministic.</span><span class="vi">Trang bị cho lần chạy không giám sát tự kết thúc — cron nhắc mang theo protocol hậu-kiểm và bộ đếm rỗng-liên-tiếp với điều kiện STOP xác định.</span></p></div>
+    </div>
+
+    <!-- ── AI & media ── -->
+    <div class="eyebrow" style="margin-top:30px"><span class="en">AI &amp; Media</span><span class="vi">AI &amp; Media</span></div>
+    <h2 class="sectitle" id="cat-ai" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Generate and process visual media</span><span class="vi">Tạo và xử lý media trực quan</span></h2>
+    <div class="cards grid-3">
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:ai-multimodal <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Analyze images, audio, and video with Gemini, and generate images, video, speech, and music across multiple model providers.</span><span class="vi">Phân tích ảnh, âm thanh, video bằng Gemini, và tạo ảnh, video, giọng nói, nhạc qua nhiều nhà cung cấp model.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:ai-artist <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Generate product mockups, marketing assets, and concept art via Nano Banana with curated prompts and a style-refining interview.</span><span class="vi">Tạo mockup sản phẩm, asset marketing và concept art qua Nano Banana với prompt tuyển chọn và phỏng vấn tinh chỉnh phong cách.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:media-processing <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Process media with FFmpeg, ImageMagick, and AI background removal — encoding, conversion, filters, thumbnails, streaming.</span><span class="vi">Xử lý media bằng FFmpeg, ImageMagick và xóa nền AI — mã hóa, chuyển định dạng, filter, thumbnail, streaming.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:threejs <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build 3D web experiences with Three.js — WebGL/WebGPU scenes, GLTF models, animations, physics, VR/XR.</span><span class="vi">Xây trải nghiệm web 3D với Three.js — cảnh WebGL/WebGPU, model GLTF, animation, physics, VR/XR.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:shader <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Write GLSL fragment shaders for procedural graphics — SDF shapes, noise, fBm, gradients, and animations.</span><span class="vi">Viết shader fragment GLSL cho đồ họa thủ tục — hình SDF, noise, fBm, gradient và animation.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:remotion <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build video content with Remotion in React — programmatic, animated, data-driven video rendering.</span><span class="vi">Xây nội dung video với Remotion trong React — render video lập trình, animation, dựa dữ liệu.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:html-video <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Render local MP4 videos from HTML/CSS/JS templates — studio customization, preview, and render verification.</span><span class="vi">Render video MP4 local từ template HTML/CSS/JS — tùy biến studio, preview và xác minh render.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:stitch <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Generate UI designs from text prompts with Google Stitch — exports Tailwind/HTML and a design-to-code pipeline.</span><span class="vi">Tạo thiết kế UI từ prompt văn bản với Google Stitch — xuất Tailwind/HTML và pipeline design-to-code.</span></p></div>
+    </div>
+
+    <!-- ── UI & frontend ── -->
+    <div class="eyebrow" style="margin-top:30px"><span class="en">UI &amp; Frontend</span><span class="vi">UI &amp; Frontend</span></div>
+    <h2 class="sectitle" id="cat-uiux" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Design and build interfaces</span><span class="vi">Thiết kế và xây dựng giao diện</span></h2>
+    <div class="cards grid-3">
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:ui-ux-pro-max <span class="ttag knowledge">knowledge</span></h3><p><span class="en">UI/UX design intelligence — style selection, color systems, typography, layout, accessibility, and interaction states.</span><span class="vi">Trí tuệ thiết kế UI/UX — chọn phong cách, hệ màu, typography, layout, accessibility và trạng thái tương tác.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:frontend-design <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Create polished frontend interfaces from designs, screenshots, or videos — components, 3D experiences, UI replication.</span><span class="vi">Tạo giao diện frontend chỉn chu từ thiết kế, ảnh chụp hoặc video — component, trải nghiệm 3D, sao chép UI.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:ui-styling <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Style UIs with shadcn/ui (Radix + Tailwind) — accessible components, themes, dark mode, responsive layouts.</span><span class="vi">Style UI với shadcn/ui (Radix + Tailwind) — component accessible, theme, dark mode, layout responsive.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:web-design-guidelines <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Review UI code against Web Interface Guidelines — accessibility, UX, and design best-practice audit.</span><span class="vi">Review code UI theo Web Interface Guidelines — audit accessibility, UX và best practice thiết kế.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:design <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Design brand identity, logos, banners, and visual assets — brand systems, design tokens, corporate identity.</span><span class="vi">Thiết kế nhận diện thương hiệu, logo, banner và asset trực quan — hệ thương hiệu, design token, nhận diện doanh nghiệp.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:show-off <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Create preference-aware self-contained HTML pages to showcase work — demos, presentations, interactive showcases.</span><span class="vi">Tạo trang HTML tự chứa theo sở thích để trưng bày — demo, thuyết trình, showcase tương tác.</span></p></div>
+    </div>
+
+    <!-- ── Stack & frameworks ── -->
+    <div class="eyebrow" style="margin-top:30px"><span class="en">Stack &amp; Frameworks</span><span class="vi">Stack &amp; Framework</span></div>
+    <h2 class="sectitle" id="cat-stack" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Build on a known stack</span><span class="vi">Xây trên stack đã biết</span></h2>
+    <div class="cards grid-3">
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:frontend-development <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build React/TypeScript frontends with modern patterns — Suspense, lazy loading, MUI v7, TanStack Router.</span><span class="vi">Xây frontend React/TypeScript với pattern hiện đại — Suspense, lazy loading, MUI v7, TanStack Router.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:backend-development <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build backends with Node.js, Python, Go — REST/GraphQL/gRPC APIs, auth, databases, microservices, Docker/K8s.</span><span class="vi">Xây backend với Node.js, Python, Go — API REST/GraphQL/gRPC, auth, database, microservice, Docker/K8s.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:mobile-development <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build mobile apps with React Native, Flutter, SwiftUI, Jetpack Compose — iOS/Android, offline-first, app store.</span><span class="vi">Xây app mobile với React Native, Flutter, SwiftUI, Jetpack Compose — iOS/Android, offline-first, app store.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:web-frameworks <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build with Next.js and Turborepo — App Router, RSC, SSR, ISR, caching, and monorepo build optimization.</span><span class="vi">Xây với Next.js và Turborepo — App Router, RSC, SSR, ISR, caching và tối ưu build monorepo.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:tanstack <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build with TanStack Start, Form, and AI — full-stack React, routes, server functions, headless forms, streaming chat.</span><span class="vi">Xây với TanStack Start, Form và AI — React full-stack, route, server function, form headless, chat streaming.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:react-best-practices <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Apply React and Next.js performance patterns from Vercel — component optimization, rendering, bundle analysis.</span><span class="vi">Áp dụng pattern hiệu năng React và Next.js từ Vercel — tối ưu component, rendering, phân tích bundle.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:databases <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Design schemas and write queries for MongoDB and PostgreSQL — indexes, migrations, aggregation, performance.</span><span class="vi">Thiết kế schema và viết query cho MongoDB và PostgreSQL — index, migration, aggregation, hiệu năng.</span></p></div>
+      <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>hs:better-auth <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Add authentication with Better Auth — email/password, OAuth, 2FA/MFA, passkeys, sessions, RBAC, rate limiting.</span><span class="vi">Thêm xác thực với Better Auth — email/mật khẩu, OAuth, 2FA/MFA, passkey, session, RBAC, giới hạn tần suất.</span></p></div>
+    </div>
+
+    <!-- ── DevOps & deploy ── -->
+    <div class="eyebrow" style="margin-top:30px"><span class="en">DevOps &amp; Deploy</span><span class="vi">DevOps &amp; Triển khai</span></div>
+    <h2 class="sectitle" id="cat-devops" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Test, automate, and ship to production</span><span class="vi">Kiểm thử, tự động hóa và đưa lên production</span></h2>
+    <div class="cards grid-3">
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:deploy <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Deploy projects to any platform with auto-detection — Vercel, Netlify, and more, from one command.</span><span class="vi">Triển khai dự án lên mọi nền tảng với tự dò — Vercel, Netlify và hơn nữa, từ một lệnh.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:devops <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Deploy to Cloudflare, Docker, GCP, and Kubernetes — serverless, containers, CI/CD, GitOps, security audit.</span><span class="vi">Triển khai lên Cloudflare, Docker, GCP và Kubernetes — serverless, container, CI/CD, GitOps, audit bảo mật.</span></p></div>
+      <div class="card" style="--ac:var(--crit)"><h3><span class="pin"></span>hs:web-testing <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Web testing with Playwright, Vitest, and k6 — E2E, unit, load, security, visual, a11y, cross-browser.</span><span class="vi">Kiểm thử web với Playwright, Vitest và k6 — E2E, unit, load, bảo mật, visual, a11y, đa trình duyệt.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:agent-browser <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Automate browsers and apps — testing, screenshots, forms, scraping, cloud browsers, and Electron.</span><span class="vi">Tự động hóa trình duyệt và app — kiểm thử, ảnh chụp, form, scraping, cloud browser và Electron.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:chrome-profile <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Drive a real Chrome profile via DevTools MCP — profile discovery, live probing, and URL-anchored playbooks.</span><span class="vi">Điều khiển một profile Chrome thật qua DevTools MCP — dò profile, probe trực tiếp và playbook neo theo URL.</span></p></div>
+    </div>
+
+    <!-- ── Integrations ── -->
+    <div class="eyebrow" style="margin-top:30px"><span class="en">Integrations</span><span class="vi">Tích hợp</span></div>
+    <h2 class="sectitle" id="cat-integrations" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Connect external services and tools</span><span class="vi">Kết nối dịch vụ và công cụ bên ngoài</span></h2>
+    <div class="cards grid-3">
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:payment-integration <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Integrate payments with SePay, Polar, Stripe, Paddle, and Creem — checkout, webhooks, subscriptions, VietQR.</span><span class="vi">Tích hợp thanh toán với SePay, Polar, Stripe, Paddle và Creem — checkout, webhook, subscription, VietQR.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:shopify <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build Shopify apps, extensions, and themes — CLI, GraphQL Admin API, Polaris, Liquid, webhooks, billing.</span><span class="vi">Xây app, extension và theme Shopify — CLI, GraphQL Admin API, Polaris, Liquid, webhook, billing.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:google-adk-python <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build AI agents with Google ADK Python — multi-agent systems, A2A, MCP tools, Vertex AI deployment.</span><span class="vi">Xây AI agent với Google ADK Python — hệ đa agent, A2A, tool MCP, triển khai Vertex AI.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:use-mcp <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Discover and execute MCP server tools — via Gemini CLI for any task or direct scripts for one specific tool.</span><span class="vi">Khám phá và chạy tool MCP server — qua Gemini CLI cho mọi task hoặc script trực tiếp cho một tool cụ thể.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:gkg <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Semantic code analysis with GitLab Knowledge Graph — go-to-definition, find-usages, impact analysis.</span><span class="vi">Phân tích code ngữ nghĩa với GitLab Knowledge Graph — đi tới định nghĩa, tìm chỗ dùng, phân tích tác động.</span></p></div>
+    </div>
+
+    <!-- ── Writing & utilities ── -->
+    <div class="eyebrow" style="margin-top:30px"><span class="en">Writing &amp; Utilities</span><span class="vi">Viết &amp; Tiện ích</span></div>
+    <h2 class="sectitle" id="cat-extra" style="font-size:1.15rem;margin-bottom:12px"><span class="en">Write, ask, and handle the long tail</span><span class="vi">Viết, hỏi và xử lý phần còn lại</span></h2>
+    <div class="cards grid-3">
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:copywriting <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Conversion copywriting — headline templates, email patterns, landing-page structures, and CTA optimization.</span><span class="vi">Copywriting chuyển đổi — template tiêu đề, mẫu email, cấu trúc landing page và tối ưu CTA.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:ask <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Answer technical and architectural questions with expert analysis — design decisions and solution comparison.</span><span class="vi">Trả lời câu hỏi kỹ thuật và kiến trúc với phân tích chuyên gia — quyết định thiết kế và so sánh giải pháp.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:ghpm <span class="ttag knowledge">knowledge</span></h3><p><span class="en">GitHub project management for humans and agents — issues, Projects boards, handoff status, gh/API automation.</span><span class="vi">Quản lý dự án GitHub cho người và agent — issue, bảng Projects, trạng thái bàn giao, tự động hóa gh/API.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:watzup <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Generate short handoff reports from branches, worktrees, and unfinished plans — priority-ranked next steps.</span><span class="vi">Tạo báo cáo bàn giao ngắn từ branch, worktree và plan dang dở — bước kế tiếp xếp theo ưu tiên.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:llms <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Generate llms.txt files from docs or codebase — LLM-friendly site indexes following the llmstxt.org spec.</span><span class="vi">Tạo file llms.txt từ docs hoặc codebase — chỉ mục site thân thiện LLM theo chuẩn llmstxt.org.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:mintlify <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build and maintain Mintlify docs sites — docs.json, MDX components, navigation, theming, OpenAPI, deployment.</span><span class="vi">Xây và bảo trì site docs Mintlify — docs.json, component MDX, điều hướng, theming, OpenAPI, triển khai.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:markdown-novel-viewer <span class="ttag knowledge">knowledge</span></h3><p><span class="en">View markdown in a calm, book-like reader over HTTP — RFCs, runbooks, design docs, distraction-free.</span><span class="vi">Đọc markdown trong trình đọc tĩnh lặng như sách qua HTTP — RFC, runbook, design doc, không xao nhãng.</span></p></div>
+      <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>hs:cti-expert <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Analyze cyber threat intelligence and OSINT — exposure reviews, domain recon, breach checks, image forensics.</span><span class="vi">Phân tích tình báo mối đe dọa mạng và OSINT — soát lộ lọt, recon domain, kiểm rò rỉ, forensics ảnh.</span></p></div>
     </div>
 
     <div class="honest" style="margin-top:26px">
@@ -2327,7 +2405,7 @@ exit: 0 (0 = winner)
       <ul>
         <li><span class="en">Every <code>hs:*</code> skill is a structured prompt. It guides Claude Code but does not block the model from deviating.</span><span class="vi">Mỗi skill <code>hs:*</code> là prompt có cấu trúc. Nó hướng dẫn Claude Code nhưng không chặn model sai lệch.</span></li>
         <li><span class="en">Blocking happens in hooks and scripts — <code>gate_stage</code> (compliance), <code>write_guard</code>, and the git pre-push backstop.</span><span class="vi">Chặn xảy ra trong hook và script — <code>gate_stage</code> (compliance), <code>write_guard</code> và git pre-push backstop.</span></li>
-        <li><span class="en"><b>54</b> user-invocable skills as of this build (every one carries <code>user-invocable: true</code>). Skills are added over time — <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi"><b>54</b> skill người-gọi-được tính đến bản build này (mỗi cái mang <code>user-invocable: true</code>). Skill được thêm theo thời gian — <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></li>
+        <li><span class="en"><b>96</b> user-invocable skills as of this build (every one carries <code>user-invocable: true</code>). Skills are added over time — <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi"><b>96</b> skill người-gọi-được tính đến bản build này (mỗi cái mang <code>user-invocable: true</code>). Skill được thêm theo thời gian — <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></li>
       </ul>
     </div>
 
@@ -2337,7 +2415,7 @@ exit: 0 (0 = winner)
       <details><summary><span class="en">Are skills the thing that blocks bad output?</span><span class="vi">Skill có phải thứ chặn đầu ra xấu?</span></summary><div class="fa"><span class="en">No. A skill is prose — a structured prompt. Blocking happens in hooks and scripts (<code>gate_stage</code>, <code>write_guard</code>, the pre-push backstop). A skill is only as strong as the hook that enforces it.</span><span class="vi">Không. Skill là prose — một prompt có cấu trúc. Việc chặn nằm ở hook và script (<code>gate_stage</code>, <code>write_guard</code>, backstop pre-push). Skill chỉ mạnh bằng hook thực thi nó.</span></div></details>
       <details><summary><span class="en">How do I invoke a skill?</span><span class="vi">Gọi một skill thế nào?</span></summary><div class="fa"><span class="en">Type <code>/hs:&lt;name&gt;</code> in Claude Code — e.g. <code>/hs:plan</code>. Skills can be chained (orchestrators spawn subagents) or invoked standalone.</span><span class="vi">Gõ <code>/hs:&lt;tên&gt;</code> trong Claude Code — ví dụ <code>/hs:plan</code>. Skill có thể nối (orchestrator sinh subagent) hoặc dùng độc lập.</span></div></details>
       <details><summary><span class="en">I don't know which skill fits — what now?</span><span class="vi">Không biết skill nào hợp — làm sao?</span></summary><div class="fa"><span class="en"><code>hs:find-skills</code> analyzes your intent and routes you to the right one, with the exact invoke command.</span><span class="vi"><code>hs:find-skills</code> phân tích ý định và định tuyến bạn đến đúng skill, kèm lệnh gọi chính xác.</span></div></details>
-      <details><summary><span class="en">Is the count exact?</span><span class="vi">Số lượng có chính xác không?</span></summary><div class="fa"><span class="en">Yes — <b>54</b> skills at this build, each with <code>user-invocable: true</code> in its <code>SKILL.md</code>. New skills land over time; <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi">Có — <b>54</b> skill ở bản build này, mỗi cái có <code>user-invocable: true</code> trong <code>SKILL.md</code>. Skill mới được thêm theo thời gian; <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></div></details>
+      <details><summary><span class="en">Is the count exact?</span><span class="vi">Số lượng có chính xác không?</span></summary><div class="fa"><span class="en">Yes — <b>96</b> skills at this build, each with <code>user-invocable: true</code> in its <code>SKILL.md</code>. New skills land over time; <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi">Có — <b>96</b> skill ở bản build này, mỗi cái có <code>user-invocable: true</code> trong <code>SKILL.md</code>. Skill mới được thêm theo thời gian; <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></div></details>
     </div>
   </div>
 </section>
@@ -2636,7 +2714,7 @@ exit: 0 (0 = winner)
 
     <!-- ── 2. Commands by family ── -->
     <h2 class="sectitle" id="cs-commands"><span class="en">All commands</span><span class="vi">Toàn bộ lệnh</span></h2>
-    <p class="muted" style="margin:-4px 0 14px"><span class="en">54 <code>hs:*</code> skills, grouped by what you're trying to do. Invoke any with <code>/hs:&lt;name&gt;</code>. Full descriptions in the <a href="#catalog">catalog</a>.</span><span class="vi">54 skill <code>hs:*</code>, nhóm theo điều bạn đang muốn làm. Gọi bất kỳ với <code>/hs:&lt;tên&gt;</code>. Mô tả đầy đủ trong <a href="#catalog">catalog</a>.</span></p>
+    <p class="muted" style="margin:-4px 0 14px"><span class="en">96 <code>hs:*</code> skills, grouped by what you're trying to do. Invoke any with <code>/hs:&lt;name&gt;</code>. Full descriptions in the <a href="#catalog">catalog</a>.</span><span class="vi">96 skill <code>hs:*</code>, nhóm theo điều bạn đang muốn làm. Gọi bất kỳ với <code>/hs:&lt;tên&gt;</code>. Mô tả đầy đủ trong <a href="#catalog">catalog</a>.</span></p>
 
     <div class="eyebrow"><span class="en">SDLC spine — the gated four</span><span class="vi">Xương sống SDLC — bốn bước bị gate</span></div>
     <table class="modetable" style="--ac:var(--spec)">
@@ -2709,7 +2787,7 @@ exit: 0 (0 = winner)
     </details>
 
     <details class="cs-more">
-      <summary><span class="en">Explain &amp; document — 7 skills</span><span class="vi">Giải thích &amp; tài liệu — 7 skill</span></summary>
+      <summary><span class="en">Explain &amp; document — 8 skills</span><span class="vi">Giải thích &amp; tài liệu — 8 skill</span></summary>
       <table class="modetable" style="--ac:var(--spec)">
         <tbody>
           <tr><td><code>/hs:docs</code></td><td><span class="en">Create, update, or audit project docs.</span><span class="vi">Tạo, cập nhật, hoặc audit docs dự án.</span></td></tr>
@@ -2719,12 +2797,13 @@ exit: 0 (0 = winner)
           <tr><td><code>/hs:mermaidjs</code></td><td><span class="en">Inline Mermaid diagrams in markdown.</span><span class="vi">Sơ đồ Mermaid nội tuyến trong markdown.</span></td></tr>
           <tr><td><code>/hs:excalidraw</code></td><td><span class="en">Editable <code>.excalidraw</code> canvases.</span><span class="vi">Canvas <code>.excalidraw</code> chỉnh sửa được.</span></td></tr>
           <tr><td><code>/hs:document-skills</code></td><td><span class="en">Read/write <code>.docx</code> / <code>.pdf</code> / <code>.pptx</code> / <code>.xlsx</code>.</span><span class="vi">Đọc/ghi <code>.docx</code> / <code>.pdf</code> / <code>.pptx</code> / <code>.xlsx</code>.</span></td></tr>
+          <tr><td><code>/hs:remember</code></td><td><span class="en">Capture session knowledge into the DEC ledger, memory, or backlog.</span><span class="vi">Ghi kiến thức phiên vào ledger DEC, memory hoặc backlog.</span></td></tr>
         </tbody>
       </table>
     </details>
 
     <details class="cs-more">
-      <summary><span class="en">Extend the harness — 5 skills</span><span class="vi">Mở rộng harness — 5 skill</span></summary>
+      <summary><span class="en">Extend the harness — 6 skills</span><span class="vi">Mở rộng harness — 6 skill</span></summary>
       <table class="modetable" style="--ac:var(--tel)">
         <tbody>
           <tr><td><code>/hs:skill-creator</code></td><td><span class="en">Create or update <code>hs:*</code> skills.</span><span class="vi">Tạo hoặc cập nhật skill <code>hs:*</code>.</span></td></tr>
@@ -2732,12 +2811,13 @@ exit: 0 (0 = winner)
           <tr><td><code>/hs:mcp-builder</code></td><td><span class="en">Build an MCP server.</span><span class="vi">Xây một MCP server.</span></td></tr>
           <tr><td><code>/hs:agentize</code></td><td><span class="en">Turn existing code into an agent CLI / MCP.</span><span class="vi">Biến code hiện có thành CLI / MCP cho agent.</span></td></tr>
           <tr><td><code>/hs:bootstrap</code></td><td><span class="en">Bootstrap a new harness-integrated project.</span><span class="vi">Khởi tạo dự án mới tích hợp harness.</span></td></tr>
+          <tr><td><code>/hs:port</code></td><td><span class="en">Extract, compare, or port a feature from another repo.</span><span class="vi">Trích xuất, so sánh hoặc port một tính năng từ repo khác.</span></td></tr>
         </tbody>
       </table>
     </details>
 
     <details class="cs-more">
-      <summary><span class="en">Project ops, autonomy &amp; session — 11 skills</span><span class="vi">Vận hành, tự chủ &amp; phiên — 11 skill</span></summary>
+      <summary><span class="en">Project ops, autonomy &amp; session — 12 skills</span><span class="vi">Vận hành, tự chủ &amp; phiên — 12 skill</span></summary>
       <table class="modetable" style="--ac:var(--rel)">
         <tbody>
           <tr><td><code>/hs:project-management</code></td><td><span class="en">Track plan progress, tasks, reports.</span><span class="vi">Theo dõi tiến độ plan, task, báo cáo.</span></td></tr>
@@ -2746,11 +2826,92 @@ exit: 0 (0 = winner)
           <tr><td><code>/hs:git</code></td><td><span class="en">Conventional commits, auto-split, secret scan.</span><span class="vi">Conventional commit, auto-split, quét secret.</span></td></tr>
           <tr><td><code>/hs:worktree</code></td><td><span class="en">Create / inspect / clean isolated git worktrees.</span><span class="vi">Tạo / soi / dọn git worktree cách ly.</span></td></tr>
           <tr><td><code>/hs:afk</code></td><td><span class="en">Run a plan unattended; gates still fire.</span><span class="vi">Chạy plan không giám sát; gate vẫn kích hoạt.</span></td></tr>
+          <tr><td><code>/hs:autonomous-bell</code></td><td><span class="en">Arm a self-ending unattended run with a deterministic STOP.</span><span class="vi">Trang bị lần chạy không giám sát tự kết thúc với STOP xác định.</span></td></tr>
           <tr><td><code>/hs:voice</code></td><td><span class="en">Switch the terminal voice (persona / level / no-markdown).</span><span class="vi">Đổi giọng terminal (persona / mức / không-markdown).</span></td></tr>
           <tr><td><code>/hs:setup</code></td><td><span class="en">Configure harness posture (voice, guards, reviewers, language).</span><span class="vi">Cấu hình posture harness (giọng, guard, reviewer, ngôn ngữ).</span></td></tr>
           <tr><td><code>/hs:insights</code></td><td><span class="en">Read-only telemetry insights — hot/cold skills, gate blocks.</span><span class="vi">Insight telemetry chỉ-đọc — skill hay/ít dùng, gate block.</span></td></tr>
           <tr><td><code>/hs:compound</code></td><td><span class="en">One ranked self-improvement proposal from telemetry + backlog.</span><span class="vi">Một đề xuất tự cải tiến xếp hạng từ telemetry + backlog.</span></td></tr>
           <tr><td><code>/hs:techstack</code></td><td><span class="en">Detect a target repo's stack so the harness adapts.</span><span class="vi">Nhận diện stack repo đích để harness thích nghi.</span></td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="cs-more">
+      <summary><span class="en">AI &amp; media — 8 skills</span><span class="vi">AI &amp; media — 8 skill</span></summary>
+      <table class="modetable" style="--ac:var(--gold)">
+        <tbody>
+          <tr><td><code>/hs:ai-multimodal</code></td><td><span class="en">Analyze and generate images, video, speech, and music.</span><span class="vi">Phân tích và tạo ảnh, video, giọng nói, nhạc.</span></td></tr>
+          <tr><td><code>/hs:ai-artist</code></td><td><span class="en">Generate mockups and brand visuals via Nano Banana.</span><span class="vi">Tạo mockup và hình ảnh thương hiệu qua Nano Banana.</span></td></tr>
+          <tr><td><code>/hs:media-processing</code></td><td><span class="en">FFmpeg / ImageMagick / AI background removal.</span><span class="vi">FFmpeg / ImageMagick / xóa nền AI.</span></td></tr>
+          <tr><td><code>/hs:threejs</code></td><td><span class="en">3D web experiences with Three.js.</span><span class="vi">Trải nghiệm web 3D với Three.js.</span></td></tr>
+          <tr><td><code>/hs:shader</code></td><td><span class="en">GLSL fragment shaders for procedural graphics.</span><span class="vi">Shader fragment GLSL cho đồ họa thủ tục.</span></td></tr>
+          <tr><td><code>/hs:remotion</code></td><td><span class="en">Programmatic video with Remotion in React.</span><span class="vi">Video lập trình với Remotion trong React.</span></td></tr>
+          <tr><td><code>/hs:html-video</code></td><td><span class="en">Render MP4 videos from HTML/CSS/JS templates.</span><span class="vi">Render video MP4 từ template HTML/CSS/JS.</span></td></tr>
+          <tr><td><code>/hs:stitch</code></td><td><span class="en">Generate UI designs from prompts with Google Stitch.</span><span class="vi">Tạo thiết kế UI từ prompt với Google Stitch.</span></td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="cs-more">
+      <summary><span class="en">UI &amp; frontend — 6 skills</span><span class="vi">UI &amp; frontend — 6 skill</span></summary>
+      <table class="modetable" style="--ac:var(--rel)">
+        <tbody>
+          <tr><td><code>/hs:ui-ux-pro-max</code></td><td><span class="en">UI/UX design intelligence — style, color, type, a11y.</span><span class="vi">Trí tuệ thiết kế UI/UX — phong cách, màu, chữ, a11y.</span></td></tr>
+          <tr><td><code>/hs:frontend-design</code></td><td><span class="en">Build polished interfaces from designs / screenshots.</span><span class="vi">Xây giao diện chỉn chu từ thiết kế / ảnh chụp.</span></td></tr>
+          <tr><td><code>/hs:ui-styling</code></td><td><span class="en">Style with shadcn/ui — Radix + Tailwind.</span><span class="vi">Style với shadcn/ui — Radix + Tailwind.</span></td></tr>
+          <tr><td><code>/hs:web-design-guidelines</code></td><td><span class="en">Audit UI code against Web Interface Guidelines.</span><span class="vi">Audit code UI theo Web Interface Guidelines.</span></td></tr>
+          <tr><td><code>/hs:design</code></td><td><span class="en">Brand identity, logos, banners, design tokens.</span><span class="vi">Nhận diện thương hiệu, logo, banner, design token.</span></td></tr>
+          <tr><td><code>/hs:show-off</code></td><td><span class="en">Self-contained HTML pages to showcase work.</span><span class="vi">Trang HTML tự chứa để trưng bày kết quả.</span></td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="cs-more">
+      <summary><span class="en">Stack &amp; frameworks — 8 skills</span><span class="vi">Stack &amp; framework — 8 skill</span></summary>
+      <table class="modetable" style="--ac:var(--spec)">
+        <tbody>
+          <tr><td><code>/hs:frontend-development</code></td><td><span class="en">React / TypeScript frontends, modern patterns.</span><span class="vi">Frontend React / TypeScript, pattern hiện đại.</span></td></tr>
+          <tr><td><code>/hs:backend-development</code></td><td><span class="en">Node / Python / Go APIs, auth, microservices.</span><span class="vi">API Node / Python / Go, auth, microservice.</span></td></tr>
+          <tr><td><code>/hs:mobile-development</code></td><td><span class="en">React Native, Flutter, SwiftUI, Jetpack Compose.</span><span class="vi">React Native, Flutter, SwiftUI, Jetpack Compose.</span></td></tr>
+          <tr><td><code>/hs:web-frameworks</code></td><td><span class="en">Next.js (App Router, RSC) and Turborepo.</span><span class="vi">Next.js (App Router, RSC) và Turborepo.</span></td></tr>
+          <tr><td><code>/hs:tanstack</code></td><td><span class="en">TanStack Start / Form / AI.</span><span class="vi">TanStack Start / Form / AI.</span></td></tr>
+          <tr><td><code>/hs:react-best-practices</code></td><td><span class="en">React / Next.js performance patterns from Vercel.</span><span class="vi">Pattern hiệu năng React / Next.js từ Vercel.</span></td></tr>
+          <tr><td><code>/hs:databases</code></td><td><span class="en">MongoDB / PostgreSQL schemas, queries, indexes.</span><span class="vi">Schema, query, index MongoDB / PostgreSQL.</span></td></tr>
+          <tr><td><code>/hs:better-auth</code></td><td><span class="en">Better Auth — OAuth, 2FA, passkeys, sessions, RBAC.</span><span class="vi">Better Auth — OAuth, 2FA, passkey, session, RBAC.</span></td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="cs-more">
+      <summary><span class="en">DevOps &amp; deploy — 5 skills</span><span class="vi">DevOps &amp; triển khai — 5 skill</span></summary>
+      <table class="modetable" style="--ac:var(--tel)">
+        <tbody>
+          <tr><td><code>/hs:deploy</code></td><td><span class="en">Deploy to any platform with auto-detection.</span><span class="vi">Triển khai lên mọi nền tảng với tự dò.</span></td></tr>
+          <tr><td><code>/hs:devops</code></td><td><span class="en">Cloudflare / Docker / GCP / Kubernetes, CI/CD.</span><span class="vi">Cloudflare / Docker / GCP / Kubernetes, CI/CD.</span></td></tr>
+          <tr><td><code>/hs:web-testing</code></td><td><span class="en">Playwright / Vitest / k6 — E2E, load, a11y.</span><span class="vi">Playwright / Vitest / k6 — E2E, load, a11y.</span></td></tr>
+          <tr><td><code>/hs:agent-browser</code></td><td><span class="en">Automate browsers — testing, screenshots, scraping.</span><span class="vi">Tự động trình duyệt — kiểm thử, ảnh chụp, scraping.</span></td></tr>
+          <tr><td><code>/hs:chrome-profile</code></td><td><span class="en">Drive a real Chrome profile via DevTools MCP.</span><span class="vi">Điều khiển profile Chrome thật qua DevTools MCP.</span></td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="cs-more">
+      <summary><span class="en">Integrations &amp; writing — 13 skills</span><span class="vi">Tích hợp &amp; viết — 13 skill</span></summary>
+      <table class="modetable" style="--ac:var(--gold)">
+        <tbody>
+          <tr><td><code>/hs:payment-integration</code></td><td><span class="en">SePay / Stripe / Paddle / Polar / Creem checkout.</span><span class="vi">Checkout SePay / Stripe / Paddle / Polar / Creem.</span></td></tr>
+          <tr><td><code>/hs:shopify</code></td><td><span class="en">Shopify apps, extensions, themes; GraphQL Admin API.</span><span class="vi">App, extension, theme Shopify; GraphQL Admin API.</span></td></tr>
+          <tr><td><code>/hs:google-adk-python</code></td><td><span class="en">Build AI agents with Google ADK Python.</span><span class="vi">Xây AI agent với Google ADK Python.</span></td></tr>
+          <tr><td><code>/hs:use-mcp</code></td><td><span class="en">Discover and execute MCP server tools.</span><span class="vi">Khám phá và chạy tool MCP server.</span></td></tr>
+          <tr><td><code>/hs:gkg</code></td><td><span class="en">Semantic code analysis with GitLab Knowledge Graph.</span><span class="vi">Phân tích code ngữ nghĩa với GitLab Knowledge Graph.</span></td></tr>
+          <tr><td><code>/hs:copywriting</code></td><td><span class="en">Conversion copy — headlines, emails, CTAs.</span><span class="vi">Copy chuyển đổi — tiêu đề, email, CTA.</span></td></tr>
+          <tr><td><code>/hs:ask</code></td><td><span class="en">Answer technical / architectural questions.</span><span class="vi">Trả lời câu hỏi kỹ thuật / kiến trúc.</span></td></tr>
+          <tr><td><code>/hs:ghpm</code></td><td><span class="en">GitHub project management for humans and agents.</span><span class="vi">Quản lý dự án GitHub cho người và agent.</span></td></tr>
+          <tr><td><code>/hs:watzup</code></td><td><span class="en">Short handoff reports with ranked next steps.</span><span class="vi">Báo cáo bàn giao ngắn với bước kế xếp hạng.</span></td></tr>
+          <tr><td><code>/hs:llms</code></td><td><span class="en">Generate llms.txt from docs or codebase.</span><span class="vi">Tạo llms.txt từ docs hoặc codebase.</span></td></tr>
+          <tr><td><code>/hs:mintlify</code></td><td><span class="en">Build and maintain Mintlify docs sites.</span><span class="vi">Xây và bảo trì site docs Mintlify.</span></td></tr>
+          <tr><td><code>/hs:markdown-novel-viewer</code></td><td><span class="en">Calm book-like markdown reader over HTTP.</span><span class="vi">Trình đọc markdown như sách qua HTTP.</span></td></tr>
+          <tr><td><code>/hs:cti-expert</code></td><td><span class="en">Cyber threat intelligence and OSINT analysis.</span><span class="vi">Phân tích tình báo mối đe dọa mạng và OSINT.</span></td></tr>
         </tbody>
       </table>
     </details>
@@ -3101,7 +3262,7 @@ exit: 0 (0 = winner)
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
 
-    <p class="lead" style="margin-bottom:18px"><span class="en">Behind the 54 skills sits the enforcement layer: twenty hooks in three tiers, a multi-agent coordination layer (claims · task-store · plan-approval · write-guard), and read-only telemetry that ends every report with what it <b>cannot</b> measure. It reports whether the <i>machinery runs</i> — never whether the <i>product wins the market</i>.</span><span class="vi">Sau 54 skill là lớp cưỡng chế: hai mươi hook ba hạng, một lớp phối hợp đa-agent (claims · task-store · plan-approval · write-guard), và telemetry chỉ-đọc kết mỗi báo cáo bằng cái nó <b>không</b> đo được. Nó báo <i>máy móc có chạy không</i> — không bao giờ báo <i>sản phẩm có thắng thị trường không</i>.</span></p>
+    <p class="lead" style="margin-bottom:18px"><span class="en">Behind the 96 skills sits the enforcement layer: thirty-seven hooks in three tiers, a multi-agent coordination layer (claims · task-store · plan-approval · write-guard), and read-only telemetry that ends every report with what it <b>cannot</b> measure. It reports whether the <i>machinery runs</i> — never whether the <i>product wins the market</i>.</span><span class="vi">Sau 96 skill là lớp cưỡng chế: ba mươi bảy hook ba hạng, một lớp phối hợp đa-agent (claims · task-store · plan-approval · write-guard), và telemetry chỉ-đọc kết mỗi báo cáo bằng cái nó <b>không</b> đo được. Nó báo <i>máy móc có chạy không</i> — không bao giờ báo <i>sản phẩm có thắng thị trường không</i>.</span></p>
 
     <!-- when to use -->
     <h2 class="sectitle" id="rig-limits"><span class="en">What it can and can't tell you</span><span class="vi">Nó nói được gì và không nói được gì</span></h2>
@@ -3293,7 +3454,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
 
     <div class="callout" style="--ac:var(--tel);margin-top:22px">
       <span class="ci">🔒</span>
-      <div><span class="en"><b>Offline &amp; self-contained.</b> The harness makes <b>no network call in the gate path</b>; <code>state/</code> is always gitignored and never enters git. Global kill-switch for all observation: <code>HARNESS_TELEMETRY_DISABLED=1</code>. Delete <code>harness/</code> and it's gone — nothing in the ClaudeKit <code>.claude/</code> toolkit is touched.</span><span class="vi"><b>Offline &amp; tự chứa.</b> Harness <b>không gọi mạng ở đường gate</b>; <code>state/</code> luôn gitignored và không bao giờ vào git. Công tắc tổng cho mọi quan sát: <code>HARNESS_TELEMETRY_DISABLED=1</code>. Xóa <code>harness/</code> là hết — không chạm gì trong bộ ClaudeKit <code>.claude/</code>.</span></div>
+      <div><span class="en"><b>Offline &amp; self-contained.</b> The harness makes <b>no network call in the gate path</b>; <code>state/</code> is always gitignored and never enters git. Global kill-switch for all observation: <code>HARNESS_TELEMETRY_DISABLED=1</code>. Delete <code>harness/</code> and it's gone.</span><span class="vi"><b>Offline &amp; tự chứa.</b> Harness <b>không gọi mạng ở đường gate</b>; <code>state/</code> luôn gitignored và không bao giờ vào git. Công tắc tổng cho mọi quan sát: <code>HARNESS_TELEMETRY_DISABLED=1</code>. Xóa <code>harness/</code> là hết.</span></div>
     </div>
 
     <!-- FAQ -->
@@ -3303,7 +3464,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
       <details><summary><span class="en">Trace vs telemetry — what's the difference?</span><span class="vi">Trace vs telemetry — khác gì?</span></summary><div class="fa"><span class="en">Trace is the audit book (gate / approval / DEC events) and never rotates. Telemetry is the usage book (counts / shape / outcomes) and rotates at 8MB. Both <code>setdefault</code> an actor + ts on every record.</span><span class="vi">Trace là sổ audit (sự kiện gate / approval / DEC), không xoay vòng. Telemetry là sổ usage (count / shape / outcome), xoay ở 8MB. Cả hai <code>setdefault</code> actor + ts mỗi record.</span></div></details>
       <details><summary><span class="en">Does the harness phone home?</span><span class="vi">Harness có "gọi về nhà" không?</span></summary><div class="fa"><span class="en">No. There is no network call in the gate path (a grep invariant proves it), and <code>state/</code> is gitignored. Turn off all observation with <code>HARNESS_TELEMETRY_DISABLED=1</code>.</span><span class="vi">Không. Không có network call ở đường gate (invariant grep chứng minh), và <code>state/</code> gitignored. Tắt mọi quan sát bằng <code>HARNESS_TELEMETRY_DISABLED=1</code>.</span></div></details>
       <details><summary><span class="en">What can telemetry <em>not</em> tell me?</span><span class="vi">Telemetry <em>không</em> nói được gì?</span></summary><div class="fa"><span class="en">Token/dollar cost (not attributed), semantic correctness (only ran / coarse exit), human-review depth, and market/user outcome. The <code>## NOT measured</code> block names these in every report.</span><span class="vi">Token/$ (không quy được), đúng-sai ngữ nghĩa (chỉ ran / exit thô), độ sâu review của người, và kết quả thị trường/người dùng. Khối <code>## NOT measured</code> nêu rõ chúng trong mọi báo cáo.</span></div></details>
-      <details><summary><span class="en">How do I remove the harness?</span><span class="vi">Gỡ harness thế nào?</span></summary><div class="fa"><span class="en">Delete the <code>harness/</code> directory. It's self-contained and never touches the ClaudeKit <code>.claude/</code> toolkit (a CI invariant forbids the string <code>.claude/skills/</code> inside <code>harness/</code>).</span><span class="vi">Xoá thư mục <code>harness/</code>. Nó tự chứa và không bao giờ chạm bộ ClaudeKit <code>.claude/</code> (một invariant CI cấm chuỗi <code>.claude/skills/</code> trong <code>harness/</code>).</span></div></details>
+      <details><summary><span class="en">How do I remove the harness?</span><span class="vi">Gỡ harness thế nào?</span></summary><div class="fa"><span class="en">Delete the <code>harness/</code> directory. It's self-contained — a CI invariant forbids the string <code>.claude/skills/</code> inside <code>harness/</code>.</span><span class="vi">Xoá thư mục <code>harness/</code>. Nó tự chứa — một invariant CI cấm chuỗi <code>.claude/skills/</code> trong <code>harness/</code>.</span></div></details>
     </div>
   </div>
 </section>
@@ -3317,11 +3478,11 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
     <div class="skill-head" style="--ac:var(--tel)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="13" r="6" stroke="var(--tel)" stroke-width="2"/><path d="M8 33c0-6 5-10 12-10s12 4 12 10" stroke="var(--tel)" stroke-width="2" stroke-linecap="round"/><circle cx="32" cy="10" r="3" stroke="var(--tel)" stroke-width="2"/><circle cx="8" cy="10" r="3" stroke="var(--tel)" stroke-width="2"/></svg></div>
       <div class="ttl"><div class="who"><span class="en">The specialists the skills deploy</span><span class="vi">Các chuyên gia mà skill triển khai</span></div><h2><span class="en">Agents</span><span class="vi">Agent</span></h2></div>
-      <div class="ver">15 agents</div>
+      <div class="ver">16 agents</div>
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
 
-    <p class="lead" style="margin-bottom:18px"><span class="en">Skills don't do everything themselves — they <b>deploy specialized subagents</b>, each running in its own context with its own tools. <b>15</b> of them, from <code>planner</code> to <code>red-teamer</code>. Most are advisory: they report findings and do <b>not</b> mutate the plan or code unless explicitly tasked. The orchestration rule caps it at <b>2 subagents per turn</b>, so fan-out stays controllable.</span><span class="vi">Skill không tự làm hết — chúng <b>triển khai subagent chuyên biệt</b>, mỗi cái chạy trong context riêng với bộ tool riêng. <b>15</b> agent, từ <code>planner</code> đến <code>red-teamer</code>. Phần lớn là tư vấn: chúng báo phát hiện và <b>không</b> sửa plan hay code trừ khi được giao rõ. Luật điều phối giới hạn <b>2 subagent mỗi lượt</b>, nên fan-out vẫn kiểm soát được.</span></p>
+    <p class="lead" style="margin-bottom:18px"><span class="en">Skills don't do everything themselves — they <b>deploy specialized subagents</b>, each running in its own context with its own tools. <b>16</b> of them, from <code>planner</code> to <code>red-teamer</code>. Most are advisory: they report findings and do <b>not</b> mutate the plan or code unless explicitly tasked. The orchestration rule caps it at <b>2 subagents per turn</b>, so fan-out stays controllable.</span><span class="vi">Skill không tự làm hết — chúng <b>triển khai subagent chuyên biệt</b>, mỗi cái chạy trong context riêng với bộ tool riêng. <b>16</b> agent, từ <code>planner</code> đến <code>red-teamer</code>. Phần lớn là tư vấn: chúng báo phát hiện và <b>không</b> sửa plan hay code trừ khi được giao rõ. Luật điều phối giới hạn <b>2 subagent mỗi lượt</b>, nên fan-out vẫn kiểm soát được.</span></p>
 
     <!-- what they are -->
     <h2 class="sectitle" id="ag-what"><span class="en">Agents vs skills</span><span class="vi">Agent vs skill</span></h2>
@@ -3344,6 +3505,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>developer</h3><p><span class="en">Implements a scoped slice test-first in an isolated worktree, owning a disjoint set of file globs.</span><span class="vi">Implement một lát có phạm vi, test-trước, trong worktree cách ly, sở hữu tập file glob rời nhau.</span></p><div class="chips"><span class="chip">hs:cook</span><span class="chip">hs:team</span></div></div>
       <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>debugger</h3><p><span class="en">Investigates a failure to its root cause — logs, system behavior, performance — before any fix.</span><span class="vi">Điều tra lỗi đến tận gốc — log, hành vi hệ thống, hiệu năng — trước mọi sửa chữa.</span></p><div class="chips"><span class="chip">hs:debug</span><span class="chip">hs:fix</span><span class="chip">hs:triage</span></div></div>
       <div class="card" style="--ac:var(--ok)"><h3><span class="pin"></span>code-simplifier</h3><p><span class="en">Refines recently-changed code for clarity and consistency while preserving every behavior.</span><span class="vi">Tinh chỉnh code vừa đổi cho rõ và nhất quán mà giữ nguyên mọi hành vi.</span></p><div class="chips"><span class="chip"><span class="en">cook simplify pass</span><span class="vi">lượt rút gọn cook</span></span></div></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>ui-ux-designer</h3><p><span class="en">Designs interfaces, wireframes, and design systems — responsive layouts, accessibility, and design documentation, returning production-ready HTML/CSS with annotations.</span><span class="vi">Thiết kế giao diện, wireframe và design system — layout responsive, accessibility và tài liệu thiết kế, trả về HTML/CSS sẵn sàng production kèm chú thích.</span></p><div class="chips"><span class="chip">hs:frontend-design</span><span class="chip">hs:ui-styling</span></div></div>
     </div>
 
     <!-- verify & challenge -->
@@ -3604,7 +3766,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
   <div class="foot-in">
     <div>
       <div class="brand" style="font-size:1.15rem"><span class="dot"></span><span>SDLC&nbsp;Harness</span></div>
-      <p class="lic"><span class="en">Copyright © 2026 Hieu Bui. A file-based SDLC discipline for Claude Code — runtime gates, traceable actors, append-only decisions. Code ported from self-owned repos (product-spec, human-analyzer); ClaudeKit patterns are studied, never copied.</span><span class="vi">Bản quyền © 2026 Hieu Bui. Bộ kỷ luật SDLC file-based cho Claude Code — gate runtime, actor truy vết, quyết định append-only. Code port từ repo tự sở hữu (product-spec, human-analyzer); pattern ClaudeKit chỉ học, không copy.</span></p>
+      <p class="lic"><span class="en">Copyright © 2026 Hieu Bui. A file-based SDLC discipline for Claude Code — runtime gates, traceable actors, append-only decisions. Code ported from self-owned repos (product-spec, human-analyzer).</span><span class="vi">Bản quyền © 2026 Hieu Bui. Bộ kỷ luật SDLC file-based cho Claude Code — gate runtime, actor truy vết, quyết định append-only. Code port từ repo tự sở hữu (product-spec, human-analyzer).</span></p>
     </div>
     <div>
       <h4><span class="en">Skills</span><span class="vi">Skill</span></h4>

@@ -129,7 +129,7 @@ section{position:relative;padding:96px 24px;}
 @media(max-width:860px){.grid-2,.grid-3{grid-template-columns:1fr}}
 .card{background:var(--panel);border:1px solid var(--stroke);border-radius:var(--r);padding:22px;position:relative;transition:.3s var(--ease)}
 .card:hover{border-color:var(--stroke-2)}
-.card h3{font-size:1.06rem;display:flex;align-items:flex-start;gap:9px}
+.card h3{font-size:1.06rem;display:flex;align-items:flex-start;flex-wrap:wrap;gap:6px 9px}
 .card h3 .pin{width:9px;height:9px;border-radius:3px;background:var(--ac);flex:none;margin-top:.4em}
 .card p{font-size:.9rem;color:var(--txt-dim);margin:.3em 0 0}
 

@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="dark" />
 <meta name="theme-color" content="#070b16" />
 <title>Guides — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 54 hs:* skills, twenty hooks, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 107 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="lang-en view-guide">
@@ -53,7 +53,15 @@
   <div class="side-cat"><span class="en">Deep dives</span><span class="vi">Bên trong</span></div>
   <a href="harness.html" class="side-link" data-nav="harness"><span class="en">The rig</span><span class="vi">Bộ máy</span></a>
   <a href="agents.html" class="side-link" data-nav="agents"><span class="en">Agents</span><span class="vi">Agent</span></a>
+  <a href="standards.html" class="side-link" data-nav="standards"><span class="en">Standards & DoD</span><span class="vi">Standards & DoD</span></a>
+  <a href="telemetry.html" class="side-link" data-nav="telemetry"><span class="en">Telemetry</span><span class="vi">Đo lường</span></a>
+  <a href="memory.html" class="side-link" data-nav="memory"><span class="en">Memory</span><span class="vi">Bộ nhớ</span></a>
   <a href="vision.html" class="side-link" data-nav="vision"><span class="en">Vision</span><span class="vi">Tầm nhìn</span></a>
+  <div class="side-cat"><span class="en">Complete reference</span><span class="vi">Tham chiếu đầy đủ</span></div>
+  <a href="ref-skills.html" class="side-link" data-nav="ref-skills"><span class="en">All skills</span><span class="vi">Mọi skill</span></a>
+  <a href="ref-agents.html" class="side-link" data-nav="ref-agents"><span class="en">All agents</span><span class="vi">Mọi agent</span></a>
+  <a href="ref-hooks.html" class="side-link" data-nav="ref-hooks"><span class="en">All hooks</span><span class="vi">Mọi hook</span></a>
+  <a href="ref-rules.html" class="side-link" data-nav="ref-rules"><span class="en">Rule layer</span><span class="vi">Lớp luật</span></a>
 </aside>
 <main class="docs-main">
 <div class="crumb"><a href="../index.html"><span class="en">Home</span><span class="vi">Trang chủ</span></a> <span class="sep">›</span> <span class="cur"><span class="en">All guides</span><span class="vi">Mục lục</span></span></div>
@@ -111,11 +119,24 @@
 </section>
 <section class="cat-ov reveal">
   <h2 class="sectitle"><span class="en">Deep dives</span><span class="vi">Bên trong</span></h2>
-  <p class="lead cat-intro"><span class="en">Inside the machinery, and where the harness is headed.</span><span class="vi">Bên trong bộ máy, và hướng đi của harness.</span></p>
+  <p class="lead cat-intro"><span class="en">Inside the machinery: the gate, standards, telemetry, memory — and where it is headed.</span><span class="vi">Bên trong bộ máy: gate, standards, telemetry, bộ nhớ — và hướng đi.</span></p>
   <div class="cards grid-2">
     <a class="card" href="harness.html" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">The rig</span><span class="vi">Bộ máy</span></h3><p><span class="en">Hooks, scripts, schemas, and the gate that says no.</span><span class="vi">Hook, script, schema, và gate biết nói không.</span></p></a>
-    <a class="card" href="agents.html" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">Agents</span><span class="vi">Agent</span></h3><p><span class="en">The 15 specialized subagents and the skills that deploy them.</span><span class="vi">15 subagent chuyên biệt và các skill triển khai chúng.</span></p></a>
+    <a class="card" href="agents.html" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">Agents</span><span class="vi">Agent</span></h3><p><span class="en">The 18 specialized subagents and the skills that deploy them.</span><span class="vi">15 subagent chuyên biệt và các skill triển khai chúng.</span></p></a>
+    <a class="card" href="standards.html" style="--ac:var(--crit)"><h3><span class="pin"></span><span class="en">Standards & DoD</span><span class="vi">Standards & DoD</span></h3><p><span class="en">One tree of rules and a gate that blocks on them — plus Definition of Done.</span><span class="vi">Một cây luật và gate chặn theo chúng — kèm Definition of Done.</span></p></a>
+    <a class="card" href="telemetry.html" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">Telemetry</span><span class="vi">Đo lường</span></h3><p><span class="en">Two books, five sinks, and an honest list of what it cannot measure.</span><span class="vi">Hai sổ, năm sink, và danh sách trung thực cái không đo được.</span></p></a>
+    <a class="card" href="memory.html" style="--ac:var(--gold)"><h3><span class="pin"></span><span class="en">Memory</span><span class="vi">Bộ nhớ</span></h3><p><span class="en">Decisions, glossary, backlog, lessons — what outlives the session.</span><span class="vi">Quyết định, thuật ngữ, backlog, bài học — cái sống lâu hơn phiên.</span></p></a>
     <a class="card" href="vision.html" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">Vision</span><span class="vi">Tầm nhìn</span></h3><p><span class="en">Where the harness is going and the principles that steer it.</span><span class="vi">Harness đi về đâu và nguyên tắc dẫn lối.</span></p></a>
+  </div>
+</section>
+<section class="cat-ov reveal">
+  <h2 class="sectitle"><span class="en">Complete reference</span><span class="vi">Tham chiếu đầy đủ</span></h2>
+  <p class="lead cat-intro"><span class="en">Every skill, agent, hook, and rule — the exhaustive lists, generated from source.</span><span class="vi">Mọi skill, agent, hook, và luật — danh sách đầy đủ, sinh từ nguồn.</span></p>
+  <div class="cards grid-2">
+    <a class="card" href="ref-skills.html" style="--ac:var(--rel)"><h3><span class="pin"></span><span class="en">All skills</span><span class="vi">Mọi skill</span></h3><p><span class="en">Every invocable hs:* skill, grouped by family, straight from source.</span><span class="vi">Mọi skill hs:* gọi được, nhóm theo họ, lấy thẳng từ nguồn.</span></p></a>
+    <a class="card" href="ref-agents.html" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">All agents</span><span class="vi">Mọi agent</span></h3><p><span class="en">Every subagent with its model and tool count.</span><span class="vi">Mọi subagent kèm model và số tool.</span></p></a>
+    <a class="card" href="ref-hooks.html" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">All hooks</span><span class="vi">Mọi hook</span></h3><p><span class="en">Every hook, grouped by enforcement tier.</span><span class="vi">Mọi hook, nhóm theo hạng cưỡng chế.</span></p></a>
+    <a class="card" href="ref-rules.html" style="--ac:var(--spec)"><h3><span class="pin"></span><span class="en">Rule layer</span><span class="vi">Lớp luật</span></h3><p><span class="en">The shared rule layer, loaded on demand.</span><span class="vi">Lớp luật chung, nạp khi cần.</span></p></a>
   </div>
 </section>
   </div>

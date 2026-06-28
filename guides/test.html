@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="dark" />
 <meta name="theme-color" content="#070b16" />
 <title>hs:test — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 54 hs:* skills, twenty hooks, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 107 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="lang-en view-guide">
@@ -53,7 +53,15 @@
   <div class="side-cat"><span class="en">Deep dives</span><span class="vi">Bên trong</span></div>
   <a href="harness.html" class="side-link" data-nav="harness"><span class="en">The rig</span><span class="vi">Bộ máy</span></a>
   <a href="agents.html" class="side-link" data-nav="agents"><span class="en">Agents</span><span class="vi">Agent</span></a>
+  <a href="standards.html" class="side-link" data-nav="standards"><span class="en">Standards & DoD</span><span class="vi">Standards & DoD</span></a>
+  <a href="telemetry.html" class="side-link" data-nav="telemetry"><span class="en">Telemetry</span><span class="vi">Đo lường</span></a>
+  <a href="memory.html" class="side-link" data-nav="memory"><span class="en">Memory</span><span class="vi">Bộ nhớ</span></a>
   <a href="vision.html" class="side-link" data-nav="vision"><span class="en">Vision</span><span class="vi">Tầm nhìn</span></a>
+  <div class="side-cat"><span class="en">Complete reference</span><span class="vi">Tham chiếu đầy đủ</span></div>
+  <a href="ref-skills.html" class="side-link" data-nav="ref-skills"><span class="en">All skills</span><span class="vi">Mọi skill</span></a>
+  <a href="ref-agents.html" class="side-link" data-nav="ref-agents"><span class="en">All agents</span><span class="vi">Mọi agent</span></a>
+  <a href="ref-hooks.html" class="side-link" data-nav="ref-hooks"><span class="en">All hooks</span><span class="vi">Mọi hook</span></a>
+  <a href="ref-rules.html" class="side-link" data-nav="ref-rules"><span class="en">Rule layer</span><span class="vi">Lớp luật</span></a>
 </aside>
 <main class="docs-main">
 <div class="crumb"><a href="../index.html"><span class="en">Home</span><span class="vi">Trang chủ</span></a> <span class="sep">›</span> <a href="index.html"><span class="en">Guides</span><span class="vi">Hướng dẫn</span></a> <span class="sep">›</span> <span class="cur"><span class="en">hs:test</span><span class="vi">hs:test</span></span></div>
@@ -95,7 +103,7 @@
     <div class="card" style="margin-top:14px;--ac:var(--crit)">
       <p><span class="en">Invoke <code>/hs:test</code> after a phase changes code. The standard command is <code>python3 -m pytest harness/tests/ -q</code> (target repos run their own suite per standards).</span><span class="vi">Gọi <code>/hs:test</code> sau khi một phase đổi code. Lệnh chuẩn là <code>python3 -m pytest harness/tests/ -q</code> (repo đích chạy suite riêng theo standards).</span></p>
       <div class="steps" style="--ac:var(--crit)">
-        <div class="step"><h4><span class="en">Pre-flight</span><span class="vi">Pre-flight</span></h4><p><span class="en"><code>preflight_deps.py</code> checks pytest/PyYAML — missing → stop with the install command. Then a quick import-check of the changed module.</span><span class="vi"><code>preflight_deps.py</code> kiểm pytest/PyYAML — thiếu → dừng với lệnh cài. Rồi import-check nhanh module vừa đổi.</span></p></div>
+        <div class="step"><h4><span class="en">Pre-flight</span><span class="vi">Pre-flight</span></h4><p><span class="en"><code>preflight_deps.py</code> checks pytest/PyYAML/defusedxml — missing → stop with the install command. Then a quick import-check of the changed module.</span><span class="vi"><code>preflight_deps.py</code> kiểm pytest/PyYAML/defusedxml — thiếu → dừng với lệnh cài. Rồi import-check nhanh module vừa đổi.</span></p></div>
         <div class="step"><h4><span class="en">Pick a profile</span><span class="vi">Chọn profile</span></h4><p><span class="en"><code>unit</code> (changed module → full unit suite) for every TDD cycle; <code>integration</code> (adds the e2e vertical slice) before a hard stage.</span><span class="vi"><code>unit</code> (module vừa đổi → toàn suite unit) cho mỗi vòng TDD; <code>integration</code> (thêm e2e vertical slice) trước stage cứng.</span></p></div>
         <div class="step"><h4><span class="en">Run, then read honestly</span><span class="vi">Chạy, rồi đọc thật</span></h4><p><span class="en">100% pass is the gate. Fix the code, or fix a genuinely-wrong test with a stated reason — never delete, skip, or weaken a test to fake green.</span><span class="vi">100% pass là gate. Sửa code, hoặc sửa một test SAI thật kèm lý do — không bao giờ xóa, skip hay weaken test để xanh giả.</span></p></div>
         <div class="step"><h4><span class="en">QA report</span><span class="vi">QA report</span></h4><p><span class="en">Under 200 lines: every failing test by name + a one-line reason, notable coverage changes (line ≥80%, branch ≥70%), and one final verdict.</span><span class="vi">Dưới 200 dòng: mọi test fail kèm tên + một dòng lý do, thay đổi coverage đáng kể (line ≥80%, branch ≥70%), và một verdict cuối.</span></p></div>

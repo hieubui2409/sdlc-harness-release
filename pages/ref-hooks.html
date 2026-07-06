@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>All hooks — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="All hooks — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="All hooks — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -79,8 +79,8 @@
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--tel)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M20 5 33 12v16L20 35 7 28V12L20 5Z" stroke="var(--tel)" stroke-width="2" stroke-linejoin="round"/><path d="M14 24V18M20 24v-9M26 24v-5" stroke="var(--tel)" stroke-width="2.2" stroke-linecap="round"/></svg></div>
-      <div class="ttl"><div class="who"><span class="en">The enforcement layer, by tier — 47 hooks</span><span class="vi">Lớp cưỡng chế, theo hạng — 47 hook</span></div><h2><span class="en">Every hook</span><span class="vi">Mọi hook</span></h2></div>
-      <div class="ver">47 hooks</div>
+      <div class="ttl"><div class="who"><span class="en">The enforcement layer, by tier — 49 hooks</span><span class="vi">Lớp cưỡng chế, theo hạng — 49 hook</span></div><h2><span class="en">Every hook</span><span class="vi">Mọi hook</span></h2></div>
+      <div class="ver">49 hooks</div>
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
     
@@ -91,9 +91,9 @@
     <div class="cards grid-2">
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>agent_rbac_guard</code></h3><p style="font-size:.85rem">PreToolUse(Write|Edit|MultiEdit) compliance gate keyed on agent_type.</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>bash_safety_guard</code></h3><p style="font-size:.85rem">PreToolUse(Bash) compliance hook: destructive-command gate.</p></div>
-      <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>docs_validation_gate</code></h3><p style="font-size:.85rem">opt-in HARD block on publishing stale docs (compliance, OFF).</p></div>
+      <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>disabled_skill_router</code></h3><p style="font-size:.85rem">PreToolUse(Skill) block-with-map for an off skill.</p></div>
+      <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>explore_model_guard</code></h3><p style="font-size:.85rem">PreToolUse(Agent|Task) gate: pin Explore spawns to haiku.</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>gate_stage</code></h3><p style="font-size:.85rem">PreToolUse(Bash) compliance hook: the stage gate.</p></div>
-      <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>ownership_guard</code></h3><p style="font-size:.85rem">PreToolUse(Bash) compliance hook: per-actor commit gate.</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>privacy_read_guard</code></h3><p style="font-size:.85rem">block reads of secret files behind human approval (compliance).</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>protected_ref_guard</code></h3><p style="font-size:.85rem">PreToolUse(Bash) compliance hook: protect refs.</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>scout_block_guard</code></h3><p style="font-size:.85rem">opt-in HARD block on file-tool access into heavy/generated dirs.</p></div>
@@ -102,13 +102,14 @@
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>write_guard</code></h3><p style="font-size:.85rem">tool-mediated config-edit gate (compliance, fail-closed).</p></div>
     </div>
     <div class="eyebrow" style="margin-top:28px"><span class="ttag nudge">nudge</span></div>
-    <h2 class="sectitle" id="rh-nudge" style="font-size:1.1rem;margin-bottom:4px"><span class="en">Nudge</span><span class="vi">Nhắc</span> <span class="muted" style="font-size:.8rem">(16)</span></h2>
+    <h2 class="sectitle" id="rh-nudge" style="font-size:1.1rem;margin-bottom:4px"><span class="en">Nudge</span><span class="vi">Nhắc</span> <span class="muted" style="font-size:.8rem">(18)</span></h2>
     <p class="muted" style="margin:0 0 12px;font-size:.85rem">advisory on stderr — reminds, never blocks; default OFF.</p>
     <div class="cards grid-2">
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>backlog_capture_nudge</code></h3><p style="font-size:.85rem">advisory reminder to record deferred work through</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>backlog_hygiene_nudge</code></h3><p style="font-size:.85rem">advisory reminder to close stale open backlog items</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>cook_isolation_nudge</code></h3><p style="font-size:.85rem">advisory /clear-before-cook reminder (nudge class).</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>decision_capture_nudge</code></h3><p style="font-size:.85rem">opt-in decision-capture nudge (nudge-class).</p></div>
+      <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>decision_reconcile_nudge</code></h3><p style="font-size:.85rem">Stop-event NUDGE for Decision Register drift.</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>descriptive_name</code></h3><p style="font-size:.85rem">advise against generic file names (nudge class).</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>disabled_ref_nudge</code></h3><p style="font-size:.85rem">advisory pointer for a ref to an install-disabled skill (nudge class).</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>discover_isolation_nudge</code></h3><p style="font-size:.85rem">advisory /clear-before-plan reminder (nudge class).</p></div>
@@ -121,6 +122,7 @@
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>rule_nudge_hook</code></h3><p style="font-size:.85rem">name the rules whose scope matches the file being written.</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>scout_heavy_dir_nudge</code></h3><p style="font-size:.85rem">advisory context-economy reminder (nudge class).</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>stale_plan_close_nudge</code></h3><p style="font-size:.85rem">advisory reminder to close a finished-but-open</p></div>
+      <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>standards_drift_nudge</code></h3><p style="font-size:.85rem">keep the auto-loaded prose standards from drifting.</p></div>
     </div>
     <div class="eyebrow" style="margin-top:28px"><span class="ttag telemetry">telemetry</span></div>
     <h2 class="sectitle" id="rh-telemetry" style="font-size:1.1rem;margin-bottom:4px"><span class="en">Telemetry</span><span class="vi">Đo lường</span> <span class="muted" style="font-size:.8rem">(20)</span></h2>
@@ -136,7 +138,7 @@
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>notify_remote</code></h3><p style="font-size:.85rem">Notification-event hook: relay Claude's notification to a</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>nudge_context_inject</code></h3><p style="font-size:.85rem">UserPromptSubmit hook (telemetry-class) re-surfacing</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>phase_progress_writer</code></h3><p style="font-size:.85rem">PostToolUse hook: per-phase evidence snapshot +</p></div>
-      <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>reinject_stop_context</code></h3><p style="font-size:.85rem">Stop-event hook: re-inject working context on an</p></div>
+      <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>reinject_stop_context</code></h3><p style="font-size:.85rem">Stop-event hook: re-inject working context on a</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>session_init</code></h3><p style="font-size:.85rem">SessionStart hook (telemetry-class).</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>setup_nudge</code></h3><p style="font-size:.85rem">SessionStart onboarding advisory (telemetry-class, fail-open).</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>stamp_artifact</code></h3><p style="font-size:.85rem">PostToolUse hook: stamp harness provenance into plan/</p></div>

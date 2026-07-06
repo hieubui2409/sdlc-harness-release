@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>The rig — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="The rig — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="The rig — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -84,7 +84,7 @@
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
 
-    <p class="lead" style="margin-bottom:18px"><span class="en">Behind the 106 skills sits the enforcement layer: forty-eight hooks in three tiers, a multi-agent coordination layer (claims · task-store · plan-approval · write-guard), and read-only telemetry that ends every report with what it <b>cannot</b> measure. It reports whether the <i>machinery runs</i> — never whether the <i>product wins the market</i>.</span><span class="vi">Sau 106 skill là lớp cưỡng chế: bốn mươi tám hook ba hạng, một lớp phối hợp đa-agent (claims · task-store · plan-approval · write-guard), và telemetry chỉ-đọc kết mỗi báo cáo bằng cái nó <b>không</b> đo được. Nó báo <i>máy móc có chạy không</i> — không bao giờ báo <i>sản phẩm có thắng thị trường không</i>.</span></p>
+    <p class="lead" style="margin-bottom:18px"><span class="en">Behind the 109 skills sits the enforcement layer: fifty hooks in three tiers, a multi-agent coordination layer (claims · task-store · plan-approval · write-guard), and read-only telemetry that ends every report with what it <b>cannot</b> measure. It reports whether the <i>machinery runs</i> — never whether the <i>product wins the market</i>.</span><span class="vi">Sau 109 skill là lớp cưỡng chế: năm mươi hook ba hạng, một lớp phối hợp đa-agent (claims · task-store · plan-approval · write-guard), và telemetry chỉ-đọc kết mỗi báo cáo bằng cái nó <b>không</b> đo được. Nó báo <i>máy móc có chạy không</i> — không bao giờ báo <i>sản phẩm có thắng thị trường không</i>.</span></p>
 
     <!-- when to use -->
     <h2 class="sectitle" id="rig-limits"><span class="en">What it can and can't tell you</span><span class="vi">Nó nói được gì và không nói được gì</span></h2>
@@ -232,7 +232,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
         </div>
         <div class="card" style="padding:16px">
           <h4 style="margin-bottom:6px"><span class="en">plan-approval &amp; write-guard</span><span class="vi">plan-approval &amp; write-guard</span></h4>
-          <p style="font-size:.84rem"><span class="en">Approval gates pr/ship/deploy: reviewer ∈ owners ∧ ≠ author, with a <code>plan_hash</code> that ignores frontmatter + the auto-updated <code>## Phases</code> section. Write-guard blocks edits to gate config (a <code>GUARD_LIST</code> constant) and a pre-push step scrubs every <code>HARNESS_*</code> var — tamper-evident, not tamper-proof.</span><span class="vi">Approval gác pr/ship/deploy: reviewer ∈ owners ∧ ≠ author, với <code>plan_hash</code> bỏ qua frontmatter + section <code>## Phases</code> tự cập nhật. Write-guard chặn sửa config gate (hằng <code>GUARD_LIST</code>) và một bước pre-push scrub mọi biến <code>HARNESS_*</code> — tamper-evident, không tamper-proof.</span></p>
+          <p style="font-size:.84rem"><span class="en">Plan approval gates pr/ship/deploy on remote CI: a <code>plan_hash</code> must match the normalized plan dir (ignores frontmatter + the auto-updated <code>## Phases</code> section). Write-guard blocks edits to gate config (a <code>GUARD_LIST</code> constant) locally and a pre-push step scrubs every <code>HARNESS_*</code> var — tamper-evident, not tamper-proof.</span><span class="vi">Plan approval gác pr/ship/deploy trên CI remote: <code>plan_hash</code> phải khớp plan dir chuẩn-hóa (bỏ qua frontmatter + section <code>## Phases</code> tự cập nhật). Write-guard chặn sửa config gate (hằng <code>GUARD_LIST</code>) local và một bước pre-push scrub mọi biến <code>HARNESS_*</code> — tamper-evident, không tamper-proof.</span></p>
         </div>
       </div>
     </div>

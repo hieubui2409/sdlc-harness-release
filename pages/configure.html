@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Configure — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Configure — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Configure — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -143,20 +143,12 @@
     </table>
     <p class="muted" style="font-size:.86rem;margin-top:10px"><span class="en">Defaults shipped: <code>main</code>, <code>master</code>, <code>release/*</code>. See the <a href="../pages/glossary.html">glossary</a> for <code>non-fast-forward</code> and <code>merge gate</code>, or the <a href="../pages/cheatsheet.html">cheatsheet</a> for the stage → artifact table.</span><span class="vi">Mặc định kèm theo: <code>main</code>, <code>master</code>, <code>release/*</code>. Xem <a href="../pages/glossary.html">glossary</a> cho <code>non-fast-forward</code> và <code>merge gate</code>, hoặc <a href="../pages/cheatsheet.html">tra cứu nhanh</a> cho bảng stage → artifact.</span></p>
 
-    <!-- solo posture -->
-    <h2 class="sectitle" id="cfg-solo"><span class="en">The two postures — team (default) vs solo</span><span class="vi">Hai thế — team (mặc định) vs solo</span></h2>
-    <p class="muted" style="margin:-2px 0 14px"><span class="en">The harness ships in <b>team</b> posture — the rest of these docs assume it: a reviewer roster, an approval quorum, and human gates at push / pr / ship. A <b>one-person</b> repo needs none of that. <code>posture_config.py set solo</code> flips the whole human-workflow layer to no-friction in one move — commit, push, ship straight through — while keeping the agent caged. One command, one reversible bundle, every change a git-visible diff. (Pick it at install with <code>--posture solo</code>; the high-level comparison is on the <a href="../index.html">overview</a>.)</span><span class="vi">Harness xuất xưởng ở thế <b>team</b> — phần còn lại của tài liệu này giả định vậy: roster reviewer, quorum duyệt, và gate người tại push / pr / ship. Repo <b>một người</b> không cần thứ nào trong đó. <code>posture_config.py set solo</code> lật cả tầng human-workflow sang không-ma-sát trong một bước — commit, push, ship thẳng — mà vẫn nhốt agent. Một lệnh, một bundle đảo-ngược-được, mọi thay đổi là diff git thấy được. (Chọn lúc cài bằng <code>--posture solo</code>; so sánh tổng quan ở <a href="../index.html">trang tổng quan</a>.)</span></p>
-    <table class="modetable" style="--ac:var(--tel)">
-      <thead><tr><th><span class="en">solo loosens (human)</span><span class="vi">solo nới (người)</span></th><th><span class="en">solo keeps (agent)</span><span class="vi">solo giữ (agent)</span></th></tr></thead>
-      <tbody>
-        <tr><td><span class="en">transport stages → <code>hard:false</code> + <code>require_plan:false</code></span><span class="vi">stage vận-chuyển → <code>hard:false</code> + <code>require_plan:false</code></span></td><td><span class="en"><code>agent_rbac_guard</code> stays <code>block</code> (enforcement preset)</span><span class="vi"><code>agent_rbac_guard</code> vẫn <code>block</code> (preset enforcement)</span></td></tr>
-        <tr><td><span class="en"><code>allow_self_review:true</code> (members preserved)</span><span class="vi"><code>allow_self_review:true</code> (giữ members)</span></td><td><span class="en">all five safety floors stay <code>block</code></span><span class="vi">cả năm safety floor vẫn <code>block</code></span></td></tr>
-        <tr><td><span class="en"><code>protected-branches:[]</code></span><span class="vi"><code>protected-branches:[]</code></span></td><td><span class="en">a hard invariant refuses solo if any of these dropped</span><span class="vi">invariant cứng từ chối solo nếu cái nào tụt</span></td></tr>
-      </tbody>
-    </table>
+    <!-- personal-first posture -->
+    <h2 class="sectitle" id="cfg-personal"><span class="en">Personal-first: local advisory gates, remote enforcement</span><span class="vi">Personal-first: gate advisory local, enforce remote</span></h2>
+    <p class="muted" style="margin:-2px 0 14px"><span class="en">The harness operates <b>personal-first</b>: local gates are advisory (no block — you decide) to minimize friction while you're coding, but the real enforcement moves to the remote CI (`.github/workflows/receipts-gate.yml`) where plan receipts are checked before PR merge and push-to-main. Agent RBAC and safety floors stay <code>block</code> everywhere. One command reverts any experiment: push and the remote gate holds the line.</span><span class="vi">Harness hoạt động <b>personal-first</b>: gate local là advisory (không chặn — bạn quyết) để giảm ma-sát khi code, nhưng enforce thật đẩy lên CI remote (`.github/workflows/receipts-gate.yml`) kiểm plan receipt trước merge PR và push-main. RBAC agent và safety floor vẫn <code>block</code> ở mọi chỗ. Một lệnh đảo: push và gate remote giữ vạch.</span></p>
     <div class="callout" style="--ac:var(--txt-faint);margin-top:14px">
       <span class="ci">🔒</span>
-      <div><span class="en">Solo is <i>no-friction for you</i>, not <i>uncaged for the agent</i>. Guard <code>enforcement</code> stays <code>block</code>, so a subagent still can't write outside its lane — solo never lowers agent containment. Reverse anytime with <code>set team</code> (a snapshot restores your prior roster exactly).</span><span class="vi">Solo là <i>không ma-sát cho bạn</i>, không phải <i>thả cũi cho agent</i>. Guard <code>enforcement</code> vẫn <code>block</code>, nên subagent vẫn không ghi ngoài lane — solo không bao giờ hạ nhốt-agent. Đảo bất cứ lúc nào bằng <code>set team</code> (snapshot khôi phục đúng roster cũ).</span></div>
+      <div><span class="en"><b>Personal-first lowers friction locally, not safety.</b> Advisory local gates let you iterate without hand-raising; agent RBAC cage and all safety floors remain <code>block</code>. Remote CI enforces the final receipts, so nothing merges without plan + test pass + code review. Your device is yours; the project is protected.</span><span class="vi"><b>Personal-first hạ ma-sát local, không an toàn.</b> Gate local advisory cho phép lặp không phải giơ tay; agent RBAC cage và mọi safety floor vẫn <code>block</code>. CI remote ép final receipt, nên không gì merge nếu thiếu plan + test pass + code review. Thiết bị của bạn là của bạn; dự án được bảo vệ.</span></div>
     </div>
 
     <!-- FAQ -->

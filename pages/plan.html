@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>hs:plan — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="hs:plan — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="hs:plan — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -117,7 +117,7 @@
         <div class="step"><h4><span class="en">Research → constraint-scan</span><span class="vi">Research → constraint-scan</span></h4><p><span class="en">Up to two <code>researcher</code> agents in parallel, then grep <code>ownership.yaml</code>, <code>stage-policy.yaml</code>, and <code>schemas/</code> so decisions respect existing policy.</span><span class="vi">Tối đa hai agent <code>researcher</code> song song, rồi grep <code>ownership.yaml</code>, <code>stage-policy.yaml</code>, <code>schemas/</code> để quyết định tôn trọng policy đã có.</span></p></div>
         <div class="step"><h4><span class="en">Write the plan</span><span class="vi">Viết plan</span></h4><p><span class="en"><code>plan.md</code> + phase files good enough for another dev to run. Any claim without a <code>file:line</code> anchor gets an <code>[UNVERIFIED]</code> tag.</span><span class="vi"><code>plan.md</code> + phase file đủ để dev khác chạy. Mọi khẳng định thiếu mỏ neo <code>file:line</code> bị gắn tag <code>[UNVERIFIED]</code>.</span></p></div>
         <div class="step"><h4><span class="en">Red-team → validate → sweep</span><span class="vi">Red-team → validate → quét</span></h4><p><span class="en">A hostile reviewer hunts failure modes; validate resolves the <code>[UNVERIFIED]</code> tags; a consistency sweep requires <b>0 contradictions</b> before it recommends cook.</span><span class="vi">Reviewer thù địch săn lỗi; validate giải các tag <code>[UNVERIFIED]</code>; quét nhất quán yêu cầu <b>0 mâu thuẫn</b> trước khi đề xuất cook.</span></p></div>
-        <div class="step"><h4><span class="en">You approve, then cook</span><span class="vi">Bạn duyệt, rồi cook</span></h4><p><span class="en">It returns the plan's absolute path and asks for approval (a reviewer ≠ the author). Then <code>/clear</code> and <code>/hs:cook &lt;absolute-path&gt;</code>.</span><span class="vi">Nó trả về đường dẫn tuyệt đối của plan và xin duyệt (reviewer ≠ tác giả). Rồi <code>/clear</code> và <code>/hs:cook &lt;đường-dẫn-tuyệt-đối&gt;</code>.</span></p></div>
+        <div class="step"><h4><span class="en">You approve, then cook</span><span class="vi">Bạn duyệt, rồi cook</span></h4><p><span class="en">It returns the plan's absolute path and asks for your approval. Then <code>/clear</code> and <code>/hs:cook &lt;absolute-path&gt;</code>.</span><span class="vi">Nó trả về đường dẫn tuyệt đối của plan và xin duyệt từ bạn. Rồi <code>/clear</code> và <code>/hs:cook &lt;đường-dẫn-tuyệt-đối&gt;</code>.</span></p></div>
       </div>
     </div>
 
@@ -208,9 +208,9 @@
         <div class="chips" style="margin-top:10px"><span class="chip">--append-alloc</span><span class="chip">DEC-1..66</span><span class="chip"><span class="en">append-only</span><span class="vi">append-only</span></span></div>
       </div>
       <div class="card">
-        <h3><span class="pin"></span><span class="en">The hard gate behind it</span><span class="vi">Hard gate phía sau</span></h3>
-        <p><span class="en"><code>plan-approval.json</code> guards pr / ship / deploy: the reviewer must be in the owner roster <b>and ≠ the author</b>, and a <code>plan_hash</code> must match the normalized plan dir. <code>allow_self_review</code> defaults to false — solo mode is possible but shows in the git diff.</span><span class="vi"><code>plan-approval.json</code> gác pr / ship / deploy: reviewer phải ∈ roster owner <b>và ≠ tác giả</b>, và một <code>plan_hash</code> phải khớp plan dir chuẩn-hóa. <code>allow_self_review</code> default false — solo mode được nhưng lộ diff git.</span></p>
-        <div class="chips" style="margin-top:10px"><span class="chip">reviewer ∈ owners</span><span class="chip">reviewer ≠ author</span><span class="chip">plan_hash <span class="x">drift→block</span></span></div>
+        <h3><span class="pin"></span><span class="en">The enforcement gate</span><span class="vi">Gate cưỡng chế</span></h3>
+        <p><span class="en"><code>plan-approval.json</code> is enforced on the remote CI: a plan hash must match the normalized plan directory to prevent drift. You approve locally (advisory), but the remote gate checks that the plan hasn't been modified after approval before allowing PR merge and push-to-main.</span><span class="vi"><code>plan-approval.json</code> được ép ở CI remote: hash plan phải khớp thư mục plan chuẩn-hóa để chặn lệch. Bạn duyệt local (advisory), nhưng gate remote kiểm plan chưa sửa sau duyệt trước cho merge PR và push-main.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">plan_hash <span class="x">drift→block</span></span><span class="chip">remote enforce</span></div>
       </div>
     </div>
 

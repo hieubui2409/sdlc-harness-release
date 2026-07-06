@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Install — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Install — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Install — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -84,7 +84,7 @@
     </div>
     <div class="divider" style="--ac:var(--ok)"></div>
 
-    <p class="lead"><span class="en">Installing is <b>one command</b> — no follow-up scripts to chain over several turns. It verifies the bundle, extracts it, checks dependencies, installs into your repo, verifies the wiring, and runs the test suite — in that order, fail-fast at the first problem. Requirements: <b>Linux</b>, <b>Python ≥ 3.9</b>, <b>git</b>, and <b>Claude Code</b>. <b>One decision up front:</b> a multi-person repo installs in <b>team</b> mode (default); a one-person repo adds <code>--posture solo</code> — see <a href="../index.html">the two postures</a>.</span><span class="vi">Cài đặt là <b>một lệnh</b> — không phải chạy script nối tiếp qua nhiều lượt. Nó kiểm bundle, giải nén, kiểm phụ thuộc, cài vào repo, xác nhận wiring, rồi chạy bộ test — theo đúng thứ tự đó, dừng ngay ở lỗi đầu tiên. Yêu cầu: <b>Linux</b>, <b>Python ≥ 3.9</b>, <b>git</b>, và <b>Claude Code</b>. <b>Một quyết định ngay từ đầu:</b> repo nhiều người cài ở chế độ <b>team</b> (mặc định); repo một người thêm <code>--posture solo</code> — xem <a href="../index.html">hai thế</a>.</span></p>
+    <p class="lead"><span class="en">Installing is <b>one command</b> — no follow-up scripts to chain over several turns. It verifies the bundle, extracts it, checks dependencies, installs into your repo, verifies the wiring, and runs the test suite — in that order, fail-fast at the first problem. Requirements: <b>Linux</b>, <b>Python ≥ 3.9</b>, <b>git</b>, and <b>Claude Code</b>.</span><span class="vi">Cài đặt là <b>một lệnh</b> — không phải chạy script nối tiếp qua nhiều lượt. Nó kiểm bundle, giải nén, kiểm phụ thuộc, cài vào repo, xác nhận wiring, rồi chạy bộ test — theo đúng thứ tự đó, dừng ngay ở lỗi đầu tiên. Yêu cầu: <b>Linux</b>, <b>Python ≥ 3.9</b>, <b>git</b>, và <b>Claude Code</b>.</span></p>
 
     <!-- before you start: deps -->
     <div class="callout" style="--ac:var(--gold)">
@@ -105,7 +105,7 @@
 </pre>
     </div>
 
-    <p class="muted" style="font-size:.9rem;margin-top:16px"><span class="en"><b>Step ④ — install + verify.</b> The installer copies <code>harness/</code>, merges hooks into <code>.claude/settings.json</code> <b>additively</b> (your own hooks survive), installs the pre-push gate, writes the reviewer roster, adds a <code>.gitignore</code> block for runtime state, injects a self-loading harness onboarding block into <code>CLAUDE.md</code> (replace-between-markers, your prose preserved), then runs <code>verify_install</code> as the closing gate. Pass <code>--no-track</code> to run the harness without committing <code>harness/</code> into your product git. <span class="realtag">real output</span></span><span class="vi"><b>Bước ④ — cài + verify.</b> Trình cài copy <code>harness/</code>, gộp hook vào <code>.claude/settings.json</code> theo kiểu <b>cộng thêm</b> (hook của bạn vẫn còn), cài pre-push gate, ghi roster reviewer, thêm khối <code>.gitignore</code> cho trạng thái runtime, chèn khối onboarding harness tự-nạp vào <code>CLAUDE.md</code> (thay-giữa-mốc, giữ nguyên prose của bạn), rồi chạy <code>verify_install</code> làm gate chốt. Dùng <code>--no-track</code> để chạy harness mà không commit <code>harness/</code> vào git sản phẩm. <span class="realtag">đầu ra thật</span></span></p>
+    <p class="muted" style="font-size:.9rem;margin-top:16px"><span class="en"><b>Step ④ — install + verify.</b> The installer copies <code>harness/</code>, merges hooks into <code>.claude/settings.json</code> <b>additively</b> (your own hooks survive), installs the pre-push gate, adds a <code>.gitignore</code> block for runtime state, injects a self-loading harness onboarding block into <code>CLAUDE.md</code> (replace-between-markers, your prose preserved), then runs <code>verify_install</code> as the closing gate. Pass <code>--no-track</code> to run the harness without committing <code>harness/</code> into your product git. <span class="realtag">real output</span></span><span class="vi"><b>Bước ④ — cài + verify.</b> Trình cài copy <code>harness/</code>, gộp hook vào <code>.claude/settings.json</code> theo kiểu <b>cộng thêm</b> (hook của bạn vẫn còn), cài pre-push gate, thêm khối <code>.gitignore</code> cho trạng thái runtime, chèn khối onboarding harness tự-nạp vào <code>CLAUDE.md</code> (thay-giữa-mốc, giữ nguyên prose của bạn), rồi chạy <code>verify_install</code> làm gate chốt. Dùng <code>--no-track</code> để chạy harness mà không commit <code>harness/</code> vào git sản phẩm. <span class="realtag">đầu ra thật</span></span></p>
     <div class="term">
       <div class="tbar"><i></i><i></i><i></i><span class="tcmd">sh install.sh harness-&lt;version&gt;.tar.gz ../my-repo</span></div>
       <pre>verify_install OK: manifest + hook registration consistent
@@ -145,7 +145,7 @@
     <p class="muted" style="font-size:.9rem;margin:14px 0 8px"><span class="en"><b>② Extract the bundle into a folder <i>beside</i> your repo</b> — not inside it (see the note below):</span><span class="vi"><b>② Giải nén bundle ra một thư mục <i>cạnh</i> repo</b> — đừng để trong repo (xem lưu ý dưới):</span></p>
     <div class="cmdline"><code>tar -xzf harness-&lt;version&gt;.tar.gz -C ../harness-src</code></div>
     <p class="muted" style="font-size:.9rem;margin:14px 0 8px"><span class="en"><b>③ Install</b>, pointing <code>--target</code> at your repo:</span><span class="vi"><b>③ Cài</b>, trỏ <code>--target</code> vào repo của bạn:</span></p>
-    <div class="cmdline"><code>cd ../harness-src && python3 harness/install/install.py --target ../my-repo --reviewers a@x,b@y</code></div>
+    <div class="cmdline"><code>cd ../harness-src && python3 harness/install/install.py --target ../my-repo</code></div>
 
     <div class="callout" style="--ac:var(--crit);margin-top:16px">
       <span class="ci">📂</span>
@@ -158,25 +158,21 @@
       <thead><tr><th><span class="en">Option</span><span class="vi">Tùy chọn</span></th><th><span class="en">Effect</span><span class="vi">Tác dụng</span></th></tr></thead>
       <tbody>
         <tr><td><code>--skip-tests</code></td><td><span class="en">Skip step ⑤ (the suite takes ~30s). The install is still verified by <code>--strict</code>.</span><span class="vi">Bỏ bước ⑤ (bộ test ~30s). Bản cài vẫn được <code>--strict</code> verify.</span></td></tr>
-        <tr><td><code>REVIEWERS=a@x,b@y</code></td><td><span class="en">Environment variable read by <code>install.sh</code> to seed the reviewer roster without a prompt — the piped / no-TTY path.</span><span class="vi">Biến môi trường <code>install.sh</code> đọc để gán roster reviewer không cần hỏi — đường pipe / không-TTY.</span></td></tr>
-        <tr><td><code>--reviewers a@x,b@y</code></td><td><span class="en">(direct installer) Comma-separated reviewer emails. Omit on a TTY and it prompts, suggesting one from your git email and warning the gate needs a reviewer who is <i>not</i> the change author.</span><span class="vi">(trình cài trực tiếp) Email reviewer cách nhau dấu phẩy. Bỏ trống trên TTY thì nó hỏi, gợi ý từ git email và nhắc gate cần reviewer <i>khác</i> tác giả.</span></td></tr>
         <tr><td><code>--non-interactive</code> / <code>--yes</code></td><td><span class="en">(direct installer) Never prompt, even on a TTY — the CI / automation path.</span><span class="vi">(trình cài trực tiếp) Không bao giờ hỏi, kể cả trên TTY — đường CI / tự động.</span></td></tr>
         <tr><td><code>--dry-run</code></td><td><span class="en">(direct installer) Plan every write, change nothing.</span><span class="vi">(trình cài trực tiếp) Lập kế hoạch mọi lần ghi, không đổi gì.</span></td></tr>
         <tr><td><code>--uninstall</code></td><td><span class="en">(direct installer) Reverse the settings + pre-push edits (<code>harness/</code> is left in place).</span><span class="vi">(trình cài trực tiếp) Đảo ngược chỉnh settings + pre-push (<code>harness/</code> vẫn để nguyên).</span></td></tr>
-        <tr><td><code>--posture solo|team</code></td><td><span class="en">Posture to apply after verify. <code>team</code> (default) keeps reviewer + approval + stage gates; <code>solo</code> is the one-person no-friction posture (loosens the human workflow, keeps the agent caged). On a TTY, omitting it prompts. See the <a href="../index.html">overview</a> + <a href="../pages/configure.html">Configure</a>.</span><span class="vi">Thế áp sau verify. <code>team</code> (mặc định) giữ reviewer + duyệt + stage gate; <code>solo</code> là thế một-người không-ma-sát (nới luồng người, vẫn nhốt agent). Trên TTY, bỏ trống thì nó hỏi. Xem <a href="../index.html">tổng quan</a> + <a href="../pages/configure.html">Cấu hình</a>.</span></td></tr>
-        <tr><td><code>--solo-quiet</code></td><td><span class="en">With <code>--posture solo</code>: also silence the soft-stage reminder (<code>soft_stage_advisory:false</code>) for a fully no-nag run. The gate still traces every decision.</span><span class="vi">Kèm <code>--posture solo</code>: tắt luôn dòng nhắc soft-stage (<code>soft_stage_advisory:false</code>) cho lần chạy im hẳn. Gate vẫn trace mọi quyết định.</span></td></tr>
       </tbody>
     </table>
 
     <div class="callout" style="--ac:var(--gold);margin-top:16px">
       <span class="ci">🧭</span>
-      <div><span class="en"><b>Team or solo — decide at install.</b> Posture is applied <i>after</i> the integrity verify, so a refusal (e.g. a pre-existing break-glass override that would leave an agent uncaged) warns without failing the install. Solo loosens the human workflow only; the agent RBAC cage and safety floors stay <code>block</code>, enforced across BOTH the guard-policy and the hook-enable layer. Reverse anytime with <code>posture_config.py set team</code>. The full comparison lives on the <a href="../index.html">overview</a>.</span><span class="vi"><b>Team hay solo — quyết lúc cài.</b> Thế được áp <i>sau</i> khi verify toàn vẹn, nên một lần từ chối (vd có sẵn break-glass override sẽ thả cũi agent) chỉ cảnh báo chứ không làm hỏng cài. Solo chỉ nới luồng người; nhốt RBAC agent và safety floor vẫn <code>block</code>, ép trên CẢ tầng guard-policy lẫn tầng bật-hook. Đảo bất cứ lúc nào bằng <code>posture_config.py set team</code>. So sánh đầy đủ ở <a href="../index.html">tổng quan</a>.</span></div>
+      <div><span class="en"><b>Personal-first locally, enforced remotely.</b> Local gates are advisory so you can iterate freely; agent RBAC cage and safety floors stay <code>block</code> everywhere. Real enforcement happens on the remote CI (via `.github/workflows/receipts-gate.yml`) where plan receipts are checked before PR merge and push-to-main. Nothing gets past the remote gate without the plan artifacts and code review.</span><span class="vi"><b>Personal-first local, ép remote.</b> Gate local là advisory để bạn lặp thoải mái; nhốt RBAC agent và safety floor vẫn <code>block</code> ở mọi chỗ. Ép thật xảy ở CI remote (qua `.github/workflows/receipts-gate.yml`) kiểm plan receipt trước merge PR và push-main. Không gì vượt qua gate remote nếu thiếu plan artifact và code review.</span></div>
     </div>
 
     <!-- advanced: direct install.py -->
     <h2 class="sectitle" id="install-advanced"><span class="en">From a clone (advanced)</span><span class="vi">Từ một clone (nâng cao)</span></h2>
     <p class="muted" style="margin:-2px 0 14px"><span class="en">If you already have the harness checked out, skip the bundle and run the installer directly. Same writes, same final verify; this is the path the one-shot wraps. Every mutation is idempotent and previewable.</span><span class="vi">Nếu đã có harness sẵn, bỏ qua bundle và chạy thẳng trình cài. Cùng cách ghi, cùng verify cuối; đây là đường mà lệnh-một-phát bọc lại. Mọi thay đổi đều idempotent và xem-trước được.</span></p>
-    <div class="cmdline"><code>python3 harness/install/install.py --target ../my-repo --reviewers a@x.com,b@y.com</code></div>
+    <div class="cmdline"><code>python3 harness/install/install.py --target ../my-repo</code></div>
 
     <!-- standards / config map -->
     <div class="callout" style="--ac:var(--txt-faint);margin-top:18px">

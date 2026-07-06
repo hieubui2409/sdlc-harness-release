@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>SDLC Harness — Interactive Showcase</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="SDLC Harness — Interactive Showcase" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="SDLC Harness — Interactive Showcase" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 106 hs:* skills, 48 hooks, 18 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="assets/showcase.css" />
 </head>
 <body class="view-home">
@@ -52,8 +52,8 @@
       <span class="en"><b>Observe</b></span><span class="vi"><b>Quan sát</b></span>
     </div>
     <p class="lead">
-      <span class="en">Not prose reminders — a coordinated <code>.claude</code>-style rig that enforces the workflow at runtime: 106 <code>hs:*</code> skills, 48 hooks in three tiers, 123 scripts, and a compliance gate that <b>blocks</b> push / pr / ship when the acceptance artifact is missing. Every gate, approval, and decision is traced with an <code>actor</code>.</span>
-      <span class="vi">Không phải lời nhắc — mà cả một bộ kiểu <code>.claude</code> phối hợp, ép quy trình ngay lúc chạy: 106 skill <code>hs:*</code>, 48 hook ba hạng, 123 script, và một gate compliance <b>chặn</b> push / pr / ship khi thiếu artifact nghiệm thu. Mọi gate, duyệt và quyết định đều được trace kèm <code>actor</code>.</span>
+      <span class="en">Not prose reminders — a coordinated <code>.claude</code>-style rig that enforces the workflow at runtime: 109 <code>hs:*</code> skills, 50 hooks in three tiers, 140 scripts, and a compliance gate that <b>advises</b> push / pr / ship locally and is enforced for real at <b>remote CI</b> — with an agent cage that hard-blocks forgery on the spot. Every gate, approval, and decision is traced with an <code>actor</code>.</span>
+      <span class="vi">Không phải lời nhắc — mà cả một bộ kiểu <code>.claude</code> phối hợp, ép quy trình ngay lúc chạy: 109 skill <code>hs:*</code>, 50 hook ba hạng, 140 script, và một gate compliance <b>khuyên</b> push / pr / ship ở local rồi được ép thật ở <b>remote CI</b> — kèm cũi agent chặn cứng giả-mạo tại chỗ. Mọi gate, duyệt và quyết định đều được trace kèm <code>actor</code>.</span>
     </p>
 
     <div class="cta-row">
@@ -81,43 +81,43 @@
       </div>
     </div>
 
-    <div class="scroll-cue"><span class="en">First, choose a posture ↓</span><span class="vi">Trước tiên, chọn một thế ↓</span><span class="arrow"></span></div>
+    <div class="scroll-cue"><span class="en">How enforcement works ↓</span><span class="vi">Cơ chế enforcement ↓</span><span class="arrow"></span></div>
   </div>
 </header>
 
-<!-- ===================== TWO MODES (decide first) ===================== -->
+<!-- ===================== ENFORCEMENT MODEL ===================== -->
 <section id="modes">
   <div class="wrap reveal">
-    <div class="eyebrow" style="color:var(--gold)"><span class="en">Step 0 · before the pipeline · this decides everything else</span><span class="vi">Bước 0 · trước quy trình · quyết định mọi thứ còn lại</span></div>
-    <h2 class="sectitle" style="font-size:2rem"><span class="en">First, choose a posture — <span class="grad">team</span> or <span class="grad">solo</span></span><span class="vi">Trước tiên, chọn một thế — <span class="grad">team</span> hay <span class="grad">solo</span></span></h2>
-    <p class="lead"><span class="en">One choice, made once, that shapes everything downstream — who approves, what blocks, who is accountable. The same rig runs in two postures. <b>Pick before you install.</b></span><span class="vi">Một lựa chọn, chọn một lần, định hình mọi thứ về sau — ai duyệt, cái gì chặn, ai chịu trách nhiệm. Cùng một bộ máy chạy ở hai thế. <b>Chọn trước khi cài.</b></span></p>
+    <div class="eyebrow" style="color:var(--gold)"><span class="en">Before the pipeline · how enforcement works</span><span class="vi">Trước quy trình · cơ chế enforcement</span></div>
+    <h2 class="sectitle" style="font-size:2rem"><span class="en">Personal-first — <span class="grad">local advises</span>, <span class="grad">remote enforces</span></span><span class="vi">Personal-first — <span class="grad">local khuyên</span>, <span class="grad">remote ép</span></span></h2>
+    <p class="lead"><span class="en">One person, one machine, one clone. The local gate never blocks you — it advises and traces; quality is enforced at remote CI. No reviewer roster, no approval quorum, no team/solo posture to choose. What the harness never loosens: the agent stays caged. <b>v4.0.0.</b></span><span class="vi">Một người, một máy, một clone. Gate local không bao giờ chặn bạn — nó khuyên và ghi trace; chất lượng được ép ở remote CI. Không roster người duyệt, không quorum, không phải chọn thế team/solo. Cái harness không bao giờ nới: agent luôn bị nhốt. <b>v4.0.0.</b></span></p>
 
     <div class="cards grid-2" style="margin-top:22px">
-      <div class="card" style="--ac:var(--spec)">
-        <h3><span class="pin"></span><span class="en">Team — the default</span><span class="vi">Team — mặc định</span></h3>
-        <p style="font-weight:600;color:var(--spec)"><span class="en">For more than one person · shared accountability</span><span class="vi">Cho nhiều hơn một người · trách nhiệm chung</span></p>
-        <ul>
-          <li><span class="en"><b>Power:</b> no one ships alone — reviewer roster + approval quorum + plan-approval + protected branches + hard stage gates at push / pr / ship</span><span class="vi"><b>Quyền:</b> không ai ship một mình — roster reviewer + quorum duyệt + duyệt-plan + nhánh bảo vệ + stage gate cứng tại push / pr / ship</span></li>
-          <li><span class="en"><b>Responsibility:</b> peers review; the gate enforces it</span><span class="vi"><b>Trách nhiệm:</b> đồng nghiệp review; gate ép</span></li>
-          <li><span class="en"><b>Agent cage:</b> RBAC block + 5 safety floors</span><span class="vi"><b>Nhốt agent:</b> RBAC block + 5 safety floor</span></li>
-        </ul>
-        <p class="muted" style="font-size:.85rem"><span class="en">The rest of this site documents team mode.</span><span class="vi">Phần còn lại của trang này mô tả chế độ team.</span></p>
-      </div>
       <div class="card" style="--ac:var(--gold)">
-        <h3><span class="pin"></span><span class="en">Solo — one person</span><span class="vi">Solo — một người</span></h3>
-        <p style="font-weight:600;color:var(--gold)"><span class="en">One owner · zero friction · still caged agent</span><span class="vi">Một chủ · không ma-sát · agent vẫn bị nhốt</span></p>
+        <h3><span class="pin"></span><span class="en">Local — advisory</span><span class="vi">Local — advisory</span></h3>
+        <p style="font-weight:600;color:var(--gold)"><span class="en">You commit / push / ship straight through</span><span class="vi">Bạn commit / push / ship thẳng</span></p>
         <ul>
-          <li><span class="en"><b>Power:</b> you commit / push / ship straight through — no reviewer, no quorum, no approval, no protected-branch wall, no hard stage block for you</span><span class="vi"><b>Quyền:</b> bạn commit / push / ship thẳng — không reviewer, không quorum, không duyệt, không tường nhánh-bảo-vệ, không stage block cứng cho bạn</span></li>
-          <li><span class="en"><b>Responsibility:</b> all on you — the trace still records every step</span><span class="vi"><b>Trách nhiệm:</b> tất cả ở bạn — trace vẫn ghi mọi bước</span></li>
-          <li><span class="en"><b>Agent cage:</b> <b>identical to team</b> — solo loosens the human workflow only, never the agent</span><span class="vi"><b>Nhốt agent:</b> <b>y hệt team</b> — solo chỉ nới luồng người, không bao giờ nới agent</span></li>
+          <li><span class="en"><b>Gate:</b> a hard stage with a missing receipt emits <code>[advisory]</code> + a <code>gate_advisory</code> trace and proceeds — no human block</span><span class="vi"><b>Gate:</b> hard stage thiếu receipt phát <code>[advisory]</code> + trace <code>gate_advisory</code> rồi đi tiếp — không chặn người</span></li>
+          <li><span class="en"><b>Pre-push:</b> WARNs on a missing receipt, but still BLOCKS the two floors — destructive-to-protected + secret</span><span class="vi"><b>Pre-push:</b> WARN khi thiếu receipt, nhưng vẫn CHẶN hai floor — destructive-to-protected + secret</span></li>
+          <li><span class="en"><b>Agent cage:</b> RBAC block + safety floors — never loosened</span><span class="vi"><b>Nhốt agent:</b> RBAC block + safety floor — không bao giờ nới</span></li>
         </ul>
-        <p class="muted" style="font-size:.85rem"><span class="en">One reversible command: <code>--posture solo</code> at install, or <code>posture_config.py set solo</code>.</span><span class="vi">Một lệnh đảo-được: <code>--posture solo</code> lúc cài, hoặc <code>posture_config.py set solo</code>.</span></p>
+        <p class="muted" style="font-size:.85rem"><span class="en">The one hard local block is the artifact-forgery arm (the agent cage).</span><span class="vi">Chốt cứng local duy nhất là nhánh chống giả-mạo-artifact (cũi agent).</span></p>
+      </div>
+      <div class="card" style="--ac:var(--spec)">
+        <h3><span class="pin"></span><span class="en">Remote — enforced</span><span class="vi">Remote — được ép</span></h3>
+        <p style="font-weight:600;color:var(--spec)"><span class="en">Quality is the CI's job, not a local wall</span><span class="vi">Chất lượng là việc của CI, không phải tường local</span></p>
+        <ul>
+          <li><span class="en"><b>Receipts-gate:</b> <code>.github/workflows/receipts-gate.yml</code> enforces plan receipts on PR and push→main</span><span class="vi"><b>Receipts-gate:</b> <code>.github/workflows/receipts-gate.yml</code> ép plan receipts trên PR và push→main</span></li>
+          <li><span class="en"><b>Fail-closed:</b> a resolve error blocks the merge — presence is enforced where it can't be self-bypassed</span><span class="vi"><b>Fail-closed:</b> lỗi resolve chặn merge — sự-hiện-diện được ép ở nơi không tự-bỏ-qua được</span></li>
+          <li><span class="en"><b>Plan-approval:</b> self-approval — verdict + <code>plan_hash</code> anti-drift + a mandatory plan-graph sidecar</span><span class="vi"><b>Plan-approval:</b> tự-duyệt — verdict + <code>plan_hash</code> chống-drift + sidecar plan-graph bắt buộc</span></li>
+        </ul>
+        <p class="muted" style="font-size:.85rem"><span class="en">No roster, no quorum, no role check.</span><span class="vi">Không roster, không quorum, không role check.</span></p>
       </div>
     </div>
 
     <div class="callout" style="--ac:var(--spec);margin-top:18px">
       <span class="ci">📘</span>
-      <div><span class="en"><b>Reading the rest as a solo user?</b> Everything below — quickstart, the skill pages, the gate at push / pr / ship — is written for <b>team</b> mode. In solo, mentally drop the human gates: no reviewer roster, no approval quorum, no plan-approval gate, no protected-branch wall, no hard stage block. What stays exactly the same: the agent RBAC cage, the safety floors, and the artifact trace. Full side-by-side on <a href="pages/configure.html">Configure</a>.</span><span class="vi"><b>Đọc phần còn lại với tư cách solo?</b> Mọi thứ bên dưới — bắt đầu, trang skill, gate tại push / pr / ship — đều viết cho chế độ <b>team</b>. Ở solo, hãy bỏ qua trong đầu các gate của con người: không roster reviewer, không quorum duyệt, không gate duyệt-plan, không tường nhánh-bảo-vệ, không stage block cứng. Cái giữ y nguyên: nhốt RBAC agent, các safety floor, và trace artifact. So sánh đầy đủ ở <a href="pages/configure.html">Cấu hình</a>.</span></div>
+      <div><span class="en"><b>Reading the gate pages below?</b> The gate at push / pr / ship advises locally and traces — it does not block you. The same checks are enforced for real at remote CI (the receipts-gate). What stays hard locally: the agent RBAC cage, the safety floors, and the artifact trace. Full detail on <a href="pages/configure.html">Configure</a>.</span><span class="vi"><b>Đọc các trang gate bên dưới?</b> Gate tại push / pr / ship khuyên ở local và ghi trace — nó không chặn bạn. Chính các kiểm tra đó được ép thật ở remote CI (receipts-gate). Cái vẫn cứng ở local: cũi RBAC agent, các safety floor, và trace artifact. Chi tiết đầy đủ ở <a href="pages/configure.html">Cấu hình</a>.</span></div>
     </div>
   </div>
 </section>
@@ -170,7 +170,7 @@
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="n" data-count="106">106</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
+      <div class="stat"><div class="n" data-count="107">107</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
       <div class="stat"><div class="n" data-count="20">20</div><div class="l"><span class="en">hooks · 3 tiers</span><span class="vi">hook · 3 hạng</span></div></div>
       <div class="stat"><div class="n" data-count="2508">2508</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
       <div class="stat"><div class="n" data-count="0">0</div><div class="l"><span class="en">network calls in the gate path</span><span class="vi">lần gọi mạng trong đường gate</span></div></div>
@@ -186,11 +186,11 @@
     <p class="lead"><span class="en">The product is the <code>harness/</code> tree: skills, hooks, scripts, rules, data, schemas, install, tests. Delete the directory and the harness is gone — a CI invariant forbids the string <code>.claude/skills/</code> inside <code>harness/</code>.</span><span class="vi">Sản phẩm là cây <code>harness/</code>: skills, hooks, scripts, rules, data, schemas, install, tests. Xóa thư mục là gỡ sạch — một invariant CI cấm chuỗi <code>.claude/skills/</code> trong <code>harness/</code>.</span></p>
 
     <div class="rig">
-      <div class="rcell"><div class="rt">🧩 <span class="en">106 skills</span><span class="vi">106 skill</span><span class="rn">plugins/hs</span></div><ul><li><span class="en">SDLC spine: plan · cook · test · ship</span><span class="vi">Xương sống: plan · cook · test · ship</span></li><li><span class="en">orchestrators, review, debug, research, ideation, docs</span><span class="vi">điều phối, review, debug, nghiên cứu, ý tưởng, docs</span></li><li><span class="en">packaged as plugin <code>hs</code> → <code>/hs:plan</code></span><span class="vi">đóng gói plugin <code>hs</code> → <code>/hs:plan</code></span></li></ul></div>
-      <div class="rcell"><div class="rt">🪝 <span class="en">48 hooks · 3 tiers</span><span class="vi">48 hook · 3 hạng</span><span class="rn">/hooks</span></div><ul><li><span class="en">telemetry sinks (ON, fail-open)</span><span class="vi">sink telemetry (ON, fail-open)</span></li><li><span class="en">memory-gap nudge (OFF)</span><span class="vi">memory-gap nudge (OFF)</span></li><li><span class="en">gate_stage · write_guard (compliance)</span><span class="vi">gate_stage · write_guard (compliance)</span></li></ul></div>
-      <div class="rcell"><div class="rt">🛠️ <span class="en">123 scripts</span><span class="vi">123 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · task_store · plan_approval</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
-      <div class="rcell"><div class="rt">📐 <span class="en">11 rules</span><span class="vi">11 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤60 lines, always-load)</span><span class="vi">(≤60 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · terminal-voice</li></ul></div>
-      <div class="rcell"><div class="rt">🧪 <span class="en">7 schemas</span><span class="vi">7 schema</span><span class="rn">/schemas</span></div><ul><li><code>artifact-verification</code> · <code>review-decision</code></li><li><code>plan-approval</code> · <code>critique-consensus</code></li><li><code>bakeoff-verdict</code> · <code>harness-release</code></li></ul></div>
+      <div class="rcell"><div class="rt">🧩 <span class="en">109 skills</span><span class="vi">109 skill</span><span class="rn">plugins/hs</span></div><ul><li><span class="en">SDLC spine: plan · cook · test · ship</span><span class="vi">Xương sống: plan · cook · test · ship</span></li><li><span class="en">orchestrators, review, debug, research, ideation, docs</span><span class="vi">điều phối, review, debug, nghiên cứu, ý tưởng, docs</span></li><li><span class="en">packaged as plugin <code>hs</code> → <code>/hs:plan</code></span><span class="vi">đóng gói plugin <code>hs</code> → <code>/hs:plan</code></span></li></ul></div>
+      <div class="rcell"><div class="rt">🪝 <span class="en">50 hooks · 3 tiers</span><span class="vi">50 hook · 3 hạng</span><span class="rn">/hooks</span></div><ul><li><span class="en">telemetry sinks (ON, fail-open)</span><span class="vi">sink telemetry (ON, fail-open)</span></li><li><span class="en">memory-gap nudge (OFF)</span><span class="vi">memory-gap nudge (OFF)</span></li><li><span class="en">gate_stage · write_guard (compliance)</span><span class="vi">gate_stage · write_guard (compliance)</span></li></ul></div>
+      <div class="rcell"><div class="rt">🛠️ <span class="en">140 scripts</span><span class="vi">140 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · task_store · plan_approval</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
+      <div class="rcell"><div class="rt">📐 <span class="en">15 rules</span><span class="vi">15 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤60 lines, always-load)</span><span class="vi">(≤60 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · terminal-voice</li></ul></div>
+      <div class="rcell"><div class="rt">🧪 <span class="en">13 schemas</span><span class="vi">13 schema</span><span class="rn">/schemas</span></div><ul><li><code>artifact-verification</code> · <code>review-decision</code></li><li><code>plan-approval</code> · <code>critique-consensus</code></li><li><code>bakeoff-verdict</code> · <code>harness-release</code></li></ul></div>
       <div class="rcell"><div class="rt">📦 <span class="en">Install + manifest</span><span class="vi">Cài + manifest</span><span class="rn">/install</span></div><ul><li><code>install.py --target</code> <span class="en">(one command)</span><span class="vi">(một lệnh)</span></li><li><code>manifest.json</code> <span class="en">(sha256 tracked files)</span><span class="vi">(sha256 file tracked)</span></li><li><code>verify_install.py --strict</code></li></ul></div>
     </div>
 

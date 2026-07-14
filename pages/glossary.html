@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Glossary — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Glossary — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Glossary — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -107,7 +107,7 @@
       <tbody>
         <tr><td><code id="gl-fs_guard">fs_guard</code></td><td><span class="en">Script-path containment helper: disciplines where harness <i>scripts</i> may write. It cannot stop a raw LLM <code>Write</code>.</span><span class="vi">Trợ giúp khoanh đường-ghi của <i>script</i> harness. Không chặn được lệnh <code>Write</code> thô của LLM.</span></td><td><code>"write-fence"</code> <span class="x"><span class="en">— promises a barrier it can't deliver</span><span class="vi">— hứa rào chắn nó không làm được</span></span></td><td>DEC-38</td></tr>
         <tr><td><code id="gl-hook_class">HOOK_CLASS</code></td><td><span class="en">Constant compiled into each hook file (not config) declaring the hook's class.</span><span class="vi">Hằng số biên dịch vào từng file hook (không phải config) khai báo lớp của hook.</span></td><td><span class="x"><span class="en">declaring a hook's class in config</span><span class="vi">khai lớp hook trong config</span></span></td><td>DEC-4</td></tr>
-        <tr><td><code id="gl-fail-closed">fail-closed</code></td><td><span class="en">Compliance-hook default: on violation, <code>exit 2</code> with an actionable reason and block.</span><span class="vi">Mặc định của hook compliance: vi phạm thì <code>exit 2</code> kèm lý do hành động được và chặn.</span></td><td>—</td><td>DEC-4</td></tr>
+        <tr><td><code id="gl-fail-closed">fail-closed</code></td><td><span class="en">Compliance-tier default: a hard violation (forgery, secret, protected-branch) <code>exit 2</code> with an actionable reason and block. The stage-presence gate is advisory locally (<code>exit 0</code>) and enforced by the remote CI receipts-gate.</span><span class="vi">Mặc định của tầng compliance: vi phạm cứng (giả mạo, secret, nhánh bảo vệ) <code>exit 2</code> kèm lý do hành động được và chặn. Stage-presence gate là advisory tại máy (<code>exit 0</code>) và được enforce bởi receipts-gate ở CI từ xa.</span></td><td>—</td><td>DEC-4</td></tr>
         <tr><td><code id="gl-fail-open">fail-open</code></td><td><span class="en">Telemetry / nudge default: never block — stay silent and always continue, even on internal error.</span><span class="vi">Mặc định của telemetry / nudge: không bao giờ chặn — im lặng và luôn tiếp tục, kể cả khi lỗi nội bộ.</span></td><td>—</td><td>DEC-4</td></tr>
         <tr><td><code id="gl-presence-gate">presence gate</code> <span class="x">(W1)</span></td><td><span class="en">Proves a step <i>ran</i> — its artifact exists and matches schema. It does <b>not</b> verify which AI ran it.</span><span class="vi">Chứng minh một bước <i>đã chạy</i> — artifact tồn tại và khớp schema. <b>Không</b> xác minh AI nào chạy.</span></td><td><span class="x"><span class="en">calling it identity / runner auth</span><span class="vi">gọi nó là định danh / xác thực runner</span></span></td><td>§W1</td></tr>
         <tr><td><code id="gl-append-only">append-only</code></td><td><span class="en">Every machine-written store appends one JSON line; no read-modify-write of a whole file, so concurrent writers never collide.</span><span class="vi">Mọi store máy-ghi nối thêm một dòng JSON; không đọc-sửa-ghi cả file, nên ghi đồng thời không bao giờ đụng.</span></td><td><code>"read-modify-write"</code> <span class="x"><span class="en">the store</span><span class="vi">trên store</span></span></td><td>DEC-5</td></tr>
@@ -116,12 +116,12 @@
 
     <!-- ── B. Identity & ownership ── -->
     <h2 class="sectitle" id="gl-identity"><span class="en">Identity &amp; ownership</span><span class="vi">Danh tính &amp; sở hữu</span></h2>
-    <p class="muted" style="margin:-4px 0 14px"><span class="en">Who is recorded as acting, and which files a declared owner may touch — attribution, never authentication.</span><span class="vi">Ai được ghi là người làm, và owner đã khai được đụng file nào — quy trách nhiệm, không phải xác thực.</span></p>
+    <p class="muted" style="margin:-4px 0 14px"><span class="en">Who is recorded as acting — attribution, never authentication. (The per-actor ownership lane below is <b>deprecated</b>: the harness is personal-first and no longer enforces commit ownership.)</span><span class="vi">Ai được ghi là người làm — quy trách nhiệm, không phải xác thực. (Làn sở-hữu-theo-actor bên dưới đã <b>bị loại bỏ</b>: harness theo hướng personal-first và không còn cưỡng chế sở hữu commit.)</span></p>
     <table class="modetable gloss" style="--ac:var(--rel)">
       <thead><tr><th><span class="en">Term</span><span class="vi">Thuật ngữ</span></th><th><span class="en">Definition</span><span class="vi">Định nghĩa</span></th><th><span class="en">Forbidden wording</span><span class="vi">Cách nói bị cấm</span></th><th><span class="en">Backing</span><span class="vi">Chỗ dựa</span></th></tr></thead>
       <tbody>
         <tr><td><code id="gl-actor">actor</code></td><td><span class="en">Attribution record (who did it), resolved by <code>resolve_actor()</code>. Env-spoofable, used only to trace — never an authorization signal.</span><span class="vi">Bản ghi quy trách nhiệm (ai làm), do <code>resolve_actor()</code> phân giải. Giả mạo được qua env, chỉ để truy vết — không phải tín hiệu phân quyền.</span></td><td><span class="x"><span class="en">"authentication" / "authorization"</span><span class="vi">khung "authentication" / "authorization"</span></span></td><td>DEC-1</td></tr>
-        <tr><td><code id="gl-poaching">poaching</code></td><td><span class="en">A commit that touches a file in another declared owner's lane; the per-actor <code>ownership_guard</code> blocks it. Actors owning no lane stay ungoverned.</span><span class="vi">Một commit đụng file trong làn của owner khác đã khai; <code>ownership_guard</code> theo-actor chặn nó. Actor không sở hữu làn nào thì không bị quản.</span></td><td><span class="x"><span class="en">calling actor lanes "permissions"</span><span class="vi">gọi làn actor là "permissions"</span></span></td><td>DEC-62</td></tr>
+        <tr><td><code id="gl-poaching">poaching</code></td><td><span class="en"><b>[DEPRECATED in v4.0.0]</b> A commit that touched a file in another declared owner's lane; the per-actor <code>ownership_guard</code> blocked it. Removed with the Tier-C team machinery — <code>ownership_guard</code>/<code>ownership_gate</code> no longer exist. The harness is personal-first: per-actor commit ownership is not enforced. The agent-cage guards (<code>write_guard</code>, <code>agent_rbac_guard</code>) are unrelated and remain.</span><span class="vi"><b>[ĐÃ LOẠI BỎ ở v4.0.0]</b> Một commit đụng file trong làn của owner khác đã khai; <code>ownership_guard</code> theo-actor từng chặn nó. Đã gỡ cùng bộ máy team Tier-C — <code>ownership_guard</code>/<code>ownership_gate</code> không còn tồn tại. Harness theo personal-first: không cưỡng chế sở hữu commit theo actor. Các guard của agent-cage (<code>write_guard</code>, <code>agent_rbac_guard</code>) không liên quan và vẫn còn.</span></td><td><span class="x"><span class="en">treating it as a live gate</span><span class="vi">coi nó là gate đang hoạt động</span></span></td><td>DEC-213; DEC-215</td></tr>
       </tbody>
     </table>
 
@@ -222,7 +222,7 @@
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

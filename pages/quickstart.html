@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Quick start — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Quick start — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Quick start — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -112,7 +112,7 @@
         <pre>verify_install OK: manifest + hook registration consistent
 </pre>
       </div>
-      <p class="muted" style="font-size:.82rem;margin-top:8px"><span class="en">After installing, enable the plugin with <code>/reload-plugins</code> in Claude Code. Full options: <code>docs/deployment-guide.md</code>; every config knob: <code>harness/rules/config-reference.md</code>.</span><span class="vi">Sau khi cài, bật plugin bằng <code>/reload-plugins</code> trong Claude Code. Tùy chọn đầy đủ: <code>docs/deployment-guide.md</code>; mọi núm cấu hình: <code>harness/rules/config-reference.md</code>.</span></p>
+      <p class="muted" style="font-size:.82rem;margin-top:8px"><span class="en">After installing, enable the plugin with <code>/reload-plugins</code> in Claude Code. Full options: <code>docs/harness/deployment-guide.md</code>; every config knob: <code>harness/rules/config-reference.md</code>.</span><span class="vi">Sau khi cài, bật plugin bằng <code>/reload-plugins</code> trong Claude Code. Tùy chọn đầy đủ: <code>docs/harness/deployment-guide.md</code>; mọi núm cấu hình: <code>harness/rules/config-reference.md</code>.</span></p>
     </div>
 
     <!-- Step 2: plan -->
@@ -189,16 +189,16 @@
     <div style="margin-top:28px">
       <span class="eyebrow" style="display:block">Step 4 · <span class="en">shell</span><span class="vi">shell</span></span>
       <h2 class="sectitle" id="qs-ship" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Ship through the gate</span><span class="vi">Ship qua gate</span></h2>
-      <p class="muted" style="font-size:.9rem"><span class="en">Now push. If the artifact is missing, the pre-push gate blocks with <code>exit 2</code> and names the <b>exact path to create</b> — never a dead end. Once Step 4 has written <code>verification.json</code>, the same push passes. That block-then-pass is the whole point. <span class="realtag">real output</span></span><span class="vi">Giờ push. Nếu thiếu artifact, pre-push gate chặn với <code>exit 2</code> và nêu <b>đúng đường cần tạo</b> — không bao giờ là ngõ cụt. Khi Bước 4 đã ghi <code>verification.json</code>, chính lệnh push đó vượt qua. Chặn-rồi-vượt chính là cốt lõi. <span class="realtag">đầu ra thật</span></span></p>
+      <p class="muted" style="font-size:.9rem"><span class="en">Now push. If the artifact is missing, the pre-push gate ADVISES (<code>exit 0</code>), naming the missing artifact and the <b>exact path to create</b> — never a dead end. Once Step 4 has written <code>verification.json</code>, the same push passes. That advise-then-pass loop is the whole point; the hard block lives in remote CI. <span class="realtag">real output</span></span><span class="vi">Giờ push. Nếu thiếu artifact, pre-push gate NHẮC (<code>exit 0</code>), nêu tên artifact thiếu và <b>đúng đường cần tạo</b> — không bao giờ là ngõ cụt. Khi Bước 4 đã ghi <code>verification.json</code>, chính lệnh push đó vượt qua. Vòng nhắc-rồi-vượt chính là cốt lõi; chốt chặn cứng nằm ở CI từ xa. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">git push origin main</span></div>
-        <pre>[gate_stage] BLOCKED: hard stage 'push' needs an active plan but none resolved. Three exits: (1) create a plan under plans/ with `status: in_progress` frontmatter; (2) set HARNESS_ACTIVE_PLAN to the plan dir; (3) set `require_plan: false` for this stage in harness/data/stage-policy.yaml (tracked in git)
-[exit 2 — compliance hook fail-closed]
+        <pre>[advisory] gate_stage: hard stage 'push' needs an active plan but none resolved. Three exits: (1) create a plan under plans/ with `status: in_progress` frontmatter; (2) set HARNESS_ACTIVE_PLAN to the plan dir; (3) set `require_plan: false` for this stage in harness/data/stage-policy.yaml (tracked in git) — presence enforcement lives in remote CI (receipts-gate)
+[exit 0 — local gate is advisory; the remote CI receipts-gate is the hard block]
 </pre>
       </div>
       <div class="callout" style="--ac:var(--ok);margin-top:14px">
         <span class="ci">✅</span>
-        <div><span class="en"><b>That's the loop.</b> plan → cook → test → ship, with a gate that reads acceptance artifacts off the filesystem and fails closed. Watch the same change flow end to end in <a href="../pages/journey.html">Journey</a>, or learn each skill in depth: <a href="../pages/plan.html">hs:plan</a> · <a href="../pages/cook.html">hs:cook</a> · <a href="../pages/test.html">hs:test</a>.</span><span class="vi"><b>Đó là vòng lặp.</b> plan → cook → test → ship, với một gate đọc artifact nghiệm thu từ filesystem và fail-closed. Xem chính thay đổi đó chạy từ đầu đến cuối trong <a href="../pages/journey.html">Journey</a>, hoặc học sâu từng skill: <a href="../pages/plan.html">hs:plan</a> · <a href="../pages/cook.html">hs:cook</a> · <a href="../pages/test.html">hs:test</a>.</span></div>
+        <div><span class="en"><b>That's the loop.</b> plan → cook → test → ship, with a gate that reads acceptance artifacts off the filesystem — advisory locally (<code>exit 0</code>), fail-closed at the remote CI receipts-gate. Watch the same change flow end to end in <a href="../pages/journey.html">Journey</a>, or learn each skill in depth: <a href="../pages/plan.html">hs:plan</a> · <a href="../pages/cook.html">hs:cook</a> · <a href="../pages/test.html">hs:test</a>.</span><span class="vi"><b>Đó là vòng lặp.</b> plan → cook → test → ship, với một gate đọc artifact nghiệm thu từ filesystem — advisory tại máy (<code>exit 0</code>), fail-closed ở receipts-gate CI từ xa. Xem chính thay đổi đó chạy từ đầu đến cuối trong <a href="../pages/journey.html">Journey</a>, hoặc học sâu từng skill: <a href="../pages/plan.html">hs:plan</a> · <a href="../pages/cook.html">hs:cook</a> · <a href="../pages/test.html">hs:test</a>.</span></div>
       </div>
     </div>
 
@@ -256,7 +256,7 @@
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

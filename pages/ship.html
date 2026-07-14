@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>hs:ship — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="hs:ship — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="hs:ship — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -139,21 +139,21 @@
 
     <!-- the real gate -->
     <h2 class="sectitle" id="ship-gate"><span class="en">The real gate</span><span class="vi">Gate thật</span></h2>
-    <p class="muted" style="margin:-2px 0 14px"><span class="en">Stage <code>ship</code> in <code>stage-policy.yaml</code> hard-blocks unless <b>four artifacts</b> are present and pass their verdict policy. The pre-push hook adds a <i>second</i> block at the transport layer — even a manual push hits it.</span><span class="vi">Stage <code>ship</code> trong <code>stage-policy.yaml</code> chặn cứng trừ khi <b>bốn artifact</b> hiện diện và qua chính sách verdict. Pre-push hook thêm một block <i>thứ hai</i> ở tầng vận chuyển — kể cả push tay cũng đụng.</span></p>
+    <p class="muted" style="margin:-2px 0 14px"><span class="en">On remote CI, stage <code>ship</code> in <code>stage-policy.yaml</code> hard-blocks unless <b>three artifacts</b> are present and pass their verdict policy (a fourth, <code>critique-consensus.json</code>, is <b>opt-in</b>). Locally the stage hook and the git pre-push hook only <i>advise</i> (<code>exit 0</code>, naming the gap) — even a manual push gets the advisory, and the hard refusal waits at CI.</span><span class="vi">Trên CI từ xa, stage <code>ship</code> trong <code>stage-policy.yaml</code> chặn cứng trừ khi <b>ba artifact</b> hiện diện và qua chính sách verdict (artifact thứ tư, <code>critique-consensus.json</code>, là <b>tùy chọn</b>). Tại máy, hook stage và hook git pre-push chỉ <i>advisory</i> (<code>exit 0</code>, nêu chỗ thiếu) — kể cả push tay cũng chỉ nhận advisory, còn sự từ chối cứng đợi ở CI.</span></p>
     <table class="modetable" style="--ac:var(--crit)">
       <thead><tr><th><span class="en">Artifact</span><span class="vi">Artifact</span></th><th><span class="en">Gate requires</span><span class="vi">Gate yêu cầu</span></th></tr></thead>
       <tbody>
         <tr><td><code>verification.json</code></td><td><span class="en">no FAILed check</span><span class="vi">không có check FAIL</span></td></tr>
         <tr><td><code>review-decision.json</code></td><td><span class="en">verdict <b>exactly</b> <code>PASS</code> — <code>PASS_WITH_RISK</code> does not qualify</span><span class="vi">verdict <b>đúng</b> <code>PASS</code> — <code>PASS_WITH_RISK</code> không đủ</span></td></tr>
         <tr><td><code>plan-approval.json</code></td><td><span class="en">plan hash hasn't drifted (checked on remote CI)</span><span class="vi">hash plan chưa lệch (kiểm ở CI remote)</span></td></tr>
-        <tr><td><code>critique-consensus.json</code></td><td><span class="en">consensus verdict present</span><span class="vi">có verdict đồng thuận</span></td></tr>
+        <tr><td><code>critique-consensus.json</code> <span class="muted">(opt-in)</span></td><td><span class="en">consensus verdict present — only enforced if a stage lists it in <code>requires:</code>; the shipped default does not</span><span class="vi">có verdict đồng thuận — chỉ bị ép nếu một stage liệt kê nó trong <code>requires:</code>; mặc định ship không có</span></td></tr>
       </tbody>
     </table>
     <div class="honest" style="margin-top:16px">
       <div class="h">⚖️ <span class="en">A note on the source, read honestly</span><span class="vi">Một lưu ý về nguồn, đọc trung thực</span></div>
       <ul>
-        <li><span class="en">The <code>hs:ship</code> pipeline spells out steps for verification, review, and plan-approval. The <i>enforced</i> gate — <code>stage-policy.yaml</code>, the file the hook actually reads — additionally requires <code>critique-consensus.json</code>, the same as <code>pr</code> / <code>merge</code> / <code>deploy</code>.</span><span class="vi">Pipeline <code>hs:ship</code> ghi rõ bước cho verification, review, và plan-approval. Gate <i>được ép</i> — <code>stage-policy.yaml</code>, file mà hook thực sự đọc — còn yêu cầu thêm <code>critique-consensus.json</code>, giống <code>pr</code> / <code>merge</code> / <code>deploy</code>.</span></li>
-        <li><span class="en">When prose and policy disagree, the policy wins: the gate blocks on what <code>stage-policy.yaml</code> says, not on what a skill's description says.</span><span class="vi">Khi prose và policy bất đồng, policy thắng: gate chặn theo <code>stage-policy.yaml</code>, không theo mô tả của một skill.</span></li>
+        <li><span class="en">The <code>hs:ship</code> pipeline spells out steps for verification, review, and plan-approval. The <i>enforced</i> policy is <code>stage-policy.yaml</code> — the remote CI receipts-gate reads it and hard-blocks, while the local hook reads the same file but only <b>advises</b> (<code>exit 0</code>). Its shipped default requires exactly those three at <code>pr</code> / <code>merge</code> / <code>ship</code> / <code>deploy</code>. <code>critique-consensus.json</code> is <b>opt-in</b>: a stage enforces it only if you add it to that stage's <code>requires:</code>.</span><span class="vi">Pipeline <code>hs:ship</code> ghi rõ bước cho verification, review, và plan-approval. Policy <i>được ép</i> là <code>stage-policy.yaml</code> — receipts-gate ở CI từ xa đọc nó và chặn cứng, còn hook tại máy đọc cùng file nhưng chỉ <b>advisory</b> (<code>exit 0</code>). Mặc định ship yêu cầu đúng ba cái đó ở <code>pr</code> / <code>merge</code> / <code>ship</code> / <code>deploy</code>. <code>critique-consensus.json</code> là <b>tùy chọn</b>: một stage chỉ ép nó nếu bạn thêm vào <code>requires:</code> của stage đó.</span></li>
+        <li><span class="en">When prose and policy disagree, the policy wins: the remote CI gate enforces what <code>stage-policy.yaml</code> says, not what a skill's description says.</span><span class="vi">Khi prose và policy bất đồng, policy thắng: gate CI từ xa ép theo <code>stage-policy.yaml</code>, không theo mô tả của một skill.</span></li>
       </ul>
     </div>
 
@@ -161,13 +161,13 @@
     <div class="hero-ex" style="--ac:var(--ok);margin-top:20px">
       <div class="xlabel"><span class="en">The gate, real</span><span class="vi">Gate, thật</span></div>
       <p class="muted" style="font-size:.9rem">
-        <span class="en">A <code>git push</code> with the artifacts missing. The compliance hook fails closed with <code>exit 2</code> and names the exits — never a dead end. <code>hs:ship</code> hits this same wall. <span class="realtag">real output</span></span>
-        <span class="vi">Một <code>git push</code> khi thiếu artifact. Hook compliance fail-closed <code>exit 2</code> và nêu các lối ra — không bao giờ ngõ cụt. <code>hs:ship</code> đụng đúng bức tường này. <span class="realtag">đầu ra thật</span></span>
+        <span class="en">A <code>git push</code> with the artifacts missing. The local hook emits an advisory (<code>exit 0</code>) naming the gap + the exits — never a dead end; the hard wall <code>hs:ship</code> hits is the remote CI receipts-gate. <span class="realtag">real output</span></span>
+        <span class="vi">Một <code>git push</code> khi thiếu artifact. Hook tại máy phát advisory (<code>exit 0</code>) nêu chỗ thiếu + các lối ra — không bao giờ ngõ cụt; bức tường cứng mà <code>hs:ship</code> đụng là receipts-gate ở CI từ xa. <span class="realtag">đầu ra thật</span></span>
       </p>
       <div class="term blocked">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">echo '{"tool_input":{"command":"git push"}}' | python3 harness/hooks/gate_stage.py</span></div>
-        <pre>[gate_stage] BLOCKED: hard stage 'push' needs an active plan but none resolved. Three exits: (1) create a plan under plans/ with `status: in_progress` frontmatter; (2) set HARNESS_ACTIVE_PLAN to the plan dir; (3) set `require_plan: false` for this stage in harness/data/stage-policy.yaml (tracked in git)
-[exit 2 — compliance hook fail-closed]
+        <pre>[advisory] gate_stage: hard stage 'push' needs an active plan but none resolved. Three exits: (1) create a plan under plans/ with `status: in_progress` frontmatter; (2) set HARNESS_ACTIVE_PLAN to the plan dir; (3) set `require_plan: false` for this stage in harness/data/stage-policy.yaml (tracked in git) — presence enforcement lives in remote CI (receipts-gate)
+[exit 0 — local gate is advisory; the remote CI receipts-gate is the hard block]
 </pre>
       </div>
     </div>
@@ -181,21 +181,21 @@
         <li><span class="en">A <b>merge conflict</b> that can't auto-resolve → stop, show the conflicts.</span><span class="vi">Một <b>xung đột merge</b> không tự giải được → dừng, hiện xung đột.</span></li>
         <li><span class="en"><b>Tests fail</b> → stop, show the failures.</span><span class="vi"><b>Test rớt</b> → dừng, hiện lỗi.</span></li>
         <li><span class="en"><code>review-decision</code> verdict <b>≠ PASS</b> → stop, ask (fix now / accept risk / cancel).</span><span class="vi">verdict <code>review-decision</code> <b>≠ PASS</b> → dừng, hỏi (sửa ngay / nhận rủi ro / hủy).</span></li>
-        <li><span class="en"><b>Artifact missing</b> → the gate blocks; ship does not continue.</span><span class="vi"><b>Thiếu artifact</b> → gate chặn; ship không tiếp tục.</span></li>
-        <li><span class="en"><b>Artifact drift</b> (plan modified after approval) → the gate blocks.</span><span class="vi"><b>Artifact lệch</b> (plan sửa sau khi duyệt) → gate chặn.</span></li>
+        <li><span class="en"><b>Artifact missing</b> → <code>hs:ship</code> aborts (it won't push without the receipts); the local gate would only advise, but the remote CI gate would block.</span><span class="vi"><b>Thiếu artifact</b> → <code>hs:ship</code> hủy (không push khi thiếu receipt); gate tại máy chỉ advisory, còn gate CI từ xa sẽ chặn.</span></li>
+        <li><span class="en"><b>Artifact drift</b> (plan modified after approval) → <code>hs:ship</code> aborts; re-approval is needed.</span><span class="vi"><b>Artifact lệch</b> (plan sửa sau khi duyệt) → <code>hs:ship</code> hủy; cần duyệt lại.</span></li>
       </ul>
     </div>
 
     <div class="gate" style="margin-top:18px">
-      <b>HARD-GATE — <span class="en">two blocks, not one.</span><span class="vi">hai block, không phải một.</span></b>
-      <span class="en"> <code>harness/hooks/gate_stage.py</code> (PreToolUse·Bash, fail-closed) blocks the <code>ship</code> stage at the tool layer; <code>harness/install/git-pre-push-hook.sh</code> blocks again at the transport layer. Skipping the skill doesn't skip the gate — a raw push meets the same refusal.</span>
-      <span class="vi"> <code>harness/hooks/gate_stage.py</code> (PreToolUse·Bash, fail-closed) chặn stage <code>ship</code> ở tầng tool; <code>harness/install/git-pre-push-hook.sh</code> chặn lần nữa ở tầng vận chuyển. Bỏ skill không bỏ được gate — một push thô gặp đúng sự từ chối.</span>
+      <b>HARD-GATE — <span class="en">two advisories locally, one hard gate at CI.</span><span class="vi">hai advisory tại máy, một gate cứng ở CI.</span></b>
+      <span class="en"> <code>harness/hooks/gate_stage.py</code> (PreToolUse·Bash) <b>advises</b> (<code>exit 0</code>, naming the gap) at the tool layer; <code>harness/install/git-pre-push-hook.sh</code> <b>warns</b> (<code>exit 0</code>) at the transport layer. Neither blocks locally — the hard refusal is the remote CI receipts-gate. Skipping the skill doesn't skip that gate — a raw push meets the same advisory and the same remote block. (The hard <i>local</i> exit-2 blocks are reserved for forgery, secrets, and protected-branch-destructive pushes.)</span>
+      <span class="vi"> <code>harness/hooks/gate_stage.py</code> (PreToolUse·Bash) <b>advisory</b> (<code>exit 0</code>, nêu chỗ thiếu) ở tầng tool; <code>harness/install/git-pre-push-hook.sh</code> <b>cảnh báo</b> (<code>exit 0</code>) ở tầng vận chuyển. Cả hai không chặn tại máy — sự từ chối cứng là receipts-gate ở CI từ xa. Bỏ skill không bỏ được gate đó — một push thô gặp đúng advisory và đúng block từ xa. (Các block <i>local</i> exit-2 cứng chỉ dành cho giả mạo, secret, và push phá nhánh bảo vệ.)</span>
     </div>
 
     <!-- FAQ -->
     <h3 class="sectitle" style="font-size:1.25rem;margin:34px 0 0"><span class="en">FAQ</span><span class="vi">Hỏi đáp</span></h3>
     <div class="faq" style="--ac:var(--ok)">
-      <details><summary><span class="en">Does <code>hs:ship</code> let me skip a gate when I'm in a hurry?</span><span class="vi"><code>hs:ship</code> có cho bỏ một gate khi gấp không?</span></summary><div class="fa"><span class="en">No. It orchestrates the prerequisites but the gate is enforced in a hook, not in the skill. A missing or failing artifact stops both the skill and a manual <code>git push</code>.</span><span class="vi">Không. Nó điều phối các điều-kiện-tiên-quyết nhưng gate được ép trong hook, không trong skill. Một artifact thiếu hoặc rớt sẽ dừng cả skill lẫn <code>git push</code> tay.</span></div></details>
+      <details><summary><span class="en">Does <code>hs:ship</code> let me skip a gate when I'm in a hurry?</span><span class="vi"><code>hs:ship</code> có cho bỏ một gate khi gấp không?</span></summary><div class="fa"><span class="en">No. It orchestrates the prerequisites, but the policy lives in a hook, not the skill. A missing or failing artifact makes <code>hs:ship</code> abort; a manual <code>git push</code> still gets the same local advisory (<code>exit 0</code>) and then meets the hard block at the remote CI receipts-gate.</span><span class="vi">Không. Nó điều phối các điều-kiện-tiên-quyết, nhưng policy nằm trong hook, không trong skill. Một artifact thiếu hoặc rớt khiến <code>hs:ship</code> hủy; một <code>git push</code> tay vẫn nhận đúng advisory tại máy (<code>exit 0</code>) rồi gặp block cứng ở receipts-gate CI từ xa.</span></div></details>
       <details><summary><span class="en">What's the difference between <code>hs:ship</code> and <code>hs:git</code>?</span><span class="vi">Khác nhau giữa <code>hs:ship</code> và <code>hs:git</code>?</span></summary><div class="fa"><span class="en"><code>hs:git</code> is plain commit / push / PR with conventional commits and a secret scan. <code>hs:ship</code> runs the full gated release pipeline — test, review, verify, approval — before it ever reaches transport.</span><span class="vi"><code>hs:git</code> là commit / push / PR thường với conventional commit và quét secret. <code>hs:ship</code> chạy pipeline phát hành có gate đầy đủ — test, review, verify, duyệt — trước khi tới tầng vận chuyển.</span></div></details>
       <details><summary><span class="en">Why does <code>PASS_WITH_RISK</code> not qualify for ship?</span><span class="vi">Vì sao <code>PASS_WITH_RISK</code> không đủ để ship?</span></summary><div class="fa"><span class="en">It's a conscious soft-accept — "this has a known risk we're choosing to carry". Ship demands an unqualified <code>PASS</code>; carrying risk to production is a decision a human makes explicitly, not a verdict the gate waves through.</span><span class="vi">Đó là chấp-nhận-mềm có ý thức — "cái này có rủi ro đã biết mà ta chọn gánh". Ship đòi <code>PASS</code> không điều kiện; mang rủi ro lên production là quyết định con người nêu rõ, không phải verdict gate cho qua.</span></div></details>
       <details><summary><span class="en">Can I preview what ship would do?</span><span class="vi">Tôi xem trước ship sẽ làm gì được không?</span></summary><div class="fa"><span class="en">Yes — <code>--dry-run</code> shows the full plan (target, mode, diff, steps) and changes nothing.</span><span class="vi">Được — <code>--dry-run</code> hiện toàn bộ kế hoạch (đích, mode, diff, bước) và không đổi gì.</span></div></details>
@@ -224,7 +224,7 @@
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

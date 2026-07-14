@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Journey — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Journey — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Journey — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -123,8 +123,8 @@
       <p class="muted" style="font-size:.9rem"><span class="en">An ambiguous task enters <code>hs:discover</code>. It chains a research subagent and a brainstorm subagent, then synthesizes a discovery brief — a structured input for planning. A <code>/clear</code> nudge isolates the context before planning begins so the plan skill starts with a clean slate.</span><span class="vi">Task mơ hồ đi vào <code>hs:discover</code>. Nó nối một subagent research và một subagent brainstorm, rồi tổng hợp thành discovery brief — đầu vào có cấu trúc cho planning. Một nudge <code>/clear</code> cô lập context trước khi planning để skill plan bắt đầu với slate sạch.</span></p>
       <div class="gate">
         <b><span class="en">Behind the scenes:</span><span class="vi">Bên trong:</span></b>
-        <span class="en"> The <code>SubagentStart</code> + <code>SubagentStop</code> hooks fire for each chained subagent, appending <code>event: skill_run</code> records to the telemetry sink (fail-open). The <code>/clear</code> nudge is advisory — it fires on <code>PreToolUse:Read</code>, emits on <code>stderr</code>, never blocks.</span>
-        <span class="vi"> Hook <code>SubagentStart</code> + <code>SubagentStop</code> kích hoạt cho mỗi subagent, append record <code>event: skill_run</code> vào telemetry sink (fail-open). Nudge <code>/clear</code> là advisory — kích hoạt trên <code>PreToolUse:Read</code>, emit ra <code>stderr</code>, không bao giờ chặn.</span>
+        <span class="en"> The <code>SubagentStart</code> + <code>SubagentStop</code> hooks fire for each chained subagent, appending an outcome record (<code>agent_type</code>, <code>outcome</code>, <code>session</code>) to <code>subagent-outcomes.jsonl</code> (fail-open). The <code>/clear</code> nudge is advisory — it fires on <code>PreToolUse:Skill</code>, emits on <code>stderr</code>, never blocks.</span>
+        <span class="vi"> Hook <code>SubagentStart</code> + <code>SubagentStop</code> kích hoạt cho mỗi subagent, append record outcome (<code>agent_type</code>, <code>outcome</code>, <code>session</code>) vào <code>subagent-outcomes.jsonl</code> (fail-open). Nudge <code>/clear</code> là advisory — kích hoạt trên <code>PreToolUse:Skill</code>, emit ra <code>stderr</code>, không bao giờ chặn.</span>
       </div>
     </div>
 
@@ -168,8 +168,8 @@
 
       <div class="gate" style="margin-top:12px">
         <b><span class="en">Behind the scenes:</span><span class="vi">Bên trong:</span></b>
-        <span class="en"> <code>plan_approval.py</code> writes an <code>artifact-plan-approval</code> JSON to <code>plans/&lt;id&gt;/</code> when approved. The compliance hook <code>gate_stage</code> reads this file at cook/ship time — no file = blocked.</span>
-        <span class="vi"> <code>plan_approval.py</code> ghi JSON <code>artifact-plan-approval</code> vào <code>plans/&lt;id&gt;/</code> khi được duyệt. Hook compliance <code>gate_stage</code> đọc file này tại cook/ship — không có file = bị chặn.</span>
+        <span class="en"> <code>plan_approval.py</code> writes an <code>artifact-plan-approval</code> JSON to <code>plans/&lt;id&gt;/</code> when approved. The compliance hook <code>gate_stage</code> reads this file at cook/ship time — no file → a local advisory (<code>exit 0</code>), enforced at the remote CI receipts-gate.</span>
+        <span class="vi"> <code>plan_approval.py</code> ghi JSON <code>artifact-plan-approval</code> vào <code>plans/&lt;id&gt;/</code> khi được duyệt. Hook compliance <code>gate_stage</code> đọc file này tại cook/ship — không có file → advisory tại máy (<code>exit 0</code>), được enforce ở receipts-gate CI từ xa.</span>
       </div>
     </div>
 
@@ -220,7 +220,7 @@
     <div style="margin-top:34px">
       <div class="eyebrow"><span class="en">Step 5</span><span class="vi">Bước 5</span></div>
       <h2 class="sectitle" id="jr-test" style="font-size:1.3rem"><span class="en">hs:test — unit / integration → verification.json</span><span class="vi">hs:test — unit / integration → verification.json</span></h2>
-      <p class="muted" style="font-size:.9rem"><span class="en"><code>hs:test</code> runs the test suite with a unit or integration profile, aggregates the results, and writes a <code>verification.json</code> artifact with a final <code>"verdict": "PASS"</code> or <code>"FAIL"</code>. The gate reads this file — a missing or FAIL verdict blocks ship.</span><span class="vi"><code>hs:test</code> chạy bộ test với profile unit hoặc integration, tổng hợp kết quả, và ghi artifact <code>verification.json</code> với <code>"verdict": "PASS"</code> hoặc <code>"FAIL"</code> cuối cùng. Gate đọc file này — verdict thiếu hoặc FAIL chặn ship.</span></p>
+      <p class="muted" style="font-size:.9rem"><span class="en"><code>hs:test</code> runs the test suite with a unit or integration profile, aggregates the results, and writes a <code>verification.json</code> artifact with a final <code>"verdict": "PASS"</code> or <code>"FAIL"</code>. The gate reads this file — a missing or FAIL verdict draws a local advisory (<code>exit 0</code>) and is blocked at the remote CI receipts-gate.</span><span class="vi"><code>hs:test</code> chạy bộ test với profile unit hoặc integration, tổng hợp kết quả, và ghi artifact <code>verification.json</code> với <code>"verdict": "PASS"</code> hoặc <code>"FAIL"</code> cuối cùng. Gate đọc file này — verdict thiếu hoặc FAIL cho advisory tại máy (<code>exit 0</code>) và bị chặn ở receipts-gate CI từ xa.</span></p>
       <div class="hero-ex" style="--ac:var(--crit);margin-top:14px">
         <div class="xlabel"><span class="en">Sample verification.json</span><span class="vi">verification.json mẫu</span></div>
         <div class="term">
@@ -267,12 +267,12 @@
     <!-- Step 6: stage gate -->
     <div style="margin-top:34px">
       <div class="eyebrow"><span class="en">Step 6</span><span class="vi">Bước 6</span></div>
-      <h2 class="sectitle" id="jr-gate" style="font-size:1.3rem"><span class="en">Stage gate — compliance hook blocks push</span><span class="vi">Stage gate — hook compliance chặn push</span></h2>
-      <p class="muted" style="font-size:.9rem"><span class="en">When you run <code>git push</code> or <code>hs:ship</code>, the <code>gate_stage</code> compliance hook fires. It checks the filesystem for the required acceptance artifacts. No artifact? <code>exit 2</code> with an actionable message. The pre-push git hook is a transport-level backstop.</span><span class="vi">Khi bạn chạy <code>git push</code> hoặc <code>hs:ship</code>, hook compliance <code>gate_stage</code> kích hoạt. Nó kiểm filesystem xem có artifact nghiệm thu cần thiết không. Không có artifact? <code>exit 2</code> với thông báo xử lý được. Hook git pre-push là backstop ở tầng transport.</span></p>
+      <h2 class="sectitle" id="jr-gate" style="font-size:1.3rem"><span class="en">Stage gate — the hook advises on push</span><span class="vi">Stage gate — hook nhắc khi push</span></h2>
+      <p class="muted" style="font-size:.9rem"><span class="en">When you run <code>git push</code> or <code>hs:ship</code>, the <code>gate_stage</code> hook fires. It checks the filesystem for the required acceptance artifacts. No artifact? An advisory (<code>exit 0</code>) names it; the git pre-push hook is a transport-layer backstop and enforcement is the remote CI receipts-gate.</span><span class="vi">Khi bạn chạy <code>git push</code> hoặc <code>hs:ship</code>, hook <code>gate_stage</code> kích hoạt. Nó kiểm filesystem xem có artifact nghiệm thu cần thiết không. Không có artifact? Một advisory (<code>exit 0</code>) nêu tên nó; hook git pre-push là backstop ở tầng transport và enforcement là receipts-gate ở CI từ xa.</span></p>
       <div class="term blocked" style="margin-top:12px">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">git push origin main</span></div>
-        <pre>[gate_stage] BLOCKED: hard stage 'push' needs an active plan but none resolved. Three exits: (1) create a plan under plans/ with `status: in_progress` frontmatter; (2) set HARNESS_ACTIVE_PLAN to the plan dir; (3) set `require_plan: false` for this stage in harness/data/stage-policy.yaml (tracked in git)
-[exit 2 — compliance hook fail-closed]
+        <pre>[advisory] gate_stage: hard stage 'push' needs an active plan but none resolved. Three exits: (1) create a plan under plans/ with `status: in_progress` frontmatter; (2) set HARNESS_ACTIVE_PLAN to the plan dir; (3) set `require_plan: false` for this stage in harness/data/stage-policy.yaml (tracked in git) — presence enforcement lives in remote CI (receipts-gate)
+[exit 0 — local gate is advisory; the remote CI receipts-gate is the hard block]
 </pre>
       </div>
       <div class="honest" style="margin-top:14px">
@@ -302,13 +302,13 @@
         </div>
         <div class="wstep p" style="--c:var(--gold)">
           <span class="wtag">03</span>
-          <div class="wt"><span class="en">Human approval</span><span class="vi">Người duyệt</span></div>
-          <div class="wd"><span class="en">plan_approval artifact present</span><span class="vi">artifact plan_approval có mặt</span></div>
+          <div class="wt"><span class="en">Plan-approval artifact</span><span class="vi">Artifact plan-approval</span></div>
+          <div class="wd"><span class="en">plan_approval present (self-approval; live confirm is Step 9)</span><span class="vi">plan_approval có mặt (self-approval; xác nhận trực tiếp ở Bước 9)</span></div>
         </div>
         <div class="wstep e" style="--c:var(--crit)">
           <span class="wtag">04</span>
           <div class="wt"><span class="en">Gate check</span><span class="vi">Kiểm gate</span></div>
-          <div class="wd"><span class="en">gate_stage fires, exit 2 on miss</span><span class="vi">gate_stage kích hoạt, exit 2 nếu thiếu</span></div>
+          <div class="wd"><span class="en">gate_stage advises (exit 0); CI enforces</span><span class="vi">gate_stage nhắc (exit 0); CI enforce</span></div>
         </div>
         <div class="wstep s" style="--c:var(--ok)">
           <span class="wtag">05</span>
@@ -329,7 +329,7 @@
       <details><summary><span class="en">Which steps actually require a human?</span><span class="vi">Bước nào thật sự cần người?</span></summary><div class="fa"><span class="en">Two: plan approval and ship (in <code>default</code> autonomy). Everything between can run automatically — and is still traced. <code>ask_all</code> adds a pause after every phase; <code>god</code> removes the mid-chain pauses.</span><span class="vi">Hai: duyệt plan và ship (ở mức <code>default</code>). Phần ở giữa có thể tự chạy — và vẫn được trace. <code>ask_all</code> thêm dừng sau mỗi phase; <code>god</code> bỏ các lần dừng giữa chuỗi.</span></div></details>
       <details><summary><span class="en">What's a "presence gate", and what can't it do?</span><span class="vi">"presence gate" là gì, và không làm được gì?</span></summary><div class="fa"><span class="en">It checks that the required artifact exists and parses. It cannot prove the content is correct or that a human review was thorough. <code>actor</code> is attribution, not identity — it raises the cost of lying, it doesn't prevent it.</span><span class="vi">Nó kiểm artifact cần thiết có tồn tại và parse được. Không chứng minh nội dung đúng hay review người kỹ lưỡng. <code>actor</code> là attribution, không phải danh tính — tăng giá nói dối, không ngăn được.</span></div></details>
       <details><summary><span class="en">Why does a task claim expire after 4 hours?</span><span class="vi">Vì sao claim task hết hạn sau 4 giờ?</span></summary><div class="fa"><span class="en">So a hung owner doesn't lock work forever. After the lease expires any peer can reclaim it safely — atomicity comes from a rename, never a delete-and-create.</span><span class="vi">Để chủ bị treo không khóa việc mãi. Hết lease, bất kỳ peer nào cũng reclaim an toàn — atomicity từ rename, không bao giờ xóa-rồi-tạo.</span></div></details>
-      <details><summary><span class="en">Telemetry hooks vs compliance hooks — what's the difference?</span><span class="vi">Hook telemetry vs compliance — khác gì?</span></summary><div class="fa"><span class="en">Telemetry sinks are <b>fail-open</b> — they observe and never block. Compliance hooks like <code>gate_stage</code> are <b>fail-closed</b> — a missing artifact stops the stage with <code>exit 2</code>.</span><span class="vi">Sink telemetry <b>fail-open</b> — quan sát và không bao giờ chặn. Hook compliance như <code>gate_stage</code> <b>fail-closed</b> — thiếu artifact là dừng stage với <code>exit 2</code>.</span></div></details>
+      <details><summary><span class="en">Telemetry hooks vs compliance hooks — what's the difference?</span><span class="vi">Hook telemetry vs compliance — khác gì?</span></summary><div class="fa"><span class="en">Telemetry sinks are <b>fail-open</b> — they observe and never block. A hard compliance violation (forgery, secret, protected-branch) fails closed with <code>exit 2</code>; the stage-presence gate <code>gate_stage</code> is advisory locally (<code>exit 0</code> naming the gap) and enforced by the remote CI receipts-gate.</span><span class="vi">Sink telemetry <b>fail-open</b> — quan sát và không bao giờ chặn. Vi phạm compliance cứng (giả mạo, secret, nhánh bảo vệ) fail-closed với <code>exit 2</code>; stage-presence gate <code>gate_stage</code> là advisory tại máy (<code>exit 0</code> nêu tên chỗ thiếu) và được enforce bởi receipts-gate ở CI từ xa.</span></div></details>
       <details><summary><span class="en">Can I see what actually ran vs what I declared?</span><span class="vi">Xem được cái thực chạy vs cái tôi khai báo không?</span></summary><div class="fa"><span class="en">Yes. Every gate event is appended to <code>state/trace/trace-YYYYMMDD.jsonl</code> (it never rotates), and the workflow lens in <code>analyze_telemetry.py</code> compares the declared chain against the events that actually fired.</span><span class="vi">Có. Mọi sự kiện gate append vào <code>state/trace/trace-YYYYMMDD.jsonl</code> (không xoay vòng), và workflow lens trong <code>analyze_telemetry.py</code> so chuỗi khai báo với sự kiện thực sự xảy ra.</span></div></details>
     </div>
   </div>
@@ -356,7 +356,7 @@
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

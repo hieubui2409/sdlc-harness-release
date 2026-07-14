@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>hs:cook — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="hs:cook — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="hs:cook — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -84,7 +84,7 @@
     </div>
     <div class="divider" style="--ac:var(--rel)"></div>
 
-    <p class="lead" style="margin-bottom:18px"><span class="en">Takes a <b>human-approved</b> plan and works it phase by phase: red→green TDD, a machine-written <code>verification.json</code> at each phase end, a trace event with an actor for every meaningful step. No approved plan → it sends you back to <code>hs:plan</code> (and the hard gate blocks the shortcut anyway).</span><span class="vi">Nhận một plan <b>đã người duyệt</b> và làm từng phase: TDD đỏ→xanh, một <code>verification.json</code> máy-ghi cuối mỗi phase, một event trace kèm actor cho mọi bước đáng kể. Không có plan duyệt → quay về <code>hs:plan</code> (và hard gate vẫn chặn đường tắt).</span></p>
+    <p class="lead" style="margin-bottom:18px"><span class="en">Takes a <b>human-approved</b> plan and works it phase by phase: red→green TDD, a machine-written <code>verification.json</code> at each phase end, a trace event with an actor for every meaningful step. No approved plan → it sends you back to <code>hs:plan</code> (and the remote CI receipts-gate blocks the shortcut anyway).</span><span class="vi">Nhận một plan <b>đã người duyệt</b> và làm từng phase: TDD đỏ→xanh, một <code>verification.json</code> máy-ghi cuối mỗi phase, một event trace kèm actor cho mọi bước đáng kể. Không có plan duyệt → quay về <code>hs:plan</code> (và receipts-gate CI từ xa vẫn chặn đường tắt).</span></p>
 
     <!-- when to use -->
     <h2 class="sectitle" id="cook-when"><span class="en">When to use</span><span class="vi">Khi nào dùng</span></h2>
@@ -121,32 +121,47 @@
       </div>
     </div>
 
-    <!-- ============ HERO: block-then-pass ============ -->
-    <h2 class="sectitle" id="cook-example"><span class="en">See it block, then pass</span><span class="vi">Xem nó chặn, rồi cho qua</span></h2>
+    <!-- ============ HERO: advise-then-pass ============ -->
+    <h2 class="sectitle" id="cook-example"><span class="en">See it advise, then pass</span><span class="vi">Xem nó nhắc, rồi cho qua</span></h2>
     <div class="hero-ex" style="--ac:var(--rel)">
       <div class="xlabel"><span class="en">Worked example</span><span class="vi">Ví dụ thật</span></div>
-      <h3 style="margin:2px 0 6px"><span class="en">Block, then pass — the artifact is the key</span><span class="vi">Chặn, rồi cho qua — artifact là chìa</span></h3>
+      <h3 style="margin:2px 0 6px"><span class="en">Advisory, then pass — the artifact is the key</span><span class="vi">Nhắc, rồi cho qua — artifact là chìa</span></h3>
       <p class="muted" style="font-size:.9rem">
-        <span class="en">The end-to-end slice in a temp dir: a push <b>without</b> the artifact is blocked at <code>exit 2</code>; cook writes <code>verification.json</code>; the same push <b>with</b> it passes — and every gate event carries an actor. <span class="realtag">real e2e</span></span>
-        <span class="vi">Lát end-to-end trong temp dir: push <b>thiếu</b> artifact bị chặn <code>exit 2</code>; cook ghi <code>verification.json</code>; cùng push đó <b>có</b> artifact thì qua — và mọi gate event mang actor. <span class="realtag">e2e thật</span></span>
+        <span class="en">The end-to-end slice in a temp dir: a push <b>without</b> the artifact gets an advisory (<code>exit 0</code>) naming the gap; cook writes <code>verification.json</code>; the same push <b>with</b> it passes — and every gate event carries an actor. The remote CI receipts-gate is the hard block. <span class="realtag">real e2e</span></span>
+        <span class="vi">Lát end-to-end trong temp dir: push <b>thiếu</b> artifact nhận advisory (<code>exit 0</code>) nêu tên chỗ thiếu; cook ghi <code>verification.json</code>; cùng push đó <b>có</b> artifact thì qua — và mọi gate event mang actor. Receipts-gate ở CI từ xa mới là chốt chặn cứng. <span class="realtag">e2e thật</span></span>
       </p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 harness/e2e/run_vertical_slice.py</span></div>
-        <pre>e2e vertical slice in /tmp/harness-e2e-3ehy1mia (simulated transport: stdin JSON subprocess, not native Claude Code)
+        <pre>e2e vertical slice in /tmp/harness-e2e-63ccm1j6 (simulated transport: stdin JSON subprocess, not native Claude Code)
   ✓ session_init continues
   ✓ session file written with actor
-  ✓ push without artifact BLOCKS exit 2
-  ✓ block reason names the missing artifact
+  ✓ push without artifact ADVISORY exit 0
+  ✓ advisory names the missing artifact
   ✓ push with artifact PASSES exit 0
+  ✓ push ADVISORY on a FAILed check (exit 0)
+  ✓ push ADVISORY on a BLOCKED verdict (exit 0)
+  ✓ push ADVISORY on an off-enum verdict (exit 0)
+  ✓ push ADVISORY on an empty checks array (exit 0)
+  ✓ push PASSES again after restoring a valid artifact
+  ✓ bugfix missing regression ADVISORY (DoD)
+  ✓ bugfix with regression PASSES (DoD)
+  ✓ pr ADVISORY with only verification (names missing review-decision)
+  ✓ pr ADVISORY with verification+review but no plan-approval
+  ✓ pr PASSES with verification + review + a valid plan-approval
+  ✓ pr ADVISORY after the plan body changed (approval drift re-opens)
   ✓ disabled gate skips exit 0
   ✓ pre-push hook passes with artifact
-  ✓ pre-push hook blocks without artifact
+  ✓ pre-push hook WARNS without artifact (exit 0)
+  ✓ forgery write to a receipt path STILL BLOCKS (exit 2)
   ✓ trace has gate events
   ✓ every gate event carries an actor
-  ✓ both block and pass were traced
+  ✓ both advisory and pass were traced
   ✓ skip was traced with reason
+  ✓ [global] tool-Write into ${bin} hook BLOCKS (exit 2)
+  ✓ [global] whole-bin catch-all BLOCKS a non-guarded bin path (exit 2)
+  ✓ [global] legit project .harness/ write PASSES (exit 0)
 
-e2e: 2026-06-13T15:29:07.109629+00:00 | 12 passed, 0 failed | transport=simulated-stdin
+e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
 </pre>
       </div>
       <p class="faint" style="font-size:.76rem;margin-top:10px"><span class="en">12/12 checks. The gate reads the artifact off the <b>filesystem</b> — no commit needed (and <code>.gitignore</code> keeps new plan dirs out of git, so artifacts can't auto-commit; that's policy, not a bug).</span><span class="vi">12/12 check. Gate đọc artifact từ <b>filesystem</b> — không cần commit (và <code>.gitignore</code> che plan dir mới, nên artifact không tự commit; đó là policy, không phải lỗi).</span></p>
@@ -181,14 +196,14 @@ e2e: 2026-06-13T15:29:07.109629+00:00 | 12 passed, 0 failed | transport=simulate
 
     <div class="gate" style="margin-top:16px">
       <b>HARD-GATE — <span class="en">wiring is real.</span><span class="vi">wiring là thật.</span></b>
-      <span class="en"> <code>gate_stage.py</code> blocks a hard stage when <code>verification.json</code> is missing (<code>exit 2</code> + the path to create it) or a review-decision verdict ≠ PASS. Faking a report (writing PASS while failing) surfaces the moment CI re-runs the suite, and the trace keeps a record of who wrote what.</span>
-      <span class="vi"> <code>gate_stage.py</code> chặn stage cứng khi thiếu <code>verification.json</code> (<code>exit 2</code> + đường tạo) hoặc verdict review-decision ≠ PASS. Báo cáo gian (ghi PASS khi đang fail) lộ ngay khi CI chạy lại suite, và trace giữ vết ai ghi gì.</span>
+      <span class="en"> <code>gate_stage.py</code> ADVISES locally (<code>exit 0</code>) when <code>verification.json</code> is missing or a review-decision verdict ≠ PASS, naming what to create; the remote CI receipts-gate enforces it. Faking a report (writing PASS while failing) surfaces the moment CI re-runs the suite, and the trace keeps a record of who wrote what.</span>
+      <span class="vi"> <code>gate_stage.py</code> NHẮC tại máy (<code>exit 0</code>) khi thiếu <code>verification.json</code> hoặc verdict review-decision ≠ PASS, nêu tên thứ cần tạo; receipts-gate ở CI từ xa mới enforce. Báo cáo gian (ghi PASS khi đang fail) lộ ngay khi CI chạy lại suite, và trace giữ vết ai ghi gì.</span>
     </div>
 
     <!-- FAQ -->
     <h3 class="sectitle" style="font-size:1.25rem;margin:34px 0 0"><span class="en">FAQ</span><span class="vi">Hỏi đáp</span></h3>
     <div class="faq" style="--ac:var(--rel)">
-      <details><summary><span class="en">Can I cook without an approved plan?</span><span class="vi">Cook khi chưa duyệt plan được không?</span></summary><div class="fa"><span class="en">No. With no approved plan it returns you to <code>hs:plan</code>, and the <code>require_plan</code> gate blocks the hard stages anyway — there's no shortcut to ship.</span><span class="vi">Không. Khi chưa có plan duyệt, nó đưa bạn về <code>hs:plan</code>, và gate <code>require_plan</code> vẫn chặn các stage cứng — không có đường tắt để ship.</span></div></details>
+      <details><summary><span class="en">Can I cook without an approved plan?</span><span class="vi">Cook khi chưa duyệt plan được không?</span></summary><div class="fa"><span class="en">No. With no approved plan it returns you to <code>hs:plan</code>, and the <code>require_plan</code> gate is enforced at the remote CI receipts-gate anyway (locally it only advises) — there's no shortcut to ship.</span><span class="vi">Không. Khi chưa có plan duyệt, nó đưa bạn về <code>hs:plan</code>, và gate <code>require_plan</code> vẫn được enforce ở receipts-gate CI từ xa (tại máy chỉ advisory) — không có đường tắt để ship.</span></div></details>
       <details><summary><span class="en">Do I have to commit the artifacts for the gate to pass?</span><span class="vi">Có cần commit artifact để gate qua không?</span></summary><div class="fa"><span class="en">No. The gate reads <code>verification.json</code> off the filesystem. <code>.gitignore</code> deliberately keeps new plan dirs out of git, so artifacts don't auto-commit — correct policy, not a bug.</span><span class="vi">Không. Gate đọc <code>verification.json</code> từ filesystem. <code>.gitignore</code> cố ý che plan dir mới khỏi git, nên artifact không tự commit — đúng policy, không phải lỗi.</span></div></details>
       <details><summary><span class="en">I'm stuck between two comparable approaches mid-phase.</span><span class="vi">Kẹt giữa hai cách ngang nhau giữa phase.</span></summary><div class="fa"><span class="en">Escalate to <code>hs:bakeoff</code>: probe the alternatives and decide by numbers, then resume cook — instead of grinding one direction on a hunch.</span><span class="vi">Chuyển sang <code>hs:bakeoff</code>: thử các phương án và quyết bằng số, rồi quay lại cook — thay vì cắm cúi một hướng theo cảm tính.</span></div></details>
       <details><summary><span class="en">Where does work that's outside the plan go?</span><span class="vi">Việc ngoài phạm vi plan thì để đâu?</span></summary><div class="fa"><span class="en">Into <code>BACKLOG.md</code>. Don't steer the plan mid-flight — capture it and keep the current phase honest.</span><span class="vi">Vào <code>BACKLOG.md</code>. Đừng đổi hướng plan giữa chừng — ghi lại và giữ phase hiện tại trung thực.</span></div></details>
@@ -218,7 +233,7 @@ e2e: 2026-06-13T15:29:07.109629+00:00 | 12 passed, 0 failed | transport=simulate
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

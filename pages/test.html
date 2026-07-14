@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>hs:test — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="hs:test — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="hs:test — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -126,24 +126,21 @@
       <div class="xlabel"><span class="en">Worked example</span><span class="vi">Ví dụ thật</span></div>
       <h3 style="margin:2px 0 6px"><span class="en">The whole suite, green</span><span class="vi">Cả suite, xanh</span></h3>
       <p class="muted" style="font-size:.9rem">
-        <span class="en">The real run over <code>harness/tests/</code> — unit tests plus bug-class invariants, all passing. 100% pass is the gate; anything less blocks a hard stage. <span class="realtag">real output</span></span>
-        <span class="vi">Lần chạy thật trên <code>harness/tests/</code> — test unit cộng invariant bug-class, tất cả pass. 100% pass là gate; thiếu một cái là chặn stage cứng. <span class="realtag">đầu ra thật</span></span>
+        <span class="en">The real run over <code>harness/tests/</code> — unit tests plus bug-class invariants, all passing. 100% pass is the gate; anything less raises a local advisory (<code>exit 0</code>) and is enforced by the remote CI receipts-gate. <span class="realtag">real output</span></span>
+        <span class="vi">Lần chạy thật trên <code>harness/tests/</code> — test unit cộng invariant bug-class, tất cả pass. 100% pass là gate; thiếu một cái sẽ phát advisory tại máy (<code>exit 0</code>) và được enforce bởi receipts-gate ở CI từ xa. <span class="realtag">đầu ra thật</span></span>
       </p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 -m pytest harness/tests/ -q</span></div>
-        <pre>........................................................................ [  8%]
-........................................................................ [ 17%]
-........................................................................ [ 26%]
-........................................................................ [ 35%]
-........................................................................ [ 44%]
-........................................................................ [ 52%]
-........................................................................ [ 61%]
-........................................................................ [ 70%]
-........................................................................ [ 79%]
-........................................................................ [ 88%]
+        <pre>........................................................................ [ 91%]
+........................................................................ [ 93%]
+........................................................................ [ 94%]
+........................................................................ [ 95%]
+........................................................................ [ 96%]
 ........................................................................ [ 97%]
-........................                                                 [100%]
-816 passed in 17.28s
+........................................................................ [ 98%]
+........................................................................ [ 99%]
+.............................................................            [100%]
+7039 passed, 6 skipped, 2 deselected in 234.03s (0:03:54)
 </pre>
       </div>
 
@@ -190,7 +187,7 @@
 }
 </pre>
       </div>
-      <p class="faint" style="font-size:.76rem;margin-top:10px"><span class="en">A captured snapshot (actor scrubbed, counts from when it was written). Any check with status <code>FAIL</code> blocks the hard stage. Schema: <code>harness/schemas/artifact-verification.json</code>.</span><span class="vi">Một bản chụp đã ghi (actor đã làm sạch, số liệu từ lúc nó được ghi). Bất kỳ check nào status <code>FAIL</code> đều chặn stage cứng. Schema: <code>harness/schemas/artifact-verification.json</code>.</span></p>
+      <p class="faint" style="font-size:.76rem;margin-top:10px"><span class="en">A captured snapshot (actor scrubbed, counts from when it was written). Any check with status <code>FAIL</code> raises a local advisory (<code>exit 0</code>) and is enforced by the remote CI receipts-gate. Schema: <code>harness/schemas/artifact-verification.json</code>.</span><span class="vi">Một bản chụp đã ghi (actor đã làm sạch, số liệu từ lúc nó được ghi). Bất kỳ check nào status <code>FAIL</code> sẽ phát advisory tại máy (<code>exit 0</code>) và được enforce bởi receipts-gate ở CI từ xa. Schema: <code>harness/schemas/artifact-verification.json</code>.</span></p>
     </div>
 
     <!-- profiles -->
@@ -219,8 +216,8 @@
 
     <div class="gate" style="margin-top:16px">
       <b>HARD-GATE — <span class="en">wiring is real.</span><span class="vi">wiring là thật.</span></b>
-      <span class="en"> <code>gate_stage.py</code> reads <code>verification.json</code>: any check at <code>FAIL</code> blocks the hard stage. A dishonest PASS surfaces the moment the suite re-runs in CI; the trace records the attribution either way.</span>
-      <span class="vi"> <code>gate_stage.py</code> đọc <code>verification.json</code>: bất kỳ check nào <code>FAIL</code> đều chặn stage cứng. Một PASS gian lộ ngay khi suite chạy lại ở CI; trace ghi attribution dù thế nào.</span>
+      <span class="en"> <code>gate_stage.py</code> reads <code>verification.json</code>: any check at <code>FAIL</code> raises a local advisory (<code>exit 0</code>) naming the gap, and the remote CI receipts-gate enforces it. A dishonest PASS surfaces the moment the suite re-runs in CI; the trace records the attribution either way.</span>
+      <span class="vi"> <code>gate_stage.py</code> đọc <code>verification.json</code>: bất kỳ check nào <code>FAIL</code> sẽ phát advisory tại máy (<code>exit 0</code>) nêu chỗ thiếu, và receipts-gate ở CI từ xa enforce. Một PASS gian lộ ngay khi suite chạy lại ở CI; trace ghi attribution dù thế nào.</span>
     </div>
 
     <!-- FAQ -->
@@ -256,7 +253,7 @@
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

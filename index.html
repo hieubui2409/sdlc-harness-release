@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>SDLC Harness — Interactive Showcase</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="SDLC Harness — Interactive Showcase" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="SDLC Harness — Interactive Showcase" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="assets/showcase.css" />
 </head>
 <body class="view-home">
@@ -52,8 +52,8 @@
       <span class="en"><b>Observe</b></span><span class="vi"><b>Quan sát</b></span>
     </div>
     <p class="lead">
-      <span class="en">Not prose reminders — a coordinated <code>.claude</code>-style rig that enforces the workflow at runtime: 109 <code>hs:*</code> skills, 50 hooks in three tiers, 140 scripts, and a compliance gate that <b>advises</b> push / pr / ship locally and is enforced for real at <b>remote CI</b> — with an agent cage that hard-blocks forgery on the spot. Every gate, approval, and decision is traced with an <code>actor</code>.</span>
-      <span class="vi">Không phải lời nhắc — mà cả một bộ kiểu <code>.claude</code> phối hợp, ép quy trình ngay lúc chạy: 109 skill <code>hs:*</code>, 50 hook ba hạng, 140 script, và một gate compliance <b>khuyên</b> push / pr / ship ở local rồi được ép thật ở <b>remote CI</b> — kèm cũi agent chặn cứng giả-mạo tại chỗ. Mọi gate, duyệt và quyết định đều được trace kèm <code>actor</code>.</span>
+      <span class="en">Not prose reminders — a coordinated <code>.claude</code>-style rig that enforces the workflow at runtime: 118 <code>hs:*</code> skills, 59 hooks in three tiers, 159 scripts, and a compliance gate that <b>advises</b> push / pr / ship locally and is enforced for real at <b>remote CI</b> — with an agent cage that hard-blocks forgery on the spot. Every gate, approval, and decision is traced with an <code>actor</code>.</span>
+      <span class="vi">Không phải lời nhắc — mà cả một bộ kiểu <code>.claude</code> phối hợp, ép quy trình ngay lúc chạy: 118 skill <code>hs:*</code>, 59 hook ba hạng, 159 script, và một gate compliance <b>khuyên</b> push / pr / ship ở local rồi được ép thật ở <b>remote CI</b> — kèm cũi agent chặn cứng giả-mạo tại chỗ. Mọi gate, duyệt và quyết định đều được trace kèm <code>actor</code>.</span>
     </p>
 
     <div class="cta-row">
@@ -127,7 +127,7 @@
   <div class="wrap reveal">
     <div class="eyebrow"><span class="en">The enforced loop</span><span class="vi">Vòng được ép</span></div>
     <h2 class="sectitle"><span class="en">One spine — plan, cook, test, ship — and a gate that says no</span><span class="vi">Một xương sống — plan, cook, test, ship — và một gate biết nói không</span></h2>
-    <p class="lead"><span class="en">An idea enters at plan; a human-approved, test-verified change leaves at ship — or it doesn't leave at all. The compliance gate <b>at ship</b> reads acceptance artifacts off the filesystem and fails closed. Usage of the whole rig flows back as observability.</span><span class="vi">Ý tưởng vào ở plan; một thay đổi đã-người-duyệt, đã-test ra ở ship — hoặc không ra được. Gate compliance <b>tại ship</b> đọc artifact nghiệm thu từ filesystem và fail-closed. Mức dùng của cả bộ chảy ngược về thành quan trắc.</span></p>
+    <p class="lead"><span class="en">An idea enters at plan; a human-approved, test-verified change leaves at ship — or it doesn't leave at all. The gate <b>at ship</b> reads acceptance artifacts off the filesystem — locally it advises (<code>exit 0</code>), and the remote CI receipts-gate fails closed. Usage of the whole rig flows back as observability.</span><span class="vi">Ý tưởng vào ở plan; một thay đổi đã-người-duyệt, đã-test ra ở ship — hoặc không ra được. Gate <b>tại ship</b> đọc artifact nghiệm thu từ filesystem — tại máy chỉ advisory (<code>exit 0</code>), còn receipts-gate CI từ xa fail-closed. Mức dùng của cả bộ chảy ngược về thành quan trắc.</span></p>
 
     <!-- optional upstream: discovery skills feed plan; nothing gates them -->
     <div class="pipe-upstream">
@@ -158,21 +158,21 @@
       <div class="pstation" style="--ac:var(--tel)">
         <div class="num">04</div>
         <h4>hs:ship</h4>
-        <p><span class="en">The gate here reads <code>verification</code> + <code>review-decision</code> + <code>plan-approval</code> + <code>critique-consensus</code> off the filesystem and fails closed. No artifact, no ship.</span><span class="vi">Gate tại đây đọc <code>verification</code> + <code>review-decision</code> + <code>plan-approval</code> + <code>critique-consensus</code> từ filesystem và fail-closed. Thiếu artifact, không ship.</span></p>
+        <p><span class="en">The gate here reads <code>verification</code> + <code>review-decision</code> + <code>plan-approval</code> off the filesystem (<code>critique-consensus</code> is an opt-in fourth). Locally it advises (<code>exit 0</code>); the remote CI receipts-gate fails closed — no artifact, no merge.</span><span class="vi">Gate tại đây đọc <code>verification</code> + <code>review-decision</code> + <code>plan-approval</code> từ filesystem (<code>critique-consensus</code> là cái thứ tư tùy chọn). Tại máy chỉ advisory (<code>exit 0</code>); receipts-gate CI từ xa fail-closed — thiếu artifact, không merge.</span></p>
         <span class="role"><span class="en">Release</span><span class="vi">Phát hành</span></span>
       </div>
     </div>
 
     <div class="loopnote">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 9a8 8 0 0 1 14-3M20 15a8 8 0 0 1-14 3" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/><path d="M18 3v3.5h-3.5M6 21v-3.5h3.5" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="en"><b>The return edge:</b> a blocked stage (<code>exit 2</code> + an actionable reason) sends you back to cook/test. <code>critique-consensus</code> (from <b>hs:critique</b>) is required at pr/ship too — a change that was never critiqued can't be released. The workflow lens then compares the chain you <i>declared</i> against the chain you <i>actually</i> ran.</span>
-      <span class="vi"><b>Cạnh quay về:</b> một stage bị chặn (<code>exit 2</code> + lý do xử lý được) đẩy bạn về cook/test. <code>critique-consensus</code> (từ <b>hs:critique</b>) cũng bị đòi ở pr/ship — thay đổi chưa từng được critique thì không ra được. Workflow lens rồi so chuỗi bạn <i>khai báo</i> với chuỗi bạn <i>thực sự</i> chạy.</span>
+      <span class="en"><b>The return edge:</b> a stage advisory (<code>exit 0</code> + an actionable reason, enforced at the remote CI receipts-gate) sends you back to cook/test. <code>critique-consensus</code> (from <b>hs:critique</b>) can be required at pr/ship if a stage opts in — so a change that was never critiqued can be held back. The workflow lens then compares the chain you <i>declared</i> against the chain you <i>actually</i> ran.</span>
+      <span class="vi"><b>Cạnh quay về:</b> một stage cho advisory (<code>exit 0</code> + lý do xử lý được, enforce ở receipts-gate CI từ xa) đẩy bạn về cook/test. <code>critique-consensus</code> (từ <b>hs:critique</b>) có thể bị đòi ở pr/ship nếu một stage bật tùy chọn — nên thay đổi chưa từng được critique có thể bị giữ lại. Workflow lens rồi so chuỗi bạn <i>khai báo</i> với chuỗi bạn <i>thực sự</i> chạy.</span>
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="n" data-count="107">107</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
-      <div class="stat"><div class="n" data-count="20">20</div><div class="l"><span class="en">hooks · 3 tiers</span><span class="vi">hook · 3 hạng</span></div></div>
-      <div class="stat"><div class="n" data-count="2508">2508</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
+      <div class="stat"><div class="n" data-count="118">118</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
+      <div class="stat"><div class="n" data-count="59">59</div><div class="l"><span class="en">hooks · 3 tiers</span><span class="vi">hook · 3 hạng</span></div></div>
+      <div class="stat"><div class="n" data-count="7039">7039</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
       <div class="stat"><div class="n" data-count="0">0</div><div class="l"><span class="en">network calls in the gate path</span><span class="vi">lần gọi mạng trong đường gate</span></div></div>
     </div>
   </div>
@@ -186,10 +186,10 @@
     <p class="lead"><span class="en">The product is the <code>harness/</code> tree: skills, hooks, scripts, rules, data, schemas, install, tests. Delete the directory and the harness is gone — a CI invariant forbids the string <code>.claude/skills/</code> inside <code>harness/</code>.</span><span class="vi">Sản phẩm là cây <code>harness/</code>: skills, hooks, scripts, rules, data, schemas, install, tests. Xóa thư mục là gỡ sạch — một invariant CI cấm chuỗi <code>.claude/skills/</code> trong <code>harness/</code>.</span></p>
 
     <div class="rig">
-      <div class="rcell"><div class="rt">🧩 <span class="en">109 skills</span><span class="vi">109 skill</span><span class="rn">plugins/hs</span></div><ul><li><span class="en">SDLC spine: plan · cook · test · ship</span><span class="vi">Xương sống: plan · cook · test · ship</span></li><li><span class="en">orchestrators, review, debug, research, ideation, docs</span><span class="vi">điều phối, review, debug, nghiên cứu, ý tưởng, docs</span></li><li><span class="en">packaged as plugin <code>hs</code> → <code>/hs:plan</code></span><span class="vi">đóng gói plugin <code>hs</code> → <code>/hs:plan</code></span></li></ul></div>
-      <div class="rcell"><div class="rt">🪝 <span class="en">50 hooks · 3 tiers</span><span class="vi">50 hook · 3 hạng</span><span class="rn">/hooks</span></div><ul><li><span class="en">telemetry sinks (ON, fail-open)</span><span class="vi">sink telemetry (ON, fail-open)</span></li><li><span class="en">memory-gap nudge (OFF)</span><span class="vi">memory-gap nudge (OFF)</span></li><li><span class="en">gate_stage · write_guard (compliance)</span><span class="vi">gate_stage · write_guard (compliance)</span></li></ul></div>
-      <div class="rcell"><div class="rt">🛠️ <span class="en">140 scripts</span><span class="vi">140 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · task_store · plan_approval</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
-      <div class="rcell"><div class="rt">📐 <span class="en">15 rules</span><span class="vi">15 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤60 lines, always-load)</span><span class="vi">(≤60 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · terminal-voice</li></ul></div>
+      <div class="rcell"><div class="rt">🧩 <span class="en">118 skills</span><span class="vi">118 skill</span><span class="rn">plugins/hs</span></div><ul><li><span class="en">SDLC spine: plan · cook · test · ship</span><span class="vi">Xương sống: plan · cook · test · ship</span></li><li><span class="en">orchestrators, review, debug, research, ideation, docs</span><span class="vi">điều phối, review, debug, nghiên cứu, ý tưởng, docs</span></li><li><span class="en">packaged as plugin <code>hs</code> → <code>/hs:plan</code></span><span class="vi">đóng gói plugin <code>hs</code> → <code>/hs:plan</code></span></li></ul></div>
+      <div class="rcell"><div class="rt">🪝 <span class="en">59 hooks · 3 tiers</span><span class="vi">59 hook · 3 hạng</span><span class="rn">/hooks</span></div><ul><li><span class="en">telemetry sinks (ON, fail-open)</span><span class="vi">sink telemetry (ON, fail-open)</span></li><li><span class="en">memory-gap nudge (OFF)</span><span class="vi">memory-gap nudge (OFF)</span></li><li><span class="en">gate_stage · write_guard (compliance)</span><span class="vi">gate_stage · write_guard (compliance)</span></li></ul></div>
+      <div class="rcell"><div class="rt">🛠️ <span class="en">159 scripts</span><span class="vi">159 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · task_store · plan_approval</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
+      <div class="rcell"><div class="rt">📐 <span class="en">19 rules</span><span class="vi">19 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤75 lines, always-load)</span><span class="vi">(≤75 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · terminal-voice</li></ul></div>
       <div class="rcell"><div class="rt">🧪 <span class="en">13 schemas</span><span class="vi">13 schema</span><span class="rn">/schemas</span></div><ul><li><code>artifact-verification</code> · <code>review-decision</code></li><li><code>plan-approval</code> · <code>critique-consensus</code></li><li><code>bakeoff-verdict</code> · <code>harness-release</code></li></ul></div>
       <div class="rcell"><div class="rt">📦 <span class="en">Install + manifest</span><span class="vi">Cài + manifest</span><span class="rn">/install</span></div><ul><li><code>install.py --target</code> <span class="en">(one command)</span><span class="vi">(một lệnh)</span></li><li><code>manifest.json</code> <span class="en">(sha256 tracked files)</span><span class="vi">(sha256 file tracked)</span></li><li><code>verify_install.py --strict</code></li></ul></div>
     </div>
@@ -240,7 +240,7 @@
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

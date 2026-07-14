@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Standards & DoD — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Standards & DoD — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Standards & DoD — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -104,7 +104,7 @@
 
     <h2 class="sectitle" id="std-dod"><span class="en">Definition of Done — proof, not a checkbox</span><span class="vi">Definition of Done — bằng chứng, không phải tick</span></h2>
     <div class="card" style="margin-top:14px;--ac:var(--crit)">
-      <p><span class="en">The stage gate does not trust a self-declared "tests pass". It derives the <b>change class</b> from the files actually touched (the commit label is never trusted), then re-reads the raw result files — JUnit, Cobertura, SARIF — that <code>verification.json</code> points at. A hard change class missing a required test type, or with a failing or under-covered result, is <b>blocked</b>. A change touching a sensitive component path (auth, payment) additionally requires a clean security SARIF.</span><span class="vi">Stage gate không tin "test pass" tự khai. Nó suy <b>lớp thay đổi</b> từ file thực sự đụng (nhãn commit không bao giờ được tin), rồi đọc lại các file kết quả thô — JUnit, Cobertura, SARIF — mà <code>verification.json</code> trỏ tới. Một lớp thay đổi cứng thiếu loại test bắt buộc, hoặc kết quả fail/thiếu coverage, bị <b>chặn</b>. Thay đổi đụng đường component nhạy cảm (auth, payment) còn cần một SARIF bảo mật sạch.</span></p>
+      <p><span class="en">The stage gate does not trust a self-declared "tests pass". It derives the <b>change class</b> from the files actually touched (the commit label is never trusted), then re-reads the raw result files — JUnit, Cobertura, SARIF — that <code>verification.json</code> points at. A hard change class missing a required test type, or with a failing or under-covered result, is <b>blocked at the remote CI receipts-gate</b> (locally the stage hook only advises). A change touching a sensitive component path (auth, payment) additionally requires a clean security SARIF.</span><span class="vi">Stage gate không tin "test pass" tự khai. Nó suy <b>lớp thay đổi</b> từ file thực sự đụng (nhãn commit không bao giờ được tin), rồi đọc lại các file kết quả thô — JUnit, Cobertura, SARIF — mà <code>verification.json</code> trỏ tới. Một lớp thay đổi cứng thiếu loại test bắt buộc, hoặc kết quả fail/thiếu coverage, bị <b>chặn ở receipts-gate CI từ xa</b> (tại máy hook stage chỉ advisory). Thay đổi đụng đường component nhạy cảm (auth, payment) còn cần một SARIF bảo mật sạch.</span></p>
       <p class="muted" style="font-size:.84rem;margin-top:10px"><span class="en">Policy lives in <code>harness/data/test-policy.yaml</code> (shipped tier-1) plus an optional repo <code>test-policy.yaml</code> (tier-2, add-only, strengthen-wins). If the evaluator itself crashes, it now <b>blocks loudly</b> rather than silently letting the change through.</span><span class="vi">Chính sách nằm ở <code>harness/data/test-policy.yaml</code> (tier-1 ship sẵn) cộng <code>test-policy.yaml</code> repo tuỳ chọn (tier-2, chỉ thêm, siết-thắng). Nếu chính bộ đánh giá crash, giờ nó <b>chặn lớn tiếng</b> thay vì lặng lẽ cho qua.</span></p>
     </div>
 
@@ -137,7 +137,7 @@
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

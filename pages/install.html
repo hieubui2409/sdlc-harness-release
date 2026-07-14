@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Install — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Install — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Install — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -89,7 +89,7 @@
     <!-- before you start: deps -->
     <div class="callout" style="--ac:var(--gold)">
       <span class="ci">📋</span>
-      <div><span class="en"><b>Before you start.</b> The target machine needs <b>Python ≥ 3.9</b> and <b>three</b> pip packages — <code>pyyaml</code>, <code>pytest</code>, <code>defusedxml</code>. The one-command <code>install.sh</code> below checks them and prints the exact fix (step ③), so on that path you do nothing up front. But if you run the installer <i>directly</i> (<code>python3 harness/install/install.py</code>, below), there is <b>no</b> deps check — install them yourself first, or the hooks fail later at runtime:<br><code>python3 -m pip install pyyaml pytest defusedxml</code></span><span class="vi"><b>Trước khi bắt đầu.</b> Máy đích cần <b>Python ≥ 3.9</b> và <b>ba</b> gói pip — <code>pyyaml</code>, <code>pytest</code>, <code>defusedxml</code>. Lệnh-một-phát <code>install.sh</code> bên dưới tự kiểm và in đúng lệnh sửa (bước ③), nên đi đường này bạn không phải làm gì trước. Nhưng nếu chạy trình cài <i>trực tiếp</i> (<code>python3 harness/install/install.py</code>, ở dưới) thì <b>không</b> có bước kiểm deps — phải tự cài trước, không thì hook sẽ chết lúc chạy:<br><code>python3 -m pip install pyyaml pytest defusedxml</code></span></div>
+      <div><span class="en"><b>Before you start.</b> The target machine needs <b>Python ≥ 3.9</b> and <b>three</b> pip packages — <code>pyyaml</code>, <code>pytest</code>, <code>defusedxml</code>. Both paths run a dependency preflight: the one-command <code>install.sh</code> below (step ③) <i>and</i> running the installer <i>directly</i> (<code>python3 harness/install/install.py</code>, below) check the runtime deps and abort with the exact pip fix command if any are missing — so on either path you do nothing up front. To install them ahead of time:<br><code>python3 -m pip install pyyaml pytest defusedxml</code></span><span class="vi"><b>Trước khi bắt đầu.</b> Máy đích cần <b>Python ≥ 3.9</b> và <b>ba</b> gói pip — <code>pyyaml</code>, <code>pytest</code>, <code>defusedxml</code>. Cả hai đường đều chạy preflight deps: lệnh-một-phát <code>install.sh</code> bên dưới (bước ③) <i>và</i> chạy trình cài <i>trực tiếp</i> (<code>python3 harness/install/install.py</code>, ở dưới) đều kiểm deps runtime và dừng kèm đúng lệnh pip sửa nếu thiếu — nên đi đường nào bạn cũng không phải làm gì trước. Muốn cài sẵn trước:<br><code>python3 -m pip install pyyaml pytest defusedxml</code></span></div>
     </div>
 
     <!-- one-shot -->
@@ -115,19 +115,16 @@
     <p class="muted" style="font-size:.9rem;margin-top:16px"><span class="en"><b>Step ⑤ — run the suite</b> (default; <code>--skip-tests</code> to skip). The harness ships its own tests and runs them against the installed copy, so you see them green in your environment before you trust the gate. <span class="realtag">real output</span></span><span class="vi"><b>Bước ⑤ — chạy bộ test</b> (mặc định; <code>--skip-tests</code> để bỏ). Harness kèm theo bộ test của chính nó và chạy trên bản vừa cài, để bạn thấy chúng xanh trong môi trường của mình trước khi tin vào gate. <span class="realtag">đầu ra thật</span></span></p>
     <div class="term">
       <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 -m pytest harness/tests/ -q</span></div>
-      <pre>........................................................................ [  8%]
-........................................................................ [ 17%]
-........................................................................ [ 26%]
-........................................................................ [ 35%]
-........................................................................ [ 44%]
-........................................................................ [ 52%]
-........................................................................ [ 61%]
-........................................................................ [ 70%]
-........................................................................ [ 79%]
-........................................................................ [ 88%]
+      <pre>........................................................................ [ 91%]
+........................................................................ [ 93%]
+........................................................................ [ 94%]
+........................................................................ [ 95%]
+........................................................................ [ 96%]
 ........................................................................ [ 97%]
-........................                                                 [100%]
-816 passed in 17.28s
+........................................................................ [ 98%]
+........................................................................ [ 99%]
+.............................................................            [100%]
+7039 passed, 6 skipped, 2 deselected in 234.03s (0:03:54)
 </pre>
     </div>
 
@@ -218,7 +215,7 @@
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

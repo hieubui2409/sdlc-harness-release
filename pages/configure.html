@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Configure — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Configure — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Configure — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -106,15 +106,15 @@
     <h2 class="sectitle" id="cfg-policy"><span class="en">Set the guard policy</span><span class="vi">Đặt chính sách guard</span></h2>
     <p class="muted" style="margin:-2px 0 14px"><span class="en"><code>guard-policy.yaml</code> gives every guard one posture — <code>off</code> / <code>warn</code> / <code>block</code> — resolved from a <b>preset</b> plus per-guard <b>overrides</b>. Edit it by hand or with <code>guard_config.py</code> (which also writes a who/when audit line).</span><span class="vi"><code>guard-policy.yaml</code> cho mỗi guard một thế — <code>off</code> / <code>warn</code> / <code>block</code> — phân giải từ một <b>preset</b> cộng <b>overrides</b> theo-guard. Sửa tay hoặc bằng <code>guard_config.py</code> (cũng ghi một dòng audit ai/khi-nào).</span></p>
     <table class="modetable" style="--ac:var(--tel)">
-      <thead><tr><th>preset</th><th>safety</th><th>enforcement</th><th>advisory</th><th>nudge</th></tr></thead>
+      <thead><tr><th>preset</th><th>safety</th><th>enforcement</th><th>advisory</th></tr></thead>
       <tbody>
-        <tr><td><code>strict</code></td><td>block</td><td>block</td><td>warn</td><td>warn</td></tr>
-        <tr><td><code>balanced</code> <span class="x">(default)</span></td><td>block</td><td>block</td><td>warn</td><td>off</td></tr>
-        <tr><td><code>lenient</code></td><td>block</td><td>warn</td><td>off</td><td>off</td></tr>
-        <tr><td><code>solo</code></td><td>block</td><td>block</td><td>off</td><td>off</td></tr>
+        <tr><td><code>strict</code></td><td>block</td><td>block</td><td>warn</td></tr>
+        <tr><td><code>balanced</code> <span class="x">(default)</span></td><td>block</td><td>block</td><td>warn</td></tr>
+        <tr><td><code>lenient</code></td><td>block</td><td>warn</td><td>off</td></tr>
+        <tr><td><code>solo</code></td><td>block</td><td>block</td><td>off</td></tr>
       </tbody>
     </table>
-    <p class="muted" style="font-size:.86rem;margin-top:10px"><span class="en"><code>nudge</code> is the one category off at <code>balanced</code> — gentle reminders ship asleep and surface only under <code>strict</code>. Notice <b>safety stays <code>block</code> in every preset</b>: that's the floor.</span><span class="vi"><code>nudge</code> là nhóm duy nhất tắt ở <code>balanced</code> — nhắc nhẹ ngủ sẵn và chỉ hiện dưới <code>strict</code>. Để ý <b>safety luôn <code>block</code> ở mọi preset</b>: đó là cái sàn.</span></p>
+    <p class="muted" style="font-size:.86rem;margin-top:10px"><span class="en">Notice <b>safety stays <code>block</code> in every preset</b>: that's the floor. Nudges aren't a preset category — they toggle per-hook in <code>harness-hooks.yaml</code>, the single nudge surface.</span><span class="vi">Để ý <b>safety luôn <code>block</code> ở mọi preset</b>: đó là cái sàn. Nudge không phải nhóm preset — chúng bật/tắt theo-hook trong <code>harness-hooks.yaml</code>, bề mặt nudge duy nhất.</span></p>
 
     <div class="cards grid-2" style="margin-top:18px">
       <div class="card" style="--ac:var(--crit)">
@@ -136,7 +136,7 @@
       <thead><tr><th><span class="en">Behavior</span><span class="vi">Hành vi</span></th><th><span class="en">On a protected ref</span><span class="vi">Trên ref được bảo vệ</span></th></tr></thead>
       <tbody>
         <tr><td><span class="en">Pattern syntax</span><span class="vi">Cú pháp mẫu</span></td><td><span class="en">fnmatch — <code>*</code> spans <code>/</code>, so <code>release/*</code> covers <code>release/1.2</code></span><span class="vi">fnmatch — <code>*</code> trải qua <code>/</code>, nên <code>release/*</code> bao <code>release/1.2</code></span></td></tr>
-        <tr><td><span class="en">Plain push</span><span class="vi">Push thường</span></td><td><span class="en">requires the four merge-grade artifacts</span><span class="vi">đòi bốn artifact cấp-merge</span></td></tr>
+        <tr><td><span class="en">Plain push</span><span class="vi">Push thường</span></td><td><span class="en">requires the three merge-grade artifacts</span><span class="vi">đòi ba artifact cấp-merge</span></td></tr>
         <tr><td><span class="en">Force-push / delete / non-ff</span><span class="vi">Force-push / xóa / non-ff</span></td><td><span class="en">refused outright</span><span class="vi">từ chối thẳng</span></td></tr>
         <tr><td><span class="en">Empty / missing list</span><span class="vi">Danh sách trống / thiếu</span></td><td><span class="en">protects nothing — a fresh repo pushes freely (additive)</span><span class="vi">không bảo vệ gì — repo mới push thoải mái (cộng dồn)</span></td></tr>
       </tbody>
@@ -185,7 +185,7 @@
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

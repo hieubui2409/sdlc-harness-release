@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>The rig — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="The rig — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="The rig — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -84,7 +84,7 @@
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
 
-    <p class="lead" style="margin-bottom:18px"><span class="en">Behind the 109 skills sits the enforcement layer: fifty hooks in three tiers, a multi-agent coordination layer (claims · task-store · plan-approval · write-guard), and read-only telemetry that ends every report with what it <b>cannot</b> measure. It reports whether the <i>machinery runs</i> — never whether the <i>product wins the market</i>.</span><span class="vi">Sau 109 skill là lớp cưỡng chế: năm mươi hook ba hạng, một lớp phối hợp đa-agent (claims · task-store · plan-approval · write-guard), và telemetry chỉ-đọc kết mỗi báo cáo bằng cái nó <b>không</b> đo được. Nó báo <i>máy móc có chạy không</i> — không bao giờ báo <i>sản phẩm có thắng thị trường không</i>.</span></p>
+    <p class="lead" style="margin-bottom:18px"><span class="en">Behind the 118 skills sits the enforcement layer: fifty-nine hooks in three tiers, a multi-agent coordination layer (claims · task-store · plan-approval · write-guard), and read-only telemetry that ends every report with what it <b>cannot</b> measure. It reports whether the <i>machinery runs</i> — never whether the <i>product wins the market</i>.</span><span class="vi">Sau 118 skill là lớp cưỡng chế: năm mươi chín hook ba hạng, một lớp phối hợp đa-agent (claims · task-store · plan-approval · write-guard), và telemetry chỉ-đọc kết mỗi báo cáo bằng cái nó <b>không</b> đo được. Nó báo <i>máy móc có chạy không</i> — không bao giờ báo <i>sản phẩm có thắng thị trường không</i>.</span></p>
 
     <!-- when to use -->
     <h2 class="sectitle" id="rig-limits"><span class="en">What it can and can't tell you</span><span class="vi">Nó nói được gì và không nói được gì</span></h2>
@@ -119,14 +119,14 @@
       </div>
     </div>
 
-    <!-- ============ HERO: one lens, two formats ============ -->
+    <!-- ============ HERO: the workflow lens, two formats ============ -->
     <h2 class="sectitle" id="rig-lens"><span class="en">Worked example: declared vs actual</span><span class="vi">Ví dụ thật: khai-báo vs thực-tế</span></h2>
     <div class="hero-ex" style="--ac:var(--tel)">
       <div class="xlabel"><span class="en">Worked example</span><span class="vi">Ví dụ thật</span></div>
       <h3 style="margin:2px 0 6px"><span class="en">The workflow lens — declared vs actual</span><span class="vi">Workflow lens — khai-báo vs thực-tế</span></h3>
       <p class="muted" style="font-size:.9rem">
-        <span class="en">Same data, two renders: <b>md</b> to read (note the <code>## NOT measured</code> honesty block) and <b>json</b> to pipe. The registry ships exactly one lens today; lenses not yet built are named, not hidden. <span class="realtag">real output</span></span>
-        <span class="vi">Cùng dữ liệu, hai kiểu render: <b>md</b> để đọc (để ý khối trung thực <code>## NOT measured</code>) và <b>json</b> để nối ống. Registry hôm nay ship đúng một lens; lens chưa dựng được nêu tên, không giấu. <span class="realtag">đầu ra thật</span></span>
+        <span class="en">Same data, two renders: <b>md</b> to read (note the <code>## NOT measured</code> honesty block) and <b>json</b> to pipe. The registry ships 12 lenses today, all present; a lens whose module were missing is named "absent", not hidden. <span class="realtag">real output</span></span>
+        <span class="vi">Cùng dữ liệu, hai kiểu render: <b>md</b> để đọc (để ý khối trung thực <code>## NOT measured</code>) và <b>json</b> để nối ống. Registry hôm nay ship 12 lens, tất cả đều có; lens nào thiếu module thì gắn tên "absent", không giấu. <span class="realtag">đầu ra thật</span></span>
       </p>
       <div class="fmt-tabs" id="teltabs">
         <button data-fmt="md" class="on">md</button>
@@ -156,7 +156,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
 - semantic correctness or quality of any run (only ran / coarse exit)
 - wall-clock for non-script work (only harness/scripts &amp; harness/e2e Bash runs are timed)
 - human review depth or plan-approval quality
-- lenses not yet shipped: usage, session, health, reliability, validate, memory, product_memory (not yet shipped — the JSONL data is retained; the read-only lens is added later without touching this spine)
+- lenses not yet shipped: health, validate, memory, product_memory (not yet shipped — the JSONL data is retained; the read-only lens is added later without touching this spine)
 </pre></div>
         <div class="fmt-pane" data-pane="json"><pre>{
   "lens": "workflow_chains",
@@ -244,13 +244,14 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
         <div class="striprow kept"><span class="fn">state/trace/trace-YYYYMMDD.jsonl</span><span class="rule"><span class="en">audit · gate / approval / DEC</span><span class="vi">audit · gate / approval / DEC</span></span><span class="vb"><span class="en">never rotates</span><span class="vi">không xoay vòng</span></span></div>
         <div class="striprow kept"><span class="fn">state/telemetry/*.jsonl</span><span class="rule"><span class="en">usage · counts / shape / outcomes</span><span class="vi">usage · count / shape / outcome</span></span><span class="vb"><span class="en">rotates 8MB</span><span class="vi">xoay 8MB</span></span></div>
       </div>
-      <p class="muted" style="font-size:.84rem;margin:14px 0 4px"><span class="en">Every record <code>setdefault</code>s an <code>actor</code> + <code>ts</code>. The lens registry ships one lens; the rest are named "absent" so a missing module is visible, never silently dropped:</span><span class="vi">Mọi record <code>setdefault</code> một <code>actor</code> + <code>ts</code>. Registry lens ship một lens; còn lại gắn "absent" để module vắng nhìn thấy được, không bao giờ drop âm thầm:</span></p>
+      <p class="muted" style="font-size:.84rem;margin:14px 0 4px"><span class="en">Every record <code>setdefault</code>s an <code>actor</code> + <code>ts</code>. The lens registry ships 12 lenses, all present today; any whose module went missing would be named "absent" so the gap stays visible, never silently dropped:</span><span class="vi">Mọi record <code>setdefault</code> một <code>actor</code> + <code>ts</code>. Registry lens ship 12 lens, hôm nay đủ cả; cái nào mất module sẽ bị gắn "absent" để lỗ hổng nhìn thấy được, không bao giờ drop âm thầm:</span></p>
       <div class="lensgrid">
         <div class="lcell"><div class="ln">workflow</div><div class="lds"><span class="en">declared vs actual</span><span class="vi">khai vs thực</span></div></div>
-        <div class="lcell absent"><div class="ln">usage</div><div class="lds"><span class="en">absent (W3)</span><span class="vi">absent (W3)</span></div></div>
-        <div class="lcell absent"><div class="ln">session</div><div class="lds"><span class="en">absent (W3)</span><span class="vi">absent (W3)</span></div></div>
-        <div class="lcell absent"><div class="ln">health</div><div class="lds"><span class="en">absent (W3)</span><span class="vi">absent (W3)</span></div></div>
-        <div class="lcell absent"><div class="ln">reliability</div><div class="lds"><span class="en">absent (W3)</span><span class="vi">absent (W3)</span></div></div>
+        <div class="lcell"><div class="ln">skill_usage</div><div class="lds"><span class="en">skill runs</span><span class="vi">skill-run</span></div></div>
+        <div class="lcell"><div class="ln">reliability</div><div class="lds"><span class="en">hook health</span><span class="vi">sức khỏe hook</span></div></div>
+        <div class="lcell"><div class="ln">subagent_outcomes</div><div class="lds"><span class="en">agent verdicts</span><span class="vi">kết cục agent</span></div></div>
+        <div class="lcell"><div class="ln">gate</div><div class="lds"><span class="en">approvals · DEC</span><span class="vi">approval · DEC</span></div></div>
+        <div class="lcell"><div class="ln">partner</div><div class="lds"><span class="en">gemini · ccs lane</span><span class="vi">lane gemini · ccs</span></div></div>
       </div>
       <div class="honest">
         <div class="h">⚖️ <span class="en">"This is NOT measured"</span><span class="vi">"Cái này KHÔNG đo được"</span></div>
@@ -312,7 +313,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

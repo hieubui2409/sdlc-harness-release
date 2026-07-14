@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>hs:plan — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="hs:plan — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="hs:plan — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 109 hs:* skills, 50 hooks, 20 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -115,8 +115,8 @@
         <div class="step"><h4><span class="en">Standards first</span><span class="vi">Standards trước</span></h4><p><span class="en">It reads <code>harness/standards/</code> before anything. Missing → it STOPS and asks you to load them; it won't plan on an empty base.</span><span class="vi">Đọc <code>harness/standards/</code> trước tiên. Thiếu → DỪNG và yêu cầu bạn nạp; không plan trên nền rỗng.</span></p></div>
         <div class="step"><h4><span class="en">Scope challenge</span><span class="vi">Thách thức phạm vi</span></h4><p><span class="en">Three questions — what to reuse, the minimal change set, is it &gt;8 files / &gt;2 new classes / &gt;3 phases — to expand, hold, or cut before any research.</span><span class="vi">Ba câu hỏi — tái dùng gì, tập thay đổi tối thiểu, có &gt;8 file / &gt;2 class mới / &gt;3 phase — để mở rộng, giữ, hoặc cắt trước khi research.</span></p></div>
         <div class="step"><h4><span class="en">Research → constraint-scan</span><span class="vi">Research → constraint-scan</span></h4><p><span class="en">Up to two <code>researcher</code> agents in parallel, then grep <code>ownership.yaml</code>, <code>stage-policy.yaml</code>, and <code>schemas/</code> so decisions respect existing policy.</span><span class="vi">Tối đa hai agent <code>researcher</code> song song, rồi grep <code>ownership.yaml</code>, <code>stage-policy.yaml</code>, <code>schemas/</code> để quyết định tôn trọng policy đã có.</span></p></div>
-        <div class="step"><h4><span class="en">Write the plan</span><span class="vi">Viết plan</span></h4><p><span class="en"><code>plan.md</code> + phase files good enough for another dev to run. Any claim without a <code>file:line</code> anchor gets an <code>[UNVERIFIED]</code> tag.</span><span class="vi"><code>plan.md</code> + phase file đủ để dev khác chạy. Mọi khẳng định thiếu mỏ neo <code>file:line</code> bị gắn tag <code>[UNVERIFIED]</code>.</span></p></div>
-        <div class="step"><h4><span class="en">Red-team → validate → sweep</span><span class="vi">Red-team → validate → quét</span></h4><p><span class="en">A hostile reviewer hunts failure modes; validate resolves the <code>[UNVERIFIED]</code> tags; a consistency sweep requires <b>0 contradictions</b> before it recommends cook.</span><span class="vi">Reviewer thù địch săn lỗi; validate giải các tag <code>[UNVERIFIED]</code>; quét nhất quán yêu cầu <b>0 mâu thuẫn</b> trước khi đề xuất cook.</span></p></div>
+        <div class="step"><h4><span class="en">Write the plan</span><span class="vi">Viết plan</span></h4><p><span class="en"><code>plan.md</code> + phase files good enough for another dev to run. Any claim without a <code>file:line</code> anchor gets an <code>[ASSUMED]</code>/<code>[PRIOR]</code> tag.</span><span class="vi"><code>plan.md</code> + phase file đủ để dev khác chạy. Mọi khẳng định thiếu mỏ neo <code>file:line</code> bị gắn tag <code>[ASSUMED]</code>/<code>[PRIOR]</code>.</span></p></div>
+        <div class="step"><h4><span class="en">Red-team → validate → sweep</span><span class="vi">Red-team → validate → quét</span></h4><p><span class="en">A hostile reviewer hunts failure modes; validate resolves the <code>[ASSUMED]</code> tags; a consistency sweep requires <b>0 contradictions</b> before it recommends cook.</span><span class="vi">Reviewer thù địch săn lỗi; validate giải các tag <code>[ASSUMED]</code>; quét nhất quán yêu cầu <b>0 mâu thuẫn</b> trước khi đề xuất cook.</span></p></div>
         <div class="step"><h4><span class="en">You approve, then cook</span><span class="vi">Bạn duyệt, rồi cook</span></h4><p><span class="en">It returns the plan's absolute path and asks for your approval. Then <code>/clear</code> and <code>/hs:cook &lt;absolute-path&gt;</code>.</span><span class="vi">Nó trả về đường dẫn tuyệt đối của plan và xin duyệt từ bạn. Rồi <code>/clear</code> và <code>/hs:cook &lt;đường-dẫn-tuyệt-đối&gt;</code>.</span></p></div>
       </div>
     </div>
@@ -158,13 +158,13 @@
 
       <h3 style="margin:26px 0 6px"><span class="en">No plan, no ship — the gate, real</span><span class="vi">Không plan, không ship — gate, thật</span></h3>
       <p class="muted" style="font-size:.9rem">
-        <span class="en">Try to <code>git push</code> with no active plan. The compliance hook fails closed with <code>exit 2</code> and names <b>three exits</b> — never a dead end. <span class="realtag">real output</span></span>
-        <span class="vi">Thử <code>git push</code> khi không có plan active. Hook compliance fail-closed <code>exit 2</code> và nêu <b>ba lối ra</b> — không bao giờ là ngõ cụt. <span class="realtag">đầu ra thật</span></span>
+        <span class="en">Try to <code>git push</code> with no active plan. The local hook emits an advisory (<code>exit 0</code>) naming the gap + <b>three exits</b> — never a dead end; enforcement is the remote CI receipts-gate. <span class="realtag">real output</span></span>
+        <span class="vi">Thử <code>git push</code> khi không có plan active. Hook tại máy phát advisory (<code>exit 0</code>) nêu chỗ thiếu + <b>ba lối ra</b> — không bao giờ là ngõ cụt; enforcement là receipts-gate ở CI từ xa. <span class="realtag">đầu ra thật</span></span>
       </p>
       <div class="term blocked">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">echo '{"tool_input":{"command":"git push"}}' | python3 harness/hooks/gate_stage.py</span></div>
-        <pre>[gate_stage] BLOCKED: hard stage 'push' needs an active plan but none resolved. Three exits: (1) create a plan under plans/ with `status: in_progress` frontmatter; (2) set HARNESS_ACTIVE_PLAN to the plan dir; (3) set `require_plan: false` for this stage in harness/data/stage-policy.yaml (tracked in git)
-[exit 2 — compliance hook fail-closed]
+        <pre>[advisory] gate_stage: hard stage 'push' needs an active plan but none resolved. Three exits: (1) create a plan under plans/ with `status: in_progress` frontmatter; (2) set HARNESS_ACTIVE_PLAN to the plan dir; (3) set `require_plan: false` for this stage in harness/data/stage-policy.yaml (tracked in git) — presence enforcement lives in remote CI (receipts-gate)
+[exit 0 — local gate is advisory; the remote CI receipts-gate is the hard block]
 </pre>
       </div>
     </div>
@@ -192,11 +192,11 @@
         <div class="farrow" style="--ac:var(--spec)">→</div>
         <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M16 4c-6 5-9 7-9 13a9 9 0 0 0 18 0c0-6-3-8-9-13Z" stroke="var(--spec)" stroke-width="2" stroke-linejoin="round"/></svg><div class="fn"><span class="en">red-team</span><span class="vi">red-team</span></div><div class="fd"><span class="en">hostile reviewer</span><span class="vi">reviewer thù địch</span></div></div>
         <div class="farrow" style="--ac:var(--spec)">→</div>
-        <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="var(--spec)" stroke-width="2"/><path d="m11 16 3.5 3.5L22 12" stroke="var(--spec)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn"><span class="en">validate</span><span class="vi">validate</span></div><div class="fd"><span class="en">resolve [UNVERIFIED]</span><span class="vi">giải [UNVERIFIED]</span></div></div>
+        <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="var(--spec)" stroke-width="2"/><path d="m11 16 3.5 3.5L22 12" stroke="var(--spec)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn"><span class="en">validate</span><span class="vi">validate</span></div><div class="fd"><span class="en">resolve [ASSUMED]</span><span class="vi">giải [ASSUMED]</span></div></div>
         <div class="farrow" style="--ac:var(--spec)">→</div>
         <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M6 16h20M18 8l8 8-8 8" stroke="var(--spec)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn"><span class="en">consistency sweep</span><span class="vi">consistency sweep</span></div><div class="fd"><span class="en">0 contradictions</span><span class="vi">0 mâu thuẫn</span></div></div>
       </div>
-      <p class="muted" style="font-size:.85rem;margin-top:14px"><span class="en">An <b>Evidence Filter</b> runs both ways: every open-decision spot must cite <code>file:line</code> or carry an explicit <code>[UNVERIFIED]</code> tag. Validate resolves those — <code>interactive</code> asks via questions, <code>headless</code> emits a "question + suggested default" table instead of blocking.</span><span class="vi"><b>Evidence Filter hai chiều</b>: mọi vị trí quyết-định-mở phải dẫn <code>file:line</code> hoặc gắn tag <code>[UNVERIFIED]</code>. Validate giải chúng — <code>interactive</code> hỏi qua câu hỏi, <code>headless</code> phát bảng "câu hỏi + default đề xuất" thay vì chặn.</span></p>
+      <p class="muted" style="font-size:.85rem;margin-top:14px"><span class="en">An <b>Evidence Filter</b> runs both ways: every open-decision spot must cite <code>file:line</code> or carry an explicit <code>[ASSUMED]</code> (or <code>[PRIOR]</code> if it rests on prior/training knowledge) tag. Validate resolves those — <code>interactive</code> asks via questions, <code>headless</code> emits a "question + suggested default" table instead of blocking.</span><span class="vi"><b>Evidence Filter hai chiều</b>: mọi vị trí quyết-định-mở phải dẫn <code>file:line</code> hoặc gắn tag <code>[ASSUMED]</code> (hoặc <code>[PRIOR]</code> nếu dựa trên tri thức có sẵn). Validate giải chúng — <code>interactive</code> hỏi qua câu hỏi, <code>headless</code> phát bảng "câu hỏi + default đề xuất" thay vì chặn.</span></p>
     </div>
 
     <!-- decision register -->
@@ -205,7 +205,7 @@
       <div class="card">
         <h3><span class="pin"></span><span class="en">Decisions outlive the chat</span><span class="vi">Quyết định sống lâu hơn cuộc chat</span></h3>
         <p><span class="en">An architecture decision pinned in validate is written via <code>decision_register.py</code> — append-only, monotonic IDs, injection-escaped. The register kills re-litigation: meet an old tension, read the register first, don't re-argue.</span><span class="vi">Một quyết định kiến trúc chốt ở validate được ghi qua <code>decision_register.py</code> — append-only, ID monotonic, escape injection. Register giết re-litigation: gặp lại tension cũ, đọc register trước, không cãi lại.</span></p>
-        <div class="chips" style="margin-top:10px"><span class="chip">--append-alloc</span><span class="chip">DEC-1..66</span><span class="chip"><span class="en">append-only</span><span class="vi">append-only</span></span></div>
+        <div class="chips" style="margin-top:10px"><span class="chip">--append-alloc</span><span class="chip">DEC-N (monotonic)</span><span class="chip"><span class="en">append-only</span><span class="vi">append-only</span></span></div>
       </div>
       <div class="card">
         <h3><span class="pin"></span><span class="en">The enforcement gate</span><span class="vi">Gate cưỡng chế</span></h3>
@@ -216,8 +216,8 @@
 
     <div class="gate" style="margin-top:16px">
       <b>HARD-GATE — <span class="en">wiring is real.</span><span class="vi">wiring là thật.</span></b>
-      <span class="en"> <code>harness/hooks/gate_stage.py</code> (PreToolUse·Bash, compliance, fail-closed) blocks <code>push|pr|ship|deploy</code> when the active plan is missing the required artifact. No plan on disk → nothing ships. This is a <b>presence gate</b> (DEC-9): it catches forgotten steps, not a determined cheater.</span>
-      <span class="vi"> <code>harness/hooks/gate_stage.py</code> (PreToolUse·Bash, compliance, fail-closed) chặn <code>push|pr|ship|deploy</code> khi plan active thiếu artifact bắt buộc. Không plan trên đĩa → không ship được. Đây là <b>presence gate</b> (DEC-9): bắt bước bị quên, không bắt kẻ cố gian.</span>
+      <span class="en"> <code>harness/hooks/gate_stage.py</code> (PreToolUse·Bash, compliance) <b>advises</b> (<code>exit 0</code>, naming the gap) on <code>push|pr|ship|deploy</code> when the active plan is missing the required artifact; the remote CI receipts-gate is what blocks. No plan on disk → the advisory names it and CI won't accept the push. This is a <b>presence gate</b> (DEC-9): it catches forgotten steps, not a determined cheater.</span>
+      <span class="vi"> <code>harness/hooks/gate_stage.py</code> (PreToolUse·Bash, compliance) <b>advisory</b> (<code>exit 0</code>, nêu chỗ thiếu) trên <code>push|pr|ship|deploy</code> khi plan active thiếu artifact bắt buộc; receipts-gate ở CI từ xa mới là cái chặn. Không plan trên đĩa → advisory nêu ra và CI sẽ không nhận push. Đây là <b>presence gate</b> (DEC-9): bắt bước bị quên, không bắt kẻ cố gian.</span>
     </div>
 
     <!-- FAQ -->
@@ -226,7 +226,7 @@
       <details><summary><span class="en">Does hs:plan write code?</span><span class="vi">hs:plan có viết code không?</span></summary><div class="fa"><span class="en">No. It only writes files under <code>plans/</code>. Implementation is <code>hs:cook</code>'s job — keeping planning and building separate is the point.</span><span class="vi">Không. Nó chỉ ghi file dưới <code>plans/</code>. Việc implement là của <code>hs:cook</code> — tách planning và build chính là chủ đích.</span></div></details>
       <details><summary><span class="en">What happens if standards are missing?</span><span class="vi">Thiếu standards thì sao?</span></summary><div class="fa"><span class="en">It stops and asks you to load <code>harness/standards/</code> (<code>system-architecture.md</code> + <code>code-standards.md</code>) first. The plan references shared standards instead of inventing its own.</span><span class="vi">Nó dừng và yêu cầu nạp <code>harness/standards/</code> (<code>system-architecture.md</code> + <code>code-standards.md</code>) trước. Plan tham chiếu standards chung thay vì tự chế.</span></div></details>
       <details><summary><span class="en">When should I use <code>--fast</code> instead of hard mode?</span><span class="vi">Khi nào dùng <code>--fast</code> thay vì hard mode?</span></summary><div class="fa"><span class="en">For a small, low-risk change (1–2 files). It skips research and red-team. For a real feature or refactor, stay on hard mode so the constraint-scan → red-team → validate chain runs.</span><span class="vi">Cho thay đổi nhỏ, rủi ro thấp (1–2 file). Nó bỏ research và red-team. Với feature/refactor thật, giữ hard mode để chạy chuỗi constraint-scan → red-team → validate.</span></div></details>
-      <details><summary><span class="en">Who can approve the plan?</span><span class="vi">Ai được duyệt plan?</span></summary><div class="fa"><span class="en">A human reviewer listed in <code>team.yaml</code> who is not the author. Approval binds to a normalized <code>plan_hash</code>, so reformatting needs no re-approval but a content change does. It's recorded via <code>plan_approval.py</code>.</span><span class="vi">Một reviewer (người) có trong <code>team.yaml</code> và không phải tác giả. Duyệt gắn với <code>plan_hash</code> chuẩn hóa, nên reformat không cần duyệt lại nhưng đổi nội dung thì cần. Ghi qua <code>plan_approval.py</code>.</span></div></details>
+      <details><summary><span class="en">Who can approve the plan?</span><span class="vi">Ai được duyệt plan?</span></summary><div class="fa"><span class="en">The plan author self-approves — personal-first, no reviewer roster (a role gate would prove nothing against env-spoofable actors). The real guard is the normalized <code>plan_hash</code> (plus the mandatory <code>plan-graph.yaml</code> sidecar), so reformatting needs no re-approval but a content change does. It's recorded via <code>plan_approval.py</code>.</span><span class="vi">Tác giả tự duyệt — personal-first, không có roster reviewer (role gate chẳng chứng minh được gì với actor giả-mạo-được qua env). Guard thật là <code>plan_hash</code> chuẩn hóa (kèm sidecar <code>plan-graph.yaml</code> bắt buộc), nên reformat không cần duyệt lại nhưng đổi nội dung thì cần. Ghi qua <code>plan_approval.py</code>.</span></div></details>
       <details><summary><span class="en">Why <code>/clear</code> before cook?</span><span class="vi">Vì sao <code>/clear</code> trước cook?</span></summary><div class="fa"><span class="en">Planning carryover (research, debate, red-team) skews cook's focus. Clear the context, then pass the plan's absolute path — a fresh session can still find it on disk.</span><span class="vi">Phần dư của planning (research, tranh luận, red-team) làm lệch trọng tâm cook. Xóa context, rồi truyền đường dẫn tuyệt đối — phiên mới vẫn tìm thấy plan trên đĩa.</span></div></details>
     </div>
   </div>
@@ -253,7 +253,7 @@
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
       <a href="../../README.md">README</a>
-      <a href="../../docs/codebase-summary.md">codebase-summary</a>
+      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
       <a href="../../docs/system-architecture.md">system-architecture</a>
       <a href="../../docs/decisions.md">decisions (DEC)</a>
     </div>

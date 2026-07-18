@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>All skills — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="All skills — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="All skills — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 118 hs:* skills, 59 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -90,7 +90,7 @@
         <div class="who" style="color:var(--rel)"><span class="en">The full hs:* suite — grouped by family</span><span class="vi">Toàn bộ bộ hs:* — nhóm theo họ</span></div>
         <h2><span class="en">All skills</span><span class="vi">Toàn bộ skill</span></h2>
       </div>
-      <div class="ver">118 skills</div>
+      <div class="ver">122 skills</div>
     </div>
     <div class="divider" style="--ac:var(--rel)"></div>
 
@@ -165,6 +165,7 @@
       <div class="card" style="--ac:var(--ok)"><h3><span class="pin"></span>hs:contract-test <span class="ttag workflow">workflow</span></h3><p><span class="en">Validate a live contract by running the real probe — call the API/CLI, check status, exit code, and payload — then anchor the result as manual evidence. Proves a contract holds before ship; never gate-driven.</span><span class="vi">Kiểm chứng contract sống bằng probe thật — gọi API/CLI, kiểm status, exit code và payload — rồi neo kết quả làm bằng chứng thủ công. Chứng minh contract đúng trước khi ship; không do gate lái.</span></p></div>
       <div class="card" style="--ac:var(--crit)"><h3><span class="pin"></span>hs:manual-test <span class="ttag workflow">workflow</span></h3><p><span class="en">Session-based manual / exploratory test (SBTM charter → session → debrief) emitting anchored, admissible evidence. For behavior a static result file can't capture — exploratory passes, manual API/UX checks, staging smoke.</span><span class="vi">Test thủ công / khám phá theo phiên (SBTM charter → phiên → debrief) phát ra bằng chứng có neo, hợp lệ. Cho hành vi mà file kết quả tĩnh không nắm được — lượt khám phá, kiểm API/UX thủ công, smoke staging.</span></p></div>
       <div class="card" style="--ac:var(--ok)"><h3><span class="pin"></span>hs:eval-bootstrap <span class="ttag workflow">workflow</span></h3><p><span class="en">Bootstrap a full <code>evals/</code> framework for this repo from scratch — a deterministic scorer, ground truth, an optional advisory LLM judge, and CI, all API-key-free.</span><span class="vi">Dựng khung <code>evals/</code> đầy đủ cho repo này từ đầu — scorer tất định, ground truth, judge LLM cố-vấn tuỳ chọn, và CI, tất cả không cần API-key.</span></p></div>
+      <div class="card" style="--ac:var(--ok)"><h3><span class="pin"></span>hs:deep-swe <span class="ttag workflow">workflow</span></h3><p><span class="en">Benchmark a coding model on DeepSWE through Pier and OpenRouter — run the benchmark, score a model, and verify coding-agent results.</span><span class="vi">Benchmark một model code trên DeepSWE qua Pier và OpenRouter — chạy benchmark, chấm điểm model, và kiểm chứng kết quả coding-agent.</span></p></div>
     </div>
 
     <!-- ── Debug / fix ── -->
@@ -222,6 +223,7 @@
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:document-skills <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Read and write <code>.docx</code> / <code>.pdf</code> / <code>.pptx</code> / <code>.xlsx</code> — bridge between repo and office formats.</span><span class="vi">Đọc và ghi <code>.docx</code> / <code>.pdf</code> / <code>.pptx</code> / <code>.xlsx</code> — cầu nối giữa repo và định dạng office.</span></p></div>
       <div class="card" style="--ac:var(--ok)"><h3><span class="pin"></span>hs:remember <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Capture the session's real knowledge — decisions, non-obvious facts, user feedback — into the DEC ledger, memory, or backlog after you approve each entry.</span><span class="vi">Ghi lại kiến thức thật của phiên — quyết định, sự thật không hiển nhiên, feedback người dùng — vào ledger DEC, memory hoặc backlog sau khi bạn duyệt từng mục.</span></p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:drawio <span class="ttag workflow">workflow</span></h3><p><span class="en">Polished, editable <code>.drawio</code> diagrams — 10,000+ branded shapes (AWS/Azure/GCP/Cisco/K8s/UML/ER/network), swimlanes, strict geometry, export to PNG/SVG/PDF. Opens in draw.io desktop and diagrams.net.</span><span class="vi">Sơ đồ <code>.drawio</code> chỉn chu, sửa được — hơn 10.000 shape có thương hiệu (AWS/Azure/GCP/Cisco/K8s/UML/ER/network), swimlane, hình học chặt, xuất PNG/SVG/PDF. Mở bằng draw.io desktop và diagrams.net.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:interview-docs <span class="ttag workflow">workflow</span></h3><p><span class="en">Extract a vision and decisions into durable project docs through a guided interview — README, ADR, strategy, principles, and structured-doc authoring.</span><span class="vi">Trích xuất tầm nhìn và quyết định thành tài liệu dự án bền vững qua phỏng vấn có dẫn dắt — README, ADR, chiến lược, nguyên tắc và soạn doc có cấu trúc.</span></p></div>
     </div>
 
     <!-- ── Build the harness ── -->
@@ -339,6 +341,8 @@
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:mintlify <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Build and maintain Mintlify docs sites — docs.json, MDX components, navigation, theming, OpenAPI, deployment.</span><span class="vi">Xây và bảo trì site docs Mintlify — docs.json, component MDX, điều hướng, theming, OpenAPI, triển khai.</span></p></div>
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:markdown-novel-viewer <span class="ttag knowledge">knowledge</span></h3><p><span class="en">View markdown in a calm, book-like reader over HTTP — RFCs, runbooks, design docs, distraction-free.</span><span class="vi">Đọc markdown trong trình đọc tĩnh lặng như sách qua HTTP — RFC, runbook, design doc, không xao nhãng.</span></p></div>
       <div class="card" style="--ac:var(--bad)"><h3><span class="pin"></span>hs:cti-expert <span class="ttag knowledge">knowledge</span></h3><p><span class="en">Analyze cyber threat intelligence and OSINT — exposure reviews, domain recon, breach checks, image forensics.</span><span class="vi">Phân tích tình báo mối đe dọa mạng và OSINT — soát lộ lọt, recon domain, kiểm rò rỉ, forensics ảnh.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:folder-context <span class="ttag workflow">workflow</span></h3><p><span class="en">Create a compact subfolder <code>CLAUDE.md</code> and linked <code>AGENTS.md</code> for durable local conventions — agent context beyond the project root.</span><span class="vi">Tạo <code>CLAUDE.md</code> con gọn và <code>AGENTS.md</code> liên kết cho quy ước cục bộ bền vững — context cho agent ngoài gốc dự án.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:handoff <span class="ttag workflow">workflow</span></h3><p><span class="en">Create a concise, redacted conversation handoff for a fresh agent session — preserve decisions and blockers when switching context or ending a session.</span><span class="vi">Tạo bản bàn giao hội thoại gọn, đã lược nhạy cảm cho phiên agent mới — giữ quyết định và blocker khi đổi context hoặc kết thúc phiên.</span></p></div>
     </div>
 
     <div class="honest" style="margin-top:26px">
@@ -346,7 +350,7 @@
       <ul>
         <li><span class="en">Every <code>hs:*</code> skill is a structured prompt. It guides Claude Code but does not block the model from deviating.</span><span class="vi">Mỗi skill <code>hs:*</code> là prompt có cấu trúc. Nó hướng dẫn Claude Code nhưng không chặn model sai lệch.</span></li>
         <li><span class="en">Blocking happens in hooks and scripts — <code>gate_stage</code> (compliance), <code>write_guard</code>, and the git pre-push backstop.</span><span class="vi">Chặn xảy ra trong hook và script — <code>gate_stage</code> (compliance), <code>write_guard</code> và git pre-push backstop.</span></li>
-        <li><span class="en"><b>118</b> invocable skills as of this build. Skills are added over time — <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi"><b>118</b> skill người-gọi-được tính đến bản build này. Skill được thêm theo thời gian — <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></li>
+        <li><span class="en"><b>122</b> invocable skills as of this build. Skills are added over time — <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi"><b>122</b> skill người-gọi-được tính đến bản build này. Skill được thêm theo thời gian — <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></li>
       </ul>
     </div>
 
@@ -356,7 +360,7 @@
       <details><summary><span class="en">Are skills the thing that blocks bad output?</span><span class="vi">Skill có phải thứ chặn đầu ra xấu?</span></summary><div class="fa"><span class="en">No. A skill is prose — a structured prompt. Blocking happens in hooks and scripts (<code>gate_stage</code>, <code>write_guard</code>, the pre-push backstop). A skill is only as strong as the hook that enforces it.</span><span class="vi">Không. Skill là prose — một prompt có cấu trúc. Việc chặn nằm ở hook và script (<code>gate_stage</code>, <code>write_guard</code>, backstop pre-push). Skill chỉ mạnh bằng hook thực thi nó.</span></div></details>
       <details><summary><span class="en">How do I invoke a skill?</span><span class="vi">Gọi một skill thế nào?</span></summary><div class="fa"><span class="en">Type <code>/hs:&lt;name&gt;</code> in Claude Code — e.g. <code>/hs:plan</code>. Skills can be chained (orchestrators spawn subagents) or invoked standalone.</span><span class="vi">Gõ <code>/hs:&lt;tên&gt;</code> trong Claude Code — ví dụ <code>/hs:plan</code>. Skill có thể nối (orchestrator sinh subagent) hoặc dùng độc lập.</span></div></details>
       <details><summary><span class="en">I don't know which skill fits — what now?</span><span class="vi">Không biết skill nào hợp — làm sao?</span></summary><div class="fa"><span class="en"><code>hs:find-skills</code> analyzes your intent and routes you to the right one, with the exact invoke command.</span><span class="vi"><code>hs:find-skills</code> phân tích ý định và định tuyến bạn đến đúng skill, kèm lệnh gọi chính xác.</span></div></details>
-      <details><summary><span class="en">Is the count exact?</span><span class="vi">Số lượng có chính xác không?</span></summary><div class="fa"><span class="en">Yes — <b>118</b> skills at this build (a skill is a dir with its own <code>SKILL.md</code>). New skills land over time; <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi">Có — <b>118</b> skill ở bản build này (một skill là một thư mục có <code>SKILL.md</code> riêng). Skill mới được thêm theo thời gian; <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></div></details>
+      <details><summary><span class="en">Is the count exact?</span><span class="vi">Số lượng có chính xác không?</span></summary><div class="fa"><span class="en">Yes — <b>122</b> skills at this build (a skill is a dir with its own <code>SKILL.md</code>). New skills land over time; <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi">Có — <b>122</b> skill ở bản build này (một skill là một thư mục có <code>SKILL.md</code> riêng). Skill mới được thêm theo thời gian; <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></div></details>
     </div>
   </div>
 </section>

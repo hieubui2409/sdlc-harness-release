@@ -1,36 +1,163 @@
 # SDLC Harness
 
-Bộ kỷ luật SDLC **file-based cho Claude Code** — skills + hooks + scripts + rules cài vào repo của từng dev, để code do agent/người viết ra **đi đúng quy trình** (plan → code → test → ship) và **theo chung chuẩn** của tổ chức.
+A two-tier, **file-based SDLC discipline for Claude Code** — skills + hooks + scripts + rules dropped into each developer's repo so that code written by agents (or humans) **follows the pipeline** (plan → code → test → ship) and **stays on the organisation's shared standard**.
+
+**This repository is both the interactive showcase _and_ the versioned public release** of the harness.
 
 <div align="center">
 
-### 🎮&nbsp; [▶ Mở showcase online](https://hieubui2409.github.io/sdlc-harness-showcase/) &nbsp;🎮
+### 🎮&nbsp; [▶ Open the live interactive showcase](https://hieubui2409.github.io/sdlc-harness-release/) &nbsp;🎮
 
-Bản tham quan tương tác toàn bộ tính năng — song ngữ EN/VI, chạy thẳng trên trình duyệt. Hoặc mở `docs/public/index.html` cục bộ.
+Animated, **bilingual (EN/VI)** tour of every feature — the skill catalog, the three hook tiers, the pipeline, the gates, install flows and distribution. Runs straight in your browser, no build step, no network calls. *(Prefer local? Open [`index.html`](index.html).)*
+
+**[⬇ Download the latest release](https://github.com/hieubui2409/sdlc-harness-release/releases/latest)** &nbsp;·&nbsp; install bundle · `install.sh` / `install.ps1` · SBOM
 
 </div>
 
-## Tư tưởng
+> 🇬🇧 **English** below · 🇻🇳 **Tiếng Việt**: cuộn xuống mục **[Tiếng Việt](#tiếng-việt)**.
+>
+> The harness source itself (`harness/`, `docs/`, `plans/`, ~130k LOC Python, ~7,900 tests) lives in a **private** repo. **This public repo is the shop window + the delivery dock**: the interactive showcase (GitHub Pages) and the signed, versioned release bundles you install from.
+
+---
+
+## What this repo is
+
+| | |
+|---|---|
+| 🎮 **Showcase** | A standalone bilingual site published to **GitHub Pages** — [hieubui2409.github.io/sdlc-harness-release](https://hieubui2409.github.io/sdlc-harness-release/). Every feature as an interactive page: catalog, hooks, pipeline, install, vision. |
+| 📦 **Release** | Every version is cut as a **GitHub Release** (`harness-v<version>`) with a deterministic install bundle — `harness-v<version>.tar.gz` (+ `.sha256`), a POSIX `install.sh`, a PowerShell `install.ps1`, and an `sbom.json`. |
+
+## Install from the latest release
+
+Grab `harness-v<version>.tar.gz` and the matching installer from the [**Releases**](https://github.com/hieubui2409/sdlc-harness-release/releases/latest) page, then point it at the repo you want to harden:
+
+```bash
+# Requires: Linux/macOS, Python ≥3.9, git, Claude Code
+sh install.sh harness-v5.1.2.tar.gz <target-repo>      # verify deps → install → verify → run tests
+sh install.sh harness-v5.1.2.tar.gz <target-repo> --skip-tests
+```
+
+```powershell
+# Windows — PowerShell 5.1 or 7+
+pwsh -File install.ps1 harness-v5.1.2.tar.gz <target-repo>      # -SkipTests to skip tests
+```
+
+The installer checks dependencies, unpacks the harness into the target repo, registers the hooks, and verifies the install by hash before running the bundled test suite.
+
+## Core ideas
+
+1. **Two layers of control.** An **instruction layer** (prose skills/rules that guide the agent to do the right thing) plus a **runtime gate layer** (hooks that block for real at `PreToolUse` — they don't trust prose, they check artifacts). Every declared gate must have real wiring.
+2. **Distributed multi-user.** One dev, one machine, one clone, one harness each. What's shared is the **standard** (system-architecture + code-standards) loaded as input on every machine — not many people on one machine.
+3. **Trace everything, be honest about limits.** Every gate/approval/decision emits an `actor`-stamped event into an append-only audit log. Limits are stated in the contract itself: a gate is a *presence gate* (guards against skipped steps, not fraud), the actor is *attribution* (not authentication), the config gate is *tamper-visible* (editable in an emergency, but it leaves a trace).
+
+## The `hs:*` skills
+
+Everything ships inside one `hs` plugin, invoked as `/hs:<name>`. **118 skills** grouped by family:
+
+| Family | Skills |
+|---|---|
+| **SDLC backbone** | `plan` · `cook` · `test` · `ship` |
+| **Orchestration** | `discover` · `triage` · `understand` · `team` · `find-skills` |
+| **Quality / review** | `code-review` · `review-pr` · `security-scan` · `scenario` · `predict` · `eval-bootstrap` |
+| **Debug / fix** | `debug` · `fix` · `problem-solving` |
+| **Research / knowledge** | `research` · `scout` · `repomix` · `docs-seeker` · `graphify` · `tech-graph` · `context-engineering` · `sequential-thinking` · `fable-thinking` |
+| **Product / advisory (PO·BA)** | `spec` · `shape` · `advise` · `issue-to-plan` |
+| **Second engine / agent coordination** | `partner` · `gemini` · `coding-agent-orchestration` |
+| **Ideas / decisions** | `brainstorm` · `loop` · `prompt` |
+| **Docs / diagrams** | `docs` · `journal` · `retro` · `preview` · `mermaidjs` · `excalidraw` · `document-skills` |
+| **Primitive authoring (building the harness itself)** | `skill-creator` · `harness-creator` · `mcp-builder` · `agentize` · `bootstrap` |
+| **Project operations** | `project-management` · `project-organization` · `plans-kanban` · `git` · `worktree` |
+| **Autonomous (AFK)** | `afk` |
+
+Skills are only prose guidance — the real enforcement lives in hooks + scripts. **13 core skills** (`plan·cook·test·ship·fix·debug·code-review·review-pr·git·scout·understand·setup·triage`) are always on and cannot be disabled; together with `use`/`find-skills`/`cleanup` they form the **16-skill always-on floor**. The remaining 102 skills of the broader catalog (including non-SDLC branches — frontend/mobile/media…) are **off by default** and enabled on demand via `/hs:use <name>` or `/hs:find-skills`.
+
+## Three hook tiers
+
+| Tier | Default | On error | Role |
+|---|---|---|---|
+| `telemetry` | ON | silent fail-open | record |
+| `nudge` | OFF | advisory stderr | remind |
+| `compliance` | **ON + blocking** | **fail-closed** exit 2 + how-to-fix | enforce |
+
+The tier is baked into each hook's code — config (`harness-hooks.yaml`, git-tracked) only toggles on/off and mode; it can never change a hook's tier.
+
+## Standard workflow
+
+Local gates are **advisory-first** (a missing artifact prints `[advisory]` + traces `gate_advisory`, then lets you continue) — the hard stop is enforced **remotely**: a `receipts-gate` workflow that runs **fail-closed** on PR/push.
+
+```mermaid
+flowchart TB
+    P["hs:plan<br/>fast│hard · red-team · validate · --tdd"]
+    AP{{"plan-approval (SLIM)<br/>plan-hash drift-guard · self-approve"}}
+    C["hs:cook<br/>per-phase TDD red→green · JSON artifact · trace"]
+    T["hs:test<br/>unit│integration · verification.json"]
+    G{{"gate_stage · LOCAL advisory<br/>missing artifact → [advisory], keep going"}}
+    RG{{"receipts-gate REMOTE<br/>fail-closed on PR/push"}}
+    SH(["git push / pr / ship"])
+    PRE["git pre-push hook<br/>transport backstop"]
+    P --> C --> T --> G --> SH
+    AP -. "attached to pr/ship" .-> G
+    SH --> RG
+    PRE -. backstop on every push path .-> SH
+```
+
+Every gate/approval/claim emits an `actor`-stamped trace into an append-only audit log; telemetry measures skill/script runs and declared-vs-actual skill chains. Report language is configurable (defaults to Vietnamese) and passes a humanizer rule before it's finalised.
+
+## Two install models
+
+The harness ships in **two install models** — **project** (copy the whole tree into each repo) and **global** (one shared binary via `$HARNESS_BIN_ROOT`, per-project data) — plus a newer **courier** flow that delivers the global model as a Claude Code marketplace plugin. The showcase's [install page](https://hieubui2409.github.io/sdlc-harness-release/pages/install.html) walks through all three.
+
+## Vision
+
+Two-tier control, **local + remote**: keep the one-clone-per-dev model, and add an optional sidecar server so teams/enterprises can centralise **policy, telemetry, and signed gate approvals** (Ed25519) — offline-first, fail-safe, never locking up when the server is away.
+
+---
+
+<a name="tiếng-việt"></a>
+
+## Tiếng Việt
+
+Bộ kỷ luật SDLC **file-based cho Claude Code** — skills + hooks + scripts + rules cài vào repo của từng dev, để code do agent/người viết ra **đi đúng quy trình** (plan → code → test → ship) và **theo chung chuẩn** của tổ chức.
+
+**Repo này vừa là showcase tương tác, vừa là bản release công khai có version** của harness.
+
+> 🎮 **Showcase online:** [hieubui2409.github.io/sdlc-harness-release](https://hieubui2409.github.io/sdlc-harness-release/) — bản tham quan tương tác toàn bộ tính năng, song ngữ EN/VI, chạy thẳng trên trình duyệt (hoặc mở [`index.html`](index.html) cục bộ).
+>
+> Mã nguồn harness (`harness/`, `docs/`, `plans/`, ~130k dòng Python, ~7,900 test) nằm trong repo **private**. **Repo công khai này là tủ kính + bến giao hàng**: trang showcase (GitHub Pages) và các bundle release có version để cài.
+
+### Repo này gồm gì
+
+| | |
+|---|---|
+| 🎮 **Showcase** | Trang standalone song ngữ publish lên **GitHub Pages**. Mỗi tính năng là một trang tương tác: catalog, hooks, pipeline, install, vision. |
+| 📦 **Release** | Mỗi phiên bản cắt thành một **GitHub Release** (`harness-v<version>`) kèm bundle cài đặt: `harness-v<version>.tar.gz` (+ `.sha256`), `install.sh` (POSIX), `install.ps1` (PowerShell), và `sbom.json`. |
+
+### Cài từ bản release mới nhất
+
+Tải `harness-v<version>.tar.gz` và installer tương ứng ở trang [**Releases**](https://github.com/hieubui2409/sdlc-harness-release/releases/latest), rồi trỏ vào repo cần harden:
+
+```bash
+# Yêu cầu: Linux/macOS, Python ≥3.9, git, Claude Code
+sh install.sh harness-v5.1.2.tar.gz <repo đích>      # kiểm deps → cài → verify → chạy test
+sh install.sh harness-v5.1.2.tar.gz <repo đích> --skip-tests
+```
+
+```powershell
+# Windows — PowerShell 5.1 hoặc 7+
+pwsh -File install.ps1 harness-v5.1.2.tar.gz <repo đích>      # -SkipTests để bỏ test
+```
+
+Installer kiểm deps → giải nén harness vào repo đích → đăng ký hook → verify bằng hash rồi chạy bộ test đi kèm.
+
+### Tư tưởng
 
 1. **Hai lớp kiểm soát.** Lớp chỉ dẫn (prose skill/rules — hướng dẫn agent làm đúng) + lớp gate runtime (hook chặn thật ở PreToolUse — không tin prose, kiểm bằng artifact). Mỗi gate khai báo phải có wiring thật.
-2. **Multi-user kiểu phân tán.** Mỗi dev một máy, một clone, một harness riêng. Cái chung là **bộ chuẩn** (system-architecture + code-standards) nạp làm input trên từng máy — không phải nhiều người chung một máy (DEC-15). Lớp remote hai-tầng đang thiết kế là *bổ sung*, không đảo nguyên tắc này.
-3. **Trace mọi thứ, nói thật về giới hạn.** Mọi gate/approval/DEC emit event có `actor` vào sổ audit không xoay vòng. Giới hạn ghi thẳng trong contract: gate là *presence gate* (chống quên bước, chưa chống gian lận), actor là *attribution* (không phải authentication), config gate *tamper-visible* (sửa được khi khẩn cấp nhưng lộ vết).
+2. **Multi-user kiểu phân tán.** Mỗi dev một máy, một clone, một harness riêng. Cái chung là **bộ chuẩn** (system-architecture + code-standards) nạp làm input trên từng máy — không phải nhiều người chung một máy.
+3. **Trace mọi thứ, nói thật về giới hạn.** Mọi gate/approval/quyết định emit event có `actor` vào sổ audit không xoay vòng. Giới hạn ghi thẳng trong contract: gate là *presence gate* (chống quên bước, chưa chống gian lận), actor là *attribution* (không phải authentication), config gate *tamper-visible* (sửa được khi khẩn cấp nhưng lộ vết).
 
-## Cấu trúc repo
+### Bộ skill `hs:*`
 
-| Đường dẫn | Là gì |
-|---|---|
-| `harness/` | Source of truth của sản phẩm: 59 hook, 159 script, 118 skill trong một plugin `hs` (bản cài mới **mặc-định-tắt** — 16 skill luôn bật (13 lõi SDLC + use + find-skills + cleanup), 102 còn lại bật theo nhu cầu qua `/hs:use`), 26 agent, 19 rule, 41 data yaml (gồm `output.yaml` chọn ngôn ngữ output), schemas, install (gồm `install.py` project/global + `bootstrap`/`_wire_env`/`_harden_bin` cho global + `courier_tree`/`bin/harness`/`harness_lifecycle` cho luồng courier), tests |
-| `docs/` | Kiến trúc (`system-architecture.md` thin nạp-context + `docs/harness/system-architecture.md` chi tiết), chuẩn code, roadmap, PDR, phối hợp đa-agent, telemetry, AFK, decisions, STANDARDIZE — đọc `docs/harness/codebase-summary.md` trước |
-| `docs/showcase/` | Nguồn trang showcase standalone (build ra `docs/public/index.html` qua `build.py`) |
-| `plans/` | Kế hoạch active + báo cáo nghiên cứu/red-team/validation |
-| `BACKLOG.md` | Sổ duy nhất cho việc-để-làm-sau (findings hoãn, hạng mục cần user) |
-| `CLAUDE.md` | Hướng dẫn agent làm việc với repo này (tiếng Anh — bề mặt chỉ-thị) |
-| `.claude/` | ClaudeKit toolkit (công cụ dev — **không phải sản phẩm**, không sửa/ref lúc chạy) |
-
-## Bộ skill `hs:*`
-
-Toàn bộ đóng gói trong plugin `hs`, gọi `/hs:<tên>`. Theo họ:
+Toàn bộ đóng gói trong plugin `hs`, gọi `/hs:<tên>`. **118 skill** theo họ:
 
 | Họ | Skill |
 |---|---|
@@ -47,9 +174,9 @@ Toàn bộ đóng gói trong plugin `hs`, gọi `/hs:<tên>`. Theo họ:
 | **Vận hành dự án** | `project-management` · `project-organization` · `plans-kanban` · `git` · `worktree` |
 | **Tự động (AFK)** | `afk` |
 
-Skill chỉ là prose chỉ-dẫn (tiếng Anh). Lớp chặn thật nằm ở hook + script. **13 skill lõi** (`plan·cook·test·ship·fix·debug·code-review·review-pr·git·scout·understand·setup·triage`) luôn bật và không tắt được; cùng `use`/`find-skills`/`cleanup` tạo thành **16 skill floor luôn bật**. 102 skill còn lại trong catalog rộng (gồm cả nhánh không-SDLC như frontend/mobile/media…) **mặc-định-tắt**, bật theo nhu cầu qua `/hs:use <tên>` hoặc `/hs:find-skills`.
+Skill chỉ là prose chỉ-dẫn. Lớp chặn thật nằm ở hook + script. **13 skill lõi** (`plan·cook·test·ship·fix·debug·code-review·review-pr·git·scout·understand·setup·triage`) luôn bật và không tắt được; cùng `use`/`find-skills`/`cleanup` tạo thành **16 skill floor luôn bật**. 102 skill còn lại trong catalog rộng (gồm cả nhánh không-SDLC như frontend/mobile/media…) **mặc-định-tắt**, bật theo nhu cầu qua `/hs:use <tên>` hoặc `/hs:find-skills`.
 
-## Ba hạng hook
+### Ba hạng hook
 
 | Hạng | Default | Khi lỗi | Vai trò |
 |---|---|---|---|
@@ -59,80 +186,32 @@ Skill chỉ là prose chỉ-dẫn (tiếng Anh). Lớp chặn thật nằm ở h
 
 Hạng khắc trong code từng hook — config (`harness-hooks.yaml`, tracked git) chỉ bật/tắt và đổi mode, không đổi được hạng.
 
-## Luồng chuẩn (W1 pipeline + W2 phối hợp)
+### Luồng chuẩn
 
-**Personal-first (DEC-215):** gate cục bộ chỉ **advisory** — thiếu artifact thì in `[advisory]` + trace `gate_advisory` rồi **cho chạy tiếp**, KHÔNG chặn. Chốt chặn thật ở **remote**: workflow `receipts-gate` (`.github/workflows/receipts-gate.yml`) fail-closed trên PR/push. `plan-approval` là bản **SLIM**: chỉ chống-lệch bằng plan-hash + graph sidecar + người tự duyệt — bỏ hết roster/quorum/reviewer∈owners.
+Gate cục bộ **advisory-first** — thiếu artifact thì in `[advisory]` + trace `gate_advisory` rồi cho chạy tiếp. Chốt chặn thật ở **remote**: workflow `receipts-gate` fail-closed trên PR/push.
 
 ```mermaid
 flowchart TB
-    TS["task-store GitHub<br/>claim có lease 4h (reclaim khi treo)"]
     P["hs:plan<br/>fast│hard · red-team · validate · --tdd"]
-    AP{{"plan-approval.json (SLIM)<br/>plan-hash chống-lệch · người tự duyệt"}}
+    AP{{"plan-approval (SLIM)<br/>plan-hash chống-lệch · người tự duyệt"}}
     C["hs:cook<br/>per-phase TDD đỏ→xanh · artifact JSON · trace"]
     T["hs:test<br/>unit│integration · verification.json"]
     G{{"gate_stage · ADVISORY cục bộ<br/>thiếu artifact → [advisory], vẫn chạy"}}
-    RG{{"receipts-gate remote<br/>fail-closed trên PR/push"}}
+    RG{{"receipts-gate REMOTE<br/>fail-closed trên PR/push"}}
     SH(["git push / pr / ship"])
-    PRE["git pre-push hook<br/>tầng transport (Tier-A vẫn chặn)"]
-    TS --> P --> C --> T --> G --> SH
+    PRE["git pre-push hook<br/>tầng transport backstop"]
+    P --> C --> T --> G --> SH
     AP -. "gắn vào pr/ship" .-> G
     SH --> RG
     PRE -. backstop mọi đường push .-> SH
 ```
 
-Nhịp dừng hỏi người: `HARNESS_AUTONOMY=default` (dừng ở plan-approve + ship) · `ask_all` · `god`. Mọi gate/approval/claim emit trace có `actor` vào sổ audit không xoay vòng; telemetry đo skill/script-run + chuỗi skill thực-tế-vs-khai-báo. Báo cáo do skill sinh ra đi theo `harness/data/output.yaml` (`language:` mặc định `vi`) và lọc qua rule humanizer trước khi chốt.
+Mọi gate/approval/claim emit trace có `actor` vào sổ audit không xoay vòng; telemetry đo skill/script-run + chuỗi skill thực-tế-vs-khai-báo. Ngôn ngữ báo cáo cấu hình được (mặc định tiếng Việt) và lọc qua rule humanizer trước khi chốt.
 
-## Bắt đầu
+### Hai mô hình cài
 
-```bash
-# Yêu cầu: Linux, Python ≥3.9, git, Claude Code
-python3 harness/scripts/preflight_deps.py        # check PyYAML + pytest, in lệnh cài nếu thiếu
-python3 -m pytest harness/tests/ -q              # unit + invariants
-bash scripts/ci_local.sh                         # toàn bộ job CI chạy local
-python3 harness/e2e/run_vertical_slice.py        # e2e advisory-then-pass (temp dir)
-python3 harness/scripts/verify_install.py --strict   # so hash + đăng ký hook
-python3 harness/scripts/analyze_telemetry.py --lens all   # đọc telemetry (read-only)
-```
+Harness có **2 mô hình cài** — **project** (copy cả cây vào từng repo) và **global** (một binary chung qua `$HARNESS_BIN_ROOT`, data riêng từng project) — cùng luồng **courier** mới giao mô hình global qua plugin marketplace của Claude Code. [Trang install](https://hieubui2409.github.io/sdlc-harness-release/pages/install.html) của showcase đi qua cả ba.
 
-## Cài đặt — 2 mô hình + luồng courier
-
-Harness có **2 mô hình cài** (project / global) và **1 luồng giao mới (courier)**. Ví như bếp: **project** = mỗi nhà một cái bếp riêng; **global** = một bếp chung cho cả khu, mỗi nhà chỉ giữ tủ đồ riêng; **courier** = vẫn cái bếp-chung đó, nhưng **chuyển phát tới tận máy** qua plugin marketplace thay vì lắp tay.
-
-| | **Project** (mặc định) | **Global** (`--global`) |
-|---|---|---|
-| Copy cả cây harness vào repo? | ✅ có, mỗi repo một bản | ❌ không — hook trỏ `$HARNESS_BIN_ROOT` |
-| Binary dùng chung nhiều project? | ❌ không | ✅ MỘT bản chung |
-| Data riêng từng project | trong cây đã copy | trong `.harness/` của project |
-| Config (RBAC/policy/ngôn ngữ) | riêng repo | **chung** cả bin (DEC-225) |
-
-**Project mode — cài từ bản release** (một lệnh): tải bundle + `install.sh` (hai asset của release) rồi chạy `sh install.sh harness-v<version>.tar.gz <repo đích>` (kiểm deps → cài → verify → chạy test; `--skip-tests` để bỏ test). Windows (PowerShell): `pwsh -File install.ps1 harness-v<version>.tar.gz <repo đích>` (`-SkipTests` để bỏ test), hợp cả PowerShell 5.1 lẫn 7+.
-
-**Global mode — một binary chung cho nhiều project:**
-
-```bash
-python3 harness/install/install.py --target <project đích> --global
-```
-
-Chế độ này: hook trỏ `$HARNESS_BIN_ROOT` (không copy cây); env (`HARNESS_BIN_ROOT` + tùy chọn `HARNESS_DATA_ROOT`) ghi vào `settings.local.json` của project (không commit) → **cần RESTART session** mới ăn; tự **bootstrap** khung `.harness/` cho project; **từ chối** khi repo đích còn cây `harness/` cũ (phải gỡ trước, không auto-migrate). Cờ opt-in `--harden-bin` = chmod bin read-only ở tầng OS — đây là **hàng rào THẬT** duy nhất chặn Bash-write vào bin chung mà lớp hook không thấy (nói thẳng: hook chỉ chặn tool-Write). Repo này chính là bin chung khi chạy dogfood (`HARNESS_BIN_ROOT` để trống = self-host). Chi tiết đầy đủ: **`docs/harness/global-install-guide.md`**; nạp chuẩn tổ chức / smoke test: `docs/harness/deployment-guide.md`.
-
-**Courier — giao mô hình global qua plugin marketplace (mới):** thay vì gõ `install.py --global`, harness ship như **một plugin Claude Code** cài từ marketplace. Cache plugin **mỏng** (chỉ `bin/` + `engine/` + `.claude-plugin/`, KHÔNG chạy skill trực tiếp từ cache) — nó là **người đưa thư** mang engine tới máy. Luồng:
-
-```bash
-# 1) cài plugin "harness" từ marketplace CC → có lệnh `harness` trên PATH
-# 2) trong mỗi repo đích:
-harness setup            # copy engine → ~/.local/share/harness/<version> (+ pointer `current`), wire per-project
-harness upgrade          # nâng cấp: copy+verify+swap `current` sang bản mới (side-by-side, không đụng wiring)
-harness doctor           # kiểm integrity engine (manifest-hash)
-harness setup --pin      # khoá repo vào 1 version-dir cố định (miễn nhiễm `current` xê dịch)
-```
-
-`setup` copy engine ra **home read-only chung** rồi wire `HARNESS_BIN_ROOT` **per-project** vào `settings.local.json` (F3 — KHÔNG BAO GIỜ ghi global `~/.claude`), materialize hook + repoint marketplace tới engine. Về mặt kiến trúc courier **tái dùng nguyên** bộ máy two-zone của global (DEC-224/225) — chỉ khác **cách giao**: qua plugin + engine-home có version + pointer `current`, thay vì lắp tay. Bản courier **lược bỏ** `harness/tests/` + `harness/e2e/` khỏi payload (đồ dev/CI) → verify bằng `harness doctor`, không phải pytest. Lệch version plugin-vs-engine chỉ **cảnh báo advisory** ở SessionStart + `harness doctor`, không hard-block. Chi tiết: **`docs/harness/global-install-guide.md`** (mục courier) + `docs/harness/deployment-guide.md`.
-
-Xem trực quan toàn bộ tính năng: mở `docs/public/index.html` trong trình duyệt, hoặc
-bản online tại **https://hieubui2409.github.io/sdlc-harness-showcase/**. Site đó
-build từ `showcase/` (`python3 showcase/build.py`) rồi publish sang repo công khai
-riêng `hieubui2409/sdlc-harness-showcase` (GitHub Pages); repo harness này giữ private.
-
-## Hướng đi tiếp (vision)
+### Hướng đi tiếp (vision)
 
 Hai-tầng kiểm soát **local + remote**: giữ nguyên một-clone-một-dev, thêm một sidecar server tùy chọn để team/doanh nghiệp tập trung **policy, telemetry, và phê duyệt gate có chữ ký** (Ed25519) — offline-first, fail-safe, không khóa khi server vắng.

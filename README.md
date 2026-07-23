@@ -29,20 +29,38 @@ Animated, **bilingual (EN/VI)** tour of every feature — the skill catalog, the
 
 ## Install from the latest release
 
-Grab `harness-v<version>.tar.gz` and the matching installer from the [**Releases**](https://github.com/hieubui2409/sdlc-harness-release/releases/latest) page, then point it at the repo you want to harden:
+**One-liner** — run inside the repo you want to harden; it self-downloads the latest bundle and installs it (requires Python ≥3.9 + git + Claude Code on the target):
 
 ```bash
-# Requires: Linux/macOS, Python ≥3.9, git, Claude Code
-sh install.sh harness-v5.1.2.tar.gz <target-repo>      # verify deps → install → verify → run tests
-sh install.sh harness-v5.1.2.tar.gz <target-repo> --skip-tests
+# Linux / macOS / WSL
+curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh | sh -s -- . --skip-tests
 ```
 
 ```powershell
 # Windows — PowerShell 5.1 or 7+
-pwsh -File install.ps1 harness-v5.1.2.tar.gz <target-repo>      # -SkipTests to skip tests
+irm https://hieubui2409.github.io/sdlc-harness-release/install.ps1 | iex
 ```
 
-The installer checks dependencies, unpacks the harness into the target repo, registers the hooks, and verifies the install by hash before running the bundled test suite.
+`-s --` is required so args reach the script over stdin. Pin a version with `HARNESS_VERSION=5.1.2` (env) or `-Version 5.1.2` (ps1).
+
+**Pick a version + preview its changelog** (`-i` / `-Interactive`) — lists the releases, lets you choose, shows that version's changelog, then confirms before installing (reads `/dev/tty`, so it works even when piped):
+
+```bash
+curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh -o install.sh && sh install.sh -i
+```
+
+**Prefer to verify first?** Don't pipe blindly. Read the bootstrap, then dry-run it, or go fully manual:
+
+```bash
+curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh -o install.sh && less install.sh
+sh install.sh . --dry-run          # print exactly what it WOULD fetch (URLs + expected sha256), install nothing
+# or fully manual — grab the 3 assets from the Releases page, verify, inspect, install offline:
+sha256sum -c harness-v<version>.tar.gz.sha256      # must print "OK"
+tar tzf harness-v<version>.tar.gz | less           # inspect the tarball
+sh install.sh harness-v<version>.tar.gz <target-repo>   # offline installer (you already have the bundle)
+```
+
+Every path hands off to the same installer: verify sha256 → block tar-escape → check deps → install → verify by hash (`--strict`) → run the bundled test suite (`--skip-tests` to skip). An `sbom.json` ships with each release for component review. Assets are always available on the [**Releases**](https://github.com/hieubui2409/sdlc-harness-release/releases/latest) page; the short URLs are served from GitHub Pages.
 
 ## Core ideas
 
@@ -134,20 +152,38 @@ Bộ kỷ luật SDLC **file-based cho Claude Code** — skills + hooks + script
 
 ### Cài từ bản release mới nhất
 
-Tải `harness-v<version>.tar.gz` và installer tương ứng ở trang [**Releases**](https://github.com/hieubui2409/sdlc-harness-release/releases/latest), rồi trỏ vào repo cần harden:
+**One-liner** — chạy trong repo cần harden; script tự tải bản mới nhất rồi cài (máy đích cần Python ≥3.9 + git + Claude Code):
 
 ```bash
-# Yêu cầu: Linux/macOS, Python ≥3.9, git, Claude Code
-sh install.sh harness-v5.1.2.tar.gz <repo đích>      # kiểm deps → cài → verify → chạy test
-sh install.sh harness-v5.1.2.tar.gz <repo đích> --skip-tests
+# Linux / macOS / WSL
+curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh | sh -s -- . --skip-tests
 ```
 
 ```powershell
 # Windows — PowerShell 5.1 hoặc 7+
-pwsh -File install.ps1 harness-v5.1.2.tar.gz <repo đích>      # -SkipTests để bỏ test
+irm https://hieubui2409.github.io/sdlc-harness-release/install.ps1 | iex
 ```
 
-Installer kiểm deps → giải nén harness vào repo đích → đăng ký hook → verify bằng hash rồi chạy bộ test đi kèm.
+`-s --` là bắt buộc để tham số qua được stdin. Ghim phiên bản: `HARNESS_VERSION=5.1.2` (env) hoặc `-Version 5.1.2` (ps1).
+
+**Chọn phiên bản + xem changelog trước khi cài** (`-i` / `-Interactive`) — liệt kê release, chọn, xem changelog của bản đó, xác nhận rồi mới cài (đọc `/dev/tty` nên chạy được cả khi pipe):
+
+```bash
+curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh -o install.sh && sh install.sh -i
+```
+
+**Kỹ tính về bảo mật?** Đừng pipe mù. Đọc bootstrap trước, rồi dry-run, hoặc tự-chủ hoàn toàn:
+
+```bash
+curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh -o install.sh && less install.sh
+sh install.sh . --dry-run          # in đúng những gì SẼ tải (URL + sha256 kỳ vọng), không cài gì
+# hoặc thủ công hết — tải 3 asset ở trang Releases, kiểm, soi, cài offline:
+sha256sum -c harness-v<version>.tar.gz.sha256      # phải "OK"
+tar tzf harness-v<version>.tar.gz | less           # soi tarball
+sh install.sh harness-v<version>.tar.gz <repo đích>   # installer offline (đã có sẵn bundle)
+```
+
+Mọi đường đều giao cho cùng một installer: kiểm sha256 → chặn tar-escape → kiểm deps → cài → verify bằng hash (`--strict`) → chạy bộ test (`--skip-tests` để bỏ). `sbom.json` kèm mỗi release để rà thành phần. Asset luôn có ở trang [**Releases**](https://github.com/hieubui2409/sdlc-harness-release/releases/latest); URL ngắn phục vụ từ GitHub Pages.
 
 ### Tư tưởng
 

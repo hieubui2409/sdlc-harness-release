@@ -29,6 +29,8 @@ Animated, **bilingual (EN/VI)** tour of every feature — the skill catalog, the
 
 ## Install from the latest release
 
+One `install.sh` (+ `install.ps1`) dispatches on its argument: **give a URL → it downloads that URL; give a local `.tar.gz` → it installs that offline; give nothing → it fetches the latest release.**
+
 **One-liner** — run inside the repo you want to harden; it self-downloads the latest bundle and installs it (requires Python ≥3.9 + git + Claude Code on the target):
 
 ```bash
@@ -54,10 +56,12 @@ curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh -o inst
 ```bash
 curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh -o install.sh && less install.sh
 sh install.sh . --dry-run          # print exactly what it WOULD fetch (URLs + expected sha256), install nothing
-# or fully manual — grab the 3 assets from the Releases page, verify, inspect, install offline:
+# pass an explicit tarball URL:
+sh install.sh https://github.com/hieubui2409/sdlc-harness-release/releases/download/harness-v<version>/harness-v<version>.tar.gz .
+# or fully manual — grab the assets from the Releases page, verify, inspect, install offline:
 sha256sum -c harness-v<version>.tar.gz.sha256      # must print "OK"
 tar tzf harness-v<version>.tar.gz | less           # inspect the tarball
-sh install.sh harness-v<version>.tar.gz <target-repo>   # offline installer (you already have the bundle)
+sh install.sh harness-v<version>.tar.gz <target-repo>   # give a tarball → offline branch
 ```
 
 Every path hands off to the same installer: verify sha256 → block tar-escape → check deps → install → verify by hash (`--strict`) → run the bundled test suite (`--skip-tests` to skip). An `sbom.json` ships with each release for component review. Assets are always available on the [**Releases**](https://github.com/hieubui2409/sdlc-harness-release/releases/latest) page; the short URLs are served from GitHub Pages.
@@ -151,6 +155,8 @@ Bộ kỷ luật SDLC **file-based cho Claude Code** — skills + hooks + script
 | 📦 **Release** | Mỗi phiên bản cắt thành một **GitHub Release** (`harness-v<version>`) kèm bundle cài đặt: `harness-v<version>.tar.gz` (+ `.sha256`), `install.sh` (POSIX), `install.ps1` (PowerShell), và `sbom.json`. |
 
 ### Cài từ bản release mới nhất
+
+Một `install.sh` (+ `install.ps1`) phân nhánh theo tham số: **đưa URL → tải URL đó; đưa `.tar.gz` local → cài offline; không đưa gì → tự lấy bản mới nhất.**
 
 **One-liner** — chạy trong repo cần harden; script tự tải bản mới nhất rồi cài (máy đích cần Python ≥3.9 + git + Claude Code):
 

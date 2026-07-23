@@ -75,7 +75,9 @@ if ([string]::IsNullOrEmpty($Target)) { $Target = (Get-Location).Path }
 # (Copy-Item) - the file:// path lets the flow be exercised offline.
 function Get-Asset([string]$Url, [string]$OutFile) {
     if ($Url -like 'file://*') {
-        Copy-Item -LiteralPath ($Url -replace '^file://', '') -Destination $OutFile -Force
+        # [uri].LocalPath resolves file:///C:/x -> C:\x and file:///tmp/x -> /tmp/x,
+        # so a file:// base works on Windows and unix alike.
+        Copy-Item -LiteralPath ([uri]$Url).LocalPath -Destination $OutFile -Force
     } else {
         Invoke-WebRequest -Uri $Url -OutFile $OutFile -UseBasicParsing
     }

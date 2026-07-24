@@ -11,9 +11,9 @@
     install.ps1 <harness-vX.Y.Z.tar.gz> [target]  -> offline: install a local bundle
 
   Whichever way the bundle arrives, the rest is one shot: verify sha256 -> extract
-  (with a tar-escape guard) -> check deps -> install + verify (--strict) -> run the
-  test suite. -SkipTests skips step 5 (~30s). Compatible with Windows PowerShell 5.1
-  and PowerShell 7+.
+  (with a tar-escape guard) -> check deps -> install + verify (--strict) -> (opt-in)
+  run the test suite. Step 5 is OFF by default; -RunTests opts in (~30s). Compatible
+  with Windows PowerShell 5.1 and PowerShell 7+.
 
 .PARAMETER Source
   Positional: a local *.tar.gz bundle, a URL to one, or empty (fetch the latest).
@@ -22,7 +22,7 @@
   Target repo root to install into (positional, default: current directory).
 
 .PARAMETER Version
-  Online: pin a version (e.g. 5.3.0 or harness-v5.3.0). Default: HARNESS_VERSION env.
+  Online: pin a version (e.g. 5.4.0 or harness-v5.4.0). Default: HARNESS_VERSION env.
 
 .PARAMETER Interactive
   Online: list releases, pick one, PREVIEW its changelog, confirm - then install.
@@ -30,14 +30,18 @@
 .PARAMETER DryRun
   Online: print exactly what WOULD be downloaded (URLs + expected sha256) - install nothing.
 
+.PARAMETER RunTests
+  Run the post-install suite (OFF by default; ~30s).
+
 .PARAMETER SkipTests
-  Skip the post-install suite. Alias -NoTests.
+  Deprecated no-op - the suite is already off by default (alias -NoTests, kept so
+  old invocations don't error).
 
 .EXAMPLE
   irm https://hieubui2409.github.io/sdlc-harness-release/install.ps1 | iex
 
 .EXAMPLE
-  pwsh -File install.ps1 .\harness-v5.3.0.tar.gz C:\src\my-repo
+  pwsh -File install.ps1 .\harness-v5.4.0.tar.gz C:\src\my-repo
 
 .EXAMPLE
   pwsh -File install.ps1 C:\src\my-repo -Interactive
@@ -55,6 +59,8 @@ param(
     [switch]$Interactive,
 
     [switch]$DryRun,
+
+    [switch]$RunTests,
 
     [Alias('NoTests')]
     [switch]$SkipTests
@@ -285,11 +291,9 @@ with tarfile.open(bundle, "r:gz") as tf:
         if ($LASTEXITCODE -ne 0) { Write-Host "  cleanup deferred - run hs:cleanup in $Target to review" }
     }
 
-    # 5. run the suite against the installed copy (default; -SkipTests to skip) ------
-    if ($SkipTests) {
-        Write-Host 'skipping the harness test suite (-SkipTests).'
-    } else {
-        Write-Host "running the harness test suite in $Target (use -SkipTests to skip) ..."
+    # 5. run the suite against the installed copy (opt-in; -RunTests to enable) ------
+    if ($RunTests) {
+        Write-Host "running the harness test suite in $Target (-RunTests) ..."
         Push-Location $Target
         try {
             Invoke-Py @('-m', 'pytest', 'harness/tests/', '-q')
@@ -297,6 +301,8 @@ with tarfile.open(bundle, "r:gz") as tf:
         } finally {
             Pop-Location
         }
+    } else {
+        Write-Host 'skipping the harness test suite (default; use -RunTests to run it).'
     }
 } finally {
     # trap 'rm -rf "$WORK"' EXIT - fires on success, error, or Ctrl-C.
@@ -313,6 +319,6 @@ if ($script:PyBase.Count -gt 0) {
 Write-Host 'done.'
 Write-Host '  - enable the hs plugin: run /reload-plugins in Claude Code (or restart it)'
 Write-Host "  - re-verify any time: $pyDisplay `"$Target\harness\scripts\verify_install.py`" --strict"
-if ($SkipTests) {
-    Write-Host "  - run the suite later: cd `"$Target`"; $pyDisplay -m pytest harness/tests/ -q"
+if (-not $RunTests) {
+    Write-Host "  - run the suite any time: cd `"$Target`"; $pyDisplay -m pytest harness/tests/ -q"
 }

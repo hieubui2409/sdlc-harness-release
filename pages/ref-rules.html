@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Rule layer — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Rule layer — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Rule layer — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -79,27 +79,33 @@
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--spec)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M11 6h14l5 5v23H11z" stroke="var(--spec)" stroke-width="2" stroke-linejoin="round"/><path d="M16 18h10M16 24h10M16 12h6" stroke="var(--spec)" stroke-width="2" stroke-linecap="round"/></svg></div>
-      <div class="ttl"><div class="who"><span class="en">Shared discipline loaded on demand — 22 rules</span><span class="vi">Kỷ luật chung nạp khi cần — 22 luật</span></div><h2><span class="en">The rule layer</span><span class="vi">Lớp luật</span></h2></div>
-      <div class="ver">22 rules</div>
+      <div class="ttl"><div class="who"><span class="en">Shared discipline loaded on demand — 28 rules</span><span class="vi">Kỷ luật chung nạp khi cần — 28 luật</span></div><h2><span class="en">The rule layer</span><span class="vi">Lớp luật</span></h2></div>
+      <div class="ver">28 rules</div>
     </div>
     <div class="divider" style="--ac:var(--spec)"></div>
     
     <p class="lead"><span class="en">Skills stay thin; the durable discipline lives in <code>harness/rules/</code> as Markdown loaded <b>on demand</b> — a skill opens a rule only when its task needs it. <code>harness-contract.md</code> is the one always-load contract; the rest are routed by task.</span><span class="vi">Skill giữ mỏng; kỷ luật bền nằm trong <code>harness/rules/</code> dạng Markdown nạp <b>khi cần</b> — skill chỉ mở một luật khi task của nó cần. <code>harness-contract.md</code> là contract luôn-nạp duy nhất; phần còn lại định tuyến theo task.</span></p>
     <div class="cards grid-2">
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>adr-trigger</code></h3><p>when an Architecture Decision Record is required (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>agent-operational-discipline</code></h3><p>Agent operational discipline (STRICT)</p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>anti-tautology-detection</code></h3><p>Anti-tautology detection (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>architectural-constraints</code></h3><p>Architectural constraints (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>auto-decision-ledger</code></h3><p>record what an auto-mode decided on its own</p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>claim-verification</code></h3><p>Claim verification (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>disabled-group-handling</code></h3><p>Disabled-skill handling</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>documentation-management</code></h3><p>Documentation management (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>harness-contract</code></h3><p>Harness contract (always-load, &lt;=75 lines)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>intake-and-interview-discipline</code></h3><p>Intake and interview discipline (on-demand)</p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>methodology-review</code></h3><p>Methodology review (self-governance gate)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>orchestration-protocol</code></h3><p>Orchestration protocol (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>output-rendering</code></h3><p>how a report skill/agent renders human-facing prose</p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>persistent-risk-register</code></h3><p>project-wide, outlives any one plan</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>plain-language-phrasing</code></h3><p>Plain-language phrasing (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>plan-quality-goodhart-premortem</code></h3><p>Goodhart check + pre-mortem (on-demand, should)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>plannotator-review-gates</code></h3><p>Plannotator review-gates -- optional review surface for every approval gate (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>port-layering-and-capability-assignment</code></h3><p>Port layering &amp; capability assignment (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>primary-workflow</code></h3><p>Primary workflow</p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>regression-sentinel</code></h3><p>one test per past incident, never delete</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>scope-and-contract-discipline</code></h3><p>Scope and contract discipline (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>scoring-rigor-contract</code></h3><p>Scoring-rigor contract (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>skill-routing</code></h3><p>Skill Routing</p></div>

@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>All skills — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="All skills — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="All skills — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -131,8 +131,8 @@
     <div class="eyebrow" style="margin-top:8px"><span class="en">SDLC Spine</span><span class="vi">Xương sống SDLC</span></div>
     <h2 class="sectitle" id="cat-spine" style="font-size:1.15rem;margin-bottom:12px"><span class="en">The enforced four-step loop</span><span class="vi">Vòng bốn bước được cưỡng chế</span></h2>
     <div class="cards grid-2">
-      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:plan <span class="ttag workflow">workflow</span></h3><p><span class="en">Create a verified implementation plan — research, constraint-scan, phase design, red-team, validate. Produces a human-approvable plan file.</span><span class="vi">Tạo kế hoạch triển khai có kiểm tra — research, constraint-scan, thiết kế phase, red-team, validate. Tạo file plan để người duyệt.</span></p></div>
-      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:cook <span class="ttag workflow">workflow</span></h3><p><span class="en">Execute an approved plan phase by phase, TDD red→green. Each phase emits a verification artifact and a trace event.</span><span class="vi">Thực thi plan đã duyệt từng phase, TDD đỏ→xanh. Mỗi phase emit artifact verification và sự kiện trace.</span></p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>hs:plan <span class="ttag workflow">workflow</span></h3><p><span class="en">Create a verified implementation plan — research, constraint-scan, phase design, red-team, validate — with an optional coverage-grid planning mode for systematic axis coverage. Produces a human-approvable plan file.</span><span class="vi">Tạo kế hoạch triển khai có kiểm tra — research, constraint-scan, thiết kế phase, red-team, validate — có chế độ lập-kế-hoạch coverage-grid tùy chọn để phủ trục có hệ thống. Tạo file plan để người duyệt.</span></p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:cook <span class="ttag workflow">workflow</span></h3><p><span class="en">Execute an approved plan phase by phase, TDD red→green — including filling a coverage-grid plan's cells under an anti-confab contract. Each phase emits a verification artifact and a trace event.</span><span class="vi">Thực thi plan đã duyệt từng phase, TDD đỏ→xanh — kể cả điền ô của plan coverage-grid theo hợp đồng chống-bịa. Mỗi phase emit artifact verification và sự kiện trace.</span></p></div>
       <div class="card" style="--ac:var(--crit)"><h3><span class="pin"></span>hs:test <span class="ttag workflow">workflow</span></h3><p><span class="en">Run and validate tests — unit / integration profiles — and produce a QA report with a machine-readable verdict in <code>verification.json</code>.</span><span class="vi">Chạy và validate test — profile unit/integration — tạo QA report với verdict đọc được bởi máy trong <code>verification.json</code>.</span></p></div>
       <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:ship <span class="ttag workflow">workflow</span></h3><p><span class="en">Gated ship pipeline: code-review → verification → human approval → push/pr. Each gate is a hard stop.</span><span class="vi">Pipeline ship có gate: review code → verification → người duyệt → push/pr. Mỗi gate là điểm dừng cứng.</span></p></div>
     </div>
@@ -350,6 +350,7 @@
       <ul>
         <li><span class="en">Every <code>hs:*</code> skill is a structured prompt. It guides Claude Code but does not block the model from deviating.</span><span class="vi">Mỗi skill <code>hs:*</code> là prompt có cấu trúc. Nó hướng dẫn Claude Code nhưng không chặn model sai lệch.</span></li>
         <li><span class="en">Blocking happens in hooks and scripts — <code>gate_stage</code> (compliance), <code>write_guard</code>, and the git pre-push backstop.</span><span class="vi">Chặn xảy ra trong hook và script — <code>gate_stage</code> (compliance), <code>write_guard</code> và git pre-push backstop.</span></li>
+        <li><span class="en">Skills also lean on a shared rule layer for cross-cutting conventions, not just the cards above — <code>harness/rules/</code> now holds <b>28</b> rules, six of them added for methodology and governance (<code>adr-trigger</code>, <code>anti-tautology-detection</code>, <code>claim-verification</code>, <code>methodology-review</code>, <code>persistent-risk-register</code>, <code>regression-sentinel</code>), loaded on demand instead of baked into every skill.</span><span class="vi">Skill còn dựa vào một lớp rule dùng chung cho quy ước xuyên-suốt, không chỉ các thẻ ở trên — <code>harness/rules/</code> giờ có <b>28</b> rule, sáu rule mới thuộc phương pháp luận và quản trị (<code>adr-trigger</code>, <code>anti-tautology-detection</code>, <code>claim-verification</code>, <code>methodology-review</code>, <code>persistent-risk-register</code>, <code>regression-sentinel</code>), nạp theo nhu cầu thay vì nhúng cứng vào từng skill.</span></li>
         <li><span class="en"><b>122</b> invocable skills as of this build. Skills are added over time — <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi"><b>122</b> skill người-gọi-được tính đến bản build này. Skill được thêm theo thời gian — <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></li>
       </ul>
     </div>

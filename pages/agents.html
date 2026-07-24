@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Agents — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Agents — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Agents — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -80,11 +80,11 @@
     <div class="skill-head" style="--ac:var(--tel)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="13" r="6" stroke="var(--tel)" stroke-width="2"/><path d="M8 33c0-6 5-10 12-10s12 4 12 10" stroke="var(--tel)" stroke-width="2" stroke-linecap="round"/><circle cx="32" cy="10" r="3" stroke="var(--tel)" stroke-width="2"/><circle cx="8" cy="10" r="3" stroke="var(--tel)" stroke-width="2"/></svg></div>
       <div class="ttl"><div class="who"><span class="en">The specialists the skills deploy</span><span class="vi">Các chuyên gia mà skill triển khai</span></div><h2><span class="en">Agents</span><span class="vi">Agent</span></h2></div>
-      <div class="ver">26 agents</div>
+      <div class="ver">28 agents</div>
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
 
-    <p class="lead" style="margin-bottom:18px"><span class="en">Skills don't do everything themselves — they <b>deploy specialized subagents</b>, each running in its own context with its own tools. <b>26</b> of them, from <code>planner</code> to <code>red-teamer</code>. Most are advisory: they report findings and do <b>not</b> mutate the plan or code unless explicitly tasked. The orchestration rule caps fan-out to the number of distinct concerns (default <b>8</b>, hard ceiling 10), so it stays controllable.</span><span class="vi">Skill không tự làm hết — chúng <b>triển khai subagent chuyên biệt</b>, mỗi cái chạy trong context riêng với bộ tool riêng. <b>26</b> agent, từ <code>planner</code> đến <code>red-teamer</code>. Phần lớn là tư vấn: chúng báo phát hiện và <b>không</b> sửa plan hay code trừ khi được giao rõ. Luật điều phối giới hạn fan-out theo số mối-quan-tâm khác biệt (mặc định <b>8</b>, trần cứng 10), nên vẫn kiểm soát được.</span></p>
+    <p class="lead" style="margin-bottom:18px"><span class="en">Skills don't do everything themselves — they <b>deploy specialized subagents</b>, each running in its own context with its own tools. <b>28</b> of them, from <code>planner</code> to <code>red-teamer</code>. Most are advisory: they report findings and do <b>not</b> mutate the plan or code unless explicitly tasked. The orchestration rule caps fan-out to the number of distinct concerns (default <b>8</b>, hard ceiling 10), so it stays controllable.</span><span class="vi">Skill không tự làm hết — chúng <b>triển khai subagent chuyên biệt</b>, mỗi cái chạy trong context riêng với bộ tool riêng. <b>28</b> agent, từ <code>planner</code> đến <code>red-teamer</code>. Phần lớn là tư vấn: chúng báo phát hiện và <b>không</b> sửa plan hay code trừ khi được giao rõ. Luật điều phối giới hạn fan-out theo số mối-quan-tâm khác biệt (mặc định <b>8</b>, trần cứng 10), nên vẫn kiểm soát được.</span></p>
 
     <!-- what they are -->
     <h2 class="sectitle" id="ag-what"><span class="en">Agents vs skills</span><span class="vi">Agent vs skill</span></h2>
@@ -100,6 +100,8 @@
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>researcher</h3><p><span class="en">Surveys multiple sources, weighs evidence, and returns a ranked, cited research report.</span><span class="vi">Khảo nhiều nguồn, cân bằng chứng, trả về báo cáo nghiên cứu xếp hạng có trích dẫn.</span></p><div class="chips"><span class="chip">hs:research</span><span class="chip">hs:plan</span><span class="chip">hs:discover</span></div></div>
       <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>brainstormer</h3><p><span class="en">Explores solution space and debates architectural trade-offs with honest caveats.</span><span class="vi">Khám phá không gian giải pháp và tranh luận đánh đổi kiến trúc với cảnh báo trung thực.</span></p><div class="chips"><span class="chip">hs:brainstorm</span><span class="chip">hs:critique</span></div></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>advisor</h3><p><span class="en">Runs the interview-driven advisory workflow in isolation — scouts, asks one question at a time to reframe a raw idea into exact requirements, then gives honest advice and better alternatives.</span><span class="vi">Chạy luồng tư vấn dẫn-dắt-phỏng-vấn trong context cách ly — scout, hỏi từng câu một để nắn ý tưởng thô thành yêu cầu chính xác, rồi đưa lời khuyên trung thực và phương án tốt hơn.</span></p><div class="chips"><span class="chip">hs:advise</span><span class="chip">hs:brainstorm</span></div></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>grid-axis-selector</h3><p><span class="en">Picks the coverage axes for a plan's coverage-grid planning mode — which dimensions get swept before cells get filled.</span><span class="vi">Chọn các trục coverage cho chế độ lập-kế-hoạch coverage-grid — trục nào được quét trước khi điền ô.</span></p><div class="chips"><span class="chip">hs:plan</span><span class="chip">hs:cook</span></div></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span>grid-filler</h3><p><span class="en">Fills a skeleton coverage grid under an anti-confab contract — defaults to an honest stub whenever a cell can't be grounded in evidence.</span><span class="vi">Điền một grid coverage khung xương theo hợp đồng chống-bịa — mặc định về stub trung thực khi một ô không thể neo bằng chứng.</span></p><div class="chips"><span class="chip">hs:plan</span><span class="chip">hs:cook</span></div></div>
     </div>
 
     <!-- build & repair -->

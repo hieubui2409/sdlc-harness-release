@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>hs:plan — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="hs:plan — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="hs:plan — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -209,7 +209,7 @@
       </div>
       <div class="card">
         <h3><span class="pin"></span><span class="en">The enforcement gate</span><span class="vi">Gate cưỡng chế</span></h3>
-        <p><span class="en"><code>plan-approval.json</code> is enforced on the remote CI: a plan hash must match the normalized plan directory to prevent drift. You approve locally (advisory), but the remote gate checks that the plan hasn't been modified after approval before allowing PR merge and push-to-main.</span><span class="vi"><code>plan-approval.json</code> được ép ở CI remote: hash plan phải khớp thư mục plan chuẩn-hóa để chặn lệch. Bạn duyệt local (advisory), nhưng gate remote kiểm plan chưa sửa sau duyệt trước cho merge PR và push-main.</span></p>
+        <p><span class="en"><code>plan-approval.json</code> anchors a plan hash to the normalized plan directory to prevent drift. You approve locally (advisory) — and a claimed approval whose hash no longer matches the plan is rejected by the artifact-forgery block, so you can't quietly edit a plan after approval. Want a hard remote check too? Wire the optional <code>receipts-gate</code> CI workflow into your own repo.</span><span class="vi"><code>plan-approval.json</code> neo một hash plan vào thư mục plan chuẩn-hóa để chặn lệch. Bạn duyệt local (advisory) — và một approval khai báo mà hash không còn khớp plan sẽ bị chặn giả-mạo-artifact từ chối, nên không thể lặng lẽ sửa plan sau khi duyệt. Muốn thêm kiểm cứng ở remote? Gắn workflow CI <code>receipts-gate</code> (tùy chọn) vào CI của repo bạn.</span></p>
         <div class="chips" style="margin-top:10px"><span class="chip">plan_hash <span class="x">drift→block</span></span><span class="chip">remote enforce</span></div>
       </div>
     </div>

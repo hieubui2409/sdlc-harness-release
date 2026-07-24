@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Cheatsheet — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Cheatsheet — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Cheatsheet — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -322,7 +322,7 @@
 
     <!-- ── 3. Gate stages ── -->
     <h2 class="sectitle" id="cs-gates"><span class="en">Gate stages → required artifacts</span><span class="vi">Stage gate → artifact bắt buộc</span></h2>
-    <p class="muted" style="margin:-4px 0 14px"><span class="en">Straight from <code>harness/data/stage-policy.yaml</code>. <b>Hard</b> means the requirement is checked at pr/ship/deploy — locally it's an advisory (<code>exit 0</code>), enforced by the remote CI receipts-gate; <b>soft</b> is advisory only.</span><span class="vi">Lấy thẳng từ <code>harness/data/stage-policy.yaml</code>. <b>Hard</b> nghĩa là yêu cầu được kiểm tại pr/ship/deploy — tại máy chỉ là advisory (<code>exit 0</code>), được enforce bởi receipts-gate ở CI từ xa; <b>soft</b> chỉ là khuyến cáo.</span></p>
+    <p class="muted" style="margin:-4px 0 14px"><span class="en">Straight from <code>harness/data/stage-policy.yaml</code>. <b>Hard</b> means the requirement is checked at pr/ship/deploy — locally it's an advisory (<code>exit 0</code>) that never blocks you; wire the optional <code>receipts-gate</code> CI workflow into your own repo if you want it hard-enforced remotely too. <b>Soft</b> is advisory only.</span><span class="vi">Lấy thẳng từ <code>harness/data/stage-policy.yaml</code>. <b>Hard</b> nghĩa là yêu cầu được kiểm tại pr/ship/deploy — tại máy chỉ là advisory (<code>exit 0</code>) không bao giờ chặn bạn; gắn workflow CI <code>receipts-gate</code> (tùy chọn) vào CI của repo bạn nếu muốn ép cứng từ xa nữa. <b>Soft</b> chỉ là khuyến cáo.</span></p>
     <table class="modetable" style="--ac:var(--crit)">
       <thead><tr><th><span class="en">Stage</span><span class="vi">Stage</span></th><th><span class="en">Hard?</span><span class="vi">Cứng?</span></th><th><span class="en">Required artifacts</span><span class="vi">Artifact bắt buộc</span></th></tr></thead>
       <tbody>

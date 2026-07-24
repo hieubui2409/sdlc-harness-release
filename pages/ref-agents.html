@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>All agents (full) — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="All agents (full) — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="All agents (full) — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -79,8 +79,8 @@
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--tel)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="13" r="6" stroke="var(--tel)" stroke-width="2"/><path d="M8 33c0-6 5-10 12-10s12 4 12 10" stroke="var(--tel)" stroke-width="2" stroke-linecap="round"/></svg></div>
-      <div class="ttl"><div class="who"><span class="en">The complete subagent roster — 26 specialists</span><span class="vi">Danh sách subagent đầy đủ — 26 chuyên gia</span></div><h2><span class="en">Every agent</span><span class="vi">Mọi agent</span></h2></div>
-      <div class="ver">26 agents</div>
+      <div class="ttl"><div class="who"><span class="en">The complete subagent roster — 28 specialists</span><span class="vi">Danh sách subagent đầy đủ — 28 chuyên gia</span></div><h2><span class="en">Every agent</span><span class="vi">Mọi agent</span></h2></div>
+      <div class="ver">28 agents</div>
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
     
@@ -98,6 +98,8 @@
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>escalation-consultant</h3><p>Autonomous counsel from the strongest model (`fable`) in one run — no session model switch, no user interview. Spawn it from a lower tier (opus/sonnet) or from a stuck subagent for hard design, debugging, or trade-off calls. Advisory-only; returns advice, not code.</p><div class="chips"><span class="chip">model: fable</span><span class="chip">8 tools</span></div></div>
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>gemini-relayer</h3><p>Use this agent to carry ONE advisory/coding request to the gemini partner lane and return its provenance envelope verbatim — nothing more. Deploy it as the context-isolation + parallel fan-out unit when the main thread wants a second-engine (gemini) pass without gemini's I/O flooding the working context.</p><div class="chips"><span class="chip">model: haiku</span><span class="chip">2 tools</span></div></div>
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>git-manager</h3><p>Stage, commit, and push code changes with conventional commits. Use when user says "commit", "push", or finishes a feature/fix.</p><div class="chips"><span class="chip">model: haiku</span><span class="chip">11 tools</span></div></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>grid-axis-selector</h3><p>Use this agent to select which axes (and which axis values) belong in a grid-planning grid before it is built, and to leave a written receipt of why each one was kept or dropped.</p><div class="chips"><span class="chip">model: sonnet</span><span class="chip">8 tools</span></div></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>grid-filler</h3><p>Use this agent to fill a SKELETON grid-planning cell with raw content under the anti-confab contract, without letting it touch the grid file itself.</p><div class="chips"><span class="chip">model: sonnet</span><span class="chip">8 tools</span></div></div>
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>independent-revalidator</h3><p>Use this agent to independently re-derive a load-bearing conclusion from primary evidence BEFORE reading the first-round reasoning, then surface where the two disagree. Deploy on plan decisions, review verdicts, or analyses whose correctness the next step builds on — a sealed-room re-derivation, not a re-read.</p><div class="chips"><span class="chip">model: opus</span><span class="chip">13 tools</span></div></div>
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>journal-writer</h3><p>Use this agent when a significant technical difficulty needs honest documentation — a test suite failing repeatedly, a critical bug in production, a fundamentally flawed implementation needing redesign, blocking external-dependency failures, a serious performance or security issue, a failed migration, a broken CI/CD pi…</p><div class="chips"><span class="chip">model: haiku</span><span class="chip">14 tools</span></div></div>
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>market-fit-critic</h3><p>Use this agent as a critique lens that judges whether a product-bearing artifact stands up in its market — a plan, a design, or a strategic decision before it is committed. It examines defensibility, differentiation, and the path to value capture, separate from whether users want it or whether it is buildable.</p><div class="chips"><span class="chip">model: sonnet</span><span class="chip">14 tools</span></div></div>

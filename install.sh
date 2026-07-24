@@ -13,20 +13,22 @@
 #                       this script is piped into sh).
 #   -n, --dry-run       online: print exactly what WOULD be downloaded (URLs +
 #                       expected sha256) and stop — install nothing.
-#   --version=X         online: pin a version (e.g. --version=5.3.0). Same as the
+#   --version=X         online: pin a version (e.g. --version=5.4.0). Same as the
 #                       HARNESS_VERSION env var.
-#   --skip-tests        skip the post-install test suite (alias --no-tests).
+#   --run-tests         run the post-install test suite (OFF by default; ~30s).
+#   --skip-tests        deprecated no-op — the suite is already off by default
+#                       (alias --no-tests, kept so old invocations don't error).
 #
 # Whichever way the bundle arrives, the rest is one shot, no follow-ups:
 #   1. verify the sha256 sidecar (if present)
 #   2. extract the bundle to a temp dir (with a tar-escape guard)
 #   3. check dependencies first — fail fast with the exact pip command if missing
 #   4. install into the target and verify it (--strict: a drifted install fails)
-#   5. run the harness test suite against the freshly installed copy
+#   5. (opt-in, --run-tests) run the harness test suite against the fresh copy
 #
-# Step 5 runs by default; --skip-tests skips it (~30s). The integrity check in
-# step 4 already confirms the install; the suite is the extra "does it run green
-# in my environment" pass.
+# Step 5 is OFF by default; --run-tests opts in (~30s). The strict integrity
+# check in step 4 already confirms the install, so the suite is only the extra
+# "does it run green in my environment" pass.
 #
 # Env overrides (online path): HARNESS_VERSION pins a version; HARNESS_RELEASE_BASE
 # overrides the asset base URL (a test points it at a file:// dir).
@@ -36,7 +38,7 @@ REPO="hieubui2409/sdlc-harness-release"
 API="https://api.github.com/repos/${REPO}/releases"
 DL="https://github.com/${REPO}/releases"
 
-SKIP_TESTS=0
+RUN_TESTS=0
 INTERACTIVE=0
 DRYRUN=0
 BUNDLE=""          # a local *.tar.gz path → offline mode
@@ -46,7 +48,8 @@ VER="${HARNESS_VERSION:-}"
 
 for arg in "$@"; do
   case "$arg" in
-    --skip-tests|--no-tests) SKIP_TESTS=1 ;;
+    --run-tests)             RUN_TESTS=1 ;;
+    --skip-tests|--no-tests) : ;;  # back-compat no-op: the suite is off by default
     -i|--interactive)        INTERACTIVE=1 ;;
     -n|--dry-run)            DRYRUN=1 ;;
     --version=*)             VER="${arg#--version=}" ;;
@@ -260,21 +263,21 @@ fi
 echo "verifying install (strict) ..."
 $PY "$TARGET/harness/scripts/verify_install.py" --root "$TARGET" --strict
 
-# 5. run the suite against the installed copy (default; --skip-tests to skip).
-if [ "$SKIP_TESTS" -eq 1 ]; then
-  echo "skipping the harness test suite (--skip-tests)."
-else
-  echo "running the harness test suite in ${TARGET} (use --skip-tests to skip) ..."
+# 5. run the suite against the installed copy (opt-in; --run-tests to enable).
+if [ "$RUN_TESTS" -eq 1 ]; then
+  echo "running the harness test suite in ${TARGET} (--run-tests) ..."
   # --confcutdir pins the conftest boundary at the installed harness/ tree so a
   # host conftest.py ABOVE $TARGET (which may import packages the harness does not)
   # is never loaded; -p no:cacheprovider keeps pytest from writing a cache into the
   # host repo. dev-repo-only tests (@pytest.mark.dev_repo) self-skip off the dev tree.
   ( cd "$TARGET" && $PY -m pytest --confcutdir "$TARGET/harness" -p no:cacheprovider harness/tests/ -q )
+else
+  echo "skipping the harness test suite (default; use --run-tests to run it)."
 fi
 
 echo "done."
 echo "  - enable the hs plugin: run /reload-plugins in Claude Code (or restart it)"
 echo "  - re-verify any time: $PY \"${TARGET}/harness/scripts/verify_install.py\" --strict"
-if [ "$SKIP_TESTS" -eq 1 ]; then
-  echo "  - run the suite later: ( cd \"${TARGET}\" && $PY -m pytest harness/tests/ -q )"
+if [ "$RUN_TESTS" -eq 0 ]; then
+  echo "  - run the suite any time: ( cd \"${TARGET}\" && $PY -m pytest harness/tests/ -q )"
 fi

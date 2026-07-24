@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>hs:test — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="hs:test — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="hs:test — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 65 hooks, 26 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 122 hs:* skills, 66 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -126,8 +126,8 @@
       <div class="xlabel"><span class="en">Worked example</span><span class="vi">Ví dụ thật</span></div>
       <h3 style="margin:2px 0 6px"><span class="en">The whole suite, green</span><span class="vi">Cả suite, xanh</span></h3>
       <p class="muted" style="font-size:.9rem">
-        <span class="en">The real run over <code>harness/tests/</code> — unit tests plus bug-class invariants, all passing. 100% pass is the gate; anything less raises a local advisory (<code>exit 0</code>) and is enforced by the remote CI receipts-gate. <span class="realtag">real output</span></span>
-        <span class="vi">Lần chạy thật trên <code>harness/tests/</code> — test unit cộng invariant bug-class, tất cả pass. 100% pass là gate; thiếu một cái sẽ phát advisory tại máy (<code>exit 0</code>) và được enforce bởi receipts-gate ở CI từ xa. <span class="realtag">đầu ra thật</span></span>
+        <span class="en">The real run over <code>harness/tests/</code> — unit tests plus bug-class invariants, all passing. 100% pass is the gate; anything less raises a local advisory (<code>exit 0</code>) that never blocks you — fix it before you ship. <span class="realtag">real output</span></span>
+        <span class="vi">Lần chạy thật trên <code>harness/tests/</code> — test unit cộng invariant bug-class, tất cả pass. 100% pass là gate; thiếu một cái sẽ phát advisory tại máy (<code>exit 0</code>) không bao giờ chặn bạn — sửa trước khi ship. <span class="realtag">đầu ra thật</span></span>
       </p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 -m pytest harness/tests/ -q</span></div>
@@ -187,7 +187,7 @@
 }
 </pre>
       </div>
-      <p class="faint" style="font-size:.76rem;margin-top:10px"><span class="en">A captured snapshot (actor scrubbed, counts from when it was written). Any check with status <code>FAIL</code> raises a local advisory (<code>exit 0</code>) and is enforced by the remote CI receipts-gate. Schema: <code>harness/schemas/artifact-verification.json</code>.</span><span class="vi">Một bản chụp đã ghi (actor đã làm sạch, số liệu từ lúc nó được ghi). Bất kỳ check nào status <code>FAIL</code> sẽ phát advisory tại máy (<code>exit 0</code>) và được enforce bởi receipts-gate ở CI từ xa. Schema: <code>harness/schemas/artifact-verification.json</code>.</span></p>
+      <p class="faint" style="font-size:.76rem;margin-top:10px"><span class="en">A captured snapshot (actor scrubbed, counts from when it was written). Any check with status <code>FAIL</code> raises a local advisory (<code>exit 0</code>) — it never blocks; fix the failing check before you ship. Schema: <code>harness/schemas/artifact-verification.json</code>.</span><span class="vi">Một bản chụp đã ghi (actor đã làm sạch, số liệu từ lúc nó được ghi). Bất kỳ check nào status <code>FAIL</code> sẽ phát advisory tại máy (<code>exit 0</code>) — không bao giờ chặn; sửa check fail trước khi ship. Schema: <code>harness/schemas/artifact-verification.json</code>.</span></p>
     </div>
 
     <!-- profiles -->
@@ -216,8 +216,8 @@
 
     <div class="gate" style="margin-top:16px">
       <b>HARD-GATE — <span class="en">wiring is real.</span><span class="vi">wiring là thật.</span></b>
-      <span class="en"> <code>gate_stage.py</code> reads <code>verification.json</code>: any check at <code>FAIL</code> raises a local advisory (<code>exit 0</code>) naming the gap, and the remote CI receipts-gate enforces it. A dishonest PASS surfaces the moment the suite re-runs in CI; the trace records the attribution either way.</span>
-      <span class="vi"> <code>gate_stage.py</code> đọc <code>verification.json</code>: bất kỳ check nào <code>FAIL</code> sẽ phát advisory tại máy (<code>exit 0</code>) nêu chỗ thiếu, và receipts-gate ở CI từ xa enforce. Một PASS gian lộ ngay khi suite chạy lại ở CI; trace ghi attribution dù thế nào.</span>
+      <span class="en"> <code>gate_stage.py</code> reads <code>verification.json</code>: any check at <code>FAIL</code> raises a local advisory (<code>exit 0</code>) naming the gap — it never blocks you locally. What hard-blocks with no CI required: the agent RBAC cage, the safety floors, and the artifact-forgery check. A dishonest PASS still carries an attribution trail — the trace records who wrote it either way.</span>
+      <span class="vi"> <code>gate_stage.py</code> đọc <code>verification.json</code>: bất kỳ check nào <code>FAIL</code> sẽ phát advisory tại máy (<code>exit 0</code>) nêu chỗ thiếu — không bao giờ chặn bạn tại máy. Cái chặn cứng mà không cần CI: agent RBAC cage, các safety floor, và check chống-giả-mạo artifact. Một PASS gian dối vẫn mang theo dấu vết attribution — trace ghi ai đã viết dù thế nào.</span>
     </div>
 
     <!-- FAQ -->
@@ -227,7 +227,7 @@
       <details><summary><span class="en">Unit or integration profile?</span><span class="vi">Profile unit hay integration?</span></summary><div class="fa"><span class="en"><code>unit</code> (default) runs the changed module plus the full unit suite on every TDD cycle. <code>integration</code> adds the e2e vertical slice — run it before a hard stage (push/pr/ship).</span><span class="vi"><code>unit</code> (mặc định) chạy module vừa đổi cộng toàn suite unit mỗi vòng TDD. <code>integration</code> thêm e2e vertical slice — chạy trước stage cứng (push/pr/ship).</span></div></details>
       <details><summary><span class="en">What do the three verdicts mean?</span><span class="vi">Ba verdict nghĩa là gì?</span></summary><div class="fa"><span class="en"><code>PASS</code> ships. <code>PASS_WITH_RISK</code> ships but names the risk out loud. <code>BLOCKED</code> does not ship until the code (or a genuinely-wrong test) is fixed.</span><span class="vi"><code>PASS</code> thì ship. <code>PASS_WITH_RISK</code> ship nhưng nêu rõ risk. <code>BLOCKED</code> không ship đến khi sửa code (hoặc một test SAI thật).</span></div></details>
       <details><summary><span class="en">Does hs:test fix the failing code?</span><span class="vi">hs:test có sửa code fail không?</span></summary><div class="fa"><span class="en">No — it only runs and reports. Fixing is <code>hs:cook</code> / <code>hs:fix</code>; post-test review is <code>hs:code-review</code>; deep root-cause tracing is <code>hs:debug</code>.</span><span class="vi">Không — nó chỉ chạy và báo cáo. Sửa là <code>hs:cook</code> / <code>hs:fix</code>; review sau test là <code>hs:code-review</code>; truy nguyên nhân gốc là <code>hs:debug</code>.</span></div></details>
-      <details><summary><span class="en">What if someone writes PASS while the suite is failing?</span><span class="vi">Nếu ai đó ghi PASS khi suite đang fail?</span></summary><div class="fa"><span class="en">It surfaces the moment the suite re-runs in CI, and the trace ledger records who wrote what. The gate is honest about being a presence gate — <code>actor</code> is attribution, not proof of identity.</span><span class="vi">Nó lộ ngay khi suite chạy lại ở CI, và sổ trace ghi ai ghi gì. Gate trung thực rằng nó là presence gate — <code>actor</code> là attribution, không phải bằng chứng danh tính.</span></div></details>
+      <details><summary><span class="en">What if someone writes PASS while the suite is failing?</span><span class="vi">Nếu ai đó ghi PASS khi suite đang fail?</span></summary><div class="fa"><span class="en">Locally, nothing stops the write — the gate only advises. What survives is the trace: the ledger records who wrote it, so it's honest about being a presence gate — <code>actor</code> is attribution, not proof of identity. Wire the optional <code>receipts-gate</code> CI workflow into your own repo if you want a re-run to catch it too.</span><span class="vi">Tại máy, không gì chặn lần ghi đó — gate chỉ advisory. Cái còn lại là trace: sổ ghi ai đã viết, nên nó trung thực rằng mình là presence gate — <code>actor</code> là attribution, không phải bằng chứng danh tính. Gắn workflow CI <code>receipts-gate</code> (tùy chọn) vào CI của repo bạn nếu muốn một lần chạy lại bắt được nó nữa.</span></div></details>
     </div>
   </div>
 </section>

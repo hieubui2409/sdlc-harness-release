@@ -85,6 +85,19 @@
   </div>
 </header>
 
+<!-- ===================== WHAT'S NEW STRIP ===================== -->
+<section id="whatsnew-strip">
+  <div class="wrap reveal">
+    <div class="callout" style="--ac:var(--gold)">
+      <span class="ci">✨</span>
+      <div>
+        <span class="en"><b>New in v5.4.0 —</b> a <b>coverage-grid planning mode</b> for <code>hs:plan</code> / <code>hs:cook</code> (breadth × depth on a covering array, pre-registration freeze, a presence gate), <b>six new methodology &amp; governance rules</b> (rule layer 22 → 28), a self-downloading one-command installer, and methodology references across existing skills. → <a href="pages/whatsnew.html"><b>What's new</b></a> · <a href="pages/methodology.html">Methodology deep dive</a></span>
+        <span class="vi"><b>Mới ở v5.4.0 —</b> một <b>chế độ coverage-grid</b> cho <code>hs:plan</code> / <code>hs:cook</code> (bề rộng × chiều sâu trên covering array, đóng băng pre-registration, một presence gate), <b>sáu rule phương pháp &amp; quản trị mới</b> (lớp luật 22 → 28), một trình cài một-lệnh tự-tải, và các tham chiếu phương pháp xuyên các skill có sẵn. → <a href="pages/whatsnew.html"><b>Có gì mới</b></a> · <a href="pages/methodology.html">Đi sâu Phương pháp</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== ENFORCEMENT MODEL ===================== -->
 <section id="modes">
   <div class="wrap reveal">
@@ -189,7 +202,7 @@
       <div class="rcell"><div class="rt">🧩 <span class="en">122 skills</span><span class="vi">122 skill</span><span class="rn">plugins/hs</span></div><ul><li><span class="en">SDLC spine: plan · cook · test · ship</span><span class="vi">Xương sống: plan · cook · test · ship</span></li><li><span class="en">orchestrators, review, debug, research, ideation, docs</span><span class="vi">điều phối, review, debug, nghiên cứu, ý tưởng, docs</span></li><li><span class="en">packaged as plugin <code>hs</code> → <code>/hs:plan</code></span><span class="vi">đóng gói plugin <code>hs</code> → <code>/hs:plan</code></span></li></ul></div>
       <div class="rcell"><div class="rt">🪝 <span class="en">66 hooks · 3 tiers</span><span class="vi">66 hook · 3 hạng</span><span class="rn">/hooks</span></div><ul><li><span class="en">telemetry sinks (ON, fail-open)</span><span class="vi">sink telemetry (ON, fail-open)</span></li><li><span class="en">memory-gap nudge (OFF)</span><span class="vi">memory-gap nudge (OFF)</span></li><li><span class="en">gate_stage · write_guard (compliance)</span><span class="vi">gate_stage · write_guard (compliance)</span></li></ul></div>
       <div class="rcell"><div class="rt">🛠️ <span class="en">177 scripts</span><span class="vi">177 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · task_store · plan_approval</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
-      <div class="rcell"><div class="rt">📐 <span class="en">28 rules</span><span class="vi">28 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤75 lines, always-load)</span><span class="vi">(≤75 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · terminal-voice</li></ul></div>
+      <div class="rcell"><div class="rt">📐 <span class="en">28 rules</span><span class="vi">28 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤75 lines, always-load)</span><span class="vi">(≤75 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · terminal-voice</li><li><span class="en">+6 methodology &amp; governance (v5.4.0)</span><span class="vi">+6 phương pháp &amp; quản trị (v5.4.0)</span></li></ul></div>
       <div class="rcell"><div class="rt">🧪 <span class="en">13 schemas</span><span class="vi">13 schema</span><span class="rn">/schemas</span></div><ul><li><code>artifact-verification</code> · <code>review-decision</code></li><li><code>plan-approval</code> · <code>critique-consensus</code></li><li><code>bakeoff-verdict</code> · <code>harness-release</code></li></ul></div>
       <div class="rcell"><div class="rt">📦 <span class="en">Install + manifest</span><span class="vi">Cài + manifest</span><span class="rn">/install</span></div><ul><li><code>install.py --target</code> <span class="en">(one command)</span><span class="vi">(một lệnh)</span></li><li><code>manifest.json</code> <span class="en">(sha256 tracked files)</span><span class="vi">(sha256 file tracked)</span></li><li><code>verify_install.py --strict</code></li></ul></div>
     </div>
@@ -211,7 +224,7 @@
     <div class="cards grid-2" style="margin-top:22px">
       <a class="card" href="pages/quickstart.html" style="--ac:var(--ok)"><h3><span class="pin"></span><span class="en">Getting started</span><span class="vi">Bắt đầu</span></h3><p><span class="en">Quick start &amp; Journey — install, verify, and follow one change from idea to ship.</span><span class="vi">Quick start &amp; Journey — cài đặt, kiểm tra, và theo một thay đổi từ ý tưởng đến ship.</span></p></a>
       <a class="card" href="pages/plan.html" style="--ac:var(--spec)"><h3><span class="pin"></span><span class="en">Core pipeline</span><span class="vi">Quy trình lõi</span></h3><p><span class="en">hs:plan · hs:cook · hs:test → ship — the enforced loop the gate guards, one skill at a time.</span><span class="vi">hs:plan · hs:cook · hs:test → ship — vòng được ép mà gate canh, từng skill một.</span></p></a>
-      <a class="card" href="pages/catalog.html" style="--ac:var(--gold)"><h3><span class="pin"></span><span class="en">Advanced</span><span class="vi">Nâng cao</span></h3><p><span class="en">hs:bakeoff &amp; the full hs:* catalog — pick winners by numbers, find the right skill.</span><span class="vi">hs:bakeoff &amp; toàn bộ catalog hs:* — chọn kẻ thắng bằng số, tìm đúng skill.</span></p></a>
+      <a class="card" href="pages/methodology.html" style="--ac:var(--gold)"><h3><span class="pin"></span><span class="en">Advanced &amp; methodology</span><span class="vi">Nâng cao &amp; phương pháp</span></h3><p><span class="en">Grid coverage planning &amp; the six governance rules, hs:bakeoff, and the full hs:* catalog — the discipline behind the pipeline.</span><span class="vi">Grid coverage &amp; sáu rule quản trị, hs:bakeoff, và toàn bộ catalog hs:* — kỷ luật đứng sau pipeline.</span></p></a>
       <a class="card" href="pages/harness.html" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">Internals</span><span class="vi">Bên trong</span></h3><p><span class="en">The rig &amp; Vision — hooks, scripts, the gate, and where the harness is headed.</span><span class="vi">Bộ máy &amp; Tầm nhìn — hook, script, gate, và harness đang đi về đâu.</span></p></a>
     </div>
 
@@ -221,7 +234,7 @@
   </div>
 </section>
 
-<div class="wrap"><div class="page-nav" style="--ac:var(--spec)"><span class="pv" style="flex:1"></span><a class="nx" href="pages/guides.html"><span class="k"><span class="en">Next</span><span class="vi">Sau</span> →</span><span class="v"><span class="en">All guides</span><span class="vi">Mục lục</span></span></a></div></div>
+<div class="wrap"><div class="page-nav" style="--ac:var(--spec)"><span class="pv" style="flex:1"></span><a class="nx" href="pages/whatsnew.html"><span class="k"><span class="en">Next</span><span class="vi">Sau</span> →</span><span class="v"><span class="en">What's new</span><span class="vi">Có gì mới</span></span></a></div></div>
 </main>
 <!-- ===================== FOOTER ===================== -->
 <footer>

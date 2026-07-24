@@ -41,6 +41,7 @@
 <aside class="docs-side" aria-label="Mục lục">
   <div class="side-cat"><span class="en">Start here</span><span class="vi">Bắt đầu</span></div>
   <a href="../index.html" class="side-link" data-nav="hub"><span class="en">Overview</span><span class="vi">Tổng quan</span></a>
+  <a href="../pages/whatsnew.html" class="side-link" data-nav="whatsnew"><span class="en">What's new</span><span class="vi">Có gì mới</span></a>
   <a href="../pages/guides.html" class="side-link" data-nav="guides"><span class="en">All guides</span><span class="vi">Mục lục</span></a>
   <a href="../pages/quickstart.html" class="side-link active" data-nav="quickstart"><span class="en">Quick start</span><span class="vi">Bắt đầu</span></a>
   <a href="../pages/install.html" class="side-link" data-nav="install"><span class="en">Install</span><span class="vi">Cài đặt</span></a>
@@ -51,6 +52,7 @@
   <a href="../pages/test.html" class="side-link" data-nav="test"><span class="en">hs:test</span><span class="vi">hs:test</span></a>
   <a href="../pages/ship.html" class="side-link" data-nav="ship"><span class="en">hs:ship</span><span class="vi">hs:ship</span></a>
   <div class="side-cat"><span class="en">Advanced</span><span class="vi">Nâng cao</span></div>
+  <a href="../pages/methodology.html" class="side-link" data-nav="methodology"><span class="en">Methodology</span><span class="vi">Phương pháp</span></a>
   <a href="../pages/bakeoff.html" class="side-link" data-nav="bakeoff"><span class="en">hs:bakeoff</span><span class="vi">hs:bakeoff</span></a>
   <a href="../pages/catalog.html" class="side-link" data-nav="catalog"><span class="en">All skills</span><span class="vi">Toàn bộ skill</span></a>
   <div class="side-cat"><span class="en">Configure & operate</span><span class="vi">Cấu hình & vận hành</span></div>
@@ -136,6 +138,10 @@
   reports/from-code-reviewer-to-planner-red-team-maintainer-operator-plan-review-report.md
   reports/from-code-reviewer-to-planner-red-team-security-failure-plan-review-report.md
 </pre>
+      </div>
+      <div class="callout" style="--ac:var(--gold);margin-top:14px">
+        <span class="ci">🟦</span>
+        <div><span class="en"><b>Higher-risk change?</b> Add <code>--grid</code> to plan (<code>/hs:plan … --grid</code>) for a <b>coverage grid</b> built from the plan's own features and risks — it makes you resolve thin cells before the plan is ready, and stamps a <code>coverage-grid</code> artifact cook and test read downstream. How it works: <a href="../pages/methodology.html">Methodology</a>.</span><span class="vi"><b>Thay đổi rủi ro cao?</b> Thêm <code>--grid</code> vào plan (<code>/hs:plan … --grid</code>) để có một <b>coverage grid</b> dựng từ chính features và risks của plan — nó bắt bạn giải các ô mỏng trước khi plan sẵn sàng, và đóng dấu một artifact <code>coverage-grid</code> mà cook và test đọc về sau. Cơ chế: <a href="../pages/methodology.html">Phương pháp</a>.</span></div>
       </div>
     </div>
 
@@ -231,6 +237,7 @@
       <details><summary><span class="en">Why <code>/clear</code> between plan and cook?</span><span class="vi">Vì sao <code>/clear</code> giữa plan và cook?</span></summary><div class="fa"><span class="en">Planning carryover (research, debate, red-team) skews cook's focus. A clean context plus the absolute path to the approved plan keeps cook executing the contract, not re-litigating it.</span><span class="vi">Dư âm khi lập plan (research, tranh luận, red-team) làm lệch trọng tâm của cook. Context sạch cộng đường dẫn tuyệt đối tới plan đã duyệt giúp cook thực thi hợp đồng, không cãi lại nó.</span></div></details>
       <details><summary><span class="en">Does any of this hit the network?</span><span class="vi">Có thứ gì gọi mạng không?</span></summary><div class="fa"><span class="en">Installing fetches the release bundle — that's the one network hop. After that, there are <b>0 network calls in the gate path</b>: plan · cook · test · ship run entirely offline, and the e2e runs in a temp dir. Even this showcase makes no external requests.</span><span class="vi">Cài đặt có tải bundle release — đó là lượt gọi mạng duy nhất. Sau đó, <b>0 lần gọi mạng trong đường gate</b>: plan · cook · test · ship chạy hoàn toàn offline, và e2e chạy trong thư mục tạm. Ngay cả showcase này cũng không gọi mạng.</span></div></details>
       <details><summary><span class="en">Which autonomy mode should I start with?</span><span class="vi">Nên bắt đầu với mức tự chủ nào?</span></summary><div class="fa"><span class="en"><code>default</code> — it pauses at exactly two human checkpoints (plan approval + ship). No mode auto-ships, so it's a safe place to learn the loop.</span><span class="vi"><code>default</code> — dừng ở đúng hai chốt người (duyệt plan + ship). Không mức nào tự ship, nên đây là chỗ an toàn để học vòng lặp.</span></div></details>
+      <details><summary><span class="en">When should I add <code>--grid</code> to a plan?</span><span class="vi">Khi nào thêm <code>--grid</code> vào plan?</span></summary><div class="fa"><span class="en">For a higher-risk change where "did we think of everything?" matters. <code>hs:plan --grid</code> builds a coverage grid from the plan's own features/risks (never hand-typed), makes you resolve thin cells, and emits a <code>coverage-grid</code> artifact that later stages read. It's an optional planning mode — the deep dive is on <a href="../pages/methodology.html">Methodology</a>.</span><span class="vi">Cho thay đổi rủi ro cao khi "đã nghĩ hết chưa?" quan trọng. <code>hs:plan --grid</code> dựng coverage grid từ chính features/risks của plan (không gõ tay), bắt bạn giải các ô mỏng, và emit một artifact <code>coverage-grid</code> mà các bước sau đọc. Đây là chế độ plan tùy chọn — đi sâu ở <a href="../pages/methodology.html">Phương pháp</a>.</span></div></details>
     </div>
   </div>
 </section>

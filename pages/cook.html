@@ -41,6 +41,7 @@
 <aside class="docs-side" aria-label="Mục lục">
   <div class="side-cat"><span class="en">Start here</span><span class="vi">Bắt đầu</span></div>
   <a href="../index.html" class="side-link" data-nav="hub"><span class="en">Overview</span><span class="vi">Tổng quan</span></a>
+  <a href="../pages/whatsnew.html" class="side-link" data-nav="whatsnew"><span class="en">What's new</span><span class="vi">Có gì mới</span></a>
   <a href="../pages/guides.html" class="side-link" data-nav="guides"><span class="en">All guides</span><span class="vi">Mục lục</span></a>
   <a href="../pages/quickstart.html" class="side-link" data-nav="quickstart"><span class="en">Quick start</span><span class="vi">Bắt đầu</span></a>
   <a href="../pages/install.html" class="side-link" data-nav="install"><span class="en">Install</span><span class="vi">Cài đặt</span></a>
@@ -51,6 +52,7 @@
   <a href="../pages/test.html" class="side-link" data-nav="test"><span class="en">hs:test</span><span class="vi">hs:test</span></a>
   <a href="../pages/ship.html" class="side-link" data-nav="ship"><span class="en">hs:ship</span><span class="vi">hs:ship</span></a>
   <div class="side-cat"><span class="en">Advanced</span><span class="vi">Nâng cao</span></div>
+  <a href="../pages/methodology.html" class="side-link" data-nav="methodology"><span class="en">Methodology</span><span class="vi">Phương pháp</span></a>
   <a href="../pages/bakeoff.html" class="side-link" data-nav="bakeoff"><span class="en">hs:bakeoff</span><span class="vi">hs:bakeoff</span></a>
   <a href="../pages/catalog.html" class="side-link" data-nav="catalog"><span class="en">All skills</span><span class="vi">Toàn bộ skill</span></a>
   <div class="side-cat"><span class="en">Configure & operate</span><span class="vi">Cấu hình & vận hành</span></div>
@@ -180,6 +182,11 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
         <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M6 16h6l3-8 4 16 3-8h4" stroke="var(--rel)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn">trace</div><div class="fd"><span class="en">event + actor</span><span class="vi">event + actor</span></div></div>
       </div>
       <p class="muted" style="font-size:.85rem;margin-top:14px"><span class="en">Trace goes through <code>trace_log.py</code> (<code>append_event</code> — the actor resolves itself; never hand-roll JSONL). A phase declared <code>stateless</code> may skip trace; the compliance gate still runs, because trace is fail-open telemetry, not compliance.</span><span class="vi">Trace đi qua <code>trace_log.py</code> (<code>append_event</code> — actor tự resolve; không tự chế JSONL). Một phase khai <code>stateless</code> có thể bỏ trace; gate compliance vẫn chạy, vì trace là telemetry fail-open, không phải compliance.</span></p>
+    </div>
+
+    <div class="callout" style="--ac:var(--gold);margin-top:16px">
+      <span class="ci">🟦</span>
+      <div><span class="en"><b>Grid plans get a preflight check.</b> When the plan stamped <code>grid: true</code> (from <a href="../pages/plan.html">hs:plan --grid</a>), cook re-checks the <code>coverage-grid</code> artifact at its Phase-DAG preflight via <code>grid_emit_guard.py --require</code> — a hard <b>presence gate</b> (exit 2 → STOP) that catches "declared grid but emitted nothing". The verdict itself stays advisory; the coverage artifact then flows to <a href="../pages/test.html">hs:test</a> and code-review. Mechanics: <a href="../pages/methodology.html">Methodology</a>.</span><span class="vi"><b>Plan grid có một bước kiểm preflight.</b> Khi plan đóng dấu <code>grid: true</code> (từ <a href="../pages/plan.html">hs:plan --grid</a>), cook kiểm lại artifact <code>coverage-grid</code> ở Phase-DAG preflight qua <code>grid_emit_guard.py --require</code> — một <b>presence gate</b> cứng (exit 2 → STOP) bắt "khai grid nhưng emit rỗng". Bản thân verdict vẫn advisory; artifact coverage rồi chảy sang <a href="../pages/test.html">hs:test</a> và code-review. Cơ chế: <a href="../pages/methodology.html">Phương pháp</a>.</span></div>
     </div>
 
     <!-- autonomy dial -->

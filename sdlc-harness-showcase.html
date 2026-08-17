@@ -753,8 +753,8 @@ body.pal-open{overflow:hidden}
     <div class="callout" style="--ac:var(--gold)">
       <span class="ci">✨</span>
       <div>
-        <span class="en"><b>New in v5.4.0 —</b> a <b>coverage-grid planning mode</b> for <code>hs:plan</code> / <code>hs:cook</code> (breadth × depth on a covering array, pre-registration freeze, a presence gate), <b>six new methodology &amp; governance rules</b> (rule layer 22 → 28), a self-downloading one-command installer, and methodology references across existing skills. → <a href="#whatsnew"><b>What's new</b></a> · <a href="#methodology">Methodology deep dive</a></span>
-        <span class="vi"><b>Mới ở v5.4.0 —</b> một <b>chế độ coverage-grid</b> cho <code>hs:plan</code> / <code>hs:cook</code> (bề rộng × chiều sâu trên covering array, đóng băng pre-registration, một presence gate), <b>sáu rule phương pháp &amp; quản trị mới</b> (lớp luật 22 → 28), một trình cài một-lệnh tự-tải, và các tham chiếu phương pháp xuyên các skill có sẵn. → <a href="#whatsnew"><b>Có gì mới</b></a> · <a href="#methodology">Đi sâu Phương pháp</a></span>
+        <span class="en"><b>New in v6.0.0 —</b> <code>hs-run</code> answers with a <b>state machine</b> instead of a word: every verb returns a declared <code>state</code>, the <code>next_action</code> that state owes, an exit rung, and the artifacts it wrote — <b>11 domains · 22 verbs</b>, up from 2 and 14. Four breaking changes: the envelope shape, the per-role write lanes (the deny floor is keyed by <b>path</b> now, not by which agent writes), the networked task-store adapters, and the <code>-ng</code> prototype pair — all removed. → <a href="#whatsnew"><b>What's new</b></a> · <a href="#methodology">Methodology deep dive</a></span>
+        <span class="vi"><b>Mới ở v6.0.0 —</b> <code>hs-run</code> trả lời bằng một <b>máy trạng thái</b> thay vì một chữ: mỗi verb cho một <code>state</code> đã khai báo, <code>next_action</code> mà trạng thái đó nợ, một nấc thoát, và artifact nó đã ghi — <b>11 domain · 22 verb</b>, từ 2 và 14. Bốn thay đổi phá vỡ: hình dạng envelope, cụm làn-ghi theo vai trò (sàn từ chối nay khoá theo <b>đường dẫn</b>, không theo agent nào ghi), adapter task-store qua mạng, và cặp nguyên mẫu <code>-ng</code> — đều gỡ bỏ. → <a href="#whatsnew"><b>Có gì mới</b></a> · <a href="#methodology">Đi sâu Phương pháp</a></span>
       </div>
     </div>
   </div>
@@ -846,8 +846,8 @@ body.pal-open{overflow:hidden}
 
     <div class="stats">
       <div class="stat"><div class="n" data-count="122">122</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
-      <div class="stat"><div class="n" data-count="66">66</div><div class="l"><span class="en">hooks · 3 tiers</span><span class="vi">hook · 3 hạng</span></div></div>
-      <div class="stat"><div class="n" data-count="7039">7039</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
+      <div class="stat"><div class="n" data-count="60">60</div><div class="l"><span class="en">hooks · 3 tiers</span><span class="vi">hook · 3 hạng</span></div></div>
+      <div class="stat"><div class="n" data-count="11620">11620</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
       <div class="stat"><div class="n" data-count="0">0</div><div class="l"><span class="en">network calls in the gate path</span><span class="vi">lần gọi mạng trong đường gate</span></div></div>
     </div>
   </div>
@@ -864,7 +864,7 @@ body.pal-open{overflow:hidden}
       <div class="rcell"><div class="rt">🧩 <span class="en">122 skills</span><span class="vi">122 skill</span><span class="rn">plugins/hs</span></div><ul><li><span class="en">SDLC spine: plan · cook · test · ship</span><span class="vi">Xương sống: plan · cook · test · ship</span></li><li><span class="en">orchestrators, review, debug, research, ideation, docs</span><span class="vi">điều phối, review, debug, nghiên cứu, ý tưởng, docs</span></li><li><span class="en">packaged as plugin <code>hs</code> → <code>/hs:plan</code></span><span class="vi">đóng gói plugin <code>hs</code> → <code>/hs:plan</code></span></li></ul></div>
       <div class="rcell"><div class="rt">🪝 <span class="en">60 hooks · 3 tiers</span><span class="vi">60 hook · 3 hạng</span><span class="rn">/hooks</span></div><ul><li><span class="en">telemetry sinks (ON, fail-open)</span><span class="vi">sink telemetry (ON, fail-open)</span></li><li><span class="en">memory-gap nudge (OFF)</span><span class="vi">memory-gap nudge (OFF)</span></li><li><span class="en">gate_stage · write_guard (compliance)</span><span class="vi">gate_stage · write_guard (compliance)</span></li></ul></div>
       <div class="rcell"><div class="rt">🛠️ <span class="en">200 scripts</span><span class="vi">200 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · plan_approval · plan_graph</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
-      <div class="rcell"><div class="rt">📐 <span class="en">28 rules</span><span class="vi">28 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤75 lines, always-load)</span><span class="vi">(≤75 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · terminal-voice</li><li><span class="en">+6 methodology &amp; governance (v5.4.0)</span><span class="vi">+6 phương pháp &amp; quản trị (v5.4.0)</span></li></ul></div>
+      <div class="rcell"><div class="rt">📐 <span class="en">33 rules</span><span class="vi">33 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤75 lines, always-load)</span><span class="vi">(≤75 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · terminal-voice</li><li><span class="en">+6 methodology &amp; governance (v5.4.0)</span><span class="vi">+6 phương pháp &amp; quản trị (v5.4.0)</span></li></ul></div>
       <div class="rcell"><div class="rt">🧪 <span class="en">16 schemas</span><span class="vi">16 schema</span><span class="rn">/schemas</span></div><ul><li><code>artifact-verification</code> · <code>review-decision</code></li><li><code>plan-approval</code> · <code>critique-consensus</code></li><li><code>bakeoff-verdict</code> · <code>harness-release</code></li></ul></div>
       <div class="rcell"><div class="rt">📦 <span class="en">Install + manifest</span><span class="vi">Cài + manifest</span><span class="rn">/install</span></div><ul><li><code>install.py --target</code> <span class="en">(one command)</span><span class="vi">(một lệnh)</span></li><li><code>manifest.json</code> <span class="en">(sha256 tracked files)</span><span class="vi">(sha256 file tracked)</span></li><li><code>verify_install.py --strict</code></li></ul></div>
     </div>
@@ -1116,19 +1116,13 @@ body.pal-open{overflow:hidden}
       <p class="muted" style="font-size:.9rem"><span class="en">In Claude Code, run <code>/hs:plan</code> and describe what you want — starting from an empty repo instead? Run <code>/hs:bootstrap</code> first; it clarifies requirements, inits git, and hands off into plan for you. The harness researches, scans constraints, red-teams, and writes a plan under <code>plans/&lt;slug&gt;/</code> (plan.md + phase files). <b>You approve it</b> — cook will not run until a human does. Then <code>/clear</code> so cook starts from a clean context. <span class="realtag">real output</span></span><span class="vi">Trong Claude Code, chạy <code>/hs:plan</code> và mô tả điều bạn muốn — bắt đầu từ repo trống? Chạy <code>/hs:bootstrap</code> trước; nó làm rõ yêu cầu, init git, rồi bàn giao sang plan hộ bạn. Harness nghiên cứu, quét ràng buộc, red-team, rồi ghi plan dưới <code>plans/&lt;slug&gt;/</code> (plan.md + file phase). <b>Bạn duyệt</b> — cook không chạy cho tới khi một con người duyệt. Rồi <code>/clear</code> để cook bắt đầu từ context sạch. <span class="realtag">đầu ra thật</span></span></p>
       <div class="cmdline"><span class="en">In Claude Code:</span><span class="vi">Trong Claude Code:</span> <code>/hs:plan add a token-bucket rate limit to the public API</code></div>
       <div class="term">
-        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">tree plans/260612-1237-harness-w2-horizontal-1/</span></div>
-        <pre>plans/260612-1237-harness-w2-horizontal-1/
-  artifacts/verification.json
-  phase-01-claims-fsm-team-config.md
-  phase-02-task-store-adapter-github.md
-  phase-03-plan-approval-role-check.md
-  phase-04-write-guard-env-scrub-en-3.md
-  phase-05-memory-gap-staged-port.md
-  phase-06-telemetry-hooks-workflow-lens.md
+        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">tree plans/260818-0400-rate-limit-middleware/</span></div>
+        <pre>plans/260818-0400-rate-limit-middleware/
   plan.md
-  reports/code-review-260613-phase6-telemetry.md
-  reports/from-code-reviewer-to-planner-red-team-maintainer-operator-plan-review-report.md
-  reports/from-code-reviewer-to-planner-red-team-security-failure-plan-review-report.md
+  phases/phase-1-4.md
+  artifacts/verification-p1.json
+  artifacts/plan-approval.json
+  reports/code-review-260818-p1.md
 </pre>
       </div>
       <div class="callout" style="--ac:var(--gold);margin-top:14px">
@@ -1142,24 +1136,25 @@ body.pal-open{overflow:hidden}
       <span class="eyebrow" style="display:block">Step 3 · <span class="en">Claude Code</span><span class="vi">Claude Code</span></span>
       <h2 class="sectitle" id="qs-cook" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Build it — and write the acceptance artifact</span><span class="vi">Build — và ghi artifact nghiệm thu</span></h2>
       <p class="muted" style="font-size:.9rem"><span class="en">Run <code>/hs:cook</code> with the <b>absolute path</b> to the approved plan. It executes phase by phase in TDD red→green, then on the final phase writes <code>verification.json</code> — the exact artifact the gate will look for. <code>/hs:test</code> can re-run the suite and refresh the verdict any time. <span class="realtag">real output</span></span><span class="vi">Chạy <code>/hs:cook</code> với <b>đường dẫn tuyệt đối</b> tới plan đã duyệt. Nó thực thi từng phase theo TDD đỏ→xanh, rồi ở phase cuối ghi <code>verification.json</code> — đúng artifact mà gate sẽ tìm. <code>/hs:test</code> có thể chạy lại bộ test và làm mới verdict bất cứ lúc nào. <span class="realtag">đầu ra thật</span></span></p>
-      <div class="cmdline"><span class="en">In Claude Code:</span><span class="vi">Trong Claude Code:</span> <code>/hs:cook /abs/path/plans/260612-1237-harness-w2-horizontal-1/plan.md</code></div>
+      <div class="cmdline"><span class="en">In Claude Code:</span><span class="vi">Trong Claude Code:</span> <code>/hs:cook /abs/path/plans/260818-0400-rate-limit-middleware/plan.md</code></div>
       <div class="term">
-        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">cat plans/260612-1237-harness-w2-horizontal-1/artifacts/verification.json</span></div>
+        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">cat plans/260818-0400-rate-limit-middleware/artifacts/verification.json</span></div>
         <pre>{
     "stage": "push",
-    "plan": "260612-1237-harness-w2-horizontal-1",
+    "plan": "260818-0400-rate-limit-middleware",
+    "phase": "p1",
     "actor": "user:dev@team.example",
-    "ts": "2026-06-12T05:48:36.669571+00:00",
+    "ts": "2026-08-18T04:12:41.118203+00:00",
     "checks": [
         {
             "name": "preflight_deps",
             "status": "PASS",
-            "detail": "pytest, pyyaml"
+            "detail": "22 declared deps resolved"
         },
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "258 passed (incl. 5 invariants)"
+            "detail": "11620 passed, 160 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -1169,12 +1164,12 @@ body.pal-open{overflow:hidden}
         {
             "name": "verify_install --strict",
             "status": "PASS",
-            "detail": "manifest 53 files"
+            "detail": "manifest 2861 files"
         },
         {
             "name": "e2e vertical slice",
             "status": "PASS",
-            "detail": "12 passed, 0 failed, transport=simulated-stdin"
+            "detail": "advisory-then-pass, transport=simulated-stdin"
         }
     ],
     "verdict": "PASS"
@@ -1306,6 +1301,12 @@ body.pal-open{overflow:hidden}
     <div class="cmdline"><code>python3 harness/install/install.py --target ../my-repo</code></div>
     <p class="muted" style="font-size:.85rem;margin-top:8px"><span class="en">Direct-installer flags: <code>--non-interactive</code> / <code>--yes</code> (never prompt — the automation path), <code>--dry-run</code> (plan every write, change nothing), <code>--no-track</code> (run without committing <code>harness/</code> into your product git), <code>--uninstall</code> (reverse the settings + pre-push edits; <code>harness/</code> is left in place).</span><span class="vi">Cờ của trình cài trực tiếp: <code>--non-interactive</code> / <code>--yes</code> (không hỏi — đường tự động), <code>--dry-run</code> (lập kế hoạch mọi lần ghi, không đổi gì), <code>--no-track</code> (chạy mà không commit <code>harness/</code> vào git sản phẩm), <code>--uninstall</code> (đảo ngược chỉnh settings + pre-push; <code>harness/</code> vẫn để nguyên).</span></p>
 
+    <!-- two install modes -->
+    <div class="callout" style="--ac:var(--gold);margin-top:18px">
+      <span class="ci">🌐</span>
+      <div><span class="en"><b>Two install modes.</b> The default is <b>per-project</b> — the tree is copied into the repo and everything lives there. <code>install.py --global</code> installs instead as ONE shared binary at <code>$HARNESS_BIN_ROOT</code> serving many projects, each keeping a private data home at <code>$HARNESS_DATA_ROOT</code> (default <code>.harness/</code>). Two-zone guards keep the binary read-only while the project stays writeable. Under global mode both variables must reach the process: calling <code>hs-run</code> by a bare path without them lets it walk up the tree looking for <code>plans/</code> and answer correctly for the <i>wrong</i> project. Full guide: <code>docs/harness/global-install-guide.md</code>.</span><span class="vi"><b>Hai chế độ cài.</b> Mặc định là <b>per-project</b> — cây được chép vào repo và mọi thứ sống ở đó. <code>install.py --global</code> thì cài MỘT binary dùng chung ở <code>$HARNESS_BIN_ROOT</code> phục vụ nhiều dự án, mỗi dự án giữ kho dữ liệu riêng ở <code>$HARNESS_DATA_ROOT</code> (mặc định <code>.harness/</code>). Guard hai-vùng giữ binary chỉ-đọc còn dự án vẫn ghi được. Ở chế độ global, cả hai biến phải tới được tiến trình: gọi <code>hs-run</code> bằng đường dẫn trần mà thiếu chúng sẽ khiến nó đi ngược lên cây tìm <code>plans/</code> và trả lời đúng cho SAI dự án. Hướng dẫn đầy đủ: <code>docs/harness/global-install-guide.md</code>.</span></div>
+    </div>
+
     <!-- standards / config map -->
     <div class="callout" style="--ac:var(--txt-faint);margin-top:18px">
       <span class="ci">📐</span>
@@ -1381,8 +1382,8 @@ body.pal-open{overflow:hidden}
       <p class="muted" style="font-size:.9rem"><span class="en">An ambiguous task enters <code>hs:discover</code>. It chains a research subagent and a brainstorm subagent, then synthesizes a discovery brief — a structured input for planning. A <code>/clear</code> nudge isolates the context before planning begins so the plan skill starts with a clean slate.</span><span class="vi">Task mơ hồ đi vào <code>hs:discover</code>. Nó nối một subagent research và một subagent brainstorm, rồi tổng hợp thành discovery brief — đầu vào có cấu trúc cho planning. Một nudge <code>/clear</code> cô lập context trước khi planning để skill plan bắt đầu với slate sạch.</span></p>
       <div class="gate">
         <b><span class="en">Behind the scenes:</span><span class="vi">Bên trong:</span></b>
-        <span class="en"> The <code>SubagentStart</code> + <code>SubagentStop</code> hooks fire for each chained subagent, appending an outcome record (<code>agent_type</code>, <code>outcome</code>, <code>session</code>) to <code>subagent-outcomes.jsonl</code> (fail-open). The <code>/clear</code> nudge is advisory — it fires on <code>PreToolUse:Skill</code>, emits on <code>stderr</code>, never blocks.</span>
-        <span class="vi"> Hook <code>SubagentStart</code> + <code>SubagentStop</code> kích hoạt cho mỗi subagent, append record outcome (<code>agent_type</code>, <code>outcome</code>, <code>session</code>) vào <code>subagent-outcomes.jsonl</code> (fail-open). Nudge <code>/clear</code> là advisory — kích hoạt trên <code>PreToolUse:Skill</code>, emit ra <code>stderr</code>, không bao giờ chặn.</span>
+        <span class="en"> The <code>SubagentStart</code> hook injects the rule and standards context a subagent inherits none of; <code>SubagentStop</code> then appends an outcome record (<code>agent_type</code>, <code>outcome</code>, <code>session</code>) to <code>subagent-outcomes.jsonl</code> (fail-open). The <code>/clear</code> nudge is advisory — it fires on <code>PreToolUse:Skill</code>, emits on <code>stderr</code>, never blocks.</span>
+        <span class="vi"> Hook <code>SubagentStart</code> tiêm phần context luật + standards mà subagent không thừa kế; rồi <code>SubagentStop</code> append record outcome (<code>agent_type</code>, <code>outcome</code>, <code>session</code>) vào <code>subagent-outcomes.jsonl</code> (fail-open). Nudge <code>/clear</code> là advisory — kích hoạt trên <code>PreToolUse:Skill</code>, emit ra <code>stderr</code>, không bao giờ chặn.</span>
       </div>
     </div>
 
@@ -1407,18 +1408,12 @@ body.pal-open{overflow:hidden}
           <p style="font-size:.84rem"><span class="en">The plan directory structure is captured as a machine-readable artifact. <code>hs:cook</code> reads this to know which phases to execute in order.</span><span class="vi">Cấu trúc thư mục plan được lưu làm artifact đọc được bởi máy. <code>hs:cook</code> đọc đây để biết phase nào thực thi theo thứ tự nào.</span></p>
           <div class="term" style="margin-top:8px">
             <div class="tbar"><i></i><i></i><i></i><span class="tcmd">plan tree</span></div>
-            <pre>plans/260612-1237-harness-w2-horizontal-1/
-  artifacts/verification.json
-  phase-01-claims-fsm-team-config.md
-  phase-02-task-store-adapter-github.md
-  phase-03-plan-approval-role-check.md
-  phase-04-write-guard-env-scrub-en-3.md
-  phase-05-memory-gap-staged-port.md
-  phase-06-telemetry-hooks-workflow-lens.md
+            <pre>plans/260818-0400-rate-limit-middleware/
   plan.md
-  reports/code-review-260613-phase6-telemetry.md
-  reports/from-code-reviewer-to-planner-red-team-maintainer-operator-plan-review-report.md
-  reports/from-code-reviewer-to-planner-red-team-security-failure-plan-review-report.md
+  phases/phase-1-4.md
+  artifacts/verification-p1.json
+  artifacts/plan-approval.json
+  reports/code-review-260818-p1.md
 </pre>
           </div>
         </div>
@@ -1485,19 +1480,20 @@ body.pal-open{overflow:hidden}
           <div class="tbar"><i></i><i></i><i></i><span class="tcmd">cat plans/&lt;id&gt;/verification.json</span></div>
           <pre>{
     "stage": "push",
-    "plan": "260612-1237-harness-w2-horizontal-1",
+    "plan": "260818-0400-rate-limit-middleware",
+    "phase": "p1",
     "actor": "user:dev@team.example",
-    "ts": "2026-06-12T05:48:36.669571+00:00",
+    "ts": "2026-08-18T04:12:41.118203+00:00",
     "checks": [
         {
             "name": "preflight_deps",
             "status": "PASS",
-            "detail": "pytest, pyyaml"
+            "detail": "22 declared deps resolved"
         },
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "258 passed (incl. 5 invariants)"
+            "detail": "11620 passed, 160 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -1507,12 +1503,12 @@ body.pal-open{overflow:hidden}
         {
             "name": "verify_install --strict",
             "status": "PASS",
-            "detail": "manifest 53 files"
+            "detail": "manifest 2861 files"
         },
         {
             "name": "e2e vertical slice",
             "status": "PASS",
-            "detail": "12 passed, 0 failed, transport=simulated-stdin"
+            "detail": "advisory-then-pass, transport=simulated-stdin"
         }
     ],
     "verdict": "PASS"
@@ -1662,19 +1658,13 @@ body.pal-open{overflow:hidden}
 
       <p class="muted" style="font-size:.86rem;margin-top:20px"><span class="en">A plan directory is the contract on disk — <code>plan.md</code>, phase files, an <code>artifacts/</code> folder the gate reads, and review reports:</span><span class="vi">Một thư mục plan là hợp đồng trên đĩa — <code>plan.md</code>, các phase file, thư mục <code>artifacts/</code> mà gate đọc, và báo cáo review:</span></p>
       <div class="term">
-        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">find plans/260612-1237-harness-w2-horizontal-1 -type f</span></div>
-        <pre>plans/260612-1237-harness-w2-horizontal-1/
-  artifacts/verification.json
-  phase-01-claims-fsm-team-config.md
-  phase-02-task-store-adapter-github.md
-  phase-03-plan-approval-role-check.md
-  phase-04-write-guard-env-scrub-en-3.md
-  phase-05-memory-gap-staged-port.md
-  phase-06-telemetry-hooks-workflow-lens.md
+        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">find plans/260818-0400-rate-limit-middleware -type f</span></div>
+        <pre>plans/260818-0400-rate-limit-middleware/
   plan.md
-  reports/code-review-260613-phase6-telemetry.md
-  reports/from-code-reviewer-to-planner-red-team-maintainer-operator-plan-review-report.md
-  reports/from-code-reviewer-to-planner-red-team-security-failure-plan-review-report.md
+  phases/phase-1-4.md
+  artifacts/verification-p1.json
+  artifacts/plan-approval.json
+  reports/code-review-260818-p1.md
 </pre>
       </div>
 
@@ -1989,16 +1979,15 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
       </p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 -m pytest harness/tests/ -q</span></div>
-        <pre>........................................................................ [ 91%]
-........................................................................ [ 93%]
-........................................................................ [ 94%]
-........................................................................ [ 95%]
-........................................................................ [ 96%]
+        <pre>........................................................................ [ 96%]
 ........................................................................ [ 97%]
-........................................................................ [ 98%]
-........................................................................ [ 99%]
-.............................................................            [100%]
-7039 passed, 6 skipped, 2 deselected in 234.03s (0:03:54)
+.................................................................s...... [ 97%]
+.......................................................................s [ 98%]
+s...............s.......s...............sssssssssssssssssssssss.sssssss. [ 99%]
+.....ss.s..ssss..s....ssssssssss...........sss.......sssssss.ssssssssss. [ 99%]
+ssss.sssss..................................                             [100%]
+11620 passed, 160 skipped in 315.95s (0:05:15)
+
 </pre>
       </div>
 
@@ -2011,19 +2000,20 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">cat plans/&lt;plan&gt;/artifacts/verification.json</span></div>
         <pre>{
     "stage": "push",
-    "plan": "260612-1237-harness-w2-horizontal-1",
+    "plan": "260818-0400-rate-limit-middleware",
+    "phase": "p1",
     "actor": "user:dev@team.example",
-    "ts": "2026-06-12T05:48:36.669571+00:00",
+    "ts": "2026-08-18T04:12:41.118203+00:00",
     "checks": [
         {
             "name": "preflight_deps",
             "status": "PASS",
-            "detail": "pytest, pyyaml"
+            "detail": "22 declared deps resolved"
         },
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "258 passed (incl. 5 invariants)"
+            "detail": "11620 passed, 160 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -2033,12 +2023,12 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
         {
             "name": "verify_install --strict",
             "status": "PASS",
-            "detail": "manifest 53 files"
+            "detail": "manifest 2861 files"
         },
         {
             "name": "e2e vertical slice",
             "status": "PASS",
-            "detail": "12 passed, 0 failed, transport=simulated-stdin"
+            "detail": "advisory-then-pass, transport=simulated-stdin"
         }
     ],
     "verdict": "PASS"
@@ -2139,7 +2129,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
       <thead><tr><th><span class="en">Flag</span><span class="vi">Cờ</span></th><th><span class="en">Effect</span><span class="vi">Tác dụng</span></th></tr></thead>
       <tbody>
         <tr><td><code>official</code></td><td><span class="en">Target main / master — the full pipeline.</span><span class="vi">Đích main / master — pipeline đầy đủ.</span></td></tr>
-        <tr><td><code>beta</code></td><td><span class="en">Target dev / beta — skips the docs-update step.</span><span class="vi">Đích dev / beta — bỏ bước cập-nhật-docs.</span></td></tr>
+        <tr><td><code>beta</code></td><td><span class="en">Target the dev / beta branch instead of the release branch.</span><span class="vi">Nhắm nhánh dev / beta thay cho nhánh release.</span></td></tr>
         <tr><td><span class="x"><span class="en">(empty)</span><span class="vi">(trống)</span></span></td><td><span class="en">Infer from the branch name; ambiguous → it asks.</span><span class="vi">Suy từ tên nhánh; mơ hồ → nó hỏi.</span></td></tr>
         <tr><td><code>--skip-tests</code></td><td><span class="en">Skip the test step (only if you ran tests separately).</span><span class="vi">Bỏ bước test (chỉ khi bạn đã chạy test riêng).</span></td></tr>
         <tr><td><code>--dry-run</code></td><td><span class="en">Show the plan, change nothing.</span><span class="vi">Hiện kế hoạch, không đổi gì.</span></td></tr>
@@ -2148,7 +2138,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
 
     <!-- pipeline -->
     <h2 class="sectitle" id="ship-pipeline"><span class="en">The pipeline</span><span class="vi">Pipeline</span></h2>
-    <p class="muted" style="margin:-2px 0 14px"><span class="en">Ten steps, but the spine is: merge the target in, prove it works, get it reviewed, confirm the artifacts, then transport. Each prerequisite writes the artifact the final gate reads.</span><span class="vi">Mười bước, nhưng xương sống là: merge đích vào, chứng minh nó chạy, được review, xác nhận artifact, rồi vận chuyển. Mỗi điều-kiện-tiên-quyết ghi artifact mà gate cuối đọc.</span></p>
+    <p class="muted" style="margin:-2px 0 14px"><span class="en">Eleven steps, but the spine is: merge the target in, prove it works, get it reviewed, confirm the artifacts, then transport. Each prerequisite writes the artifact the final gate reads.</span><span class="vi">Mười một bước, nhưng xương sống là: merge đích vào, chứng minh nó chạy, được review, xác nhận artifact, rồi vận chuyển. Mỗi điều-kiện-tiên-quyết ghi artifact mà gate cuối đọc.</span></p>
     <div class="flowline" style="margin-top:6px;--ac:var(--ok)">
       <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M8 11h16M8 16h16M8 21h10" stroke="var(--ok)" stroke-width="2" stroke-linecap="round"/></svg><div class="fn"><span class="en">merge target</span><span class="vi">merge đích</span></div><div class="fd"><span class="en">fetch + merge</span><span class="vi">fetch + merge</span></div></div>
       <div class="farrow" style="--ac:var(--ok)">→</div>
@@ -2163,7 +2153,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
 
     <!-- the real gate -->
     <h2 class="sectitle" id="ship-gate"><span class="en">The real gate</span><span class="vi">Gate thật</span></h2>
-    <p class="muted" style="margin:-2px 0 14px"><span class="en">Stage <code>ship</code> in <code>stage-policy.yaml</code> names <b>three artifacts</b> to check against their verdict policy (a fourth, <code>critique-consensus.json</code>, is <b>opt-in</b>). Locally the stage hook and the git pre-push hook only <i>advise</i> (<code>exit 0</code>, naming the gap) — even a manual push gets the advisory, never a block. What hard-blocks locally with no CI required: the path-keyed write floors and the artifact-forgery check.</span><span class="vi">Stage <code>ship</code> trong <code>stage-policy.yaml</code> nêu tên <b>ba artifact</b> để kiểm theo chính sách verdict (artifact thứ tư, <code>critique-consensus.json</code>, là <b>tùy chọn</b>). Tại máy, hook stage và hook git pre-push chỉ <i>advisory</i> (<code>exit 0</code>, nêu chỗ thiếu) — kể cả push tay cũng chỉ nhận advisory, không bao giờ bị chặn. Cái chặn cứng tại máy mà không cần CI: các sàn ghi theo đường-dẫn và check chống-giả-mạo artifact.</span></p>
+    <p class="muted" style="margin:-2px 0 14px"><span class="en">This pipeline never issues a release verb, so it never reaches the <code>ship</code> stage. It crosses <b>two</b> gated points: step 10 <code>git push</code> is judged as the <code>push</code> stage, which requires only <code>verification</code>; step 11 <code>gh pr create</code> is judged as the <code>pr</code> stage, which requires all <b>three artifacts</b> below (a fourth, <code>critique-consensus.json</code>, is <b>opt-in</b>; <code>coverage-grid</code> is advised at both). Locally the stage hook and the git pre-push hook only <i>advise</i> (<code>exit 0</code>, naming the gap) — even a manual push gets the advisory, never a block. What hard-blocks locally with no CI required: the path-keyed write floors and the artifact-forgery check.</span><span class="vi">Pipeline này không phát lệnh release nào, nên nó không bao giờ chạm stage <code>ship</code>. Nó đi qua <b>hai</b> điểm bị gate: bước 10 <code>git push</code> được xử theo stage <code>push</code>, chỉ đòi <code>verification</code>; bước 11 <code>gh pr create</code> được xử theo stage <code>pr</code>, đòi đủ <b>ba artifact</b> dưới đây (artifact thứ tư, <code>critique-consensus.json</code>, là <b>tùy chọn</b>; <code>coverage-grid</code> được khuyến nghị ở cả hai). Tại máy, hook stage và hook git pre-push chỉ <i>advisory</i> (<code>exit 0</code>, nêu chỗ thiếu) — kể cả push tay cũng chỉ nhận advisory, không bao giờ bị chặn. Cái chặn cứng tại máy mà không cần CI: các sàn ghi theo đường-dẫn và check chống-giả-mạo artifact.</span></p>
     <table class="modetable" style="--ac:var(--crit)">
       <thead><tr><th><span class="en">Artifact</span><span class="vi">Artifact</span></th><th><span class="en">Gate requires</span><span class="vi">Gate yêu cầu</span></th></tr></thead>
       <tbody>
@@ -2349,7 +2339,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
 
     <div class="callout" style="--ac:var(--spec);margin-top:22px">
       <span class="ci">📘</span>
-      <div><span class="en"><b>See it in the pipeline:</b> grid mode as a plan step on <a href="#plan">hs:plan</a>, its presence gate on <a href="#cook">hs:cook</a>, the coverage artifact consumed on <a href="#test">hs:test</a>. All 28 rules are listed on the <a href="#ref-rules">rule-layer reference</a>; the full skill catalog on <a href="#catalog">All skills</a>.</span><span class="vi"><b>Xem trong pipeline:</b> grid mode như một bước plan ở <a href="#plan">hs:plan</a>, presence gate của nó ở <a href="#cook">hs:cook</a>, artifact coverage được tiêu thụ ở <a href="#test">hs:test</a>. Toàn bộ 28 rule liệt kê ở <a href="#ref-rules">tham chiếu lớp luật</a>; catalog skill đầy đủ ở <a href="#catalog">Toàn bộ skill</a>.</span></div>
+      <div><span class="en"><b>See it in the pipeline:</b> grid mode as a plan step on <a href="#plan">hs:plan</a>, its presence gate on <a href="#cook">hs:cook</a>, the coverage artifact consumed on <a href="#test">hs:test</a>. All 33 rules are listed on the <a href="#ref-rules">rule-layer reference</a>; the full skill catalog on <a href="#catalog">All skills</a>.</span><span class="vi"><b>Xem trong pipeline:</b> grid mode như một bước plan ở <a href="#plan">hs:plan</a>, presence gate của nó ở <a href="#cook">hs:cook</a>, artifact coverage được tiêu thụ ở <a href="#test">hs:test</a>. Toàn bộ 33 rule liệt kê ở <a href="#ref-rules">tham chiếu lớp luật</a>; catalog skill đầy đủ ở <a href="#catalog">Toàn bộ skill</a>.</span></div>
     </div>
   </div>
 </section>
@@ -2852,7 +2842,7 @@ exit: 0 (0 = winner)
       <ul>
         <li><span class="en">Every <code>hs:*</code> skill is a structured prompt. It guides Claude Code but does not block the model from deviating.</span><span class="vi">Mỗi skill <code>hs:*</code> là prompt có cấu trúc. Nó hướng dẫn Claude Code nhưng không chặn model sai lệch.</span></li>
         <li><span class="en">Blocking happens in hooks and scripts — <code>gate_stage</code> (compliance), <code>write_guard</code>, and the git pre-push backstop.</span><span class="vi">Chặn xảy ra trong hook và script — <code>gate_stage</code> (compliance), <code>write_guard</code> và git pre-push backstop.</span></li>
-        <li><span class="en">Skills also lean on a shared rule layer for cross-cutting conventions, not just the cards above — <code>harness/rules/</code> now holds <b>28</b> rules, six of them added for methodology and governance (<code>adr-trigger</code>, <code>anti-tautology-detection</code>, <code>claim-verification</code>, <code>methodology-review</code>, <code>persistent-risk-register</code>, <code>regression-sentinel</code>), loaded on demand instead of baked into every skill.</span><span class="vi">Skill còn dựa vào một lớp rule dùng chung cho quy ước xuyên-suốt, không chỉ các thẻ ở trên — <code>harness/rules/</code> giờ có <b>28</b> rule, sáu rule mới thuộc phương pháp luận và quản trị (<code>adr-trigger</code>, <code>anti-tautology-detection</code>, <code>claim-verification</code>, <code>methodology-review</code>, <code>persistent-risk-register</code>, <code>regression-sentinel</code>), nạp theo nhu cầu thay vì nhúng cứng vào từng skill.</span></li>
+        <li><span class="en">Skills also lean on a shared rule layer for cross-cutting conventions, not just the cards above — <code>harness/rules/</code> now holds <b>33</b> rules, six of them added for methodology and governance (<code>adr-trigger</code>, <code>anti-tautology-detection</code>, <code>claim-verification</code>, <code>methodology-review</code>, <code>persistent-risk-register</code>, <code>regression-sentinel</code>), loaded on demand instead of baked into every skill.</span><span class="vi">Skill còn dựa vào một lớp rule dùng chung cho quy ước xuyên-suốt, không chỉ các thẻ ở trên — <code>harness/rules/</code> giờ có <b>28</b> rule, sáu rule mới thuộc phương pháp luận và quản trị (<code>adr-trigger</code>, <code>anti-tautology-detection</code>, <code>claim-verification</code>, <code>methodology-review</code>, <code>persistent-risk-register</code>, <code>regression-sentinel</code>), nạp theo nhu cầu thay vì nhúng cứng vào từng skill.</span></li>
         <li><span class="en"><b>122</b> invocable skills as of this build. Skills are added over time — <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi"><b>122</b> skill người-gọi-được tính đến bản build này. Skill được thêm theo thời gian — <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></li>
       </ul>
     </div>
@@ -3186,7 +3176,7 @@ exit: 0 (0 = winner)
 
     <!-- ── 2. Commands by family ── -->
     <h2 class="sectitle" id="cs-commands"><span class="en">All commands</span><span class="vi">Toàn bộ lệnh</span></h2>
-    <p class="muted" style="margin:-4px 0 14px"><span class="en">A quick-reference to the most-used <code>hs:*</code> skills, grouped by what you're trying to do. Invoke any with <code>/hs:&lt;name&gt;</code>. All 124 with full descriptions live in the <a href="#catalog">catalog</a>.</span><span class="vi">Bảng tra nhanh các skill <code>hs:*</code> hay dùng nhất, nhóm theo điều bạn đang muốn làm. Gọi bất kỳ với <code>/hs:&lt;tên&gt;</code>. Toàn bộ 124 kèm mô tả đầy đủ nằm trong <a href="#catalog">catalog</a>.</span></p>
+    <p class="muted" style="margin:-4px 0 14px"><span class="en">A quick-reference to the most-used <code>hs:*</code> skills, grouped by what you're trying to do. Invoke any with <code>/hs:&lt;name&gt;</code>. All 122 with full descriptions live in the <a href="#catalog">catalog</a>.</span><span class="vi">Bảng tra nhanh các skill <code>hs:*</code> hay dùng nhất, nhóm theo điều bạn đang muốn làm. Gọi bất kỳ với <code>/hs:&lt;tên&gt;</code>. Toàn bộ 122 kèm mô tả đầy đủ nằm trong <a href="#catalog">catalog</a>.</span></p>
 
     <div class="eyebrow"><span class="en">SDLC spine — the gated four</span><span class="vi">Xương sống SDLC — bốn bước bị gate</span></div>
     <table class="modetable" style="--ac:var(--spec)">
@@ -3216,7 +3206,7 @@ exit: 0 (0 = winner)
         <tr><td><code>/hs:review-pr</code></td><td><span class="en">GitHub PR review; <code>--fix</code> and <code>--reply</code> supported.</span><span class="vi">Review PR GitHub; hỗ trợ <code>--fix</code> và <code>--reply</code>.</span></td></tr>
         <tr><td><code>/hs:critique</code></td><td><span class="en">Multi-lens adversarial critique → one ranked verdict.</span><span class="vi">Critique đối nghịch nhiều lăng kính → một verdict xếp hạng.</span></td></tr>
         <tr><td><code>/hs:security-scan</code></td><td><span class="en">Secrets, CVEs, injection, authz across the diff.</span><span class="vi">Secrets, CVE, injection, authz trên diff.</span></td></tr>
-        <tr><td><code>/hs:scenario</code></td><td><span class="en">12-dimension edge-case decomposition.</span><span class="vi">Phân rã edge-case 12 chiều.</span></td></tr>
+        <tr><td><code>/hs:scenario</code></td><td><span class="en">15-dimension edge-case decomposition.</span><span class="vi">Phân rã edge-case 15 chiều.</span></td></tr>
         <tr><td><code>/hs:predict</code></td><td><span class="en">Five personas debate a risky change pre-flight.</span><span class="vi">Năm persona tranh luận thay đổi rủi ro trước khi áp.</span></td></tr>
       </tbody>
     </table>
@@ -3865,7 +3855,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
         <div class="tier telemetry">
           <div class="tn">telemetry</div>
           <span class="tdf"><span class="en">default ON</span><span class="vi">mặc định ON</span></span>
-          <div class="tx"><span class="en"><b>fail-open, silent.</b> 5 sinks record skill/script runs, session shape, subagent outcomes — an internal error never blocks a tool.</span><span class="vi"><b>fail-open, im lặng.</b> 5 sink ghi skill/script-run, hình phiên, kết cục subagent — lỗi nội bộ không bao giờ cản tool.</span></div>
+          <div class="tx"><span class="en"><b>fail-open, silent.</b> 6 sinks record skill/script runs, session shape, subagent outcomes — an internal error never blocks a tool.</span><span class="vi"><b>fail-open, im lặng.</b> 6 sink ghi skill/script-run, hình phiên, kết cục subagent — lỗi nội bộ không bao giờ cản tool.</span></div>
         </div>
         <div class="tier nudge">
           <div class="tn">nudge</div>
@@ -4120,7 +4110,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
     <div class="skill-head" style="--ac:var(--tel)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M6 30l7-9 6 5 8-12 7 8" stroke="var(--tel)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="21" r="2" fill="var(--tel)"/><circle cx="19" cy="26" r="2" fill="var(--tel)"/><circle cx="27" cy="14" r="2" fill="var(--tel)"/></svg></div>
       <div class="ttl"><div class="who"><span class="en">Honest about what it cannot measure</span><span class="vi">Trung thực về cái không đo được</span></div><h2><span class="en">Telemetry</span><span class="vi">Đo lường</span></h2></div>
-      <div class="ver">2 books · 5 sinks · lenses</div>
+      <div class="ver">2 books · 6 sinks · lenses</div>
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
 
@@ -4129,7 +4119,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
     <h2 class="sectitle" id="tel-books"><span class="en">Two books, two laws</span><span class="vi">Hai sổ, hai luật</span></h2>
     <div class="cards grid-2">
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">Trace — the audit book</span><span class="vi">Trace — sổ audit</span></h3><p><span class="en"><code>state/trace/trace-YYYYMMDD.jsonl</code> records gate / approval / decision events and <b>never rotates</b>. In v3 each record is linked to the one before it by a <code>chain_hash</code> (a fingerprint of the previous record), so a deleted or altered line shows up as a broken chain. <code>verify_trace_chain.py</code> checks it.</span><span class="vi"><code>state/trace/trace-YYYYMMDD.jsonl</code> ghi sự kiện gate / approval / quyết định và <b>không xoay vòng</b>. Ở v3 mỗi bản ghi nối với bản trước bằng <code>chain_hash</code> (dấu vân của bản trước), nên một dòng bị xoá hay sửa lộ ra dưới dạng chuỗi gãy. <code>verify_trace_chain.py</code> kiểm.</span></p></div>
-      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">Telemetry — the usage book</span><span class="vi">Telemetry — sổ usage</span></h3><p><span class="en"><code>state/telemetry/*.jsonl</code> records counts, session shape, and outcomes across five sinks, and <b>rotates at 8 MB</b> so it never grows without bound. Both books stamp every record with an actor and a timestamp.</span><span class="vi"><code>state/telemetry/*.jsonl</code> ghi đếm, hình phiên, và kết cục qua năm sink, và <b>xoay ở 8 MB</b> nên không phình vô hạn. Cả hai sổ đóng dấu mỗi bản ghi một actor và mốc thời gian.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">Telemetry — the usage book</span><span class="vi">Telemetry — sổ usage</span></h3><p><span class="en"><code>state/telemetry/*.jsonl</code> records counts, session shape, and outcomes across six sinks, and <b>rotates at 8 MB</b> so it never grows without bound. Both books stamp every record with an actor and a timestamp.</span><span class="vi"><code>state/telemetry/*.jsonl</code> ghi đếm, hình phiên, và kết cục qua sáu sink, và <b>xoay ở 8 MB</b> nên không phình vô hạn. Cả hai sổ đóng dấu mỗi bản ghi một actor và mốc thời gian.</span></p></div>
     </div>
 
     <h2 class="sectitle" id="tel-read"><span class="en">Read it yourself</span><span class="vi">Tự đọc</span></h2>

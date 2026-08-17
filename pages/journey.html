@@ -125,8 +125,8 @@
       <p class="muted" style="font-size:.9rem"><span class="en">An ambiguous task enters <code>hs:discover</code>. It chains a research subagent and a brainstorm subagent, then synthesizes a discovery brief — a structured input for planning. A <code>/clear</code> nudge isolates the context before planning begins so the plan skill starts with a clean slate.</span><span class="vi">Task mơ hồ đi vào <code>hs:discover</code>. Nó nối một subagent research và một subagent brainstorm, rồi tổng hợp thành discovery brief — đầu vào có cấu trúc cho planning. Một nudge <code>/clear</code> cô lập context trước khi planning để skill plan bắt đầu với slate sạch.</span></p>
       <div class="gate">
         <b><span class="en">Behind the scenes:</span><span class="vi">Bên trong:</span></b>
-        <span class="en"> The <code>SubagentStart</code> + <code>SubagentStop</code> hooks fire for each chained subagent, appending an outcome record (<code>agent_type</code>, <code>outcome</code>, <code>session</code>) to <code>subagent-outcomes.jsonl</code> (fail-open). The <code>/clear</code> nudge is advisory — it fires on <code>PreToolUse:Skill</code>, emits on <code>stderr</code>, never blocks.</span>
-        <span class="vi"> Hook <code>SubagentStart</code> + <code>SubagentStop</code> kích hoạt cho mỗi subagent, append record outcome (<code>agent_type</code>, <code>outcome</code>, <code>session</code>) vào <code>subagent-outcomes.jsonl</code> (fail-open). Nudge <code>/clear</code> là advisory — kích hoạt trên <code>PreToolUse:Skill</code>, emit ra <code>stderr</code>, không bao giờ chặn.</span>
+        <span class="en"> The <code>SubagentStart</code> hook injects the rule and standards context a subagent inherits none of; <code>SubagentStop</code> then appends an outcome record (<code>agent_type</code>, <code>outcome</code>, <code>session</code>) to <code>subagent-outcomes.jsonl</code> (fail-open). The <code>/clear</code> nudge is advisory — it fires on <code>PreToolUse:Skill</code>, emits on <code>stderr</code>, never blocks.</span>
+        <span class="vi"> Hook <code>SubagentStart</code> tiêm phần context luật + standards mà subagent không thừa kế; rồi <code>SubagentStop</code> append record outcome (<code>agent_type</code>, <code>outcome</code>, <code>session</code>) vào <code>subagent-outcomes.jsonl</code> (fail-open). Nudge <code>/clear</code> là advisory — kích hoạt trên <code>PreToolUse:Skill</code>, emit ra <code>stderr</code>, không bao giờ chặn.</span>
       </div>
     </div>
 
@@ -151,18 +151,12 @@
           <p style="font-size:.84rem"><span class="en">The plan directory structure is captured as a machine-readable artifact. <code>hs:cook</code> reads this to know which phases to execute in order.</span><span class="vi">Cấu trúc thư mục plan được lưu làm artifact đọc được bởi máy. <code>hs:cook</code> đọc đây để biết phase nào thực thi theo thứ tự nào.</span></p>
           <div class="term" style="margin-top:8px">
             <div class="tbar"><i></i><i></i><i></i><span class="tcmd">plan tree</span></div>
-            <pre>plans/260612-1237-harness-w2-horizontal-1/
-  artifacts/verification.json
-  phase-01-claims-fsm-team-config.md
-  phase-02-task-store-adapter-github.md
-  phase-03-plan-approval-role-check.md
-  phase-04-write-guard-env-scrub-en-3.md
-  phase-05-memory-gap-staged-port.md
-  phase-06-telemetry-hooks-workflow-lens.md
+            <pre>plans/260818-0400-rate-limit-middleware/
   plan.md
-  reports/code-review-260613-phase6-telemetry.md
-  reports/from-code-reviewer-to-planner-red-team-maintainer-operator-plan-review-report.md
-  reports/from-code-reviewer-to-planner-red-team-security-failure-plan-review-report.md
+  phases/phase-1-4.md
+  artifacts/verification-p1.json
+  artifacts/plan-approval.json
+  reports/code-review-260818-p1.md
 </pre>
           </div>
         </div>
@@ -229,19 +223,20 @@
           <div class="tbar"><i></i><i></i><i></i><span class="tcmd">cat plans/&lt;id&gt;/verification.json</span></div>
           <pre>{
     "stage": "push",
-    "plan": "260612-1237-harness-w2-horizontal-1",
+    "plan": "260818-0400-rate-limit-middleware",
+    "phase": "p1",
     "actor": "user:dev@team.example",
-    "ts": "2026-06-12T05:48:36.669571+00:00",
+    "ts": "2026-08-18T04:12:41.118203+00:00",
     "checks": [
         {
             "name": "preflight_deps",
             "status": "PASS",
-            "detail": "pytest, pyyaml"
+            "detail": "22 declared deps resolved"
         },
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "258 passed (incl. 5 invariants)"
+            "detail": "11620 passed, 160 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -251,12 +246,12 @@
         {
             "name": "verify_install --strict",
             "status": "PASS",
-            "detail": "manifest 53 files"
+            "detail": "manifest 2861 files"
         },
         {
             "name": "e2e vertical slice",
             "status": "PASS",
-            "detail": "12 passed, 0 failed, transport=simulated-stdin"
+            "detail": "advisory-then-pass, transport=simulated-stdin"
         }
     ],
     "verdict": "PASS"

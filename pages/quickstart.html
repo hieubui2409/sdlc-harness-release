@@ -124,19 +124,13 @@
       <p class="muted" style="font-size:.9rem"><span class="en">In Claude Code, run <code>/hs:plan</code> and describe what you want — starting from an empty repo instead? Run <code>/hs:bootstrap</code> first; it clarifies requirements, inits git, and hands off into plan for you. The harness researches, scans constraints, red-teams, and writes a plan under <code>plans/&lt;slug&gt;/</code> (plan.md + phase files). <b>You approve it</b> — cook will not run until a human does. Then <code>/clear</code> so cook starts from a clean context. <span class="realtag">real output</span></span><span class="vi">Trong Claude Code, chạy <code>/hs:plan</code> và mô tả điều bạn muốn — bắt đầu từ repo trống? Chạy <code>/hs:bootstrap</code> trước; nó làm rõ yêu cầu, init git, rồi bàn giao sang plan hộ bạn. Harness nghiên cứu, quét ràng buộc, red-team, rồi ghi plan dưới <code>plans/&lt;slug&gt;/</code> (plan.md + file phase). <b>Bạn duyệt</b> — cook không chạy cho tới khi một con người duyệt. Rồi <code>/clear</code> để cook bắt đầu từ context sạch. <span class="realtag">đầu ra thật</span></span></p>
       <div class="cmdline"><span class="en">In Claude Code:</span><span class="vi">Trong Claude Code:</span> <code>/hs:plan add a token-bucket rate limit to the public API</code></div>
       <div class="term">
-        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">tree plans/260612-1237-harness-w2-horizontal-1/</span></div>
-        <pre>plans/260612-1237-harness-w2-horizontal-1/
-  artifacts/verification.json
-  phase-01-claims-fsm-team-config.md
-  phase-02-task-store-adapter-github.md
-  phase-03-plan-approval-role-check.md
-  phase-04-write-guard-env-scrub-en-3.md
-  phase-05-memory-gap-staged-port.md
-  phase-06-telemetry-hooks-workflow-lens.md
+        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">tree plans/260818-0400-rate-limit-middleware/</span></div>
+        <pre>plans/260818-0400-rate-limit-middleware/
   plan.md
-  reports/code-review-260613-phase6-telemetry.md
-  reports/from-code-reviewer-to-planner-red-team-maintainer-operator-plan-review-report.md
-  reports/from-code-reviewer-to-planner-red-team-security-failure-plan-review-report.md
+  phases/phase-1-4.md
+  artifacts/verification-p1.json
+  artifacts/plan-approval.json
+  reports/code-review-260818-p1.md
 </pre>
       </div>
       <div class="callout" style="--ac:var(--gold);margin-top:14px">
@@ -150,24 +144,25 @@
       <span class="eyebrow" style="display:block">Step 3 · <span class="en">Claude Code</span><span class="vi">Claude Code</span></span>
       <h2 class="sectitle" id="qs-cook" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Build it — and write the acceptance artifact</span><span class="vi">Build — và ghi artifact nghiệm thu</span></h2>
       <p class="muted" style="font-size:.9rem"><span class="en">Run <code>/hs:cook</code> with the <b>absolute path</b> to the approved plan. It executes phase by phase in TDD red→green, then on the final phase writes <code>verification.json</code> — the exact artifact the gate will look for. <code>/hs:test</code> can re-run the suite and refresh the verdict any time. <span class="realtag">real output</span></span><span class="vi">Chạy <code>/hs:cook</code> với <b>đường dẫn tuyệt đối</b> tới plan đã duyệt. Nó thực thi từng phase theo TDD đỏ→xanh, rồi ở phase cuối ghi <code>verification.json</code> — đúng artifact mà gate sẽ tìm. <code>/hs:test</code> có thể chạy lại bộ test và làm mới verdict bất cứ lúc nào. <span class="realtag">đầu ra thật</span></span></p>
-      <div class="cmdline"><span class="en">In Claude Code:</span><span class="vi">Trong Claude Code:</span> <code>/hs:cook /abs/path/plans/260612-1237-harness-w2-horizontal-1/plan.md</code></div>
+      <div class="cmdline"><span class="en">In Claude Code:</span><span class="vi">Trong Claude Code:</span> <code>/hs:cook /abs/path/plans/260818-0400-rate-limit-middleware/plan.md</code></div>
       <div class="term">
-        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">cat plans/260612-1237-harness-w2-horizontal-1/artifacts/verification.json</span></div>
+        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">cat plans/260818-0400-rate-limit-middleware/artifacts/verification.json</span></div>
         <pre>{
     "stage": "push",
-    "plan": "260612-1237-harness-w2-horizontal-1",
+    "plan": "260818-0400-rate-limit-middleware",
+    "phase": "p1",
     "actor": "user:dev@team.example",
-    "ts": "2026-06-12T05:48:36.669571+00:00",
+    "ts": "2026-08-18T04:12:41.118203+00:00",
     "checks": [
         {
             "name": "preflight_deps",
             "status": "PASS",
-            "detail": "pytest, pyyaml"
+            "detail": "22 declared deps resolved"
         },
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "258 passed (incl. 5 invariants)"
+            "detail": "11620 passed, 160 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -177,12 +172,12 @@
         {
             "name": "verify_install --strict",
             "status": "PASS",
-            "detail": "manifest 53 files"
+            "detail": "manifest 2861 files"
         },
         {
             "name": "e2e vertical slice",
             "status": "PASS",
-            "detail": "12 passed, 0 failed, transport=simulated-stdin"
+            "detail": "advisory-then-pass, transport=simulated-stdin"
         }
     ],
     "verdict": "PASS"

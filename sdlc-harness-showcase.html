@@ -847,7 +847,7 @@ body.pal-open{overflow:hidden}
     <div class="stats">
       <div class="stat"><div class="n" data-count="122">122</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
       <div class="stat"><div class="n" data-count="60">60</div><div class="l"><span class="en">hooks · 3 tiers</span><span class="vi">hook · 3 hạng</span></div></div>
-      <div class="stat"><div class="n" data-count="11621">11621</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
+      <div class="stat"><div class="n" data-count="11623">11623</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
       <div class="stat"><div class="n" data-count="0">0</div><div class="l"><span class="en">network calls in the gate path</span><span class="vi">lần gọi mạng trong đường gate</span></div></div>
     </div>
   </div>
@@ -1157,7 +1157,7 @@ verify_install OK: manifest + hook registration consistent
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "11620 passed, 160 skipped"
+            "detail": "11623 passed, 160 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -1499,7 +1499,7 @@ verify_install OK: manifest + hook registration consistent
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "11620 passed, 160 skipped"
+            "detail": "11623 passed, 160 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -1987,13 +1987,12 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 -m pytest harness/tests/ -q</span></div>
         <pre>........................................................................ [ 96%]
 ........................................................................ [ 97%]
-.................................................................s...... [ 97%]
-.......................................................................s [ 98%]
-s...............s.......s...............sssssssssssssssssssssss.sssssss. [ 99%]
-.....ss.s..ssss..s....ssssssssss...........sss.......sssssss.ssssssssss. [ 99%]
-ssss.sssss..................................                             [100%]
-11620 passed, 160 skipped in 315.95s (0:05:15)
-
+........................................................................ [ 97%]
+..............................s....................s.s.................. [ 98%]
+...s..................................s...............s...ss.ssss..s.... [ 98%]
+........ssssssssss......s.....s....ss...sssss................sssssssssss [ 99%]
+sssss.ssssssssssssss...........................                          [100%]
+11623 passed, 160 skipped in 168.49s (0:02:48)
 </pre>
       </div>
 
@@ -2019,7 +2018,7 @@ ssss.sssss..................................                             [100%]
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "11620 passed, 160 skipped"
+            "detail": "11623 passed, 160 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -3861,7 +3860,7 @@ _sessions analyzed: 62 · sufficient: True · gated: False_
         <div class="tier telemetry">
           <div class="tn">telemetry</div>
           <span class="tdf"><span class="en">default ON</span><span class="vi">mặc định ON</span></span>
-          <div class="tx"><span class="en"><b>fail-open, silent.</b> 10 sinks record skill/script runs, session shape, subagent outcomes — an internal error never blocks a tool.</span><span class="vi"><b>fail-open, im lặng.</b> 10 sink ghi skill/script-run, hình phiên, kết cục subagent — lỗi nội bộ không bao giờ cản tool.</span></div>
+          <div class="tx"><span class="en"><b>fail-open, silent.</b> 9 sinks record skill/script runs, session shape, subagent outcomes — an internal error never blocks a tool.</span><span class="vi"><b>fail-open, im lặng.</b> 9 sink ghi skill/script-run, hình phiên, kết cục subagent — lỗi nội bộ không bao giờ cản tool.</span></div>
         </div>
         <div class="tier nudge">
           <div class="tn">nudge</div>
@@ -4119,7 +4118,7 @@ verify_install OK: manifest + hook registration consistent
     <div class="skill-head" style="--ac:var(--tel)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M6 30l7-9 6 5 8-12 7 8" stroke="var(--tel)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="21" r="2" fill="var(--tel)"/><circle cx="19" cy="26" r="2" fill="var(--tel)"/><circle cx="27" cy="14" r="2" fill="var(--tel)"/></svg></div>
       <div class="ttl"><div class="who"><span class="en">Honest about what it cannot measure</span><span class="vi">Trung thực về cái không đo được</span></div><h2><span class="en">Telemetry</span><span class="vi">Đo lường</span></h2></div>
-      <div class="ver">2 books · 10 sinks · lenses</div>
+      <div class="ver">2 books · 9 sinks · lenses</div>
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
 
@@ -4128,7 +4127,7 @@ verify_install OK: manifest + hook registration consistent
     <h2 class="sectitle" id="tel-books"><span class="en">Two books, two laws</span><span class="vi">Hai sổ, hai luật</span></h2>
     <div class="cards grid-2">
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">Trace — the audit book</span><span class="vi">Trace — sổ audit</span></h3><p><span class="en"><code>state/trace/trace-YYYYMMDD.jsonl</code> records gate / approval / decision events and <b>never rotates</b>. In v3 each record is linked to the one before it by a <code>chain_hash</code> (a fingerprint of the previous record), so a deleted or altered line shows up as a broken chain. <code>verify_trace_chain.py</code> checks it.</span><span class="vi"><code>state/trace/trace-YYYYMMDD.jsonl</code> ghi sự kiện gate / approval / quyết định và <b>không xoay vòng</b>. Ở v3 mỗi bản ghi nối với bản trước bằng <code>chain_hash</code> (dấu vân của bản trước), nên một dòng bị xoá hay sửa lộ ra dưới dạng chuỗi gãy. <code>verify_trace_chain.py</code> kiểm.</span></p></div>
-      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">Telemetry — the usage book</span><span class="vi">Telemetry — sổ usage</span></h3><p><span class="en"><code>state/telemetry/*.jsonl</code> records counts, session shape, and outcomes across ten sinks, and <b>rotates at 8 MB</b> so it never grows without bound. Both books stamp every record with an actor and a timestamp.</span><span class="vi"><code>state/telemetry/*.jsonl</code> ghi đếm, hình phiên, và kết cục qua mười sink, và <b>xoay ở 8 MB</b> nên không phình vô hạn. Cả hai sổ đóng dấu mỗi bản ghi một actor và mốc thời gian.</span></p></div>
+      <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span><span class="en">Telemetry — the usage book</span><span class="vi">Telemetry — sổ usage</span></h3><p><span class="en"><code>state/telemetry/*.jsonl</code> records counts, session shape, and outcomes across nine sinks, and <b>rotates at 8 MB</b> so it never grows without bound. Both books stamp every record with an actor and a timestamp.</span><span class="vi"><code>state/telemetry/*.jsonl</code> ghi đếm, hình phiên, và kết cục qua chín sink, và <b>xoay ở 8 MB</b> nên không phình vô hạn. Cả hai sổ đóng dấu mỗi bản ghi một actor và mốc thời gian.</span></p></div>
     </div>
 
     <h2 class="sectitle" id="tel-read"><span class="en">Read it yourself</span><span class="vi">Tự đọc</span></h2>

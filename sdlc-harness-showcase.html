@@ -847,7 +847,7 @@ body.pal-open{overflow:hidden}
     <div class="stats">
       <div class="stat"><div class="n" data-count="122">122</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
       <div class="stat"><div class="n" data-count="60">60</div><div class="l"><span class="en">hooks · 3 tiers</span><span class="vi">hook · 3 hạng</span></div></div>
-      <div class="stat"><div class="n" data-count="11620">11620</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
+      <div class="stat"><div class="n" data-count="11621">11621</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
       <div class="stat"><div class="n" data-count="0">0</div><div class="l"><span class="en">network calls in the gate path</span><span class="vi">lần gọi mạng trong đường gate</span></div></div>
     </div>
   </div>
@@ -1103,7 +1103,10 @@ body.pal-open{overflow:hidden}
       <p class="muted" style="font-size:.9rem;margin-top:12px"><span class="en">Windows PowerShell: <code>irm https://hieubui2409.github.io/sdlc-harness-release/install.ps1 | iex</code>. The post-install test suite is <b>opt-in</b> — pass <code>--run-tests</code> (PowerShell: <code>-RunTests</code>) if you want the full suite too; the strict install check already confirms the install without it. <span class="realtag">real output</span></span><span class="vi">Windows PowerShell: <code>irm https://hieubui2409.github.io/sdlc-harness-release/install.ps1 | iex</code>. Bộ test sau cài là <b>tùy chọn</b> — thêm <code>--run-tests</code> (PowerShell: <code>-RunTests</code>) nếu muốn chạy cả bộ test; kiểm strict lúc cài đã xác nhận cài đúng mà không cần nó. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh | sh</span></div>
-        <pre>verify_install OK: manifest + hook registration consistent
+        <pre>WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
+… 9 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
+WARN harness/data/harness-hooks.yaml: hash mismatch (deployer-localized config — expected to differ from the shipped baseline)
+verify_install OK: manifest + hook registration consistent
 </pre>
       </div>
       <p class="muted" style="font-size:.82rem;margin-top:8px"><span class="en">After installing, enable the plugin with <code>/reload-plugins</code> in Claude Code (or restart it). Full options: <code>docs/harness/deployment-guide.md</code>; every config knob: <code>docs/harness/config-reference.md</code>.</span><span class="vi">Sau khi cài, bật plugin bằng <code>/reload-plugins</code> trong Claude Code (hoặc khởi động lại). Tùy chọn đầy đủ: <code>docs/harness/deployment-guide.md</code>; mọi núm cấu hình: <code>docs/harness/config-reference.md</code>.</span></p>
@@ -1259,10 +1262,13 @@ body.pal-open{overflow:hidden}
     </div>
 
     <!-- the verify output you watch -->
-    <p class="muted" style="font-size:.9rem;margin-top:18px"><span class="en"><b>Watch one thing: the closing verify.</b> After it copies <code>harness/</code> and wires the hooks into <code>.claude/settings.json</code> (additively — your own hooks survive), the installer runs <code>verify_install --strict</code> as the final gate. A clean run ends with zero drift; that output is your proof the install is sound. <span class="realtag">real output</span></span><span class="vi"><b>Chỉ cần nhìn một thứ: verify chốt.</b> Sau khi copy <code>harness/</code> và gắn hook vào <code>.claude/settings.json</code> (cộng thêm — hook của bạn vẫn còn), trình cài chạy <code>verify_install --strict</code> làm gate cuối. Một lần chạy sạch kết thúc với zero drift; đầu ra đó là bằng chứng bản cài đúng. <span class="realtag">đầu ra thật</span></span></p>
+    <p class="muted" style="font-size:.9rem;margin-top:18px"><span class="en"><b>Watch one thing: the closing verify.</b> After it copies <code>harness/</code> and wires the hooks into <code>.claude/settings.json</code> (additively — your own hooks survive), the installer runs <code>verify_install --strict</code> as the final gate. A clean run ends with <code>verify_install OK</code> and exit 0. It is not silent: a fresh install prints ~12 WARN lines, and every one is expected — ten name a hook the shipped table disables whose entrypoint stays wired (it spawns and self-no-ops, costing a spawn and nothing else), and one names the config you are meant to localize. The verdict line is the proof, not the absence of warnings. <span class="realtag">real output</span></span><span class="vi"><b>Chỉ cần nhìn một thứ: verify chốt.</b> Sau khi copy <code>harness/</code> và gắn hook vào <code>.claude/settings.json</code> (cộng thêm — hook của bạn vẫn còn), trình cài chạy <code>verify_install --strict</code> làm gate cuối. Một lần chạy sạch kết thúc bằng <code>verify_install OK</code> và exit 0. Nó KHÔNG im lặng: bản cài mới in ~12 dòng WARN, và tất cả đều nằm trong dự kiến — mười dòng gọi tên một hook mà bảng ship tắt sẵn nhưng entrypoint vẫn còn gắn (nó spawn rồi tự no-op, tốn một lần spawn chứ không gì khác), một dòng gọi tên đúng phần cấu hình bạn được quyền chỉnh. Dòng phán quyết mới là bằng chứng, không phải việc vắng cảnh báo. <span class="realtag">đầu ra thật</span></span></p>
     <div class="term">
       <div class="tbar"><i></i><i></i><i></i><span class="tcmd">curl -fsSL …/install.sh | sh</span></div>
-      <pre>verify_install OK: manifest + hook registration consistent
+      <pre>WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
+… 9 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
+WARN harness/data/harness-hooks.yaml: hash mismatch (deployer-localized config — expected to differ from the shipped baseline)
+verify_install OK: manifest + hook registration consistent
 </pre>
     </div>
 
@@ -3797,50 +3803,50 @@ exit: 0 (0 = winner)
 
 ## lens: workflow_chains
 
-_sessions analyzed: 1 · sufficient: False · gated: True_
+_sessions analyzed: 62 · sufficient: True · gated: False_
 
-| chain          | count |
-| -------------- | ----: |
-| ck-plan → cook | 1     |
-
-**Deviations (undeclared chains):**
-
-| chain          | count |
-| -------------- | ----: |
-| ck-plan → cook | 1     |
-
-## NOT measured
-
-- token / dollar cost per skill or session (not attributed)
-- semantic correctness or quality of any run (only ran / coarse exit)
-- wall-clock for non-script work (only harness/scripts &amp; harness/e2e Bash runs are timed)
-- human review depth or plan-approval quality
-- lenses not yet shipped: health, validate, memory, product_memory (not yet shipped — the JSONL data is retained; the read-only lens is added later without touching this spine)
+| chain                      | count |
+| -------------------------- | ----: |
+| cook                       | 10    |
+| plan                       | 8     |
+| prompt                     | 5     |
+| discover                   | 4     |
+| plan → sequential-thinking | 4     |
+| code-review                | 2     |
+| claude-api                 | 2     |
+| release → discover         | 2     |
+| code-review → code-review  | 2     |
+| prompt → prompt            | 2     |
 </pre></div>
         <div class="fmt-pane" data-pane="json"><pre>{
   "lens": "workflow_chains",
   "days": 30,
-  "sessions_analyzed": 1,
-  "sufficient": false,
+  "sessions_analyzed": 62,
+  "sufficient": true,
   "min_sessions": 5,
   "common_chains": [
     {
-      "chain": "ck-plan → cook",
-      "count": 1
-    }
-  ],
-  "declared_chains": [
-    "plan → cook",
-    "cook → test",
-    "test → cook"
-  ],
-  "deviations": [
+      "chain": "cook",
+      "count": 10
+    },
     {
-      "chain": "ck-plan → cook",
-      "count": 1
+      "chain": "plan",
+      "count": 8
+    },
+    {
+      "chain": "prompt",
+      "count": 5
+    },
+    {
+      "chain": "discover",
+      "count": 4
+    },
+    {
+      "chain": "plan → sequential-thinking",
+      "count": 4
     }
   ],
-  "gated": true
+  "common_chains_omitted_for_display": 5
 }
 </pre></div>
       </div>
@@ -3855,7 +3861,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
         <div class="tier telemetry">
           <div class="tn">telemetry</div>
           <span class="tdf"><span class="en">default ON</span><span class="vi">mặc định ON</span></span>
-          <div class="tx"><span class="en"><b>fail-open, silent.</b> 6 sinks record skill/script runs, session shape, subagent outcomes — an internal error never blocks a tool.</span><span class="vi"><b>fail-open, im lặng.</b> 6 sink ghi skill/script-run, hình phiên, kết cục subagent — lỗi nội bộ không bao giờ cản tool.</span></div>
+          <div class="tx"><span class="en"><b>fail-open, silent.</b> 10 sinks record skill/script runs, session shape, subagent outcomes — an internal error never blocks a tool.</span><span class="vi"><b>fail-open, im lặng.</b> 10 sink ghi skill/script-run, hình phiên, kết cục subagent — lỗi nội bộ không bao giờ cản tool.</span></div>
         </div>
         <div class="tier nudge">
           <div class="tn">nudge</div>
@@ -3929,7 +3935,10 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
       <p class="muted" style="font-size:.9rem"><span class="en">The manifest hashes every git-tracked harness file; <code>--strict</code> also checks that registered hooks match. Tamper with a tracked file and this fails. <span class="realtag">real output</span></span><span class="vi">Manifest hash mọi file harness tracked git; <code>--strict</code> còn kiểm hook đã đăng ký khớp. Sửa một file tracked là cái này fail. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 harness/scripts/verify_install.py --strict</span></div>
-        <pre>verify_install OK: manifest + hook registration consistent
+        <pre>WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
+… 9 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
+WARN harness/data/harness-hooks.yaml: hash mismatch (deployer-localized config — expected to differ from the shipped baseline)
+verify_install OK: manifest + hook registration consistent
 </pre>
       </div>
     </div>

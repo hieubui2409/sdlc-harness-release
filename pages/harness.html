@@ -140,50 +140,50 @@
 
 ## lens: workflow_chains
 
-_sessions analyzed: 1 · sufficient: False · gated: True_
+_sessions analyzed: 62 · sufficient: True · gated: False_
 
-| chain          | count |
-| -------------- | ----: |
-| ck-plan → cook | 1     |
-
-**Deviations (undeclared chains):**
-
-| chain          | count |
-| -------------- | ----: |
-| ck-plan → cook | 1     |
-
-## NOT measured
-
-- token / dollar cost per skill or session (not attributed)
-- semantic correctness or quality of any run (only ran / coarse exit)
-- wall-clock for non-script work (only harness/scripts &amp; harness/e2e Bash runs are timed)
-- human review depth or plan-approval quality
-- lenses not yet shipped: health, validate, memory, product_memory (not yet shipped — the JSONL data is retained; the read-only lens is added later without touching this spine)
+| chain                      | count |
+| -------------------------- | ----: |
+| cook                       | 10    |
+| plan                       | 8     |
+| prompt                     | 5     |
+| discover                   | 4     |
+| plan → sequential-thinking | 4     |
+| code-review                | 2     |
+| claude-api                 | 2     |
+| release → discover         | 2     |
+| code-review → code-review  | 2     |
+| prompt → prompt            | 2     |
 </pre></div>
         <div class="fmt-pane" data-pane="json"><pre>{
   "lens": "workflow_chains",
   "days": 30,
-  "sessions_analyzed": 1,
-  "sufficient": false,
+  "sessions_analyzed": 62,
+  "sufficient": true,
   "min_sessions": 5,
   "common_chains": [
     {
-      "chain": "ck-plan → cook",
-      "count": 1
-    }
-  ],
-  "declared_chains": [
-    "plan → cook",
-    "cook → test",
-    "test → cook"
-  ],
-  "deviations": [
+      "chain": "cook",
+      "count": 10
+    },
     {
-      "chain": "ck-plan → cook",
-      "count": 1
+      "chain": "plan",
+      "count": 8
+    },
+    {
+      "chain": "prompt",
+      "count": 5
+    },
+    {
+      "chain": "discover",
+      "count": 4
+    },
+    {
+      "chain": "plan → sequential-thinking",
+      "count": 4
     }
   ],
-  "gated": true
+  "common_chains_omitted_for_display": 5
 }
 </pre></div>
       </div>
@@ -198,7 +198,7 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
         <div class="tier telemetry">
           <div class="tn">telemetry</div>
           <span class="tdf"><span class="en">default ON</span><span class="vi">mặc định ON</span></span>
-          <div class="tx"><span class="en"><b>fail-open, silent.</b> 6 sinks record skill/script runs, session shape, subagent outcomes — an internal error never blocks a tool.</span><span class="vi"><b>fail-open, im lặng.</b> 6 sink ghi skill/script-run, hình phiên, kết cục subagent — lỗi nội bộ không bao giờ cản tool.</span></div>
+          <div class="tx"><span class="en"><b>fail-open, silent.</b> 10 sinks record skill/script runs, session shape, subagent outcomes — an internal error never blocks a tool.</span><span class="vi"><b>fail-open, im lặng.</b> 10 sink ghi skill/script-run, hình phiên, kết cục subagent — lỗi nội bộ không bao giờ cản tool.</span></div>
         </div>
         <div class="tier nudge">
           <div class="tn">nudge</div>
@@ -272,7 +272,10 @@ _sessions analyzed: 1 · sufficient: False · gated: True_
       <p class="muted" style="font-size:.9rem"><span class="en">The manifest hashes every git-tracked harness file; <code>--strict</code> also checks that registered hooks match. Tamper with a tracked file and this fails. <span class="realtag">real output</span></span><span class="vi">Manifest hash mọi file harness tracked git; <code>--strict</code> còn kiểm hook đã đăng ký khớp. Sửa một file tracked là cái này fail. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 harness/scripts/verify_install.py --strict</span></div>
-        <pre>verify_install OK: manifest + hook registration consistent
+        <pre>WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
+… 9 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
+WARN harness/data/harness-hooks.yaml: hash mismatch (deployer-localized config — expected to differ from the shipped baseline)
+verify_install OK: manifest + hook registration consistent
 </pre>
       </div>
     </div>

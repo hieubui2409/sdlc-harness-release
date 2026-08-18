@@ -111,7 +111,10 @@
       <p class="muted" style="font-size:.9rem;margin-top:12px"><span class="en">Windows PowerShell: <code>irm https://hieubui2409.github.io/sdlc-harness-release/install.ps1 | iex</code>. The post-install test suite is <b>opt-in</b> — pass <code>--run-tests</code> (PowerShell: <code>-RunTests</code>) if you want the full suite too; the strict install check already confirms the install without it. <span class="realtag">real output</span></span><span class="vi">Windows PowerShell: <code>irm https://hieubui2409.github.io/sdlc-harness-release/install.ps1 | iex</code>. Bộ test sau cài là <b>tùy chọn</b> — thêm <code>--run-tests</code> (PowerShell: <code>-RunTests</code>) nếu muốn chạy cả bộ test; kiểm strict lúc cài đã xác nhận cài đúng mà không cần nó. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh | sh</span></div>
-        <pre>verify_install OK: manifest + hook registration consistent
+        <pre>WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
+… 9 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
+WARN harness/data/harness-hooks.yaml: hash mismatch (deployer-localized config — expected to differ from the shipped baseline)
+verify_install OK: manifest + hook registration consistent
 </pre>
       </div>
       <p class="muted" style="font-size:.82rem;margin-top:8px"><span class="en">After installing, enable the plugin with <code>/reload-plugins</code> in Claude Code (or restart it). Full options: <code>docs/harness/deployment-guide.md</code>; every config knob: <code>docs/harness/config-reference.md</code>.</span><span class="vi">Sau khi cài, bật plugin bằng <code>/reload-plugins</code> trong Claude Code (hoặc khởi động lại). Tùy chọn đầy đủ: <code>docs/harness/deployment-guide.md</code>; mọi núm cấu hình: <code>docs/harness/config-reference.md</code>.</span></p>

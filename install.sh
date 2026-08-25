@@ -15,6 +15,17 @@
 #                       expected sha256) and stop — install nothing.
 #   --version=X         online: pin a version (e.g. --version=5.4.0). Same as the
 #                       HARNESS_VERSION env var.
+#   --runtime=<csv>     ALSO install the harness where a non-Claude runtime reads
+#                       it, per project (e.g. --runtime=codex). Names come from
+#                       harness/data/runtime-targets.yaml; an undeclared name is
+#                       refused rather than approximated.
+#   --runtime-home=<csv> install a HOME-scoped runtime into the user's home for this
+#                       machine (e.g. --runtime-home=agy). Separate from --runtime
+#                       on purpose: it changes every project the user owns, so it is
+#                       never a side effect of installing here.
+#   --allow-inert-gates required alongside --runtime when a compliance gate would
+#                       register and never fire on that runtime. The loss is
+#                       recorded either way; this says it is a decision.
 #   --run-tests         run the post-install test suite (OFF by default; ~30s).
 #   --skip-tests        deprecated no-op — the suite is already off by default
 #                       (alias --no-tests, kept so old invocations don't error).
@@ -45,6 +56,9 @@ BUNDLE=""          # a local *.tar.gz path → offline mode
 SOURCE_URL=""      # a URL to a *.tar.gz → download-that-URL mode
 TARGET=""
 VER="${HARNESS_VERSION:-}"
+RUNTIMES=""        # non-Claude runtimes to ALSO install for, forwarded to install.py
+RUNTIME_HOMES=""   # HOME-scoped runtimes, installed for the MACHINE, not this project
+INERT_OK=0
 
 for arg in "$@"; do
   case "$arg" in
@@ -53,6 +67,9 @@ for arg in "$@"; do
     -i|--interactive)        INTERACTIVE=1 ;;
     -n|--dry-run)            DRYRUN=1 ;;
     --version=*)             VER="${arg#--version=}" ;;
+    --runtime=*)             RUNTIMES="${arg#--runtime=}" ;;
+    --runtime-home=*)        RUNTIME_HOMES="${arg#--runtime-home=}" ;;
+    --allow-inert-gates)     INERT_OK=1 ;;
     http://*|https://*|file://*) SOURCE_URL="$arg" ;;
     *.tar.gz)                BUNDLE="$arg" ;;
     -*) echo "error: unknown flag: $arg" >&2; exit 2 ;;
@@ -245,7 +262,22 @@ fi
 #    on (set -e) BEFORE cleanup (4b) could remove them. The strict gate moves to
 #    4c, after cleanup.
 echo "installing harness into ${TARGET} ..."
-$PY "$WORK/harness/install/install.py" --source "$WORK" --target "$TARGET"
+RUNTIME_ARGS=""
+if [ -n "$RUNTIMES" ]; then
+  RUNTIME_ARGS="--runtime $RUNTIMES"
+fi
+if [ -n "$RUNTIME_HOMES" ]; then
+  RUNTIME_ARGS="$RUNTIME_ARGS --runtime-home $RUNTIME_HOMES"
+fi
+if [ -n "$RUNTIME_ARGS" ] && [ "$INERT_OK" -eq 1 ]; then
+  RUNTIME_ARGS="$RUNTIME_ARGS --allow-inert-gates"
+fi
+# RUNTIME_ARGS is a deliberate word-split of the flags built above. The reason
+# lives on its own line: shellcheck reads everything after the directive as
+# more key=value pairs, so a prose tail turns the whole directive into SC1125
+# and the suppression silently stops applying.
+# shellcheck disable=SC2086
+$PY "$WORK/harness/install/install.py" --source "$WORK" --target "$TARGET" $RUNTIME_ARGS
 
 # 4b. clean up files the previous version left behind (safe layer only). This must
 #     NEVER fail the install — the harness is already copied — so the call is

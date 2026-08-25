@@ -62,6 +62,23 @@ param(
 
     [switch]$RunTests,
 
+    # ALSO install the harness where a non-Claude runtime reads it, per project
+    # (e.g. -Runtime codex). Names come from harness/data/runtime-targets.yaml; an
+    # undeclared name is refused rather than approximated. Accepts a CSV.
+    [Alias('runtime')]
+    [string]$Runtime,
+
+    # A HOME-scoped runtime, installed for this MACHINE (e.g. -RuntimeHome agy).
+    # Separate from -Runtime on purpose: it changes every project the user owns, so
+    # it is never a side effect of installing here.
+    [string]$RuntimeHome,
+
+    # Required alongside -Runtime when a compliance gate would register and never
+    # fire on that runtime. The loss is recorded either way; this says it is a
+    # decision rather than a surprise.
+    [Alias('allow-inert-gates')]
+    [switch]$AllowInertGates,
+
     [Alias('NoTests')]
     [switch]$SkipTests
 )
@@ -274,6 +291,16 @@ with tarfile.open(bundle, "r:gz") as tf:
     $installPy = Join-Path $Work 'harness\install\install.py'
     $installArgs = @($installPy, '--source', $Work, '--target', $Target, '--strict')
     if ($env:REVIEWERS) { $installArgs += @('--reviewers', $env:REVIEWERS) }
+    if (-not [string]::IsNullOrEmpty($Runtime)) {
+        $installArgs += @('--runtime', $Runtime)
+    }
+    if (-not [string]::IsNullOrEmpty($RuntimeHome)) {
+        $installArgs += @('--runtime-home', $RuntimeHome)
+    }
+    if ((-not [string]::IsNullOrEmpty($Runtime)) -or
+        (-not [string]::IsNullOrEmpty($RuntimeHome))) {
+        if ($AllowInertGates) { $installArgs += '--allow-inert-gates' }
+    }
     Invoke-Py $installArgs
     if ($LASTEXITCODE -ne 0) { Write-Error 'install/verify failed'; exit $LASTEXITCODE }
 

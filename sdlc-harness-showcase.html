@@ -847,7 +847,7 @@ body.pal-open{overflow:hidden}
     <div class="stats">
       <div class="stat"><div class="n" data-count="129">129</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
       <div class="stat"><div class="n" data-count="62">62</div><div class="l"><span class="en">hook files · 3 tiers</span><span class="vi">file hook · 3 hạng</span></div></div>
-      <div class="stat"><div class="n" data-count="11623">11623</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
+      <div class="stat"><div class="n" data-count="12761">12761</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
       <div class="stat"><div class="n" data-count="0">0</div><div class="l"><span class="en">network calls in the gate path</span><span class="vi">lần gọi mạng trong đường gate</span></div></div>
     </div>
   </div>
@@ -1123,7 +1123,9 @@ verify_install OK: manifest + hook registration consistent
         <pre>plans/260818-0400-rate-limit-middleware/
   plan.md
   phases/phase-1-4.md
+  artifacts/verification.json
   artifacts/verification-p1.json
+  artifacts/phase-latest-P1.json
   artifacts/plan-approval.json
   reports/code-review-260818-p1.md
 </pre>
@@ -1157,7 +1159,7 @@ verify_install OK: manifest + hook registration consistent
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "11623 passed, 160 skipped"
+            "detail": "12761 passed, 164 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -1185,7 +1187,7 @@ verify_install OK: manifest + hook registration consistent
     <div style="margin-top:28px">
       <span class="eyebrow" style="display:block">Step 4 · <span class="en">shell</span><span class="vi">shell</span></span>
       <h2 class="sectitle" id="qs-ship" style="font-size:1.3rem;margin:2px 0 6px"><span class="en">Ship through the gate</span><span class="vi">Ship qua gate</span></h2>
-      <p class="muted" style="font-size:.9rem"><span class="en">Now push. If the artifact is missing, the pre-push gate ADVISES (<code>exit 0</code>), naming the missing artifact and the <b>exact path to create</b> — never a dead end. Once Step 4 has written <code>verification.json</code>, the same push passes. That advise-then-pass loop is the whole point — the hard guarantees are the agent cage and the two safety floors (destructive-to-protected + secret), not this gate. <span class="realtag">real output</span></span><span class="vi">Giờ push. Nếu thiếu artifact, pre-push gate NHẮC (<code>exit 0</code>), nêu tên artifact thiếu và <b>đúng đường cần tạo</b> — không bao giờ là ngõ cụt. Khi Bước 4 đã ghi <code>verification.json</code>, chính lệnh push đó vượt qua. Vòng nhắc-rồi-vượt chính là cốt lõi — bảo đảm cứng nằm ở cũi agent và hai safety floor (destructive-to-protected + secret), không phải ở gate này. <span class="realtag">đầu ra thật</span></span></p>
+      <p class="muted" style="font-size:.9rem"><span class="en">Now push. If the artifact is missing, the pre-push gate ADVISES (<code>exit 0</code>), naming the missing artifact and the <b>exact path to create</b> — never a dead end. Once Step 3 has written <code>verification.json</code>, the same push passes. That advise-then-pass loop is the whole point — the hard guarantees are the agent cage and the two safety floors (destructive-to-protected + secret), not this gate. <span class="realtag">real output</span></span><span class="vi">Giờ push. Nếu thiếu artifact, pre-push gate NHẮC (<code>exit 0</code>), nêu tên artifact thiếu và <b>đúng đường cần tạo</b> — không bao giờ là ngõ cụt. Khi Bước 3 đã ghi <code>verification.json</code>, chính lệnh push đó vượt qua. Vòng nhắc-rồi-vượt chính là cốt lõi — bảo đảm cứng nằm ở cũi agent và hai safety floor (destructive-to-protected + secret), không phải ở gate này. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">git push origin main</span></div>
         <pre>[advisory] gate_stage: hard stage 'push' needs an active plan but none resolved. Three exits: (1) create a plan under plans/ with `status: in_progress` frontmatter; (2) set HARNESS_ACTIVE_PLAN to the plan dir; (3) set `require_plan: false` for this stage in harness/data/stage-policy.yaml (tracked in git) — presence enforcement lives in remote CI (receipts-gate)
@@ -1222,7 +1224,7 @@ verify_install OK: manifest + hook registration consistent
     <h3 class="sectitle" style="font-size:1.25rem;margin:34px 0 0"><span class="en">FAQ</span><span class="vi">Hỏi đáp</span></h3>
     <div class="faq" style="--ac:var(--ok)">
       <details><summary><span class="en">Do I need a package manager or a build step?</span><span class="vi">Có cần package manager hay bước build không?</span></summary><div class="fa"><span class="en">No. One shell command installs it into your repo — stdlib Python only, no package manager, no build step. Requirements: Linux, Python ≥ 3.9, git, and Claude Code already installed.</span><span class="vi">Không. Một lệnh shell là cài xong vào repo — chỉ Python stdlib, không cần package manager, không bước build. Yêu cầu: Linux, Python ≥ 3.9, git, và Claude Code đã cài.</span></div></details>
-      <details><summary><span class="en">The gate blocked my push — how do I unblock it?</span><span class="vi">Gate chặn push — làm sao mở?</span></summary><div class="fa"><span class="en">Run the loop so the acceptance artifact exists: an approved plan (Step 3), then <code>hs:cook</code> writes <code>verification.json</code> (Step 4). The block message names the exact path to create — it's never a dead end.</span><span class="vi">Chạy vòng lặp để artifact nghiệm thu tồn tại: plan đã duyệt (Bước 3), rồi <code>hs:cook</code> ghi <code>verification.json</code> (Bước 4). Thông báo chặn nêu đúng đường cần tạo — không bao giờ là ngõ cụt.</span></div></details>
+      <details><summary><span class="en">The gate blocked my push — how do I unblock it?</span><span class="vi">Gate chặn push — làm sao mở?</span></summary><div class="fa"><span class="en">Run the loop so the acceptance artifact exists: an approved plan (Step 2), then <code>hs:cook</code> writes <code>verification.json</code> (Step 3). The block message names the exact path to create — it's never a dead end.</span><span class="vi">Chạy vòng lặp để artifact nghiệm thu tồn tại: plan đã duyệt (Bước 2), rồi <code>hs:cook</code> ghi <code>verification.json</code> (Bước 3). Thông báo chặn nêu đúng đường cần tạo — không bao giờ là ngõ cụt.</span></div></details>
       <details><summary><span class="en">Will installing overwrite my existing <code>.claude</code> hooks?</span><span class="vi">Cài có ghi đè hook <code>.claude</code> của tôi không?</span></summary><div class="fa"><span class="en">No. Install merges hooks additively into <code>.claude/settings.json</code> — your own hooks survive. It's idempotent; advanced flags like <code>--dry-run</code> and <code>--uninstall</code> are available if you run the installer directly (see the <a href="#install">Install</a> page).</span><span class="vi">Không. Cài gộp hook theo kiểu cộng thêm vào <code>.claude/settings.json</code> — hook của bạn vẫn còn. Idempotent; các cờ nâng cao như <code>--dry-run</code> và <code>--uninstall</code> có khi bạn chạy thẳng trình cài (xem trang <a href="#install">Cài đặt</a>).</span></div></details>
       <details><summary><span class="en">Why <code>/clear</code> between plan and cook?</span><span class="vi">Vì sao <code>/clear</code> giữa plan và cook?</span></summary><div class="fa"><span class="en">Planning carryover (research, debate, red-team) skews cook's focus. A clean context plus the absolute path to the approved plan keeps cook executing the contract, not re-litigating it.</span><span class="vi">Dư âm khi lập plan (research, tranh luận, red-team) làm lệch trọng tâm của cook. Context sạch cộng đường dẫn tuyệt đối tới plan đã duyệt giúp cook thực thi hợp đồng, không cãi lại nó.</span></div></details>
       <details><summary><span class="en">Does any of this hit the network?</span><span class="vi">Có thứ gì gọi mạng không?</span></summary><div class="fa"><span class="en">Installing fetches the release bundle — that's the one network hop. After that, there are <b>0 network calls in the gate path</b>: plan · cook · test · ship run entirely offline, and the e2e runs in a temp dir. Even this showcase makes no external requests.</span><span class="vi">Cài đặt có tải bundle release — đó là lượt gọi mạng duy nhất. Sau đó, <b>0 lần gọi mạng trong đường gate</b>: plan · cook · test · ship chạy hoàn toàn offline, và e2e chạy trong thư mục tạm. Ngay cả showcase này cũng không gọi mạng.</span></div></details>
@@ -1430,7 +1432,9 @@ verify_install OK: manifest + hook registration consistent
             <pre>plans/260818-0400-rate-limit-middleware/
   plan.md
   phases/phase-1-4.md
+  artifacts/verification.json
   artifacts/verification-p1.json
+  artifacts/phase-latest-P1.json
   artifacts/plan-approval.json
   reports/code-review-260818-p1.md
 </pre>
@@ -1512,7 +1516,7 @@ verify_install OK: manifest + hook registration consistent
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "11623 passed, 160 skipped"
+            "detail": "12761 passed, 164 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -1681,7 +1685,9 @@ verify_install OK: manifest + hook registration consistent
         <pre>plans/260818-0400-rate-limit-middleware/
   plan.md
   phases/phase-1-4.md
+  artifacts/verification.json
   artifacts/verification-p1.json
+  artifacts/phase-latest-P1.json
   artifacts/plan-approval.json
   reports/code-review-260818-p1.md
 </pre>
@@ -2028,7 +2034,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
 ...s..................................s...............s...ss.ssss..s.... [ 98%]
 ........ssssssssss......s.....s....ss...sssss................sssssssssss [ 99%]
 sssss.ssssssssssssss...........................                          [100%]
-11623 passed, 160 skipped in 168.49s (0:02:48)
+12761 passed, 164 skipped, 3 warnings in 168.25s (0:02:48)
 </pre>
       </div>
 
@@ -2054,7 +2060,7 @@ sssss.ssssssssssssss...........................                          [100%]
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "11623 passed, 160 skipped"
+            "detail": "12761 passed, 164 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -3706,11 +3712,11 @@ exit: 0 (0 = winner)
         <div class="who" style="color:var(--rel)"><span class="en">The shared language</span><span class="vi">Ngôn ngữ chung</span></div>
         <h2><span class="en">Glossary</span><span class="vi">Thuật ngữ</span></h2>
       </div>
-      <div class="ver">29 terms</div>
+      <div class="ver">29 of 139</div>
     </div>
     <div class="divider" style="--ac:var(--rel)"></div>
 
-    <p class="lead"><span class="en">One settled word replaces a paragraph of re-explanation. Agents read <code>docs/GLOSSARY.md</code> <b>before naming</b> a variable, file, hook, or sentence, so the tree stays consistent. Each term below carries its definition, the wording it <b>forbids</b>, and the decision that backs it — copied straight from the canonical file.</span><span class="vi">Một từ đã chốt thay cho cả đoạn giải thích lại. Agent đọc <code>docs/GLOSSARY.md</code> <b>trước khi đặt tên</b> biến, file, hook hay câu chữ, để cả cây giữ nhất quán. Mỗi thuật ngữ dưới đây kèm định nghĩa, cách nói <b>bị cấm</b>, và quyết định làm chỗ dựa — lấy thẳng từ file chuẩn.</span></p>
+    <p class="lead"><span class="en">One settled word replaces a paragraph of re-explanation. Agents read <code>docs/GLOSSARY.md</code> <b>before naming</b> a variable, file, hook, or sentence, so the tree stays consistent. The register holds <b>139</b> settled terms; the 29 below are the ones a reader meets first. Each term below carries its definition, the wording it <b>forbids</b>, and the decision that backs it — copied straight from the canonical file.</span><span class="vi">Một từ đã chốt thay cho cả đoạn giải thích lại. Agent đọc <code>docs/GLOSSARY.md</code> <b>trước khi đặt tên</b> biến, file, hook hay câu chữ, để cả cây giữ nhất quán. Sổ đăng ký có <b>139</b> thuật ngữ đã chốt; 29 cái dưới đây là những cái người đọc gặp trước tiên. Mỗi thuật ngữ dưới đây kèm định nghĩa, cách nói <b>bị cấm</b>, và quyết định làm chỗ dựa — lấy thẳng từ file chuẩn.</span></p>
 
     <div class="callout" style="--ac:var(--txt-faint);margin-top:18px;margin-bottom:30px">
       <span class="ci">📖</span>
@@ -3939,7 +3945,7 @@ _sessions analyzed: 62 · sufficient: True · gated: False_
     <!-- three tiers -->
     <h2 class="sectitle" id="rig-tiers"><span class="en">Three hook tiers — the class is carved in code</span><span class="vi">Ba hạng hook — hạng khắc trong code</span></h2>
     <div class="card" style="margin-top:14px;--ac:var(--tel)">
-      <p><span class="en">Config (<code>harness-hooks.yaml</code>, tracked in git) can flip a hook on/off and change its mode — but it can never change a hook's <b>tier</b>. The fail posture follows the tier.</span><span class="vi">Config (<code>harness-hooks.yaml</code>, tracked git) bật/tắt và đổi mode một hook — nhưng không bao giờ đổi được <b>hạng</b>. Tư thế-khi-lỗi theo hạng.</span></p>
+      <p><span class="en">Config (<code>harness-hooks.yaml</code>, tracked in git) can flip a hook on/off and change its mode — but it can never change a hook's <b>tier</b>. The fail posture follows the tier. Since v6.2.0 that config is <b>two</b> layers: the shipped registry, plus a per-project overlay at <code>&lt;data-root&gt;/harness-hooks.yaml</code> that MERGES over it, so a project can turn one nudge on without editing the file every other project reads. <code>hs-cli hooks</code> reports each hook's resolved posture and which layer decided it; <code>--off/--on &lt;csv&gt;</code> writes only the project layer.</span><span class="vi">Config (<code>harness-hooks.yaml</code>, tracked git) bật/tắt và đổi mode một hook — nhưng không bao giờ đổi được <b>hạng</b>. Tư thế-khi-lỗi theo hạng. Từ v6.2.0 config đó là <b>hai</b> tầng: sổ đã ship, cộng một tầng phủ per-project ở <code>&lt;data-root&gt;/harness-hooks.yaml</code> GỘP lên trên, nên một dự án bật được một nudge mà không phải sửa file mọi dự án khác cùng đọc. <code>hs-cli hooks</code> báo tư thế đã giải của từng hook và tầng nào quyết; <code>--off/--on &lt;csv&gt;</code> chỉ ghi tầng dự án.</span></p>
       <div class="tiers">
         <div class="tier telemetry">
           <div class="tn">telemetry</div>

@@ -1673,7 +1673,7 @@ verify_install OK: manifest + hook registration consistent
       </p>
       <div class="walk">
         <div class="wstep v"><span class="wtag">hs:plan</span><div class="wt"><span class="en">research → validate</span><span class="vi">research → validate</span></div><div class="wd"><span class="en">plan.md + phase-*.md</span><span class="vi">plan.md + phase-*.md</span></div></div>
-        <div class="wstep b"><span class="wtag">approval</span><div class="wt"><span class="en">human sign-off</span><span class="vi">người duyệt</span></div><div class="wd"><span class="en">plan-approval.json</span><span class="vi">plan-approval.json</span></div></div>
+        <div class="wstep b"><span class="wtag">approval</span><div class="wt"><span class="en">human sign-off</span><span class="vi">người duyệt</span></div><div class="wd"><span class="en">plan-approval.yaml</span><span class="vi">plan-approval.yaml</span></div></div>
         <div class="wstep p"><span class="wtag">hs:cook</span><div class="wt"><span class="en">per-phase TDD</span><span class="vi">TDD từng phase</span></div><div class="wd"><span class="en">verification.json</span><span class="vi">verification.json</span></div></div>
         <div class="wstep e"><span class="wtag">hs:test</span><div class="wt"><span class="en">100% pass</span><span class="vi">100% pass</span></div><div class="wd"><span class="en">verdict: PASS</span><span class="vi">verdict: PASS</span></div></div>
         <div class="wstep s"><span class="wtag">gate</span><div class="wt"><span class="en">push / pr / ship</span><span class="vi">push / pr / ship</span></div><div class="wd"><span class="en">allowed iff artifacts present</span><span class="vi">cho qua khi đủ artifact</span></div></div>
@@ -1786,7 +1786,7 @@ verify_install OK: manifest + hook registration consistent
       </div>
       <div class="card">
         <h3><span class="pin"></span><span class="en">The enforcement gate</span><span class="vi">Gate cưỡng chế</span></h3>
-        <p><span class="en"><code>plan-approval.json</code> anchors a plan hash to the normalized plan directory to prevent drift. You approve locally (advisory) — and a claimed approval whose hash no longer matches the plan is rejected by the artifact-forgery block, so you can't quietly edit a plan after approval. Want a hard remote check too? Wire the optional <code>receipts-gate</code> CI workflow into your own repo.</span><span class="vi"><code>plan-approval.json</code> neo một hash plan vào thư mục plan chuẩn-hóa để chặn lệch. Bạn duyệt local (advisory) — và một approval khai báo mà hash không còn khớp plan sẽ bị chặn giả-mạo-artifact từ chối, nên không thể lặng lẽ sửa plan sau khi duyệt. Muốn thêm kiểm cứng ở remote? Gắn workflow CI <code>receipts-gate</code> (tùy chọn) vào CI của repo bạn.</span></p>
+        <p><span class="en"><code>plan-approval.yaml</code> anchors a plan hash to the normalized plan directory to prevent drift. You approve locally (advisory) — and a claimed approval whose hash no longer matches the plan is rejected by the artifact-forgery block, so you can't quietly edit a plan after approval. Want a hard remote check too? Wire the optional <code>receipts-gate</code> CI workflow into your own repo.</span><span class="vi"><code>plan-approval.yaml</code> neo một hash plan vào thư mục plan chuẩn-hóa để chặn lệch. Bạn duyệt local (advisory) — và một approval khai báo mà hash không còn khớp plan sẽ bị chặn giả-mạo-artifact từ chối, nên không thể lặng lẽ sửa plan sau khi duyệt. Muốn thêm kiểm cứng ở remote? Gắn workflow CI <code>receipts-gate</code> (tùy chọn) vào CI của repo bạn.</span></p>
         <div class="chips" style="margin-top:10px"><span class="chip">plan_hash <span class="x">drift→block</span></span><span class="chip">remote enforce</span></div>
       </div>
     </div>
@@ -2193,7 +2193,7 @@ sssss.ssssssssssssss...........................                          [100%]
       <div class="farrow" style="--ac:var(--ok)">→</div>
       <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M16 4c-6 5-9 7-9 13a9 9 0 0 0 18 0c0-6-3-8-9-13Z" stroke="var(--ok)" stroke-width="2" stroke-linejoin="round"/></svg><div class="fn"><span class="en">review</span><span class="vi">review</span></div><div class="fd"><code>review-decision.json</code></div></div>
       <div class="farrow" style="--ac:var(--ok)">→</div>
-      <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M9 17l5 5 9-11" stroke="var(--ok)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn"><span class="en">approval</span><span class="vi">duyệt</span></div><div class="fd"><code>plan-approval.json</code></div></div>
+      <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M9 17l5 5 9-11" stroke="var(--ok)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn"><span class="en">approval</span><span class="vi">duyệt</span></div><div class="fd"><code>plan-approval.yaml</code></div></div>
       <div class="farrow" style="--ac:var(--ok)">→</div>
       <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M16 4v16M16 4l-6 6M16 4l6 6M7 24h18" stroke="var(--ok)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn"><span class="en">push / PR</span><span class="vi">push / PR</span></div><div class="fd"><span class="en">gate has final say</span><span class="vi">gate quyết cuối</span></div></div>
     </div>
@@ -2206,7 +2206,7 @@ sssss.ssssssssssssss...........................                          [100%]
       <tbody>
         <tr><td><code>verification.json</code></td><td><span class="en">no FAILed check</span><span class="vi">không có check FAIL</span></td></tr>
         <tr><td><code>review-decision.json</code></td><td><span class="en">verdict <b>exactly</b> <code>PASS</code> — <code>PASS_WITH_RISK</code> does not qualify</span><span class="vi">verdict <b>đúng</b> <code>PASS</code> — <code>PASS_WITH_RISK</code> không đủ</span></td></tr>
-        <tr><td><code>plan-approval.json</code></td><td><span class="en">plan hash hasn't drifted</span><span class="vi">hash plan chưa lệch</span></td></tr>
+        <tr><td><code>plan-approval.yaml</code></td><td><span class="en">plan hash hasn't drifted</span><span class="vi">hash plan chưa lệch</span></td></tr>
         <tr><td><code>critique-consensus.json</code> <span class="muted">(opt-in)</span></td><td><span class="en">consensus verdict present — only enforced if a stage lists it in <code>requires:</code>; the shipped default does not</span><span class="vi">có verdict đồng thuận — chỉ bị ép nếu một stage liệt kê nó trong <code>requires:</code>; mặc định ship không có</span></td></tr>
       </tbody>
     </table>
@@ -3250,7 +3250,7 @@ exit: 0 (0 = winner)
     <table class="modetable" style="--ac:var(--spec)">
       <thead><tr><th><span class="en">Step</span><span class="vi">Bước</span></th><th><span class="en">Command</span><span class="vi">Lệnh</span></th><th><span class="en">Leaves behind</span><span class="vi">Để lại</span></th></tr></thead>
       <tbody>
-        <tr><td><span class="en">Plan</span><span class="vi">Lập kế hoạch</span></td><td><code>/hs:plan</code></td><td><code>plan.md</code> + phase files → <code>plan-approval.json</code></td></tr>
+        <tr><td><span class="en">Plan</span><span class="vi">Lập kế hoạch</span></td><td><code>/hs:plan</code></td><td><code>plan.md</code> + phase files → <code>plan-approval.yaml</code></td></tr>
         <tr><td><span class="en">Cook</span><span class="vi">Nấu</span></td><td><code>/hs:cook</code></td><td><code>verification.json</code> <span class="x"><span class="en">(per phase)</span><span class="vi">(mỗi phase)</span></span></td></tr>
         <tr><td><span class="en">Test</span><span class="vi">Kiểm thử</span></td><td><code>/hs:test</code></td><td><code>verification.json</code> <span class="x">verdict: PASS</span></td></tr>
         <tr><td><span class="en">Review</span><span class="vi">Review</span></td><td><code>/hs:code-review</code></td><td><code>review-decision.json</code> <span class="x">verdict: PASS</span></td></tr>
@@ -3491,7 +3491,7 @@ exit: 0 (0 = winner)
       <tbody>
         <tr><td><code>verification.json</code></td><td><code>hs:cook</code> / <code>hs:test</code></td><td><span class="en">no FAILed check</span><span class="vi">không có check FAIL</span></td></tr>
         <tr><td><code>review-decision.json</code></td><td><code>hs:code-review</code></td><td><span class="en">verdict == <code>PASS</code></span><span class="vi">verdict == <code>PASS</code></span></td></tr>
-        <tr><td><code>plan-approval.json</code></td><td><span class="en">human (<code>plan_approval.py</code>)</span><span class="vi">người (<code>plan_approval.py</code>)</span></td><td><span class="en">self-approval verdict; <code>plan_hash</code> matches (no drift)</span><span class="vi">verdict tự-duyệt; <code>plan_hash</code> khớp (không drift)</span></td></tr>
+        <tr><td><code>plan-approval.yaml</code></td><td><span class="en">human (<code>plan_approval.py</code>)</span><span class="vi">người (<code>plan_approval.py</code>)</span></td><td><span class="en">self-approval verdict; <code>plan_hash</code> matches (no drift)</span><span class="vi">verdict tự-duyệt; <code>plan_hash</code> khớp (không drift)</span></td></tr>
         <tr><td><code>critique-consensus.json</code></td><td><code>hs:critique</code> <span class="x">(gate mode)</span></td><td><span class="en">consensus verdict present</span><span class="vi">có verdict đồng thuận</span></td></tr>
       </tbody>
     </table>

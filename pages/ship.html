@@ -134,7 +134,7 @@
       <div class="farrow" style="--ac:var(--ok)">→</div>
       <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M16 4c-6 5-9 7-9 13a9 9 0 0 0 18 0c0-6-3-8-9-13Z" stroke="var(--ok)" stroke-width="2" stroke-linejoin="round"/></svg><div class="fn"><span class="en">review</span><span class="vi">review</span></div><div class="fd"><code>review-decision.json</code></div></div>
       <div class="farrow" style="--ac:var(--ok)">→</div>
-      <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M9 17l5 5 9-11" stroke="var(--ok)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn"><span class="en">approval</span><span class="vi">duyệt</span></div><div class="fd"><code>plan-approval.json</code></div></div>
+      <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M9 17l5 5 9-11" stroke="var(--ok)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn"><span class="en">approval</span><span class="vi">duyệt</span></div><div class="fd"><code>plan-approval.yaml</code></div></div>
       <div class="farrow" style="--ac:var(--ok)">→</div>
       <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M16 4v16M16 4l-6 6M16 4l6 6M7 24h18" stroke="var(--ok)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn"><span class="en">push / PR</span><span class="vi">push / PR</span></div><div class="fd"><span class="en">gate has final say</span><span class="vi">gate quyết cuối</span></div></div>
     </div>
@@ -147,7 +147,7 @@
       <tbody>
         <tr><td><code>verification.json</code></td><td><span class="en">no FAILed check</span><span class="vi">không có check FAIL</span></td></tr>
         <tr><td><code>review-decision.json</code></td><td><span class="en">verdict <b>exactly</b> <code>PASS</code> — <code>PASS_WITH_RISK</code> does not qualify</span><span class="vi">verdict <b>đúng</b> <code>PASS</code> — <code>PASS_WITH_RISK</code> không đủ</span></td></tr>
-        <tr><td><code>plan-approval.json</code></td><td><span class="en">plan hash hasn't drifted</span><span class="vi">hash plan chưa lệch</span></td></tr>
+        <tr><td><code>plan-approval.yaml</code></td><td><span class="en">plan hash hasn't drifted</span><span class="vi">hash plan chưa lệch</span></td></tr>
         <tr><td><code>critique-consensus.json</code> <span class="muted">(opt-in)</span></td><td><span class="en">consensus verdict present — only enforced if a stage lists it in <code>requires:</code>; the shipped default does not</span><span class="vi">có verdict đồng thuận — chỉ bị ép nếu một stage liệt kê nó trong <code>requires:</code>; mặc định ship không có</span></td></tr>
       </tbody>
     </table>

@@ -108,7 +108,7 @@
     <table class="modetable" style="--ac:var(--spec)">
       <thead><tr><th><span class="en">Step</span><span class="vi">Bước</span></th><th><span class="en">Command</span><span class="vi">Lệnh</span></th><th><span class="en">Leaves behind</span><span class="vi">Để lại</span></th></tr></thead>
       <tbody>
-        <tr><td><span class="en">Plan</span><span class="vi">Lập kế hoạch</span></td><td><code>/hs:plan</code></td><td><code>plan.md</code> + phase files → <code>plan-approval.json</code></td></tr>
+        <tr><td><span class="en">Plan</span><span class="vi">Lập kế hoạch</span></td><td><code>/hs:plan</code></td><td><code>plan.md</code> + phase files → <code>plan-approval.yaml</code></td></tr>
         <tr><td><span class="en">Cook</span><span class="vi">Nấu</span></td><td><code>/hs:cook</code></td><td><code>verification.json</code> <span class="x"><span class="en">(per phase)</span><span class="vi">(mỗi phase)</span></span></td></tr>
         <tr><td><span class="en">Test</span><span class="vi">Kiểm thử</span></td><td><code>/hs:test</code></td><td><code>verification.json</code> <span class="x">verdict: PASS</span></td></tr>
         <tr><td><span class="en">Review</span><span class="vi">Review</span></td><td><code>/hs:code-review</code></td><td><code>review-decision.json</code> <span class="x">verdict: PASS</span></td></tr>
@@ -349,7 +349,7 @@
       <tbody>
         <tr><td><code>verification.json</code></td><td><code>hs:cook</code> / <code>hs:test</code></td><td><span class="en">no FAILed check</span><span class="vi">không có check FAIL</span></td></tr>
         <tr><td><code>review-decision.json</code></td><td><code>hs:code-review</code></td><td><span class="en">verdict == <code>PASS</code></span><span class="vi">verdict == <code>PASS</code></span></td></tr>
-        <tr><td><code>plan-approval.json</code></td><td><span class="en">human (<code>plan_approval.py</code>)</span><span class="vi">người (<code>plan_approval.py</code>)</span></td><td><span class="en">self-approval verdict; <code>plan_hash</code> matches (no drift)</span><span class="vi">verdict tự-duyệt; <code>plan_hash</code> khớp (không drift)</span></td></tr>
+        <tr><td><code>plan-approval.yaml</code></td><td><span class="en">human (<code>plan_approval.py</code>)</span><span class="vi">người (<code>plan_approval.py</code>)</span></td><td><span class="en">self-approval verdict; <code>plan_hash</code> matches (no drift)</span><span class="vi">verdict tự-duyệt; <code>plan_hash</code> khớp (không drift)</span></td></tr>
         <tr><td><code>critique-consensus.json</code></td><td><code>hs:critique</code> <span class="x">(gate mode)</span></td><td><span class="en">consensus verdict present</span><span class="vi">có verdict đồng thuận</span></td></tr>
       </tbody>
     </table>

@@ -1902,7 +1902,7 @@ verify_install OK: manifest + hook registration consistent
 e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
 </pre>
       </div>
-      <p class="faint" style="font-size:.76rem;margin-top:10px"><span class="en">27/27 checks. The gate reads the artifact off the <b>filesystem</b> — no commit needed (and <code>.gitignore</code> keeps new plan dirs out of git, so artifacts can't auto-commit; that's policy, not a bug).</span><span class="vi">27/27 check. Gate đọc artifact từ <b>filesystem</b> — không cần commit (và <code>.gitignore</code> che plan dir mới, nên artifact không tự commit; đó là policy, không phải lỗi).</span></p>
+      <p class="faint" style="font-size:.76rem;margin-top:10px"><span class="en">27/27 checks. The gate reads the artifact off the <b>filesystem</b> — no commit needed — the gate never asks git what it knows.</span><span class="vi">27/27 check. Gate đọc artifact từ <b>filesystem</b> — không cần commit — gate không bao giờ hỏi git xem nó biết gì.</span></p>
     </div>
 
     <!-- per-phase loop -->
@@ -1959,7 +1959,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
     <h3 class="sectitle" style="font-size:1.25rem;margin:34px 0 0"><span class="en">FAQ</span><span class="vi">Hỏi đáp</span></h3>
     <div class="faq" style="--ac:var(--rel)">
       <details><summary><span class="en">Can I cook without an approved plan?</span><span class="vi">Cook khi chưa duyệt plan được không?</span></summary><div class="fa"><span class="en">Not through the workflow — with no approved plan it returns you to <code>hs:plan</code>. The <code>require_plan</code> gate itself only advises locally (<code>exit 0</code>) and never hard-blocks on its own; wire the optional <code>receipts-gate</code> CI workflow into your own repo if you want it enforced on every push too.</span><span class="vi">Không qua workflow — khi chưa có plan duyệt, nó đưa bạn về <code>hs:plan</code>. Bản thân gate <code>require_plan</code> chỉ advisory tại máy (<code>exit 0</code>) và không tự chặn cứng; gắn workflow CI <code>receipts-gate</code> (tùy chọn) vào CI của repo bạn nếu muốn ép nó trên mọi push nữa.</span></div></details>
-      <details><summary><span class="en">Do I have to commit the artifacts for the gate to pass?</span><span class="vi">Có cần commit artifact để gate qua không?</span></summary><div class="fa"><span class="en">No. The gate reads <code>verification.json</code> off the filesystem. <code>.gitignore</code> deliberately keeps new plan dirs out of git, so artifacts don't auto-commit — correct policy, not a bug.</span><span class="vi">Không. Gate đọc <code>verification.json</code> từ filesystem. <code>.gitignore</code> cố ý che plan dir mới khỏi git, nên artifact không tự commit — đúng policy, không phải lỗi.</span></div></details>
+      <details><summary><span class="en">Do I have to commit the artifacts for the gate to pass?</span><span class="vi">Có cần commit artifact để gate qua không?</span></summary><div class="fa"><span class="en">No. The gate reads <code>verification.json</code> off the filesystem, so it clears the moment the file is written — before any commit, and whether or not you ever commit it. (Plan directories themselves <em>are</em> tracked; what stays local is <code>plans/reports/</code> plus raw runner output — <code>coverage.xml</code>, <code>junit-*.xml</code>.)</span><span class="vi">Không. Gate đọc <code>verification.json</code> từ filesystem, nên nó thông ngay khi file được ghi — trước mọi commit, và bất kể bạn có commit hay không. (Bản thân plan dir <em>có</em> được git track; thứ ở lại cục bộ là <code>plans/reports/</code> cùng output thô của runner — <code>coverage.xml</code>, <code>junit-*.xml</code>.)</span></div></details>
       <details><summary><span class="en">I'm stuck between two comparable approaches mid-phase.</span><span class="vi">Kẹt giữa hai cách ngang nhau giữa phase.</span></summary><div class="fa"><span class="en">Escalate to <code>hs:bakeoff</code>: probe the alternatives and decide by numbers, then resume cook — instead of grinding one direction on a hunch.</span><span class="vi">Chuyển sang <code>hs:bakeoff</code>: thử các phương án và quyết bằng số, rồi quay lại cook — thay vì cắm cúi một hướng theo cảm tính.</span></div></details>
       <details><summary><span class="en">Where does work that's outside the plan go?</span><span class="vi">Việc ngoài phạm vi plan thì để đâu?</span></summary><div class="fa"><span class="en">Into <code>BACKLOG.md</code>. Don't steer the plan mid-flight — capture it and keep the current phase honest.</span><span class="vi">Vào <code>BACKLOG.md</code>. Đừng đổi hướng plan giữa chừng — ghi lại và giữ phase hiện tại trung thực.</span></div></details>
       <details><summary><span class="en">Does <code>HARNESS_AUTONOMY=god</code> let it ship on its own?</span><span class="vi"><code>HARNESS_AUTONOMY=god</code> có tự ship không?</span></summary><div class="fa"><span class="en">No. <code>god</code> only stops the mid-chain pauses — the trace still records every step, and <b>no level self-ships</b>: <code>push|pr|ship|deploy</code> always passes the artifact gate.</span><span class="vi">Không. <code>god</code> chỉ bỏ các lần dừng giữa chuỗi — trace vẫn ghi đủ mọi bước, và <b>không mức nào tự ship</b>: <code>push|pr|ship|deploy</code> luôn qua artifact gate.</span></div></details>
@@ -3260,7 +3260,7 @@ exit: 0 (0 = winner)
 
     <!-- ── 2. Commands by family ── -->
     <h2 class="sectitle" id="cs-commands"><span class="en">All commands</span><span class="vi">Toàn bộ lệnh</span></h2>
-    <p class="muted" style="margin:-4px 0 14px"><span class="en">A quick-reference to the most-used <code>hs:*</code> skills, grouped by what you're trying to do. Invoke any with <code>/hs:&lt;name&gt;</code>. All 122 with full descriptions live in the <a href="#catalog">catalog</a>.</span><span class="vi">Bảng tra nhanh các skill <code>hs:*</code> hay dùng nhất, nhóm theo điều bạn đang muốn làm. Gọi bất kỳ với <code>/hs:&lt;tên&gt;</code>. Toàn bộ 122 kèm mô tả đầy đủ nằm trong <a href="#catalog">catalog</a>.</span></p>
+    <p class="muted" style="margin:-4px 0 14px"><span class="en">A quick-reference to the most-used <code>hs:*</code> skills, grouped by what you're trying to do. Invoke any with <code>/hs:&lt;name&gt;</code>. All 129 with full descriptions live in the <a href="#catalog">catalog</a>.</span><span class="vi">Bảng tra nhanh các skill <code>hs:*</code> hay dùng nhất, nhóm theo điều bạn đang muốn làm. Gọi bất kỳ với <code>/hs:&lt;tên&gt;</code>. Toàn bộ 129 kèm mô tả đầy đủ nằm trong <a href="#catalog">catalog</a>.</span></p>
 
     <div class="eyebrow"><span class="en">SDLC spine — the gated four</span><span class="vi">Xương sống SDLC — bốn bước bị gate</span></div>
     <table class="modetable" style="--ac:var(--spec)">
@@ -4182,7 +4182,7 @@ verify_install OK: manifest + hook registration consistent
 
     <h2 class="sectitle" id="std-coverage"><span class="en">The rule-coverage gate</span><span class="vi">Gate phủ-luật</span></h2>
     <div class="card" style="margin-top:14px;--ac:var(--crit)">
-      <p><span class="en">When code-review runs, <code>rule_view.py</code> matches the changed files against every applicable operational rule and emits a <code>rule-scan</code> artifact recording which rules were in scope. The gate then refuses a scan that <b>omits</b> an applicable rule — you cannot quietly skip one. A skip needs an explicit, capability-gated <code>rule-coverage-skip</code> artifact, and floor rules can never be skipped. The ramp is off → soft → hard (default soft).</span><span class="vi">Khi code-review chạy, <code>rule_view.py</code> khớp file đã đổi với mọi luật vận hành áp dụng và phát một artifact <code>rule-scan</code> ghi luật nào trong phạm vi. Gate sau đó từ chối một scan <b>bỏ sót</b> một luật áp dụng — bạn không thể lặng lẽ bỏ qua. Một skip cần artifact <code>rule-coverage-skip</code> tường minh, có capability-gate, và luật floor không bao giờ skip được. Nấc là off → soft → hard (mặc định soft).</span></p>
+      <p><span class="en">When code-review runs, <code>rule_view.py</code> matches the changed files against every applicable operational rule and emits a <code>rule-scan</code> artifact recording which rules were in scope. The gate then refuses a scan that <b>omits</b> an applicable rule — you cannot quietly skip one. There is no skip artifact: the harness is personal-first, so a missing applicable rule is simply missing (<code>artifact_check.py</code>). The ramp is off → soft → hard, and it ships on <b>soft</b> — the omission is traced as a warning and never blocks until you turn hard on.</span><span class="vi">Khi code-review chạy, <code>rule_view.py</code> khớp file đã đổi với mọi luật vận hành áp dụng và phát một artifact <code>rule-scan</code> ghi luật nào trong phạm vi. Gate sau đó từ chối một scan <b>bỏ sót</b> một luật áp dụng — bạn không thể lặng lẽ bỏ qua. Không có artifact skip nào: harness là công cụ cá nhân, nên một luật áp dụng bị thiếu đơn giản là thiếu (<code>artifact_check.py</code>). Nấc là off → soft → hard, và bản ship đang ở <b>soft</b> — chỗ bỏ sót được ghi vết cảnh báo, không chặn cho tới khi bạn bật hard.</span></p>
     </div>
 
     <h2 class="sectitle" id="std-dod"><span class="en">Definition of Done — proof, not a checkbox</span><span class="vi">Definition of Done — bằng chứng, không phải tick</span></h2>
@@ -4850,17 +4850,17 @@ verify_install OK: manifest + hook registration consistent
     </div>
     <div>
       <h4><span class="en">Skills</span><span class="vi">Skill</span></h4>
-      <a href="../../harness/plugins/hs/skills/plan/SKILL.md">hs:plan</a>
-      <a href="../../harness/plugins/hs/skills/cook/SKILL.md">hs:cook</a>
-      <a href="../../harness/plugins/hs/skills/test/SKILL.md">hs:test</a>
-      <a href="../../harness/rules/harness-contract.md">harness-contract</a>
+      <a href="../harness/plugins/hs/skills/plan/SKILL.md">hs:plan</a>
+      <a href="../harness/plugins/hs/skills/cook/SKILL.md">hs:cook</a>
+      <a href="../harness/plugins/hs/skills/test/SKILL.md">hs:test</a>
+      <a href="../harness/rules/harness-contract.md">harness-contract</a>
     </div>
     <div>
       <h4><span class="en">Docs</span><span class="vi">Tài liệu</span></h4>
-      <a href="../../README.md">README</a>
-      <a href="../../docs/harness/codebase-summary.md">codebase-summary</a>
-      <a href="../../docs/system-architecture.md">system-architecture</a>
-      <a href="../../docs/decisions.md">decisions (DEC)</a>
+      <a href="../README.md">README</a>
+      <a href="../docs/harness/codebase-summary.md">codebase-summary</a>
+      <a href="../docs/system-architecture.md">system-architecture</a>
+      <a href="../docs/decisions.md">decisions (DEC)</a>
     </div>
   </div>
   <p class="faint" style="text-align:center;max-width:var(--maxw);margin:34px auto 0;font-size:.78rem"><span class="en">This page is a standalone showcase — no build step to view, no external requests, no chart library. Every terminal block below is real captured stdout. Open it in any browser.</span><span class="vi">Trang này là một showcase tự chứa — không cần build để xem, không gọi mạng, không thư viện vẽ. Mọi khối terminal bên dưới là stdout thật được ghi lại. Mở bằng bất kỳ trình duyệt nào.</span></p>

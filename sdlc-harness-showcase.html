@@ -847,7 +847,7 @@ body.pal-open{overflow:hidden}
     <div class="stats">
       <div class="stat"><div class="n" data-count="129">129</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
       <div class="stat"><div class="n" data-count="62">62</div><div class="l"><span class="en">hook files · 3 tiers</span><span class="vi">file hook · 3 hạng</span></div></div>
-      <div class="stat"><div class="n" data-count="12761">12761</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
+      <div class="stat"><div class="n" data-count="12769">12769</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
       <div class="stat"><div class="n" data-count="0">0</div><div class="l"><span class="en">network calls in the gate path</span><span class="vi">lần gọi mạng trong đường gate</span></div></div>
     </div>
   </div>
@@ -948,7 +948,7 @@ body.pal-open{overflow:hidden}
     <h2 class="sectitle" id="whatsnew-counts" style="font-size:1.3rem;margin-top:34px"><span class="en">Counted from source, reconciled everywhere</span><span class="vi">Đếm từ nguồn, đồng bộ mọi nơi</span></h2>
     <p class="muted" style="font-size:.9rem"><span class="en">Every number here is measured off the tree this release ships — a full <code>-n auto --dist loadfile</code> run of record, no failures rounded away.</span><span class="vi">Mọi con số ở đây đo từ chính cây mà bản này ship — một lượt chạy <code>-n auto --dist loadfile</code> đầy đủ đã đóng băng, không lỗi nào bị làm tròn cho biến mất.</span></p>
     <div class="stats" style="margin-top:14px">
-      <div class="stat"><div class="n" data-count="12761">12761</div><div class="l"><span class="en">tests passing · 0 failures</span><span class="vi">test xanh · 0 lỗi</span></div></div>
+      <div class="stat"><div class="n" data-count="12769">12769</div><div class="l"><span class="en">tests passing · 0 failures</span><span class="vi">test xanh · 0 lỗi</span></div></div>
       <div class="stat"><div class="n" data-count="144">144</div><div class="l"><span class="en">declared states · 11 domains</span><span class="vi">trạng thái khai báo · 11 domain</span></div></div>
       <div class="stat"><div class="n" data-count="129">129</div><div class="l"><span class="en">skills · 16 floor + 113 opt-in</span><span class="vi">skill · 16 lõi + 113 tùy chọn</span></div></div>
       <div class="stat"><div class="n" data-count="62">62</div><div class="l"><span class="en">hooks · 34 rules · 28 agents</span><span class="vi">hook · 34 rule · 28 agent</span></div></div>
@@ -1159,7 +1159,7 @@ verify_install OK: manifest + hook registration consistent
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "12761 passed, 164 skipped"
+            "detail": "12769 passed, 164 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -1516,7 +1516,7 @@ verify_install OK: manifest + hook registration consistent
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "12761 passed, 164 skipped"
+            "detail": "12769 passed, 164 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -1763,7 +1763,7 @@ verify_install OK: manifest + hook registration consistent
     <!-- panel flags (DEC-379) -->
     <h2 class="sectitle" id="plan-panel"><span class="en">Convene a panel — <code>--ultra</code> / <code>--debate</code></span><span class="vi">Triệu tập panel — <code>--ultra</code> / <code>--debate</code></span></h2>
     <div class="card" style="--ac:var(--rel);margin-top:14px">
-      <p><span class="en"><b>New in v6.2.0.</b> When several answers to the same question are genuinely defensible, add <code>--ultra [N]</code> or <code>--debate [N]</code>. Both are shapes of ONE panel: <b>N independent producers</b> work the question without seeing each other, and a <b>separate reader</b> — <code>hs:escalation-consultant</code> — synthesizes their output. They are the same mechanism, differing in whether the producers argue against each other or answer in parallel. Mutually exclusive with <code>--fast</code>/<code>--hard</code>/<code>--deep</code>/<code>--parallel</code>: the combination is refused by name, not silently resolved.</span><span class="vi"><b>Mới ở v6.2.0.</b> Khi cùng một câu hỏi có nhiều câu trả lời đều đứng vững được, hãy thêm <code>--ultra [N]</code> hoặc <code>--debate [N]</code>. Cả hai là hai hình dạng của MỘT panel: <b>N nhà sản xuất độc lập</b> cùng làm câu hỏi đó mà không thấy nhau, và một <b>người đọc riêng</b> — <code>hs:escalation-consultant</code> — tổng hợp kết quả. Cùng một cơ chế, chỉ khác ở chỗ các nhà sản xuất tranh luận với nhau hay trả lời song song. Loại trừ lẫn nhau với <code>--fast</code>/<code>--hard</code>/<code>--deep</code>/<code>--parallel</code>: tổ hợp đó bị từ chối kèm tên, không âm thầm tự xử.</span></p>
+      <p><span class="en"><b>New in v6.2.0.</b> When several answers to the same question are genuinely defensible, add <code>--ultra [N]</code> or <code>--debate</code>. Both are shapes of ONE panel: <b>N independent producers</b> work the question without seeing each other, and a <b>separate reader</b> — <code>hs:escalation-consultant</code> — synthesizes their output. They are the same mechanism, differing in whether the producers argue against each other or answer in parallel. Mutually exclusive with <code>--fast</code>/<code>--hard</code>/<code>--deep</code>/<code>--parallel</code>: the combination is refused by name, not silently resolved.</span><span class="vi"><b>Mới ở v6.2.0.</b> Khi cùng một câu hỏi có nhiều câu trả lời đều đứng vững được, hãy thêm <code>--ultra [N]</code> hoặc <code>--debate</code>. Cả hai là hai hình dạng của MỘT panel: <b>N nhà sản xuất độc lập</b> cùng làm câu hỏi đó mà không thấy nhau, và một <b>người đọc riêng</b> — <code>hs:escalation-consultant</code> — tổng hợp kết quả. Cùng một cơ chế, chỉ khác ở chỗ các nhà sản xuất tranh luận với nhau hay trả lời song song. Loại trừ lẫn nhau với <code>--fast</code>/<code>--hard</code>/<code>--deep</code>/<code>--parallel</code>: tổ hợp đó bị từ chối kèm tên, không âm thầm tự xử.</span></p>
       <p><span class="en"><b>13 skills</b> take these flags — <code>plan</code> among them, plus <code>advise</code>, <code>code-review</code>, <code>brainstorm</code>, <code>debug</code>, <code>fix</code>, <code>research</code>, <code>scout</code>, <code>review-pr</code>, <code>test</code>, <code>problem-solving</code>, <code>agentize</code>, <code>bootstrap</code>. <a href="#cook">hs:cook</a> is deliberately excluded: it mutates code, and the panel is built for the read-only shape. The routing survives an edit, because it is wired <b>twice</b> and independently: each skill body carries the order, and a separate <code>UserPromptSubmit</code> hook reads the raw prompt for a panel skill plus the flag and injects the directive whether or not that paragraph is still there.</span><span class="vi"><b>13 skill</b> nhận các cờ này — <code>plan</code> nằm trong đó, cùng <code>advise</code>, <code>code-review</code>, <code>brainstorm</code>, <code>debug</code>, <code>fix</code>, <code>research</code>, <code>scout</code>, <code>review-pr</code>, <code>test</code>, <code>problem-solving</code>, <code>agentize</code>, <code>bootstrap</code>. <a href="#cook">hs:cook</a> cố ý bị loại: nó sửa code, còn panel được xây cho hình dạng chỉ-đọc. Việc định tuyến sống sót qua một lần sửa, vì nó được nối <b>hai lần</b> độc lập nhau: thân mỗi skill mang đoạn lệnh, và một hook <code>UserPromptSubmit</code> riêng đọc prompt thô tìm skill-panel cộng cờ rồi tiêm chỉ dẫn bất kể đoạn văn kia còn hay mất.</span></p>
       <div class="chips" style="margin-top:10px"><span class="chip">N producers, 1 reader</span><span class="chip">13 skills, cook excluded</span><span class="chip">prose + mechanical relay</span><span class="chip">DEC-379</span></div>
     </div>
@@ -2034,7 +2034,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
 ...s..................................s...............s...ss.ssss..s.... [ 98%]
 ........ssssssssss......s.....s....ss...sssss................sssssssssss [ 99%]
 sssss.ssssssssssssss...........................                          [100%]
-12761 passed, 164 skipped, 3 warnings in 168.25s (0:02:48)
+12769 passed, 164 skipped, 3 warnings in 239.98s (0:03:59)
 </pre>
       </div>
 
@@ -2060,7 +2060,7 @@ sssss.ssssssssssssss...........................                          [100%]
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "12761 passed, 164 skipped"
+            "detail": "12769 passed, 164 skipped"
         },
         {
             "name": "schema load yaml+json",

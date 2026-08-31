@@ -91,8 +91,8 @@
     <div class="callout" style="--ac:var(--gold)">
       <span class="ci">✨</span>
       <div>
-        <span class="en"><b>New in v6.1.0 —</b> a plan can declare <code>--defer-suite</code>: each phase runs only the tests its own plan-graph node declares, and the full suite runs <b>once</b> — before the plan can close, recorded and gated. Deferring verification is a person's consent, so unlike every other carried flag there is <b>no infer-from-disk door</b>, and the declaration is sealed by the approval hash — which now folds the <b>parsed value</b>, not just the line it was written on. → <a href="pages/whatsnew.html"><b>What's new</b></a> · <a href="pages/methodology.html">Methodology deep dive</a></span>
-        <span class="vi"><b>Mới ở v6.1.0 —</b> một kế hoạch khai được <code>--defer-suite</code>: mỗi phase chỉ chạy tập test mà node của nó khai, và suite đầy đủ chạy <b>một lần</b> — trước khi kế hoạch được đóng, có ghi nhận và có cổng canh. Hoãn việc kiểm chứng là sự đồng ý của con người, nên khác mọi cờ mang-theo khác, ở đây <b>không có cửa suy-từ-đĩa</b>, và khai báo đó được niêm bằng hash phê duyệt — thứ nay gộp cả <b>giá trị đã parse</b>, không chỉ dòng chữ viết ra nó. → <a href="pages/whatsnew.html"><b>Có gì mới</b></a> · <a href="pages/methodology.html">Đi sâu Phương pháp</a></span>
+        <span class="en"><b>New in v6.2.0 —</b> the harness installs onto <b>eight</b> coding-agent runtimes besides Claude Code. <code>runtime-targets.yaml</code> declares, one measured fact at a time, what each one can actually carry — event names, tool vocabulary, hook-file shape — and <code>hs-cli emit --target T</code> casts that table into a real install rather than a copy that looks installed and fires nothing. A compliance gate that would land inert is a <b>hard error</b>, never a silent drop. → <a href="pages/whatsnew.html"><b>What's new</b></a> · <a href="pages/harness.html">The rig</a></span>
+        <span class="vi"><b>Mới ở v6.2.0 —</b> harness cài được lên <b>tám</b> runtime coding-agent ngoài Claude Code. <code>runtime-targets.yaml</code> khai báo, từng sự thật đã đo một, mỗi runtime thực sự mang được gì — tên event, từ vựng tool, hình dạng file hook — và <code>hs-cli emit --target T</code> đúc bảng đó thành một install THẬT thay vì một bản copy trông như đã cài mà không bắn gì. Một gate compliance sắp rơi vào trạng thái vô hiệu là <b>lỗi cứng</b>, không bao giờ rơi rụng âm thầm. → <a href="pages/whatsnew.html"><b>Có gì mới</b></a> · <a href="pages/harness.html">Bộ máy</a></span>
       </div>
     </div>
   </div>
@@ -184,7 +184,7 @@
 
     <div class="stats">
       <div class="stat"><div class="n" data-count="129">129</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
-      <div class="stat"><div class="n" data-count="60">60</div><div class="l"><span class="en">hooks · 3 tiers</span><span class="vi">hook · 3 hạng</span></div></div>
+      <div class="stat"><div class="n" data-count="62">62</div><div class="l"><span class="en">hook files · 3 tiers</span><span class="vi">file hook · 3 hạng</span></div></div>
       <div class="stat"><div class="n" data-count="11623">11623</div><div class="l"><span class="en">unit + invariant tests pass</span><span class="vi">test unit + invariant pass</span></div></div>
       <div class="stat"><div class="n" data-count="0">0</div><div class="l"><span class="en">network calls in the gate path</span><span class="vi">lần gọi mạng trong đường gate</span></div></div>
     </div>

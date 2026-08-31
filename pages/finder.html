@@ -108,6 +108,8 @@
       <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="var(--gold)" stroke-width="2"/><path d="m11 16 3.5 3.5L22 12" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn"><span class="en">Verify</span><span class="vi">Kiểm chứng</span></div><div class="fd"><span class="en">checking it's right</span><span class="vi">kiểm cho đúng</span></div></div>
       <div class="farrow" style="--ac:var(--gold)">→</div>
       <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><path d="M16 4v16M16 4l-6 6M16 4l6 6M7 24h18" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="fn"><span class="en">Ship</span><span class="vi">Ship</span></div><div class="fd"><span class="en">ready to release</span><span class="vi">sẵn sàng phát hành</span></div></div>
+      <div class="farrow" style="--ac:var(--gold)">→</div>
+      <div class="fstep"><svg class="fi" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="4" stroke="var(--gold)" stroke-width="2"/><path d="M16 3v5M16 24v5M3 16h5M24 16h5M7 7l3.5 3.5M21.5 21.5 25 25M25 7l-3.5 3.5M10.5 21.5 7 25" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/></svg><div class="fn"><span class="en">Operate</span><span class="vi">Vận hành</span></div><div class="fd"><span class="en">the harness itself</span><span class="vi">chính harness</span></div></div>
     </div>
 
     <!-- ── Plan ── -->
@@ -120,6 +122,7 @@
         <tr><td><span class="en">Gather and verify evidence from many sources</span><span class="vi">Thu thập và kiểm chứng bằng chứng từ nhiều nguồn</span></td><td><code>/hs:research</code></td></tr>
         <tr><td><span class="en">Debate trade-offs before committing to a direction</span><span class="vi">Tranh luận đánh đổi trước khi chọn hướng</span></td><td><code>/hs:brainstorm</code></td></tr>
         <tr><td><span class="en">Understand an unfamiliar codebase first</span><span class="vi">Hiểu một codebase lạ trước đã</span></td><td><code>/hs:understand</code></td></tr>
+        <tr><td><span class="en">Have something explained plainly — the last answer, an error, or a concept pitched at a named reader</span><span class="vi">Cần giải thích cho DỄ HIỂU — câu trả lời vừa rồi, một lỗi, hay một khái niệm nhắm tới một người đọc cụ thể</span></td><td><code>/hs:eli5</code></td></tr>
         <tr><td><span class="en">Surface edge cases &amp; risks before building</span><span class="vi">Lộ ra edge case &amp; rủi ro trước khi xây</span></td><td><code>/hs:scenario</code> · <code>/hs:predict</code></td></tr>
       </tbody>
     </table>
@@ -159,6 +162,8 @@
       <tbody>
         <tr><td><span class="en">Take a finished branch through the gated ship pipeline</span><span class="vi">Đưa một nhánh xong qua pipeline ship có gate</span></td><td><code>/hs:ship</code></td></tr>
         <tr><td><span class="en">Just commit / push / open a PR (with conventional commits)</span><span class="vi">Chỉ commit / push / mở PR (với conventional commit)</span></td><td><code>/hs:git</code></td></tr>
+        <tr><td><span class="en">Write the technical recap of what you just built — what changed, what failed, what remains</span><span class="vi">Viết bản tóm tắt kỹ thuật việc vừa xây — đổi gì, hỏng gì, còn gì</span></td><td><code>/hs:sumup</code></td></tr>
+        <tr><td><span class="en">Ask, like a product owner, whether the team just worked on the right thing</span><span class="vi">Hỏi, kiểu product owner, xem đội vừa làm có đúng thứ đáng làm không</span></td><td><code>/hs:sowat</code></td></tr>
         <tr><td><span class="en">Record what you learned this session</span><span class="vi">Ghi lại điều bạn học được trong phiên này</span></td><td><code>/hs:journal</code></td></tr>
       </tbody>
     </table>
@@ -169,6 +174,10 @@
       <thead><tr><th><span class="en">If you're trying to…</span><span class="vi">Nếu bạn đang muốn…</span></th><th><span class="en">Run</span><span class="vi">Chạy</span></th></tr></thead>
       <tbody>
         <tr><td><span class="en">Configure the harness posture (voice, guards, language)</span><span class="vi">Cấu hình posture harness (giọng, guard, ngôn ngữ)</span></td><td><code>/hs:setup</code></td></tr>
+        <tr><td><span class="en">Run an <code>hs-run</code> / <code>hs-cli</code> command without changing state you did not mean to</span><span class="vi">Chạy một lệnh <code>hs-run</code> / <code>hs-cli</code> mà không đổi trạng thái mình không định đổi</span></td><td><code>/hs:cli</code></td></tr>
+        <tr><td><span class="en">Work out who owns a piece of work before any of it starts</span><span class="vi">Xác định ai sở hữu một phần việc TRƯỚC khi bắt đầu</span></td><td><code>/hs:dispatch</code></td></tr>
+        <tr><td><span class="en">Make a MEASURED number better by iterating, under a bounded contract</span><span class="vi">Cải thiện một con số ĐÃ ĐO bằng cách lặp, theo khế ước có biên</span></td><td><code>/hs:finetune</code></td></tr>
+        <tr><td><span class="en">Lock the outcome before a long unattended run</span><span class="vi">Khoá kết quả TRƯỚC một lượt chạy dài không người trông</span></td><td><code>/hs:goal-warmup</code></td></tr>
         <tr><td><span class="en">See how the harness is actually being used (hot/cold skills, gate blocks)</span><span class="vi">Xem harness đang được dùng ra sao (skill hay/ít dùng, gate block)</span></td><td><code>/hs:insights</code></td></tr>
         <tr><td><span class="en">Get one ranked "what to improve next" proposal</span><span class="vi">Lấy một đề xuất xếp hạng "cải tiến gì tiếp theo"</span></td><td><code>/hs:compound</code></td></tr>
         <tr><td><span class="en">Make the harness adapt to a non-Python target repo</span><span class="vi">Cho harness thích nghi repo đích không-phải-Python</span></td><td><code>/hs:techstack</code></td></tr>

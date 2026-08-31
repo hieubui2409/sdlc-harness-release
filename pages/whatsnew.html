@@ -8,14 +8,14 @@
 <style>html{background:#070b16}</style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
-<title>What's new · v6.2.0 — SDLC Harness</title>
+<title>What's new · v6.2.1 — SDLC Harness</title>
 <meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
-<meta property="og:title" content="What's new · v6.2.0 — SDLC Harness" />
+<meta property="og:title" content="What's new · v6.2.1 — SDLC Harness" />
 <meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="What's new · v6.2.0 — SDLC Harness" />
+<meta name="twitter:title" content="What's new · v6.2.1 — SDLC Harness" />
 <meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
@@ -76,15 +76,22 @@
   <a href="../pages/ref-rules.html" class="side-link" data-nav="ref-rules"><span class="en">Rule layer</span><span class="vi">Lớp luật</span></a>
 </aside>
 <main class="docs-main" id="main-content" tabindex="-1">
-<!-- ===================== WHAT'S NEW · v6.2.0 ===================== -->
+<!-- ===================== WHAT'S NEW · v6.2.1 ===================== -->
 <section id="whatsnew">
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--gold)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M20 4l4.5 9.5L35 15l-7.5 7 1.8 10.5L20 27.5 10.7 32.5 12.5 22 5 15l10.5-1.5L20 4Z" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/></svg></div>
       <div class="ttl"><div class="who" style="color:var(--gold)"><span class="en">Release highlights · what landed in the latest cut</span><span class="vi">Điểm nổi bật của bản release · những gì vừa ra</span></div><h2><span class="en">What's new</span><span class="vi">Có gì mới</span></h2></div>
-      <div class="ver">v6.2.0 · 2026-08-25</div>
+      <div class="ver">v6.2.1 · 2026-09-01</div>
     </div>
     <div class="divider" style="--ac:var(--gold)"></div>
+
+    <div class="callout" style="--ac:var(--crit);margin-top:18px">
+      <span class="ci">🩹</span>
+      <div><span class="en"><b>v6.2.1 — a patch, and every line of it is something that was already broken.</b> A directive taught the model a command that exited 2, because one template served two flags and only one of them takes an argument. An output rung listed skill names where the code matches domain names, so half its entries could never fire — a failure that looks exactly like the flag not being passed. A cross-reference detector called seven rules orphans while the CLI routed every one of them. Sixteen footer links resolved above the repository root. And editing the architecture reference never counted as keeping the docs in sync, because the config named a file that had been renamed away. Nothing new shipped; five things that claimed to work now do. The architecture reference also became one source instead of two — twelve chapters, section numbers untouched, since thirty-six places address it by number. Full notes: <code>CHANGELOG.md → [6.2.1]</code>.</span><span class="vi"><b>v6.2.1 — bản vá, và mọi dòng trong đó đều là thứ vốn đã hỏng.</b> Một directive dạy model gõ lệnh mà chạy sẽ exit 2, vì một khuôn phục vụ hai cờ trong khi chỉ một cờ nhận đối số. Một output rung khai tên SKILL nơi code so tên DOMAIN, nên nửa số hàng không bao giờ khớp — hỏng theo kiểu trông y hệt "người dùng không truyền cờ". Một bộ dò tham chiếu chéo gọi bảy rule là mồ côi trong khi CLI định tuyến đủ cả bảy. Mười sáu link chân trang trỏ ra ngoài gốc repo. Và sửa tài liệu kiến trúc chưa bao giờ được tính là đã đồng bộ docs, vì cấu hình trỏ vào một tên tệp đã đổi từ lâu. Không có gì mới được ship; năm thứ từng khai là chạy thì nay chạy thật. Tài liệu kiến trúc cũng gộp về MỘT nguồn thay vì hai — mười hai chương, số mục giữ nguyên, vì ba mươi sáu nơi trỏ tới nó bằng số mục. Ghi chú đầy đủ: <code>CHANGELOG.md → [6.2.1]</code>.</span></div>
+    </div>
+
+    <div class="ver" style="margin-top:26px;opacity:.72"><span class="en">Previous cut · v6.2.0 · 2026-08-25</span><span class="vi">Bản trước · v6.2.0 · 2026-08-25</span></div>
 
     <p class="lead"><span class="en"><b>One porting job, and the interesting part is that it stayed honest under eight different runtimes.</b> <code>runtime-targets.yaml</code> + a projector now declare, one measured fact at a time, what each of eight external coding-agent runtimes can actually carry — event names, tool vocabulary, hook-file shape — and turn that table into a real install instead of a copy that looks installed but fires nothing. Losing a compliance gate's matcher is a hard error, never a silent drop. Everything else in this cut is smaller doors built the same way: a real bridge instead of a blanket refusal, a narrow per-project override instead of an edit to the shared file, and two independent layers so a flag a skill promises never depends on one paragraph surviving intact.</span><span class="vi"><b>Một đợt port, và phần đáng nói là nó giữ được trung thực dưới tám runtime khác nhau.</b> <code>runtime-targets.yaml</code> + một projector giờ khai báo, từng sự thật đã đo một, tám runtime coding-agent ngoài Claude Code thực sự mang được gì — tên event, từ vựng tool, hình dạng file hook — rồi đúc bảng đó thành một install THẬT thay vì một bản copy trông như đã cài mà không bắn gì cả. Mất một matcher của gate compliance là lỗi cứng, không bao giờ rơi rụng âm thầm. Mọi thứ còn lại trong bản này là những cánh cửa nhỏ hơn dựng theo cùng nguyên tắc: một cầu-nối thật thay vì từ-chối chung, một override per-project hẹp thay vì sửa file dùng chung, và hai lớp độc lập để một cờ mà skill đã hứa không phụ thuộc vào việc một đoạn văn còn sống sót.</span></p>
 

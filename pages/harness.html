@@ -208,7 +208,7 @@ _sessions analyzed: 62 · sufficient: True · gated: False_
         <div class="tier compliance">
           <div class="tn">compliance</div>
           <span class="tdf"><span class="en">ON + blocking</span><span class="vi">ON + blocking</span></span>
-          <div class="tx"><span class="en"><b>fail-closed, exit 2.</b> gate_stage + write_guard. On error — even a missing dep — it blocks and prints the fix command.</span><span class="vi"><b>fail-closed, exit 2.</b> gate_stage + write_guard. Khi lỗi — kể cả thiếu dep — chặn và in lệnh sửa.</span></div>
+          <div class="tx"><span class="en"><b>fail-closed, exit 2.</b> write_guard, protected_ref_guard, and the artifact-forgery arm. On error — even a missing dep — it blocks and prints the fix command. One exception: gate_stage, the stage-presence gate, advises locally (exit 0) and enforces in remote CI.</span><span class="vi"><b>fail-closed, exit 2.</b> write_guard, protected_ref_guard và nhánh chống giả-mạo artifact. Khi lỗi — kể cả thiếu dep — chặn và in lệnh sửa. Một ngoại lệ: gate_stage, cổng hiện-diện-stage, chỉ nhắc tại máy (exit 0) và enforce ở CI từ xa.</span></div>
         </div>
       </div>
     </div>

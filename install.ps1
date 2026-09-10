@@ -65,7 +65,6 @@ param(
     # ALSO install the harness where a non-Claude runtime reads it, per project
     # (e.g. -Runtime codex). Names come from harness/data/runtime-targets.yaml; an
     # undeclared name is refused rather than approximated. Accepts a CSV.
-    [Alias('runtime')]
     [string]$Runtime,
 
     # A HOME-scoped runtime, installed for this MACHINE (e.g. -RuntimeHome agy).

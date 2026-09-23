@@ -193,10 +193,6 @@
           <h3><span class="pin"></span><span class="en">Signed gate approvals</span><span class="vi">Phê duyệt gate có ký</span></h3>
           <p><span class="en">A reviewer approves via <code>POST /gate/approve</code>; the server mints an Ed25519 token bound to the exact plan hash. The developer's local gate verifies the token before proceeding to ship.</span><span class="vi">Reviewer phê duyệt qua <code>POST /gate/approve</code>; server tạo token Ed25519 ràng buộc với plan hash chính xác. Gate local của developer verify token trước khi ship.</span></p>
         </div>
-        <div class="card" style="--ac:var(--ok)">
-          <h3><span class="pin"></span><span class="en">AFK loop observability</span><span class="vi">Quan sát vòng lặp AFK</span></h3>
-          <p><span class="en"><code>GET /runs</code> surfaces live AFK loops across the team. <code>/runs/:id/tail</code> streams cursor-paginated trace lines. Stop/restart signals are pull-based — dev machines never open an inbound port.</span><span class="vi"><code>GET /runs</code> hiển thị vòng lặp AFK đang chạy toàn nhóm. <code>/runs/:id/tail</code> stream dòng trace phân trang cursor. Tín hiệu stop/restart là pull-based — máy dev không bao giờ mở port inbound.</span></p>
-        </div>
       </div>
     </div>
 
@@ -236,7 +232,7 @@
           <tr>
             <td>4 — Observability + control</td>
             <td><span class="en"><code>/runs/:id/status|tail|commands</code>, loop command-poll → sentinel, optional SSE, HTTPS on LAN.</span><span class="vi"><code>/runs/:id/status|tail|commands</code>, loop command-poll → sentinel, SSE tùy chọn, HTTPS trên LAN.</span></td>
-            <td><span class="en">Inspect and stop/restart AFK loops. Pure-read dashboard.</span><span class="vi">Xem và stop/restart vòng lặp AFK. Dashboard chỉ đọc.</span></td>
+            <td><span class="en">Inspect and stop/restart autonomous loops. Pure-read dashboard.</span><span class="vi">Xem và stop/restart vòng lặp tự hành. Dashboard chỉ-đọc.</span></td>
           </tr>
         </tbody>
       </table>

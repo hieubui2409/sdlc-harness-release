@@ -138,7 +138,6 @@
         <tr><td><span class="en">Find the root cause <b>before</b> fixing</span><span class="vi">Tìm nguyên nhân gốc <b>trước khi</b> sửa</span></td><td><code>/hs:debug</code></td></tr>
         <tr><td><span class="en">Run the <b>whole</b> bug lifecycle: reproduce → classify → fix</span><span class="vi">Chạy <b>toàn bộ</b> vòng đời bug: tái hiện → phân loại → sửa</span></td><td><code>/hs:triage</code></td></tr>
         <tr><td><span class="en">Improve a measurable metric by iterating in-session</span><span class="vi">Cải thiện một metric đo được bằng cách lặp trong phiên</span></td><td><code>/hs:loop</code></td></tr>
-        <tr><td><span class="en">Run a plan unattended (AFK)</span><span class="vi">Chạy một plan không giám sát (AFK)</span></td><td><code>/hs:afk</code></td></tr>
       </tbody>
     </table>
 
@@ -162,9 +161,6 @@
       <tbody>
         <tr><td><span class="en">Take a finished branch through the gated ship pipeline</span><span class="vi">Đưa một nhánh xong qua pipeline ship có gate</span></td><td><code>/hs:ship</code></td></tr>
         <tr><td><span class="en">Just commit / push / open a PR (with conventional commits)</span><span class="vi">Chỉ commit / push / mở PR (với conventional commit)</span></td><td><code>/hs:git</code></td></tr>
-        <tr><td><span class="en">Write the technical recap of what you just built — what changed, what failed, what remains</span><span class="vi">Viết bản tóm tắt kỹ thuật việc vừa xây — đổi gì, hỏng gì, còn gì</span></td><td><code>/hs:sumup</code></td></tr>
-        <tr><td><span class="en">Ask, like a product owner, whether the team just worked on the right thing</span><span class="vi">Hỏi, kiểu product owner, xem đội vừa làm có đúng thứ đáng làm không</span></td><td><code>/hs:sowat</code></td></tr>
-        <tr><td><span class="en">Record what you learned this session</span><span class="vi">Ghi lại điều bạn học được trong phiên này</span></td><td><code>/hs:journal</code></td></tr>
       </tbody>
     </table>
 
@@ -173,8 +169,7 @@
     <table class="modetable" style="--ac:var(--rel)">
       <thead><tr><th><span class="en">If you're trying to…</span><span class="vi">Nếu bạn đang muốn…</span></th><th><span class="en">Run</span><span class="vi">Chạy</span></th></tr></thead>
       <tbody>
-        <tr><td><span class="en">Configure the harness posture (voice, guards, language)</span><span class="vi">Cấu hình posture harness (giọng, guard, ngôn ngữ)</span></td><td><code>/hs:setup</code></td></tr>
-        <tr><td><span class="en">Run an <code>hs-run</code> / <code>hs-cli</code> command without changing state you did not mean to</span><span class="vi">Chạy một lệnh <code>hs-run</code> / <code>hs-cli</code> mà không đổi trạng thái mình không định đổi</span></td><td><code>/hs:cli</code></td></tr>
+        <tr><td><span class="en">Configure the harness posture (guards, language, code style)</span><span class="vi">Cấu hình posture harness (guard, ngôn ngữ, code style)</span></td><td><code>/hs:setup</code></td></tr>
         <tr><td><span class="en">Work out who owns a piece of work before any of it starts</span><span class="vi">Xác định ai sở hữu một phần việc TRƯỚC khi bắt đầu</span></td><td><code>/hs:dispatch</code></td></tr>
         <tr><td><span class="en">Make a MEASURED number better by iterating, under a bounded contract</span><span class="vi">Cải thiện một con số ĐÃ ĐO bằng cách lặp, theo khế ước có biên</span></td><td><code>/hs:finetune</code></td></tr>
         <tr><td><span class="en">Lock the outcome before a long unattended run</span><span class="vi">Khoá kết quả TRƯỚC một lượt chạy dài không người trông</span></td><td><code>/hs:goal-warmup</code></td></tr>
@@ -193,7 +188,7 @@
         <li><b><span class="en">Review:</span><span class="vi">Review:</span></b> <span class="en">small diff / commit → <code>hs:code-review</code>; GitHub PR / branch → <code>hs:review-pr</code>.</span><span class="vi">diff / commit nhỏ → <code>hs:code-review</code>; PR / nhánh GitHub → <code>hs:review-pr</code>.</span></li>
         <li><b><span class="en">Unfamiliar code:</span><span class="vi">Code lạ:</span></b> <span class="en"><code>hs:understand</code> first, then <code>hs:plan</code>.</span><span class="vi"><code>hs:understand</code> trước, rồi <code>hs:plan</code>.</span></li>
         <li><b><span class="en">Fuzzy problem:</span><span class="vi">Vấn đề mơ hồ:</span></b> <span class="en"><code>hs:discover</code> before <code>hs:plan</code>; many sources needed → <code>hs:research</code>.</span><span class="vi"><code>hs:discover</code> trước <code>hs:plan</code>; cần nhiều nguồn → <code>hs:research</code>.</span></li>
-        <li><b><span class="en">Diagram:</span><span class="vi">Sơ đồ:</span></b> <span class="en">inline-doc → <code>hs:mermaidjs</code>; editable canvas → <code>hs:excalidraw</code>; publish-grade → <code>hs:tech-graph</code>; explain a change → <code>hs:preview</code>.</span><span class="vi">trong-tài-liệu → <code>hs:mermaidjs</code>; canvas sửa được → <code>hs:excalidraw</code>; chất lượng xuất bản → <code>hs:tech-graph</code>; giải thích thay đổi → <code>hs:preview</code>.</span></li>
+        <li><b><span class="en">Diagram:</span><span class="vi">Sơ đồ:</span></b> <span class="en">inline-doc → <code>hs:mermaidjs</code>; publish-grade → <code>hs:tech-graph</code>; explain a change → <code>hs:preview</code>.</span><span class="vi">trong-tài-liệu → <code>hs:mermaidjs</code>; chất lượng xuất bản → <code>hs:tech-graph</code>; giải thích thay đổi → <code>hs:preview</code>.</span></li>
         <li><b><span class="en">Extend the harness:</span><span class="vi">Mở rộng harness:</span></b> <span class="en">a skill → <code>hs:skill-creator</code>; a hook / script / rule / agent → <code>hs:harness-creator</code>.</span><span class="vi">một skill → <code>hs:skill-creator</code>; một hook / script / rule / agent → <code>hs:harness-creator</code>.</span></li>
       </ul>
     </div>

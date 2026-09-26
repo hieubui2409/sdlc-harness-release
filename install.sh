@@ -85,23 +85,30 @@ TARGET="${TARGET:-$(pwd)}"
 #    "command not found" mid-install. A bundled venv would not help: a venv
 #    references a base interpreter (it does not contain Python) and is not
 #    portable across machines. The command name differs by platform — POSIX has
-#    `python3`, a stock Windows install has only `python` / `py` — so probe in
-#    order and pin the first Python >=3.9 found. HARNESS_PY is then exported so
-#    install.py wires that SAME interpreter into the hook commands.
+#    `python3`, a stock Windows install has only `python` / `py`; Debian 12 /
+#    Ubuntu 22.04 also ship `python3` pinned at 3.11 while a newer interpreter
+#    sits on PATH only under its versioned name (`python3.12`/`python3.13`) — so
+#    probe those FIRST (newest first), fall back to the bare names, and pin the
+#    first Python >=3.12 found (harness/scripts/preflight_deps.py enforces the
+#    same floor right after this probe — a lower probe floor here would let an
+#    interpreter through that preflight then rejects with exit 2).
+#    HARNESS_PY is then exported so install.py wires that SAME interpreter into the
+#    hook commands.
 PY=""
-for cand in python3 python "py -3"; do
+for cand in python3.13 python3.12 python3 python "py -3"; do
   name=${cand%% *}
   command -v "$name" >/dev/null 2>&1 || continue
-  if $cand -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 9) else 1)' 2>/dev/null; then
+  if $cand -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 12) else 1)' 2>/dev/null; then
     PY="$cand"; break
   fi
 done
 if [ -z "$PY" ]; then
-  echo "error: no Python >=3.9 found (looked for: python3, python, py -3). The" >&2
-  echo "       harness runs on Python — its hooks execute as Python scripts, so" >&2
-  echo "       the target machine needs it too. Install Python 3, then re-run:" >&2
-  echo "         Debian/Ubuntu: sudo apt install python3" >&2
-  echo "         macOS:         brew install python" >&2
+  echo "error: no Python >=3.12 found (looked for: python3.13, python3.12, python3," >&2
+  echo "       python, py -3). The harness runs on Python — its hooks execute as" >&2
+  echo "       Python scripts, so the target machine needs it too. Install a" >&2
+  echo "       Python >=3.12, then re-run:" >&2
+  echo "         Debian/Ubuntu: sudo apt install python3.12  (or pyenv/uv)" >&2
+  echo "         macOS:         brew install python@3.12" >&2
   echo "         Windows:       https://www.python.org/downloads/" >&2
   exit 1
 fi

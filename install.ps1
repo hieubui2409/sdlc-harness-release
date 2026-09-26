@@ -109,7 +109,9 @@ function Get-Asset([string]$Url, [string]$OutFile) {
 # The interpreter command differs by platform: the `py -3` launcher is the most
 # reliable on Windows and sidesteps the App Execution Alias stub (a 0-byte
 # python.exe that opens the Microsoft Store and never runs code). Probe py -3
-# first, then python, then python3, and pin the first Python >=3.9 found.
+# first, then python, then python3, and pin the first Python >=3.12 found (matches
+# harness/scripts/preflight_deps.py's floor -- a lower probe here would let an
+# interpreter through that preflight then rejects with exit 2).
 #
 # Callers pass a SINGLE array so dash-prefixed args (-m, --source) land verbatim
 # as python args instead of being parsed as this function's parameters.
@@ -121,7 +123,7 @@ function Invoke-Py {
     & $script:PyExe @($script:PyBase + $PyArgs)
 }
 
-$probe = 'import sys; raise SystemExit(0 if sys.version_info >= (3, 9) else 1)'
+$probe = 'import sys; raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'
 foreach ($cand in @(
         @{ exe = 'py';      base = @('-3') },
         @{ exe = 'python';  base = @() },
@@ -138,7 +140,7 @@ foreach ($cand in @(
 }
 if (-not $script:PyExe) {
     Write-Error @'
-no Python >=3.9 found (looked for: py -3, python, python3). The harness runs on
+no Python >=3.12 found (looked for: py -3, python, python3). The harness runs on
 Python - its hooks execute as Python scripts, so the target machine needs it too.
 Install Python 3, then re-run:
     Windows: https://www.python.org/downloads/  (tick "Add python.exe to PATH")
@@ -259,10 +261,7 @@ with tarfile.open(bundle, "r:gz") as tf:
             joined = os.path.normpath(os.path.join(os.path.dirname(name), tgt))
             if os.path.isabs(tgt) or joined.startswith(".."):
                 sys.exit("refusing tarball: unsafe link %r -> %r" % (name, tgt))
-    try:
-        tf.extractall(dest, filter="data")  # py3.12+: explicit safe filter (we already validated)
-    except TypeError:
-        tf.extractall(dest)                 # py<3.9.17: no filter arg; manual guard above stands
+    tf.extractall(dest, filter="data")  # explicit safe filter on top of the guard above
 '@
     $guardPy = Join-Path $Work '_extract_guard.py'
     Set-Content -LiteralPath $guardPy -Value $guard -Encoding ascii

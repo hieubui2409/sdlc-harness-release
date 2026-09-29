@@ -86,7 +86,7 @@
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
 
-    <p class="lead" style="margin-bottom:18px"><span class="en">Behind the 129 skills sits the enforcement layer: 62 hook files — 57 of them tiered — in three tiers, a multi-agent coordination layer (claims · plan-approval · write-guard), and read-only telemetry that ends every report with what it <b>cannot</b> measure. It reports whether the <i>machinery runs</i> — never whether the <i>product wins the market</i>.</span><span class="vi">Sau 129 skill là lớp cưỡng chế: 62 file hook — 57 cái có hạng — chia ba hạng, một lớp phối hợp đa-agent (claims · plan-approval · write-guard), và telemetry chỉ-đọc kết mỗi báo cáo bằng cái nó <b>không</b> đo được. Nó báo <i>máy móc có chạy không</i> — không bao giờ báo <i>sản phẩm có thắng thị trường không</i>.</span></p>
+    <p class="lead" style="margin-bottom:18px"><span class="en">Behind the 67 skills sits the enforcement layer: 64 registered hooks in three tiers, a multi-agent coordination layer (claims · plan-approval · write-guard), and read-only telemetry that ends every report with what it <b>cannot</b> measure. It reports whether the <i>machinery runs</i> — never whether the <i>product wins the market</i>.</span><span class="vi">Sau 67 skill là lớp cưỡng chế: 64 hook đã đăng ký chia ba hạng, một lớp phối hợp đa-agent (claims · plan-approval · write-guard), và telemetry chỉ-đọc kết mỗi báo cáo bằng cái nó <b>không</b> đo được. Nó báo <i>máy móc có chạy không</i> — không bao giờ báo <i>sản phẩm có thắng thị trường không</i>.</span></p>
 
     <!-- when to use -->
     <h2 class="sectitle" id="rig-limits"><span class="en">What it can and can't tell you</span><span class="vi">Nó nói được gì và không nói được gì</span></h2>
@@ -198,12 +198,12 @@ _sessions analyzed: 62 · sufficient: True · gated: False_
         <div class="tier telemetry">
           <div class="tn">telemetry</div>
           <span class="tdf"><span class="en">default ON</span><span class="vi">mặc định ON</span></span>
-          <div class="tx"><span class="en"><b>fail-open, silent.</b> 9 sinks record skill/script runs, session shape, subagent outcomes — an internal error never blocks a tool.</span><span class="vi"><b>fail-open, im lặng.</b> 9 sink ghi skill/script-run, hình phiên, kết cục subagent — lỗi nội bộ không bao giờ cản tool.</span></div>
+          <div class="tx"><span class="en"><b>fail-open, silent.</b> The telemetry sinks record skill/script runs, session shape, subagent outcomes — an internal error never blocks a tool.</span><span class="vi"><b>fail-open, im lặng.</b> Các sink telemetry ghi skill/script-run, hình phiên, kết cục subagent — lỗi nội bộ không bao giờ cản tool.</span></div>
         </div>
         <div class="tier nudge">
           <div class="tn">nudge</div>
           <span class="tdf"><span class="en">default OFF</span><span class="vi">mặc định OFF</span></span>
-          <div class="tx"><span class="en"><b>advisory on stderr.</b> memory-gap and the newer methodology-review self-governance hook remind, never block. A blocking hook is never fallback-enabled.</span><span class="vi"><b>advisory ở stderr.</b> memory-gap và hook tự-quản methodology-review mới nhắc, không bao giờ chặn. Hook chặn không bao giờ bật theo fallback.</span></div>
+          <div class="tx"><span class="en"><b>advisory on stderr.</b> memory-gap and the decision-capture nudges remind, never block. A blocking hook is never fallback-enabled.</span><span class="vi"><b>advisory ở stderr.</b> memory-gap và các nudge decision-capture nhắc, không bao giờ chặn. Hook chặn không bao giờ bật theo fallback.</span></div>
         </div>
         <div class="tier compliance">
           <div class="tn">compliance</div>

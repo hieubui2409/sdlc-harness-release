@@ -113,8 +113,8 @@
       </div>
       <div class="gate" style="margin-top:14px">
         <b><span class="en">Behind the scenes:</span><span class="vi">Bên trong:</span></b>
-        <span class="en"> <code>claims.py</code> writes a JSONL record with <code>actor</code> + <code>ts</code> to <code>state/trace/</code>. The append is atomic (single <code>os.write</code>). The trace never rotates — every acquire, reclaim, and release stays in the audit log.</span>
-        <span class="vi"> <code>claims.py</code> ghi record JSONL với <code>actor</code> + <code>ts</code> vào <code>state/trace/</code>. Append atomic (một <code>os.write</code>). Trace không xoay vòng — mọi acquire, reclaim, release đều ở log audit.</span>
+        <span class="en"> <code>claims.py</code> writes a JSONL record with <code>actor</code> + <code>ts</code> to <code>state/trace/</code>. The append runs under an exclusive flock, best-effort — it never blocks the traced op. The trace never rotates — every acquire, reclaim, and release stays in the audit log.</span>
+        <span class="vi"> <code>claims.py</code> ghi record JSONL với <code>actor</code> + <code>ts</code> vào <code>state/trace/</code>. Append chạy dưới flock độc quyền, best-effort — không bao giờ chặn thao tác được trace. Trace không xoay vòng — mọi acquire, reclaim, release đều ở log audit.</span>
       </div>
     </div>
 
@@ -134,14 +134,14 @@
     <div style="margin-top:34px">
       <div class="eyebrow"><span class="en">Step 3</span><span class="vi">Bước 3</span></div>
       <h2 class="sectitle" id="jr-plan" style="font-size:1.3rem"><span class="en">hs:plan — research · constraint-scan · red-team · validate</span><span class="vi">hs:plan — research · constraint-scan · red-team · validate</span></h2>
-      <p class="muted" style="font-size:.9rem"><span class="en"><code>hs:plan</code> runs four chained subagents: research, constraint-scan, phase-design, and red-team — then validates the result. The output is a machine-readable plan file under <code>plans/</code>.</span><span class="vi"><code>hs:plan</code> chạy bốn subagent nối: research, constraint-scan, thiết kế phase, và red-team — rồi validate kết quả. Đầu ra là file plan đọc được bởi máy dưới <code>plans/</code>.</span></p>
+      <p class="muted" style="font-size:.9rem"><span class="en"><code>hs:plan</code> runs three chained subagent roles — researcher, planner (constraint-scan + phase design), red-teamer — then validates the result. The output is a machine-readable plan file under <code>plans/</code>.</span><span class="vi"><code>hs:plan</code> chạy ba vai subagent nối — researcher, planner (constraint-scan + thiết kế phase), red-teamer — rồi validate kết quả. Đầu ra là file plan đọc được bởi máy dưới <code>plans/</code>.</span></p>
 
       <div class="cards grid-2" style="margin-top:14px">
         <div class="card" style="padding:18px;--ac:var(--gold)">
           <h4 style="margin-bottom:6px;color:var(--gold)"><span class="en">Plan-approval gate</span><span class="vi">Gate duyệt plan</span></h4>
           <p style="font-size:.84rem"><span class="en">A human approver must sign off explicitly — the approval is not tied to a specific person or role, but the signer is recorded in the artifact. Approval is bound to a normalized <code>plan_hash</code> (frontmatter + auto-updated <code>## Phases</code> stripped) so reformatting doesn't need re-approval but a content change does.</span><span class="vi">Một người phải ký phê duyệt rõ ràng — phê duyệt không gắn với người hoặc vai trò cụ thể, nhưng người ký được ghi trong artifact. Approval gắn với <code>plan_hash</code> chuẩn hóa (bỏ frontmatter + section <code>## Phases</code> tự cập nhật) nên reformat không cần duyệt lại nhưng đổi nội dung thì cần.</span></p>
           <div class="tri" style="margin-top:12px">
-            <span class="keep"><span class="en">reviewer ≠ author</span><span class="vi">reviewer ≠ tác giả</span></span>
+            <span class="keep"><span class="en">signer recorded</span><span class="vi">người ký được ghi</span></span>
             <span class="keep"><span class="en">hash-bound</span><span class="vi">hash-bound</span></span>
             <span class="change"><span class="en">presence gate</span><span class="vi">presence gate</span></span>
           </div>
@@ -166,8 +166,8 @@
 
       <div class="gate" style="margin-top:12px">
         <b><span class="en">Behind the scenes:</span><span class="vi">Bên trong:</span></b>
-        <span class="en"> <code>plan_approval.py</code> writes an <code>artifact-plan-approval</code> JSON to <code>plans/&lt;id&gt;/</code> when approved. The compliance hook <code>gate_stage</code> reads this file at cook/ship time — no file → a local advisory (<code>exit 0</code>) that names the gap; it never blocks you. What stays hard with no CI required: the agent cage, the safety floors, and the artifact-forgery block.</span>
-        <span class="vi"> <code>plan_approval.py</code> ghi JSON <code>artifact-plan-approval</code> vào <code>plans/&lt;id&gt;/</code> khi được duyệt. Hook compliance <code>gate_stage</code> đọc file này tại cook/ship — không có file → advisory tại máy (<code>exit 0</code>) nêu tên chỗ thiếu; không bao giờ chặn bạn. Cái vẫn cứng, không cần CI: cũi agent, các safety floor, và chặn giả-mạo artifact.</span>
+        <span class="en"> <code>plan_approval.py</code> writes the <code>plan-approval</code> artifact (YAML) to <code>plans/&lt;id&gt;/artifacts/</code> when approved. The compliance hook <code>gate_stage</code> reads this file at cook/ship time — no file → a local advisory (<code>exit 0</code>) that names the gap; it never blocks you. What stays hard with no CI required: the agent cage, the safety floors, and the artifact-forgery block.</span>
+        <span class="vi"> <code>plan_approval.py</code> ghi artifact <code>plan-approval</code> (YAML) vào <code>plans/&lt;id&gt;/artifacts/</code> khi được duyệt. Hook compliance <code>gate_stage</code> đọc file này tại cook/ship — không có file → advisory tại máy (<code>exit 0</code>) nêu tên chỗ thiếu; không bao giờ chặn bạn. Cái vẫn cứng, không cần CI: cũi agent, các safety floor, và chặn giả-mạo artifact.</span>
       </div>
     </div>
 
@@ -209,8 +209,8 @@
       </div>
       <div class="gate" style="margin-top:12px">
         <b><span class="en">Behind the scenes:</span><span class="vi">Bên trong:</span></b>
-        <span class="en"> The phase loop is driven by <code>hs-run cook &lt;verb&gt;</code> (<code>open, preflight, next, record, verify, status, close, prompt</code>) — each call returns a JSON envelope and one of four exit codes (<code>0</code> done · <code>10</code> needs a model turn · <code>11</code> one more step · <code>2</code> broken). Every <code>Bash</code> tool call runs through <code>PreToolUse:Bash</code> telemetry. Each phase writes <code>plans/&lt;id&gt;/verification.json</code> — the schema is validated by <code>artifact_check.py</code>. The trace log gets one <code>phase_complete</code> event per phase, append-only.</span>
-        <span class="vi"> Vòng lặp phase được chạy bởi <code>hs-run cook &lt;verb&gt;</code> (<code>open, preflight, next, record, verify, status, close, prompt</code>) — mỗi lệnh trả envelope JSON và một trong bốn mã thoát (<code>0</code> xong · <code>10</code> cần lượt model · <code>11</code> còn một bước · <code>2</code> hỏng). Mọi lệnh <code>Bash</code> đi qua telemetry <code>PreToolUse:Bash</code>. Mỗi phase ghi <code>plans/&lt;id&gt;/verification.json</code> — schema được validate bởi <code>artifact_check.py</code>. Log trace nhận một sự kiện <code>phase_complete</code> mỗi phase, append-only.</span>
+        <span class="en"> The phase loop is driven by <code>hs-run cook &lt;verb&gt;</code> (<code>open, preflight, next, record, verify, status, close, prompt</code>) — each call returns a JSON envelope and one of six exit codes (<code>0</code> done · <code>1</code> findings · <code>2</code> broken · <code>3</code> deliberate refusal · <code>10</code> needs a model turn · <code>11</code> one more step). Every <code>Bash</code> tool call runs through <code>PreToolUse:Bash</code> telemetry. Each phase writes <code>plans/&lt;id&gt;/verification.json</code> — the schema is validated by <code>artifact_check.py</code>. The trace log gets an event per significant step (via <code>trace_log.py</code>), append-only.</span>
+        <span class="vi"> Vòng lặp phase được chạy bởi <code>hs-run cook &lt;verb&gt;</code> (<code>open, preflight, next, record, verify, status, close, prompt</code>) — mỗi lệnh trả envelope JSON và một trong sáu mã thoát (<code>0</code> xong · <code>1</code> phát hiện · <code>2</code> hỏng · <code>3</code> từ chối có chủ đích · <code>10</code> cần lượt model · <code>11</code> còn một bước). Mọi lệnh <code>Bash</code> đi qua telemetry <code>PreToolUse:Bash</code>. Mỗi phase ghi <code>plans/&lt;id&gt;/verification.json</code> — schema được validate bởi <code>artifact_check.py</code>. Log trace nhận một sự kiện cho mỗi bước đáng kể (qua <code>trace_log.py</code>), append-only.</span>
       </div>
     </div>
 
@@ -302,7 +302,7 @@
         <div class="wstep p" style="--c:var(--gold)">
           <span class="wtag">03</span>
           <div class="wt"><span class="en">Plan-approval artifact</span><span class="vi">Artifact plan-approval</span></div>
-          <div class="wd"><span class="en">plan_approval present (self-approval; live confirm is Step 9)</span><span class="vi">plan_approval có mặt (self-approval; xác nhận trực tiếp ở Bước 9)</span></div>
+          <div class="wd"><span class="en">plan_approval present (self-approval by design)</span><span class="vi">plan_approval có mặt (tự-duyệt theo thiết kế)</span></div>
         </div>
         <div class="wstep e" style="--c:var(--crit)">
           <span class="wtag">04</span>

@@ -40,7 +40,10 @@ a{color:var(--spec);text-decoration:none}
 a:hover{text-decoration:underline}
 h1,h2,h3,h4{line-height:1.18;margin:0 0 .4em;font-weight:700;letter-spacing:-.01em}
 code,.mono{font-family:"JetBrains Mono","SF Mono",ui-monospace,Menlo,Consolas,monospace}
-code{background:rgba(120,150,210,.12);padding:.12em .42em;border-radius:6px;font-size:.86em;color:#cfe3ff;border:1px solid var(--stroke)}
+/* overflow-wrap:anywhere — an inline code snippet often carries an unbroken
+   path/flag token (e.g. "${HARNESS_BIN_ROOT:-.}"/harness/scripts/x.py); without
+   it that token forces its line box past the viewport on a narrow screen. */
+code{background:rgba(120,150,210,.12);padding:.12em .42em;border-radius:6px;font-size:.86em;color:#cfe3ff;border:1px solid var(--stroke);overflow-wrap:anywhere}
 section{position:relative;padding:96px 24px;}
 .wrap{max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
 .eyebrow{display:inline-block;font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--txt-faint);margin-bottom:14px}
@@ -126,7 +129,10 @@ section{position:relative;padding:96px 24px;}
 .cards{display:grid;gap:16px}
 .grid-2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media(max-width:860px){.grid-2,.grid-3{grid-template-columns:1fr}}
+/* minmax(0,1fr), not bare 1fr — a bare 1fr track keeps the implicit auto-minimum
+   (the item's content min-size), so a card with a long unbroken token still
+   forces the single mobile column past the viewport. */
+@media(max-width:860px){.grid-2,.grid-3{grid-template-columns:minmax(0,1fr)}}
 .card{background:var(--panel);border:1px solid var(--stroke);border-radius:var(--r);padding:22px;position:relative;transition:.3s var(--ease)}
 .card:hover{border-color:var(--stroke-2)}
 .card h3{font-size:1.06rem;display:flex;align-items:flex-start;flex-wrap:wrap;gap:6px 9px}
@@ -202,7 +208,14 @@ section{position:relative;padding:96px 24px;}
 .fstep .fn{font-weight:700;font-size:.84rem}
 .fstep .fd{font-size:.7rem;color:var(--txt-faint);margin-top:2px}
 .farrow{display:flex;align-items:center;color:var(--ac,var(--rel));font-size:1.2rem;padding:0 2px}
-@media(max-width:780px){.farrow{transform:rotate(90deg)}}
+/* below 780px a row of 4-5 fstep (min-width 120px each) no longer fits — flex-wrap
+   alone leaves a stray farrow on its own line with a blown-up painted box (the
+   rotated transform's ink overflow counts toward scrollWidth). Stack the whole
+   flow vertically instead — the farrow rotation already pointed toward this. */
+@media(max-width:780px){
+  .farrow{transform:rotate(90deg)}
+  .flowline{flex-direction:column}
+}
 .drop-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
 .drop-list .d{font-family:monospace;font-size:.76rem;padding:5px 11px;border-radius:8px;border:1px solid rgba(251,94,126,.3);background:rgba(251,94,126,.07);color:#ffb3c2}
 .drop-list .d::before{content:"⊘ ";color:var(--crit)}
@@ -360,8 +373,11 @@ body.view-guide .eyebrow+.sectitle{margin-top:6px}
 
 /* secret/kept strip (reused for safety filter on release-equiv & approval) */
 .strip{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}
-.striprow{display:flex;align-items:center;gap:12px;padding:11px 15px;border-radius:11px;border:1px solid var(--stroke);background:var(--panel-solid);font-family:monospace;font-size:.82rem}
-.striprow .fn{flex:1;color:var(--txt)}
+.striprow{display:flex;align-items:center;gap:12px;padding:11px 15px;border-radius:11px;border:1px solid var(--stroke);background:var(--panel-solid);font-family:monospace;font-size:.82rem;flex-wrap:wrap}
+/* min-width:0 overrides the flex-item default (min-width:auto == content's
+   min-content size), which otherwise floors .fn at its unbroken path length and
+   pushes the flex:none siblings (.rule/.vb) off the right edge on a narrow screen */
+.striprow .fn{flex:1;min-width:0;color:var(--txt);overflow-wrap:anywhere}
 .striprow .vb{font-size:.7rem;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:7px;flex:none}
 .striprow.kept .vb{color:var(--ok);background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3)}
 .striprow.drop .vb{color:var(--bad);background:rgba(251,94,126,.12);border:1px solid rgba(251,94,126,.35)}
@@ -438,9 +454,11 @@ body.view-home .docs-side{display:none}
 .modetable.gloss td:nth-child(2){color:var(--txt-dim);font-family:inherit;font-weight:400}
 .modetable.gloss td:nth-child(3),.modetable.gloss td:last-child{font-size:.78rem;color:var(--txt-faint)}
 .modetable.gloss .x{display:block;margin-top:2px}
-/* the 4-column glossary table is the one table wide enough to clip on a phone
-   (body is overflow-x:hidden) — let it scroll horizontally instead of losing a column */
-@media(max-width:680px){.modetable.gloss{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+/* every .modetable is wide enough to clip on a phone, not just the 4-column
+   glossary variant — measured: cheatsheet/configure/vision also overflow at
+   375px (body clips horizontally). Scroll the table itself instead of losing
+   a column or widening the page. */
+@media(max-width:680px){.modetable{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
 /* cheatsheet: progressive-disclosure groups */
 .cs-more{margin-top:14px;border:1px solid var(--stroke);border-radius:13px;background:var(--panel);overflow:hidden}
 .cs-more>summary{cursor:pointer;list-style:none;padding:13px 16px;font-weight:700;font-size:.9rem;color:var(--txt);display:flex;align-items:center;gap:10px}

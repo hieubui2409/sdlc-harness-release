@@ -8,14 +8,14 @@
 <style>html{background:#070b16}</style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
-<title>What's new · v6.3.0 — SDLC Harness</title>
+<title>What's new · v7.2.0 — SDLC Harness</title>
 <meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
-<meta property="og:title" content="What's new · v6.3.0 — SDLC Harness" />
+<meta property="og:title" content="What's new · v7.2.0 — SDLC Harness" />
 <meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="What's new · v6.3.0 — SDLC Harness" />
+<meta name="twitter:title" content="What's new · v7.2.0 — SDLC Harness" />
 <meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
@@ -76,19 +76,19 @@
   <a href="../pages/ref-rules.html" class="side-link" data-nav="ref-rules"><span class="en">Rule layer</span><span class="vi">Lớp luật</span></a>
 </aside>
 <main class="docs-main" id="main-content" tabindex="-1">
-<!-- ===================== WHAT'S NEW · v7.1.0 ===================== -->
+<!-- ===================== WHAT'S NEW · v7.2.0 ===================== -->
 <section id="whatsnew">
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--gold)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M20 4l4.5 9.5L35 15l-7.5 7 1.8 10.5L20 27.5 10.7 32.5 12.5 22 5 15l10.5-1.5L20 4Z" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/></svg></div>
       <div class="ttl"><div class="who" style="color:var(--gold)"><span class="en">Release highlights · what landed in the latest cut</span><span class="vi">Điểm nổi bật của bản release · những gì vừa ra</span></div><h2><span class="en">What's new</span><span class="vi">Có gì mới</span></h2></div>
-      <div class="ver">v7.1.0 · 2026-10-01</div>
+      <div class="ver">v7.2.0 · 2026-10-09</div>
     </div>
     <div class="divider" style="--ac:var(--gold)"></div>
 
     <div class="callout" style="--ac:var(--ok);margin-top:18px">
       <span class="ci">🗺️</span>
-      <div><span class="en"><b>v7.1.0 — the code map got a front door, and the harness now asks before it draws one.</b> v7.0.0 taught <code>hs-run</code> to argue from facts the code map can prove, but nothing set a repo up for that map: a repo without <code>codemap.yaml</code> silently got every code fact as <code>unavailable</code>, and each verb that needed the map refused with "no descriptor" and no way in. Now <code>hs-code init</code> is the one way in, a step that needs the map asks the user once per session, and <code>/hs:codemap</code> sits on the always-on floor to set it up and keep it current. Full notes: <code>CHANGELOG.md → [7.1.0]</code>.</span><span class="vi"><b>v7.1.0 — bản đồ code có cửa vào, và harness HỎI trước khi lập.</b> v7.0.0 dạy <code>hs-run</code> lập luận từ sự thật bản đồ code chứng minh được, nhưng không gì dựng bản đồ cho một repo: repo chưa có <code>codemap.yaml</code> nhận mọi fact là <code>unavailable</code> trong im lặng, và mỗi verb cần bản đồ từ chối bằng "no descriptor" mà không chỉ đường. Nay <code>hs-code init</code> là cửa vào duy nhất, bước cần bản đồ hỏi user mỗi phiên một lần, và <code>/hs:codemap</code> nằm trên sàn luôn-bật để lập và giữ bản đồ tươi. Ghi chú đầy đủ: <code>CHANGELOG.md → [7.1.0]</code>.</span></div>
+      <div><span class="en"><b>v7.2.0 — facts have shape, code lives where the agent already is, and a paused phase finally waits on itself.</b> 7.1.0 put a door on the code map, but the new door answered in the same shapes the old blind refusal did. Now <code>--fact-subjects</code> reaches facts at every step (plan, cook, fix, review), a symbol's blast radius reaches a path-scoped fact as the file it lives in, a paused phase blocks every phase downstream of it instead of being bridged around, and a phase that already passed answers <code>phase_passed</code> rather than asking for work on disk. Full notes: <code>CHANGELOG.md → [7.2.0]</code>.</span><span class="vi"><b>v7.2.0 — fact có hình dạng, code nằm đúng nơi agent đang ở, và phase bị pause cuối cùng cũng tự chờ.</b> 7.1.0 mở cửa cho bản đồ code, nhưng cửa mới vẫn trả lời cùng hình với lời từ chối mù cũ. Nay <code>--fact-subjects</code> với tới fact ở mọi bước (plan, cook, fix, review), bán kính nổ của một symbol chạm tới fact theo đường-dẫn đúng file nó sống, phase bị pause chặn mọi phase hạ lưu thay vì bị cầu vòng nối qua, và phase đã xong trả lời <code>phase_passed</code> thay vì hỏi xin việc đã có trên đĩa. Ghi chú đầy đủ: <code>CHANGELOG.md → [7.2.0]</code>.</span></div>
     </div>
 
     <p class="lead"><span class="en"><b>Asking is the feature, not a nag.</b> Writing <code>codemap.yaml</code> changes the user's repo, so it is the user's call — the offer rides exit <code>10</code> with an <code>ask_user</code> block, keeps the step's own answer whole in <code>deferred</code>, never masks a broken (<code>2</code>) or refused (<code>3</code>) step, and stays silent in an unattended session. Declining lasts the session; a later session asks again.</span><span class="vi"><b>Hỏi là tính năng, không phải làm phiền.</b> Ghi <code>codemap.yaml</code> là đổi repo của user, nên quyền quyết thuộc user — lời mời đi cùng exit <code>10</code> và khối <code>ask_user</code>, giữ nguyên câu trả lời thật của bước trong <code>deferred</code>, không bao giờ che bước hỏng (<code>2</code>) hay bị từ chối (<code>3</code>), và im lặng khi không có người ở terminal. Từ chối có hiệu lực trong phiên; phiên sau hỏi lại.</span></p>

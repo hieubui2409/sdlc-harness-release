@@ -1,0 +1,919 @@
+{
+  "bomFormat": "CycloneDX",
+  "components": [
+    {
+      "name": "allpairspy",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/allpairspy@2.5.1",
+      "type": "library",
+      "version": "2.5.1"
+    },
+    {
+      "name": "antlr4-python3-runtime",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/antlr4-python3-runtime@4.9.3",
+      "type": "library",
+      "version": "4.9.3"
+    },
+    {
+      "name": "anyio",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/anyio@4.14.1",
+      "type": "library",
+      "version": "4.14.1"
+    },
+    {
+      "name": "ast-serialize",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/ast-serialize@0.6.0",
+      "type": "library",
+      "version": "0.6.0"
+    },
+    {
+      "name": "attrs",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/attrs@26.1.0",
+      "type": "library",
+      "version": "26.1.0"
+    },
+    {
+      "name": "cairocffi",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/cairocffi@1.7.1",
+      "type": "library",
+      "version": "1.7.1"
+    },
+    {
+      "name": "cairosvg",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/cairosvg@2.9.1",
+      "type": "library",
+      "version": "2.9.1"
+    },
+    {
+      "name": "certifi",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/certifi@2026.6.17",
+      "type": "library",
+      "version": "2026.6.17"
+    },
+    {
+      "name": "cffi",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/cffi@2.0.0",
+      "type": "library",
+      "version": "2.0.0"
+    },
+    {
+      "name": "chardet",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/chardet@7.4.3",
+      "type": "library",
+      "version": "7.4.3"
+    },
+    {
+      "name": "click",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/click@8.4.2",
+      "type": "library",
+      "version": "8.4.2"
+    },
+    {
+      "name": "coverage",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/coverage@7.15.0",
+      "type": "library",
+      "version": "7.15.0"
+    },
+    {
+      "name": "covertable",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/covertable@3.0.0",
+      "type": "library",
+      "version": "3.0.0"
+    },
+    {
+      "name": "cryptography",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/cryptography@49.0.0",
+      "type": "library",
+      "version": "49.0.0"
+    },
+    {
+      "name": "cssselect2",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/cssselect2@0.9.0",
+      "type": "library",
+      "version": "0.9.0"
+    },
+    {
+      "name": "defusedxml",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/defusedxml@0.7.1",
+      "type": "library",
+      "version": "0.7.1"
+    },
+    {
+      "name": "diff-cover",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/diff-cover@10.4.1",
+      "type": "library",
+      "version": "10.4.1"
+    },
+    {
+      "name": "dirty-equals",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/dirty-equals@0.11",
+      "type": "library",
+      "version": "0.11"
+    },
+    {
+      "name": "dockerfile-parse",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/dockerfile-parse@2.0.1",
+      "type": "library",
+      "version": "2.0.1"
+    },
+    {
+      "name": "execnet",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/execnet@2.1.2",
+      "type": "library",
+      "version": "2.1.2"
+    },
+    {
+      "name": "graphviz",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/graphviz@0.21",
+      "type": "library",
+      "version": "0.21"
+    },
+    {
+      "name": "h11",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/h11@0.16.0",
+      "type": "library",
+      "version": "0.16.0"
+    },
+    {
+      "name": "httpcore",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/httpcore@1.0.9",
+      "type": "library",
+      "version": "1.0.9"
+    },
+    {
+      "name": "httpx",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/httpx@0.28.1",
+      "type": "library",
+      "version": "0.28.1"
+    },
+    {
+      "name": "idna",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/idna@3.18",
+      "type": "library",
+      "version": "3.18"
+    },
+    {
+      "name": "iniconfig",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/iniconfig@2.3.0",
+      "type": "library",
+      "version": "2.3.0"
+    },
+    {
+      "name": "jellyfish",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/jellyfish@1.2.1",
+      "type": "library",
+      "version": "1.2.1"
+    },
+    {
+      "name": "jinja2",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/jinja2@3.1.6",
+      "type": "library",
+      "version": "3.1.6"
+    },
+    {
+      "name": "jsonschema",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/jsonschema@4.26.0",
+      "type": "library",
+      "version": "4.26.0"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/jsonschema-specifications@2025.9.1",
+      "type": "library",
+      "version": "2025.9.1"
+    },
+    {
+      "name": "junitparser",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/junitparser@5.0.1",
+      "type": "library",
+      "version": "5.0.1"
+    },
+    {
+      "name": "libcst",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/libcst@1.9.0",
+      "type": "library",
+      "version": "1.9.0"
+    },
+    {
+      "name": "librt",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/librt@0.13.0",
+      "type": "library",
+      "version": "0.13.0"
+    },
+    {
+      "name": "markdown-it-py",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/markdown-it-py@4.2.0",
+      "type": "library",
+      "version": "4.2.0"
+    },
+    {
+      "name": "markupsafe",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/markupsafe@3.0.3",
+      "type": "library",
+      "version": "3.0.3"
+    },
+    {
+      "name": "mdit-py-plugins",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/mdit-py-plugins@0.6.1",
+      "type": "library",
+      "version": "0.6.1"
+    },
+    {
+      "name": "mdurl",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/mdurl@0.1.2",
+      "type": "library",
+      "version": "0.1.2"
+    },
+    {
+      "name": "mergedeep",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/mergedeep@1.3.4",
+      "type": "library",
+      "version": "1.3.4"
+    },
+    {
+      "name": "mutmut",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/mutmut@3.6.0",
+      "type": "library",
+      "version": "3.6.0"
+    },
+    {
+      "name": "mypy",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/mypy@2.3.0",
+      "type": "library",
+      "version": "2.3.0"
+    },
+    {
+      "name": "mypy-extensions",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/mypy-extensions@1.1.0",
+      "type": "library",
+      "version": "1.1.0"
+    },
+    {
+      "name": "numpy",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/numpy@2.5.1",
+      "type": "library",
+      "version": "2.5.1"
+    },
+    {
+      "name": "omegaconf",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/omegaconf@2.3.1",
+      "type": "library",
+      "version": "2.3.1"
+    },
+    {
+      "name": "packaging",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/packaging@26.2",
+      "type": "library",
+      "version": "26.2"
+    },
+    {
+      "name": "pathspec",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/pathspec@1.1.1",
+      "type": "library",
+      "version": "1.1.1"
+    },
+    {
+      "name": "pillow",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/pillow@12.2.0",
+      "type": "library",
+      "version": "12.2.0"
+    },
+    {
+      "name": "platformdirs",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/platformdirs@4.11.0",
+      "type": "library",
+      "version": "4.11.0"
+    },
+    {
+      "name": "pluggy",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/pluggy@1.6.0",
+      "type": "library",
+      "version": "1.6.0"
+    },
+    {
+      "name": "pycparser",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/pycparser@3.0",
+      "type": "library",
+      "version": "3.0"
+    },
+    {
+      "name": "pyflakes",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/pyflakes@3.4.0",
+      "type": "library",
+      "version": "3.4.0"
+    },
+    {
+      "name": "pygments",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/pygments@2.20.0",
+      "type": "library",
+      "version": "2.20.0"
+    },
+    {
+      "name": "pytest",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/pytest@9.1.1",
+      "type": "library",
+      "version": "9.1.1"
+    },
+    {
+      "name": "pytest-cov",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/pytest-cov@7.1.0",
+      "type": "library",
+      "version": "7.1.0"
+    },
+    {
+      "name": "pytest-randomly",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/pytest-randomly@4.1.0",
+      "type": "library",
+      "version": "4.1.0"
+    },
+    {
+      "name": "pytest-split",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/pytest-split@0.11.0",
+      "type": "library",
+      "version": "0.11.0"
+    },
+    {
+      "name": "pytest-subprocess",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/pytest-subprocess@1.6.0",
+      "type": "library",
+      "version": "1.6.0"
+    },
+    {
+      "name": "pytest-timeout",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/pytest-timeout@2.4.0",
+      "type": "library",
+      "version": "2.4.0"
+    },
+    {
+      "name": "pytest-xdist",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/pytest-xdist@3.8.0",
+      "type": "library",
+      "version": "3.8.0"
+    },
+    {
+      "name": "python-dotenv",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/python-dotenv@1.2.2",
+      "type": "library",
+      "version": "1.2.2"
+    },
+    {
+      "name": "pyyaml",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/pyyaml@6.0.3",
+      "type": "library",
+      "version": "6.0.3"
+    },
+    {
+      "name": "rank-bm25",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/rank-bm25@0.2.2",
+      "type": "library",
+      "version": "0.2.2"
+    },
+    {
+      "name": "rapidfuzz",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/rapidfuzz@3.14.5",
+      "type": "library",
+      "version": "3.14.5"
+    },
+    {
+      "name": "referencing",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/referencing@0.37.0",
+      "type": "library",
+      "version": "0.37.0"
+    },
+    {
+      "name": "regex",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/regex@2026.7.19",
+      "type": "library",
+      "version": "2026.7.19"
+    },
+    {
+      "name": "respx",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/respx@0.23.1",
+      "type": "library",
+      "version": "0.23.1"
+    },
+    {
+      "name": "rich",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/rich@15.0.0",
+      "type": "library",
+      "version": "15.0.0"
+    },
+    {
+      "name": "rpds-py",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/rpds-py@2026.5.1",
+      "type": "library",
+      "version": "2026.5.1"
+    },
+    {
+      "name": "ruamel-yaml",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/ruamel-yaml@0.19.1",
+      "type": "library",
+      "version": "0.19.1"
+    },
+    {
+      "name": "ruamel-yaml-clib",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/ruamel-yaml-clib@0.2.15",
+      "type": "library",
+      "version": "0.2.15"
+    },
+    {
+      "name": "ruff",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/ruff@0.15.21",
+      "type": "library",
+      "version": "0.15.21"
+    },
+    {
+      "name": "setproctitle",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/setproctitle@1.3.7",
+      "type": "library",
+      "version": "1.3.7"
+    },
+    {
+      "name": "tenacity",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/tenacity@9.1.4",
+      "type": "library",
+      "version": "9.1.4"
+    },
+    {
+      "name": "textual",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/textual@8.2.8",
+      "type": "library",
+      "version": "8.2.8"
+    },
+    {
+      "name": "tinycss2",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/tinycss2@1.5.1",
+      "type": "library",
+      "version": "1.5.1"
+    },
+    {
+      "name": "typing-extensions",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/typing-extensions@4.15.0",
+      "type": "library",
+      "version": "4.15.0"
+    },
+    {
+      "name": "webencodings",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "false"
+        }
+      ],
+      "purl": "pkg:pypi/webencodings@0.5.1",
+      "type": "library",
+      "version": "0.5.1"
+    }
+  ],
+  "serialNumber": "urn:uuid:4270d861-5e4e-5fbf-a906-677e3d4774b5",
+  "specVersion": "1.5"
+}

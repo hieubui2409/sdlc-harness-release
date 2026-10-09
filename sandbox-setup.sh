@@ -33,9 +33,16 @@ say "python: $PY ($("$PY" -c 'import sys; print(sys.version.split()[0])'))"
 
 # Install into the SAME interpreter the hooks will run on — a bare pip3 may belong
 # to another Python. The retry covers PEP 668 images; the container is throwaway.
+# --use-pep517: omegaconf (REQUIRED) pulls antlr4-python3-runtime 4.9.3, an
+# sdist-only package. Without it pip builds via the distro's patched setuptools
+# (Debian's, in the cloud image), which dies on `AttributeError: install_layout`;
+# PEP 517 builds it in an isolated env with a fresh setuptools instead.
+# --ignore-installed on the retry: apt-owned packages (PyYAML, cryptography) have
+# no RECORD, so pip cannot uninstall them to move a version and aborts the whole
+# set. Installing over them lands in /usr/local, ahead of dist-packages on sys.path.
 pip_install() {
-    "$PY" -m pip install --quiet "$@" \
-        || "$PY" -m pip install --quiet --break-system-packages "$@"
+    "$PY" -m pip install --quiet --use-pep517 "$@" \
+        || "$PY" -m pip install --quiet --use-pep517 --break-system-packages --ignore-installed "$@"
 }
 # requirements + constraints when the lockfile is there (hard pins, reproducible).
 pip_reqs() {  # $1 = requirements file, $2 = constraints file (may not exist)

@@ -30,6 +30,15 @@
 .PARAMETER DryRun
   Online: print exactly what WOULD be downloaded (URLs + expected sha256) - install nothing.
 
+.PARAMETER GlobalInstall
+  (alias -Global) Install the engine ONCE for this machine and wire the repo to it: the
+  bundle is copied to <XDG_DATA_HOME|~/.local/share>/harness/<version>, `current` points
+  at it, and the repo's .claude/settings.json gets HARNESS_BIN_ROOT=<home>/current (no
+  per-project harness/ tree). Same as `harness setup`.
+
+.PARAMETER Pin
+  With -Global: wire the repo to this version's dir and leave `current` alone.
+
 .PARAMETER RunTests
   Run the post-install suite (OFF by default; ~30s).
 
@@ -62,6 +71,13 @@ param(
 
     [switch]$RunTests,
 
+    # The engine goes to the shared home and the repo is wired to it (`harness setup`).
+    [Alias('Global')]
+    [switch]$GlobalInstall,
+
+    # With -Global: wire the repo to this version's dir, leave `current` alone.
+    [switch]$Pin,
+
     # ALSO install the harness where a non-Claude runtime reads it, per project
     # (e.g. -Runtime codex). Names come from harness/data/runtime-targets.yaml; an
     # undeclared name is refused rather than approximated. Accepts a CSV.
@@ -92,6 +108,14 @@ $Api  = "https://api.github.com/repos/$Repo/releases"
 $Dl   = "https://github.com/$Repo/releases"
 
 if ([string]::IsNullOrEmpty($Target)) { $Target = (Get-Location).Path }
+if ($Pin -and -not $GlobalInstall) {
+    Write-Error '-Pin only applies with -Global (it wires the repo to this version''s dir in the shared engine home)'
+    exit 2
+}
+if ($GlobalInstall -and ((-not [string]::IsNullOrEmpty($Runtime)) -or (-not [string]::IsNullOrEmpty($RuntimeHome)))) {
+    Write-Error '-Runtime / -RuntimeHome install per project and do not combine with -Global'
+    exit 2
+}
 
 # A fetch helper that handles both https (Invoke-WebRequest) and a file:// base
 # (Copy-Item) - the file:// path lets the flow be exercised offline.
@@ -273,6 +297,25 @@ with tarfile.open(bundle, "r:gz") as tf:
     Write-Host 'checking dependencies ...'
     Invoke-Py @((Join-Path $Work 'harness\scripts\preflight_deps.py'))
     if ($LASTEXITCODE -ne 0) { Write-Error 'dependency preflight failed'; exit $LASTEXITCODE }
+
+    # 3a. -Global: the engine goes to the shared home -- never this temp tree, which the
+    #     finally below removes -- and the repo is wired to it, as `harness setup` does;
+    #     then the home's integrity is checked. The per-project steps do not apply.
+    if ($GlobalInstall) {
+        Write-Host "installing the engine into the shared home and wiring $Target (global) ..."
+        $life = Join-Path $Work 'harness\scripts\harness_lifecycle.py'
+        $setupArgs = @($life, 'setup')
+        if ($Pin) { $setupArgs += '--pin' }
+        Push-Location -LiteralPath $Target
+        try { Invoke-Py $setupArgs } finally { Pop-Location }
+        if ($LASTEXITCODE -ne 0) { Write-Error 'global setup failed'; exit $LASTEXITCODE }
+        Write-Host 'verifying the engine home ...'
+        Invoke-Py @($life, 'doctor')
+        if ($LASTEXITCODE -ne 0) { Write-Error 'engine home integrity check failed'; exit $LASTEXITCODE }
+        Write-Host 'done.'
+        Write-Host "  - restart Claude Code in $Target so the wired env takes effect"
+        exit 0
+    }
 
     # 3b. snapshot the EXISTING install's manifest BEFORE the copy overwrites it, so
     #     cleanup (step 4b) can tell version-dropped files from user-added ones.

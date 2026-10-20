@@ -8,14 +8,14 @@
 <style>html{background:#070b16}</style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
-<title>What's new · v7.2.0 — SDLC Harness</title>
+<title>What's new · v7.3.0 — SDLC Harness</title>
 <meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
-<meta property="og:title" content="What's new · v7.2.0 — SDLC Harness" />
+<meta property="og:title" content="What's new · v7.3.0 — SDLC Harness" />
 <meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="What's new · v7.2.0 — SDLC Harness" />
+<meta name="twitter:title" content="What's new · v7.3.0 — SDLC Harness" />
 <meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
@@ -76,19 +76,19 @@
   <a href="../pages/ref-rules.html" class="side-link" data-nav="ref-rules"><span class="en">Rule layer</span><span class="vi">Lớp luật</span></a>
 </aside>
 <main class="docs-main" id="main-content" tabindex="-1">
-<!-- ===================== WHAT'S NEW · v7.2.0 ===================== -->
+<!-- ===================== WHAT'S NEW · v7.3.0 ===================== -->
 <section id="whatsnew">
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--gold)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M20 4l4.5 9.5L35 15l-7.5 7 1.8 10.5L20 27.5 10.7 32.5 12.5 22 5 15l10.5-1.5L20 4Z" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/></svg></div>
       <div class="ttl"><div class="who" style="color:var(--gold)"><span class="en">Release highlights · what landed in the latest cut</span><span class="vi">Điểm nổi bật của bản release · những gì vừa ra</span></div><h2><span class="en">What's new</span><span class="vi">Có gì mới</span></h2></div>
-      <div class="ver">v7.2.0 · 2026-10-09</div>
+      <div class="ver">v7.3.0 · 2026-10-21</div>
     </div>
     <div class="divider" style="--ac:var(--gold)"></div>
 
     <div class="callout" style="--ac:var(--ok);margin-top:18px">
       <span class="ci">🗺️</span>
-      <div><span class="en"><b>v7.2.0 — facts have shape, code lives where the agent already is, and a paused phase finally waits on itself.</b> 7.1.0 put a door on the code map, but the new door answered in the same shapes the old blind refusal did. Now <code>--fact-subjects</code> reaches facts at every step (plan, cook, fix, review), a symbol's blast radius reaches a path-scoped fact as the file it lives in, a paused phase blocks every phase downstream of it instead of being bridged around, and a phase that already passed answers <code>phase_passed</code> rather than asking for work on disk. Full notes: <code>CHANGELOG.md → [7.2.0]</code>.</span><span class="vi"><b>v7.2.0 — fact có hình dạng, code nằm đúng nơi agent đang ở, và phase bị pause cuối cùng cũng tự chờ.</b> 7.1.0 mở cửa cho bản đồ code, nhưng cửa mới vẫn trả lời cùng hình với lời từ chối mù cũ. Nay <code>--fact-subjects</code> với tới fact ở mọi bước (plan, cook, fix, review), bán kính nổ của một symbol chạm tới fact theo đường-dẫn đúng file nó sống, phase bị pause chặn mọi phase hạ lưu thay vì bị cầu vòng nối qua, và phase đã xong trả lời <code>phase_passed</code> thay vì hỏi xin việc đã có trên đĩa. Ghi chú đầy đủ: <code>CHANGELOG.md → [7.2.0]</code>.</span></div>
+      <div><span class="en"><b>v7.3.0 — TypeScript and React repos join the code map, and the harness runs their checks itself.</b> hs-code now reads TypeScript and JavaScript through language packs (tree-sitter in-process, or the project's own <code>tsc</code>), resolving relative imports, workspace package names, subpath exports and <code>tsconfig</code> paths across pnpm, npm and yarn workspaces. The harness runs a TypeScript repo's vitest or jest, <code>tsc -b</code>, eslint and coverage itself, and the gate owes every declared check by name; <code>install.sh --global</code> installs one bundle for the whole machine; and the release preflight runs its CI on a remote host through hs-rops. Full notes: <code>CHANGELOG.md → [7.3.0]</code>.</span><span class="vi"><b>v7.3.0 — repo TypeScript và React vào bản đồ code, và harness tự chạy các phép kiểm của chúng.</b> hs-code nay đọc TypeScript và JavaScript qua language pack (tree-sitter chạy trong tiến trình, hoặc chính <code>tsc</code> của dự án), phân giải import tương đối, tên package workspace, subpath export và đường dẫn <code>tsconfig</code> trên workspace pnpm, npm và yarn. Harness tự chạy vitest hoặc jest, <code>tsc -b</code>, eslint và độ phủ của repo TypeScript, và cổng đòi từng phép kiểm đã khai theo tên; <code>install.sh --global</code> cài một bundle cho cả máy; bước kiểm trước release chạy CI trên máy từ xa qua hs-rops. Đầy đủ: <code>CHANGELOG.md → [7.3.0]</code>.</span></div>
     </div>
 
     <p class="lead"><span class="en"><b>Asking is the feature, not a nag.</b> Writing <code>codemap.yaml</code> changes the user's repo, so it is the user's call — the offer rides exit <code>10</code> with an <code>ask_user</code> block, keeps the step's own answer whole in <code>deferred</code>, never masks a broken (<code>2</code>) or refused (<code>3</code>) step, and stays silent in an unattended session. Declining lasts the session; a later session asks again.</span><span class="vi"><b>Hỏi là tính năng, không phải làm phiền.</b> Ghi <code>codemap.yaml</code> là đổi repo của user, nên quyền quyết thuộc user — lời mời đi cùng exit <code>10</code> và khối <code>ask_user</code>, giữ nguyên câu trả lời thật của bước trong <code>deferred</code>, không bao giờ che bước hỏng (<code>2</code>) hay bị từ chối (<code>3</code>), và im lặng khi không có người ở terminal. Từ chối có hiệu lực trong phiên; phiên sau hỏi lại.</span></p>

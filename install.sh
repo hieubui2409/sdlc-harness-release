@@ -26,6 +26,13 @@
 #   --allow-inert-gates required alongside --runtime when a compliance gate would
 #                       register and never fire on that runtime. The loss is
 #                       recorded either way; this says it is a decision.
+#   --global            install the engine ONCE for this machine and wire the repo to
+#                       it: the bundle is copied to <XDG_DATA_HOME|~/.local/share>/
+#                       harness/<version>, `current` points at it, and the repo's
+#                       .claude/settings.json gets HARNESS_BIN_ROOT=<home>/current
+#                       (no per-project harness/ tree). Same as `harness setup`.
+#   --pin               with --global: wire the repo to this version's dir and leave
+#                       `current` alone.
 #   --run-tests         run the post-install test suite (OFF by default; ~30s).
 #   --skip-tests        deprecated no-op — the suite is already off by default
 #                       (alias --no-tests, kept so old invocations don't error).
@@ -59,6 +66,8 @@ VER="${HARNESS_VERSION:-}"
 RUNTIMES=""        # non-Claude runtimes to ALSO install for, forwarded to install.py
 RUNTIME_HOMES=""   # HOME-scoped runtimes, installed for the MACHINE, not this project
 INERT_OK=0
+GLOBAL=0
+PIN=0
 
 for arg in "$@"; do
   case "$arg" in
@@ -70,6 +79,8 @@ for arg in "$@"; do
     --runtime=*)             RUNTIMES="${arg#--runtime=}" ;;
     --runtime-home=*)        RUNTIME_HOMES="${arg#--runtime-home=}" ;;
     --allow-inert-gates)     INERT_OK=1 ;;
+    --global)                GLOBAL=1 ;;
+    --pin)                   PIN=1 ;;
     http://*|https://*|file://*) SOURCE_URL="$arg" ;;
     *.tar.gz)                BUNDLE="$arg" ;;
     -*) echo "error: unknown flag: $arg" >&2; exit 2 ;;
@@ -78,6 +89,16 @@ for arg in "$@"; do
   esac
 done
 TARGET="${TARGET:-$(pwd)}"
+if [ "$PIN" -eq 1 ] && [ "$GLOBAL" -eq 0 ]; then
+  echo "error: --pin only applies with --global (it wires the repo to this version's dir" >&2
+  echo "       in the shared engine home); a per-project install is its own version." >&2
+  exit 2
+fi
+if [ "$GLOBAL" -eq 1 ] && { [ -n "$RUNTIMES" ] || [ -n "$RUNTIME_HOMES" ]; }; then
+  echo "error: --runtime / --runtime-home install per project and do not combine with" >&2
+  echo "       --global; install per project to add a runtime." >&2
+  exit 2
+fi
 
 # 0. Python is a HARD requirement, and not just for this installer: the harness
 #    runtime IS Python — every hook runs as a Python script on each tool call.
@@ -246,6 +267,25 @@ tar -xzf "$BUNDLE" -C "$WORK"
 #    non-zero when something is missing, and set -e stops the script here.
 echo "checking dependencies ..."
 $PY "$WORK/harness/scripts/preflight_deps.py"
+
+# 3a. --global: the engine goes to the shared home -- never the temp tree this script
+#     removes on exit, which a hook pointed at would find gone -- and the repo is wired
+#     to it, exactly as `harness setup` does from the plugin cache; then the home's
+#     integrity is checked. The per-project steps below do not apply.
+if [ "$GLOBAL" -eq 1 ]; then
+  echo "installing the engine into the shared home and wiring ${TARGET} (global) ..."
+  if [ "$PIN" -eq 1 ]; then
+    ( cd "$TARGET" && $PY "$WORK/harness/scripts/harness_lifecycle.py" setup --pin )
+  else
+    ( cd "$TARGET" && $PY "$WORK/harness/scripts/harness_lifecycle.py" setup )
+  fi
+  echo "verifying the engine home ..."
+  $PY "$WORK/harness/scripts/harness_lifecycle.py" doctor
+  echo "done."
+  echo "  - restart Claude Code in ${TARGET} so the wired env takes effect"
+  echo "  - another repo: re-run with --global there (the engine is already home)"
+  exit 0
+fi
 
 # 3b. snapshot the EXISTING install's manifest BEFORE the copy overwrites it, so
 #     cleanup (step 4b) can tell version-dropped files from user-added ones. Read

@@ -81,12 +81,12 @@
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--tel)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M20 5 33 12v16L20 35 7 28V12L20 5Z" stroke="var(--tel)" stroke-width="2" stroke-linejoin="round"/><path d="M14 24V18M20 24v-9M26 24v-5" stroke="var(--tel)" stroke-width="2.2" stroke-linecap="round"/></svg></div>
-      <div class="ttl"><div class="who"><span class="en">The enforcement layer, by tier — 82 registered hooks</span><span class="vi">Lớp cưỡng chế, theo hạng — 82 hook đã đăng ký</span></div><h2><span class="en">Every hook</span><span class="vi">Mọi hook</span></h2></div>
-      <div class="ver">82 hooks</div>
+      <div class="ttl"><div class="who"><span class="en">The enforcement layer, by tier — 66 registered hooks</span><span class="vi">Lớp cưỡng chế, theo hạng — 66 hook đã đăng ký</span></div><h2><span class="en">Every hook</span><span class="vi">Mọi hook</span></h2></div>
+      <div class="ver">66 hooks</div>
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
     
-    <p class="lead"><span class="en">A hook is a small program the harness runs around a tool call. Its <b>tier</b> is a code constant (<code>HOOK_CLASS</code>) — config can toggle a hook on/off but never change its tier, and the fail posture follows the tier. The the files under <code>harness/hooks/</code> hold 82 tiered hooks (grouped below) and shared libraries with no tier. See <a href="../pages/harness.html">the rig</a> for how the gate uses them.</span><span class="vi">Hook là một chương trình nhỏ harness chạy quanh mỗi lần gọi tool. <b>Hạng</b> của nó là hằng số trong code (<code>HOOK_CLASS</code>) — config bật/tắt được nhưng không đổi được hạng, và tư thế-khi-lỗi theo hạng. 81 tệp dưới <code>harness/hooks/</code> gồm 82 hook có hạng (nhóm bên dưới) và thư viện dùng chung, không có hạng. Xem <a href="../pages/harness.html">the rig</a> để biết gate dùng chúng thế nào.</span></p>
+    <p class="lead"><span class="en">A hook is a small program the harness runs around a tool call. Its <b>tier</b> is a code constant (<code>HOOK_CLASS</code>) — config can toggle a hook on/off but never change its tier, and the fail posture follows the tier. The 83 files under <code>harness/hooks/</code> hold 67 tiered hooks (grouped below) and 16 shared libraries with no tier. See <a href="../pages/harness.html">the rig</a> for how the gate uses them.</span><span class="vi">Hook là một chương trình nhỏ harness chạy quanh mỗi lần gọi tool. <b>Hạng</b> của nó là hằng số trong code (<code>HOOK_CLASS</code>) — config bật/tắt được nhưng không đổi được hạng, và tư thế-khi-lỗi theo hạng. 83 tệp dưới <code>harness/hooks/</code> gồm 67 hook có hạng (nhóm bên dưới) và 16 thư viện dùng chung, không có hạng. Xem <a href="../pages/harness.html">the rig</a> để biết gate dùng chúng thế nào.</span></p>
     <div class="eyebrow" style="margin-top:28px"><span class="ttag compliance">compliance</span></div>
     <h2 class="sectitle" id="rh-compliance" style="font-size:1.1rem;margin-bottom:4px"><span class="en">Compliance</span><span class="vi">Cưỡng chế</span> <span class="muted" style="font-size:.8rem">(16)</span></h2>
     <p class="muted" style="margin:0 0 12px;font-size:.85rem">fail-closed, exit 2 — blocks the tool and prints the fix when it trips.</p>
@@ -109,7 +109,7 @@
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>write_guard</code></h3><p style="font-size:.85rem">tool-mediated config-edit gate (compliance, fail-closed).</p></div>
     </div>
     <div class="eyebrow" style="margin-top:28px"><span class="ttag nudge">nudge</span></div>
-    <h2 class="sectitle" id="rh-nudge" style="font-size:1.1rem;margin-bottom:4px"><span class="en">Nudge</span><span class="vi">Nhắc</span> <span class="muted" style="font-size:.8rem">(29)</span></h2>
+    <h2 class="sectitle" id="rh-nudge" style="font-size:1.1rem;margin-bottom:4px"><span class="en">Nudge</span><span class="vi">Nhắc</span> <span class="muted" style="font-size:.8rem">(30)</span></h2>
     <p class="muted" style="margin:0 0 12px;font-size:.85rem">advisory on stderr — reminds, never blocks; default OFF.</p>
     <div class="cards grid-2">
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>agent_behavior_linter</code></h3><p style="font-size:.85rem">observes PostToolUse/PreCompact, reports at Stop.</p></div>
@@ -140,12 +140,14 @@
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>stale_plan_close_nudge</code></h3><p style="font-size:.85rem">advisory reminder to close a finished-but-open plan before it gates unrelated work (nudge class).</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>standards_drift_nudge</code></h3><p style="font-size:.85rem">keep the auto-loaded prose standards from drifting.</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>usage_nudge</code></h3><p style="font-size:.85rem">advisory near-ceiling reminder before a heavy spawn (nudge class).</p></div>
+      <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>yaml_comment_cut_nudge</code></h3><p style="font-size:.85rem">PostToolUse:{Write|Edit|MultiEdit} nudge (nudge-class).</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>zsh_split_nudge</code></h3><p style="font-size:.85rem">PreToolUse(Bash) nudge: an unquoted multi-word parameter expansion is NOT word-split under zsh.</p></div>
     </div>
     <div class="eyebrow" style="margin-top:28px"><span class="ttag telemetry">telemetry</span></div>
-    <h2 class="sectitle" id="rh-telemetry" style="font-size:1.1rem;margin-bottom:4px"><span class="en">Telemetry</span><span class="vi">Đo lường</span> <span class="muted" style="font-size:.8rem">(20)</span></h2>
+    <h2 class="sectitle" id="rh-telemetry" style="font-size:1.1rem;margin-bottom:4px"><span class="en">Telemetry</span><span class="vi">Đo lường</span> <span class="muted" style="font-size:.8rem">(21)</span></h2>
     <p class="muted" style="margin:0 0 12px;font-size:.85rem">fail-open, silent — records what ran; an internal error never blocks a tool.</p>
     <div class="cards grid-2">
+      <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>agent_memory_stray</code></h3><p style="font-size:.85rem">SubagentStop telemetry hook: remove the empty `.claude/agent-memory/&lt;agent&gt;/` dirs Claude Code leaves below the project root.</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>auto_finalize_ship</code></h3><p style="font-size:.85rem">PreToolUse(Skill) hook: ship-belt backstop that finalizes the single active plan when N/N phases have a PASS snapshot.</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>bash_write_guard</code></h3><p style="font-size:.85rem">PostToolUse:Bash advisory (telemetry-class, fail-open).</p></div>
       <div class="card" style="--ac:var(--tel);padding:14px 16px"><h3 style="font-size:.95rem"><span class="pin"></span><code>emit_session_summary</code></h3><p style="font-size:.85rem">on session Stop, emits one line to state/telemetry/sessions.jsonl (telemetry-class):</p></div>

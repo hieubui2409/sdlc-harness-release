@@ -3,11 +3,11 @@
 # Claude Code binds `env` and snapshots plugins at startup, and a sandbox session
 # never restarts, so this has to land first or not at all.
 #
-# Pin the release in the sandbox ENV field:   HARNESS_VERSION=7.2.0
+# Pin the release in the sandbox ENV field:   HARNESS_VERSION=7.3.0
 # Skip every pip step with SKIP_DEPS=1 (the image already carries the deps).
 set -eu
 
-HARNESS_VERSION="${HARNESS_VERSION:-7.2.0}"
+HARNESS_VERSION="${HARNESS_VERSION:-7.3.0}"
 TARBALL="harness-v${HARNESS_VERSION}.tar.gz"
 BASE="https://github.com/hieubui2409/sdlc-harness-release/releases/download"
 TARBALL_URL="${BASE}/harness-v${HARNESS_VERSION}/${TARBALL}"

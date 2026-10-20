@@ -890,6 +890,30 @@
       "version": "1.5.1"
     },
     {
+      "name": "tree-sitter",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/tree-sitter@0.26.0",
+      "type": "library",
+      "version": "0.26.0"
+    },
+    {
+      "name": "tree-sitter-typescript",
+      "properties": [
+        {
+          "name": "harness:direct",
+          "value": "true"
+        }
+      ],
+      "purl": "pkg:pypi/tree-sitter-typescript@0.23.2",
+      "type": "library",
+      "version": "0.23.2"
+    },
+    {
       "name": "typing-extensions",
       "properties": [
         {
@@ -914,6 +938,6 @@
       "version": "0.5.1"
     }
   ],
-  "serialNumber": "urn:uuid:4270d861-5e4e-5fbf-a906-677e3d4774b5",
+  "serialNumber": "urn:uuid:78606f1c-775b-f18b-5378-d452b4db5a91",
   "specVersion": "1.5"
 }

@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>The rig — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="The rig — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="The rig — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -213,6 +213,12 @@ _sessions analyzed: 62 · sufficient: True · gated: False_
       </div>
     </div>
 
+    <!-- CLI family -->
+    <h2 class="sectitle" id="rig-cli"><span class="en">Six launchers, one envelope</span><span class="vi">Sáu launcher, một envelope</span></h2>
+    <div class="card" style="margin-top:14px;--ac:var(--tel)">
+      <p><span class="en"><code>harness/bin/</code> holds 168 commands over one shared core, across <code>hs-run</code> (the step engine), <code>hs-cli</code> (the config door), <code>hs-code</code> (the code map), <code>hs-rops</code> (remote runs), <code>hs-secrets</code> and <code>hs-usage</code>. Every exit, a crash or a refusal included, is one JSON line on stdout (<code>hs-envelope/1</code>); <code>--text</code> prints for a person instead. See <a href="../pages/cheatsheet.html">the cheatsheet</a> for the verbs.</span><span class="vi"><code>harness/bin/</code> chứa 168 lệnh trên một lõi chung, chia cho <code>hs-run</code> (engine bước), <code>hs-cli</code> (cửa cấu hình), <code>hs-code</code> (bản đồ code), <code>hs-rops</code> (chạy trên máy xa), <code>hs-secrets</code> và <code>hs-usage</code>. Mọi lối ra, kể cả crash hay từ chối, là một dòng JSON trên stdout (<code>hs-envelope/1</code>); <code>--text</code> in cho người đọc thay vào đó. Xem verb ở <a href="../pages/cheatsheet.html">cheatsheet</a>.</span></p>
+    </div>
+
     <!-- coordination -->
     <h2 class="sectitle" id="rig-coord"><span class="en">Multi-agent coordination (W2)</span><span class="vi">Phối hợp đa-agent (W2)</span></h2>
     <div class="card" style="margin-top:14px;--ac:var(--tel)">
@@ -272,8 +278,10 @@ _sessions analyzed: 62 · sufficient: True · gated: False_
       <p class="muted" style="font-size:.9rem"><span class="en">The manifest hashes every git-tracked harness file; <code>--strict</code> also checks that registered hooks match. Tamper with a tracked file and this fails. <span class="realtag">real output</span></span><span class="vi">Manifest hash mọi file harness tracked git; <code>--strict</code> còn kiểm hook đã đăng ký khớp. Sửa một file tracked là cái này fail. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 harness/scripts/verify_install.py --strict</span></div>
-        <pre>WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
-… 9 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
+        <pre>WARN harness/bin/hs-cli: not reachable on PATH — skill bodies tell the user to type `hs-cli`. Fix: `ln -s &lt;repo&gt;/harness/bin/hs-cli ~/.local/bin/hs-cli` (or `install.py --cli` for every launcher; Windows: add &lt;repo&gt;/harness/bin to PATH)
+… 5 more of the same shape (hs-run, hs-code, hs-rops, hs-secrets, hs-usage: a launcher not yet linked onto PATH)
+WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
+… 8 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
 WARN harness/data/harness-hooks.yaml: hash mismatch (deployer-localized config — expected to differ from the shipped baseline)
 verify_install OK: manifest + hook registration consistent
 </pre>

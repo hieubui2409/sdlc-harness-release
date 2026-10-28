@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>SDLC Harness — Interactive Showcase</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="SDLC Harness — Interactive Showcase" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="SDLC Harness — Interactive Showcase" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <style>
 /* ============================================================
    SDLC Harness — standalone showcase
@@ -732,8 +732,8 @@ body.pal-open{overflow:hidden}
       <span class="en"><b>Observe</b></span><span class="vi"><b>Quan sát</b></span>
     </div>
     <p class="lead">
-      <span class="en">Not prose reminders — a coordinated <code>.claude</code>-style rig that enforces the workflow at runtime: 68 <code>hs:*</code> skills, 66 hooks in three tiers, 267 scripts, and a compliance gate that <b>advises</b> push / pr / ship and traces every step — with an agent cage that hard-blocks forgery on the spot and safety floors that never loosen. Every gate, approval, and decision is traced with an <code>actor</code>.</span>
-      <span class="vi">Không phải lời nhắc — mà cả một bộ kiểu <code>.claude</code> phối hợp, ép quy trình ngay lúc chạy: 68 skill <code>hs:*</code>, 66 hook ba hạng, 267 script, và một gate compliance <b>khuyên</b> push / pr / ship và ghi trace mọi bước — kèm cũi agent chặn cứng giả-mạo tại chỗ và các safety floor không bao giờ nới lỏng. Mọi gate, duyệt và quyết định đều được trace kèm <code>actor</code>.</span>
+      <span class="en">Not prose reminders — a coordinated <code>.claude</code>-style rig that enforces the workflow at runtime: 68 <code>hs:*</code> skills, 66 hooks in three tiers, 273 scripts, and a compliance gate that <b>advises</b> push / pr / ship and traces every step — with an agent cage that hard-blocks forgery on the spot and safety floors that never loosen. Every gate, approval, and decision is traced with an <code>actor</code>.</span>
+      <span class="vi">Không phải lời nhắc — mà cả một bộ kiểu <code>.claude</code> phối hợp, ép quy trình ngay lúc chạy: 68 skill <code>hs:*</code>, 66 hook ba hạng, 273 script, và một gate compliance <b>khuyên</b> push / pr / ship và ghi trace mọi bước — kèm cũi agent chặn cứng giả-mạo tại chỗ và các safety floor không bao giờ nới lỏng. Mọi gate, duyệt và quyết định đều được trace kèm <code>actor</code>.</span>
     </p>
 
     <div class="cta-row">
@@ -771,8 +771,8 @@ body.pal-open{overflow:hidden}
     <div class="callout" style="--ac:var(--gold)">
       <span class="ci">✨</span>
       <div>
-        <span class="en"><b>New in v7.3.0 —</b> TypeScript and React repos join the code map through language packs (pnpm, npm and yarn workspaces), the harness runs their vitest or jest, <code>tsc -b</code>, eslint and coverage itself and the gate owes each declared check by name, and <code>install.sh --global</code> installs one bundle for the whole machine. → <a href="#whatsnew"><b>What's new</b></a> · <a href="#harness">The rig</a></span>
-        <span class="vi"><b>Mới ở v7.3.0 —</b> repo TypeScript và React vào bản đồ code qua language pack (workspace pnpm, npm và yarn); harness tự chạy vitest hoặc jest, <code>tsc -b</code>, eslint và độ phủ của chúng, cổng đòi từng phép kiểm đã khai theo tên; và <code>install.sh --global</code> cài một bundle cho cả máy. → <a href="#whatsnew"><b>Có gì mới</b></a> · <a href="#harness">Bộ máy</a></span>
+        <span class="en"><b>New in v7.4.0 —</b> TypeScript gets the verbs that change code: the refactor family (rename, move, slice, carve, clone-dedupe) edits a TypeScript tree through the compiler and refuses any edit that adds an error; <code>change impact</code>, <code>api-diff</code>, mutation, bisect and goldens read TypeScript, and a symbol says whether it is a React component or hook; which language a verb serves is data, with reasoned permanent refusals; and <code>hs-rops</code> can hold a lock for one step of a remote command. → <a href="#whatsnew"><b>What's new</b></a> · <a href="#harness">The rig</a></span>
+        <span class="vi"><b>Mới ở v7.4.0 —</b> TypeScript có cả các verb sửa code: họ refactor (rename, move, slice, carve, clone-dedupe) sửa cây TypeScript qua compiler và từ chối mọi chỗ sửa sinh thêm lỗi; <code>change impact</code>, <code>api-diff</code>, mutation, bisect và goldens đọc được TypeScript, và mỗi symbol cho biết nó có phải component hay hook React không; verb phục vụ ngôn ngữ nào nay là dữ liệu, kèm lời từ chối vĩnh viễn có lý do; và <code>hs-rops</code> giữ khoá cho đúng một bước của lệnh chạy xa. → <a href="#whatsnew"><b>Có gì mới</b></a> · <a href="#harness">Bộ máy</a></span>
       </div>
     </div>
   </div>
@@ -881,7 +881,7 @@ body.pal-open{overflow:hidden}
     <div class="rig">
       <div class="rcell"><div class="rt">🧩 <span class="en">68 skills</span><span class="vi">68 skill</span><span class="rn">plugins/hs</span></div><ul><li><span class="en">SDLC spine: plan · cook · test · ship</span><span class="vi">Xương sống: plan · cook · test · ship</span></li><li><span class="en">orchestrators, review, debug, research, ideation, docs</span><span class="vi">điều phối, review, debug, nghiên cứu, ý tưởng, docs</span></li><li><span class="en">packaged as plugin <code>hs</code> → <code>/hs:plan</code></span><span class="vi">đóng gói plugin <code>hs</code> → <code>/hs:plan</code></span></li></ul></div>
       <div class="rcell"><div class="rt">🪝 <span class="en">66 hooks · 3 tiers</span><span class="vi">66 hook · 3 hạng</span><span class="rn">/hooks</span></div><ul><li><span class="en">telemetry sinks (ON, fail-open)</span><span class="vi">sink telemetry (ON, fail-open)</span></li><li><span class="en">memory-gap nudge (OFF)</span><span class="vi">memory-gap nudge (OFF)</span></li><li><span class="en">gate_stage · write_guard (compliance)</span><span class="vi">gate_stage · write_guard (compliance)</span></li></ul></div>
-      <div class="rcell"><div class="rt">🛠️ <span class="en">267 scripts</span><span class="vi">267 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · plan_approval · plan_graph</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
+      <div class="rcell"><div class="rt">🛠️ <span class="en">273 scripts</span><span class="vi">273 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · plan_approval · plan_graph</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
       <div class="rcell"><div class="rt">📐 <span class="en">15 rules</span><span class="vi">15 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤75 lines, always-load)</span><span class="vi">(≤75 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · counting-discipline</li><li><span class="en">+ process-management, the newest</span><span class="vi">+ process-management, mới nhất</span></li></ul></div>
       <div class="rcell"><div class="rt">🧪 <span class="en">16 schemas</span><span class="vi">16 schema</span><span class="rn">/schemas</span></div><ul><li><code>artifact-verification</code> · <code>review-decision</code></li><li><code>plan-approval</code> · <code>critique-consensus</code></li><li><code>bakeoff-verdict</code> · <code>harness-release</code></li></ul></div>
       <div class="rcell"><div class="rt">📦 <span class="en">Install + manifest</span><span class="vi">Cài + manifest</span><span class="rn">/install</span></div><ul><li><code>install.py --target</code> <span class="en">(one command)</span><span class="vi">(một lệnh)</span></li><li><code>manifest.json</code> <span class="en">(sha256 tracked files)</span><span class="vi">(sha256 file tracked)</span></li><li><code>verify_install.py --strict</code></li></ul></div>
@@ -926,20 +926,86 @@ body.pal-open{overflow:hidden}
 <div class="wrap"><div class="page-nav" style="--ac:var(--spec)"><span class="pv" style="flex:1"></span><a class="nx" href="#whatsnew"><span class="k"><span class="en">Next</span><span class="vi">Sau</span> →</span><span class="v"><span class="en">What's new</span><span class="vi">Có gì mới</span></span></a></div></div>
 </div>
 <div class="route" data-route="whatsnew">
-<!-- ===================== WHAT'S NEW · v7.3.0 ===================== -->
+<!-- ===================== WHAT'S NEW · v7.4.0 + v7.3.0 ===================== -->
 <section id="whatsnew">
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--gold)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M20 4l4.5 9.5L35 15l-7.5 7 1.8 10.5L20 27.5 10.7 32.5 12.5 22 5 15l10.5-1.5L20 4Z" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/></svg></div>
-      <div class="ttl"><div class="who" style="color:var(--gold)"><span class="en">Release highlights · what landed in the latest cut</span><span class="vi">Điểm nổi bật của bản release · những gì vừa ra</span></div><h2><span class="en">What's new</span><span class="vi">Có gì mới</span></h2></div>
-      <div class="ver">v7.3.0 · 2026-10-21</div>
+      <div class="ttl"><div class="who" style="color:var(--gold)"><span class="en">Release highlights · what is on main and what landed in the latest cut</span><span class="vi">Điểm nổi bật · những gì đã vào main và những gì bản release gần nhất mang</span></div><h2><span class="en">What's new</span><span class="vi">Có gì mới</span></h2></div>
+      <div class="ver">v7.4.0 · 2026-10-28</div>
     </div>
     <div class="divider" style="--ac:var(--gold)"></div>
+
+    <!-- ===== v7.4.0 ===== -->
+    <h2 class="sectitle" id="whatsnew-latest" style="font-size:1.3rem;margin-top:18px"><span class="en">What's new · v7.4.0</span><span class="vi">Có gì mới · v7.4.0</span></h2>
+    <div class="callout" style="--ac:var(--ok);margin-top:14px">
+      <span class="ci">🧩</span>
+      <div><span class="en"><b>TypeScript gets the verbs that change code, not only the ones that read it.</b> The refactor family runs on a TypeScript tree through the compiler, more hs-code verbs read TypeScript, and which language a verb serves is now data, with permanent, reasoned refusals for the rows that never will. Alongside: hs-rops fixes, a cook stop that asks about a paused phase before the plan-level review, and register writes that leave their view for later. Full notes: <code>CHANGELOG.md → [7.4.0]</code>.</span><span class="vi"><b>TypeScript có cả các verb sửa code, không chỉ verb đọc.</b> Họ refactor chạy trên cây TypeScript qua compiler, thêm nhiều verb hs-code đọc TypeScript, và verb phục vụ ngôn ngữ nào nay là dữ liệu, kèm lời từ chối vĩnh viễn có lý do cho những dòng không bao giờ phục vụ. Cùng đợt: các bản sửa hs-rops, một điểm dừng của cook hỏi về phase tạm dừng trước review cấp plan, và lệnh ghi sổ đăng ký để phần view lại cho sau. Đầy đủ: <code>CHANGELOG.md → [7.4.0]</code>.</span></div>
+    </div>
+
+    <div class="cards grid-2" style="margin-top:18px">
+      <div class="card" style="--ac:var(--ok)">
+        <h3><span class="pin"></span><span class="en">🛠️ Refactor TypeScript through the compiler</span><span class="vi">🛠️ Refactor TypeScript qua compiler</span></h3>
+        <p><span class="en"><code>refactor rename</code>, <code>move --flat</code>, <code>move --symbol</code>, <code>name-repair</code>, <code>slice</code>, <code>carve</code> and <code>clone-dedupe</code> edit a TypeScript tree with the LanguageService of the TypeScript that lang-tools pins, never the project's <code>node_modules</code>. Every edit is checked against each project's own program: one new error, a public specifier turned into another, or an import landing elsewhere, and nothing is written. A move across workspace packages, or of a file a package's <code>exports</code>/<code>main</code>/<code>types</code> names, is refused before it runs.</span><span class="vi"><code>refactor rename</code>, <code>move --flat</code>, <code>move --symbol</code>, <code>name-repair</code>, <code>slice</code>, <code>carve</code> và <code>clone-dedupe</code> sửa cây TypeScript bằng LanguageService của bản TypeScript mà lang-tools ghim, không bao giờ dùng <code>node_modules</code> của dự án. Mọi chỗ sửa được kiểm trên chương trình của từng project: thêm một lỗi, một specifier công khai đổi thành cái khác, hay một import trỏ sang chỗ khác — là không ghi gì. Dời qua các package workspace, hoặc dời tệp mà <code>exports</code>/<code>main</code>/<code>types</code> của package nêu tên, bị từ chối trước khi chạy.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">LanguageService</span><span class="chip">lang-tools pin</span><span class="chip">nothing written on a new error</span></div>
+      </div>
+      <div class="card" style="--ac:var(--spec)">
+        <h3><span class="pin"></span><span class="en">🔎 More hs-code verbs read TypeScript</span><span class="vi">🔎 Thêm verb hs-code đọc TypeScript</span></h3>
+        <p><span class="en"><code>change impact</code> and <code>change api-diff</code> (each workspace package's export surface, by structured signature), <code>check pkgsync</code>, <code>scaffold new-module|new-dist</code>, <code>test classify|check-home|plan-move|backlog|clone-scan</code> and the <code>graph rules</code> kinds a pack declares. <code>test prove</code>, <code>test mutation</code>, <code>test isolation-bisect</code> and <code>test goldens</code> run vitest or jest in a copy; mutation uses the harness's own operators or the project's Stryker. A symbol says whether it is a React component or hook (<code>graph where --kind component|hook</code>).</span><span class="vi"><code>change impact</code> và <code>change api-diff</code> (bề mặt export của từng package workspace, theo chữ ký có cấu trúc), <code>check pkgsync</code>, <code>scaffold new-module|new-dist</code>, <code>test classify|check-home|plan-move|backlog|clone-scan</code> và các rule kind <code>graph rules</code> mà gói khai. <code>test prove</code>, <code>test mutation</code>, <code>test isolation-bisect</code> và <code>test goldens</code> chạy vitest hoặc jest trong bản copy; mutation dùng toán tử riêng của harness hoặc Stryker của dự án. Symbol cho biết nó có phải component hay hook React không (<code>graph where --kind component|hook</code>).</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">api-diff</span><span class="chip">mutation · builtin + stryker</span><span class="chip">React component/hook</span></div>
+      </div>
+      <div class="card" style="--ac:var(--gold)">
+        <h3><span class="pin"></span><span class="en">📒 What a language serves is data</span><span class="vi">📒 Ngôn ngữ nào được phục vụ là dữ liệu</span></h3>
+        <p><span class="en">A verb serves a language only when its registry row (<code>languages:</code>) and the pack's <code>verbs:</code> row in <code>harness/data/hs-code-languages.yaml</code> both say so; a rule kind by the pack's <code>kinds:</code>. 17 rows leave a language out for good, each with a <code>language_reason</code>: they refuse with exit <code>3</code> and say why, never "not yet". A row leaving a language out with no reason is a test failure.</span><span class="vi">Một verb phục vụ một ngôn ngữ chỉ khi dòng registry (<code>languages:</code>) và dòng <code>verbs:</code> của gói trong <code>harness/data/hs-code-languages.yaml</code> cùng nói có; rule kind thì theo <code>kinds:</code> của gói. 17 dòng bỏ một ngôn ngữ vĩnh viễn, mỗi dòng có <code>language_reason</code>: chúng từ chối với exit <code>3</code> và nói lý do, không bao giờ là "chưa làm". Dòng bỏ một ngôn ngữ mà không có lý do là test đỏ.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">registry + pack</span><span class="chip">17 reasoned refusals</span><span class="chip">exit 3</span></div>
+      </div>
+      <div class="card" style="--ac:var(--crit)">
+        <h3><span class="pin"></span><span class="en">⏸️ A paused phase is asked about before the review</span><span class="vi">⏸️ Phase tạm dừng được hỏi trước review</span></h3>
+        <p><span class="en">Once every counted phase passes and a paused phase is left, <code>hs-run cook next</code> answers <code>paused_remaining</code> and <code>cook close</code> refuses with <code>phases_paused</code>, instead of sending the plan to a review that would judge a diff without that phase. Lift the pause to build it here, or set <code>closes_without: true</code> on it to close the plan without it; neither edit asks for approval again.</span><span class="vi">Khi mọi phase được đếm đã qua mà còn một phase tạm dừng, <code>hs-run cook next</code> trả <code>paused_remaining</code> và <code>cook close</code> từ chối với <code>phases_paused</code>, thay vì đưa plan sang review chấm một diff thiếu phase đó. Gỡ tạm dừng để làm nó ngay trong plan, hoặc đặt <code>closes_without: true</code> để đóng plan không có nó; cả hai cách sửa đều không đòi duyệt lại.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">paused_remaining</span><span class="chip">phases_paused</span><span class="chip">closes_without</span></div>
+      </div>
+    </div>
+
+    <div class="cards grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3><span class="pin"></span><span class="en">hs-rops</span><span class="vi">hs-rops</span></h3>
+        <ul>
+          <li><span class="en">A lane rebuild refuses (rc <code>3</code>) over paths changed on the lane since its last build and names them; <code>--discard-lane-edits</code> rebuilds over them.</span><span class="vi">Dựng lại lane từ chối (rc <code>3</code>) khi có đường dẫn bị đổi trên lane từ lần dựng trước và nêu tên chúng; <code>--discard-lane-edits</code> dựng đè lên.</span></li>
+          <li><span class="en">A pytest run whose log holds no summary line is red; a linked <code>node_modules</code>/<code>.venv</code> on a lane is no longer deleted.</span><span class="vi">Lượt pytest mà log không có dòng tổng kết là đỏ; <code>node_modules</code>/<code>.venv</code> dạng symlink trên lane không còn bị xoá.</span></li>
+          <li><span class="en"><code>hs-code test run</code> and <code>hs-code check run</code> take <code>--rops</code>: vitest, jest, tsc and eslint run on a lane mirroring this tree, and the verdict is written here.</span><span class="vi"><code>hs-code test run</code> và <code>hs-code check run</code> nhận <code>--rops</code>: vitest, jest, tsc và eslint chạy trên lane phản chiếu cây này, phán quyết ghi tại đây.</span></li>
+          <li><span class="en">A <code>.rops.env</code> that declares <code>ROPS_LANE</code> binds its <code>ROPS_ENV</code> to that lane: a run in another lane refuses (exit <code>3</code>) before it touches anything, so one lane's database URL never reaches another lane's suite.</span><span class="vi"><code>.rops.env</code> có khai <code>ROPS_LANE</code> thì <code>ROPS_ENV</code> của nó gắn với lane đó: lượt chạy ở lane khác từ chối (exit <code>3</code>) trước khi đụng tới bất cứ thứ gì, nên URL database của lane này không bao giờ lọt sang suite của lane khác.</span></li>
+          <li><span class="en">A lane whose last build did not finish is rebuilt instead of run without a venv, and its sync and setup steps run in that lane's own dir. A core-pool ledger swept from the temp dir is made again, and a waiting run puts its ticket back.</span><span class="vi">Lane có lần dựng trước chưa xong thì được dựng lại thay vì chạy khi chưa có venv, và các bước sync, setup chạy trong chính thư mục của lane đó. Sổ core-pool bị quét khỏi thư mục tạm thì được tạo lại, và lượt đang chờ đặt lại vé của mình.</span></li>
+          <li><span class="en"><code>run --fetch PATH</code> brings back a path the run wrote, once it ends rc <code>0</code>; <code>fetch</code> takes several paths, each to its own path here (<code>--to DEST</code> names another).</span><span class="vi"><code>run --fetch PATH</code> kéo về một đường dẫn lượt chạy đã ghi, khi nó kết thúc rc <code>0</code>; <code>fetch</code> nhận nhiều đường dẫn, mỗi cái về đúng chỗ của nó ở đây (<code>--to DEST</code> chỉ chỗ khác).</span></li>
+          <li><span class="en">A lane installs the node deps each pnpm/npm/yarn/bun lockfile declares, one install per dir (<code>ROPS_LANE_NODE</code>).</span><span class="vi">Lane cài node deps mà mỗi lockfile pnpm/npm/yarn/bun khai, mỗi thư mục một lượt cài (<code>ROPS_LANE_NODE</code>).</span></li>
+          <li><span class="en"><code>--lock-wait S</code> is one deadline for every pool a run queues on; past it the run gives up with rc <code>75</code>, nothing run. Two runs on one lane never rebuild it at once.</span><span class="vi"><code>--lock-wait S</code> là MỘT hạn chờ cho mọi pool một lượt xếp hàng; quá hạn thì bỏ với rc <code>75</code>, không chạy gì. Hai lượt trên một lane không bao giờ cùng dựng lại nó.</span></li>
+          <li><span class="en">Inside a command, <code>rops_lock NAME -- STEP</code> holds the lock <code>NAME</code> only while that step runs, where <code>--lock</code> holds it for the whole command.</span><span class="vi">Bên trong lệnh, <code>rops_lock NAME -- STEP</code> chỉ giữ khoá <code>NAME</code> trong lúc bước đó chạy, còn <code>--lock</code> giữ suốt cả lệnh.</span></li>
+          <li><span class="en">A log closing on a red pytest summary, or on one where no test ran, reads red (<code>ROPS_SUMMARY_CHECK=off</code> to turn it off); <code>ROPS_ENV_CHECK</code> refuses a run (exit <code>3</code>) whose <code>ROPS_ENV</code> names something that is not there.</span><span class="vi">Log kết thúc bằng tổng kết pytest đỏ, hoặc không test nào chạy, thì đọc là đỏ (<code>ROPS_SUMMARY_CHECK=off</code> để tắt); <code>ROPS_ENV_CHECK</code> từ chối lượt chạy (exit <code>3</code>) khi thứ <code>ROPS_ENV</code> trỏ tới không có.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><span class="pin"></span><span class="en">Also changed &amp; fixed</span><span class="vi">Còn đổi &amp; sửa</span></h3>
+        <ul>
+          <li><span class="en"><code>glossary_register.py --add|--update</code> and <code>decision_register.py --append|--append-alloc|--amend</code> take <code>--no-render</code>: the YAML SSOT changes, the markdown view waits for <code>--render</code> / <code>--render-md</code>.</span><span class="vi"><code>glossary_register.py --add|--update</code> và <code>decision_register.py --append|--append-alloc|--amend</code> nhận <code>--no-render</code>: chỉ SSOT YAML đổi, view markdown chờ <code>--render</code> / <code>--render-md</code>.</span></li>
+          <li><span class="en"><code>layout.roots</code> takes <code>inside: &lt;outer id&gt;</code> for a root nested on purpose; the snapshot's overlap note goes quiet for that pair only.</span><span class="vi"><code>layout.roots</code> nhận <code>inside: &lt;id root ngoài&gt;</code> cho root lồng có chủ đích; cảnh báo chồng lấn của snapshot chỉ im cho đúng cặp đó.</span></li>
+          <li><span class="en">A general-purpose spawn whose prompt opens with <code>hs-stand-in: &lt;name&gt;</code> stands in for an hs agent a resumed session lost.</span><span class="vi">Lượt spawn general-purpose mà prompt mở đầu bằng <code>hs-stand-in: &lt;name&gt;</code> đứng thay cho agent hs mà phiên resume đã mất.</span></li>
+          <li><span class="en"><code>cook verify</code> refuses (exit <code>3</code>, nothing recorded) where it used to record an empty commit set without a word: when another worktree that opened the phase holds its work, it names that tree; when a never-opened phase has commits since its prerequisite's verify, it prints the ready <code>--sha</code> line. In the checkout a lane merged into, where every commit of the one tree holding the phase's work is in HEAD's history, it records that set with a warning naming the tree.</span><span class="vi"><code>cook verify</code> từ chối (exit <code>3</code>, không ghi gì) ở những chỗ trước đây lặng lẽ ghi tập commit rỗng: khi một worktree khác đã mở phase đang giữ phần việc của nó, lời từ chối nêu tên cây đó; khi một phase chưa từng được mở mà đã có commit kể từ lần verify của phase tiền đề, lời từ chối in sẵn dòng <code>--sha</code>. Ở checkout mà một lane đã merge vào, khi mọi commit của cây duy nhất giữ phần việc của phase đều nằm trong lịch sử HEAD, nó ghi tập đó kèm cảnh báo nêu tên cây.</span></li>
+          <li><span class="en"><code>verify_install</code> and <code>hs-cli doctor</code> name a wired plugin that cannot load: its directory marketplace declares no such plugin, Claude Code does not know the marketplace, or no install applies to this project. Each is a warning with the repair command; <code>--strict</code> stays green.</span><span class="vi"><code>verify_install</code> và <code>hs-cli doctor</code> nêu tên plugin đã nối dây mà không load được: marketplace thư mục của nó không khai plugin đó, Claude Code không biết marketplace đó, hoặc không có bản cài nào áp dụng cho project này. Mỗi trường hợp là một cảnh báo kèm lệnh sửa; <code>--strict</code> vẫn xanh.</span></li>
+          <li><span class="en"><code>hs-code test run</code> says how many tests ran, failed and were skipped (<code>tests</code>, summed over a check's units); a test file the runner could not load is a FAIL naming it, not BLOCKED.</span><span class="vi"><code>hs-code test run</code> nói bao nhiêu test đã chạy, đỏ và bị bỏ qua (<code>tests</code>, cộng qua các unit của một check); tệp test runner không nạp được là FAIL nêu tên tệp, không phải BLOCKED.</span></li>
+          <li><span class="en">A Playwright spec beside a vitest config goes to Playwright, an agent-run e2e runner, when Playwright's own list names it, instead of blocking vitest as an unowned file.</span><span class="vi">Spec Playwright nằm cạnh cấu hình vitest được giao cho Playwright (runner e2e do agent chạy) khi danh sách của chính Playwright nêu tên nó, thay vì chặn vitest vì tệp không có chủ.</span></li>
+          <li><span class="en">What makes a TypeScript package one that builds is the pack's <code>build_signals</code> table (scripts, configs, Nx/moon/Turborepo targets); a build tool missing there is a row to add.</span><span class="vi">Điều làm một package TypeScript thành package có build là bảng <code>build_signals</code> của gói (scripts, config, target Nx/moon/Turborepo); công cụ build còn thiếu là một hàng cần thêm.</span></li>
+          <li><span class="en">The spawn nudge reads usage under a 2.5 s budget, on from where its last read stopped, instead of re-reading every transcript and being killed at 5 s.</span><span class="vi">Nudge trước spawn đọc mức dùng trong ngân sách 2,5 s, tiếp từ chỗ lần trước dừng, thay vì đọc lại mọi transcript rồi bị giết ở 5 s.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ver" style="margin-top:30px">v7.3.0 · 2026-10-21</div>
 
     <div class="callout" style="--ac:var(--ok);margin-top:18px">
       <span class="ci">🗺️</span>
       <div><span class="en"><b>v7.3.0 — TypeScript and React repos join the code map, and the harness runs their checks itself.</b> hs-code now reads TypeScript and JavaScript through language packs (tree-sitter in-process, or the project's own <code>tsc</code>), resolving relative imports, workspace package names, subpath exports and <code>tsconfig</code> paths across pnpm, npm and yarn workspaces. The harness runs a TypeScript repo's vitest or jest, <code>tsc -b</code>, eslint and coverage itself, and the gate owes every declared check by name; <code>install.sh --global</code> installs one bundle for the whole machine; and the release preflight runs its CI on a remote host through hs-rops. Full notes: <code>CHANGELOG.md → [7.3.0]</code>.</span><span class="vi"><b>v7.3.0 — repo TypeScript và React vào bản đồ code, và harness tự chạy các phép kiểm của chúng.</b> hs-code nay đọc TypeScript và JavaScript qua language pack (tree-sitter chạy trong tiến trình, hoặc chính <code>tsc</code> của dự án), phân giải import tương đối, tên package workspace, subpath export và đường dẫn <code>tsconfig</code> trên workspace pnpm, npm và yarn. Harness tự chạy vitest hoặc jest, <code>tsc -b</code>, eslint và độ phủ của repo TypeScript, và cổng đòi từng phép kiểm đã khai theo tên; <code>install.sh --global</code> cài một bundle cho cả máy; bước kiểm trước release chạy CI trên máy từ xa qua hs-rops. Đầy đủ: <code>CHANGELOG.md → [7.3.0]</code>.</span></div>
     </div>
+
+    <div class="ver" style="margin-top:30px">v7.1.0 · 2026-10-01</div>
 
     <p class="lead"><span class="en"><b>Asking is the feature, not a nag.</b> Writing <code>codemap.yaml</code> changes the user's repo, so it is the user's call — the offer rides exit <code>10</code> with an <code>ask_user</code> block, keeps the step's own answer whole in <code>deferred</code>, never masks a broken (<code>2</code>) or refused (<code>3</code>) step, and stays silent in an unattended session. Declining lasts the session; a later session asks again.</span><span class="vi"><b>Hỏi là tính năng, không phải làm phiền.</b> Ghi <code>codemap.yaml</code> là đổi repo của user, nên quyền quyết thuộc user — lời mời đi cùng exit <code>10</code> và khối <code>ask_user</code>, giữ nguyên câu trả lời thật của bước trong <code>deferred</code>, không bao giờ che bước hỏng (<code>2</code>) hay bị từ chối (<code>3</code>), và im lặng khi không có người ở terminal. Từ chối có hiệu lực trong phiên; phiên sau hỏi lại.</span></p>
 
@@ -969,11 +1035,11 @@ body.pal-open{overflow:hidden}
 
     <!-- reconciled counts -->
     <h2 class="sectitle" id="whatsnew-counts" style="font-size:1.3rem;margin-top:34px"><span class="en">Counted from source, reconciled everywhere</span><span class="vi">Đếm từ nguồn, đồng bộ mọi nơi</span></h2>
-    <p class="muted" style="font-size:.9rem"><span class="en">Every number here is measured off the tree this release ships — the harness profile of <code>run_local_tests.py</code> plus the separate <code>hs-code</code> profile.</span><span class="vi">Mọi con số ở đây đo trên chính cây bản release này ship — profile harness của <code>run_local_tests.py</code> cộng profile <code>hs-code</code> riêng.</span></p>
+    <p class="muted" style="font-size:.9rem"><span class="en">Every number here is measured off the tree v7.1.0 shipped (<code>f5bc01f80</code>) — the harness profile of <code>run_local_tests.py</code> plus the separate <code>hs-code</code> profile.</span><span class="vi">Mọi con số ở đây đo trên cây mà v7.1.0 ship (<code>f5bc01f80</code>) — profile harness của <code>run_local_tests.py</code> cộng profile <code>hs-code</code> riêng.</span></p>
     <div class="stats" style="margin-top:14px">
       <div class="stat"><div class="n" data-count="18505">18505</div><div class="l"><span class="en">tests passing · harness profile</span><span class="vi">test xanh · profile harness</span></div></div>
       <div class="stat"><div class="n" data-count="592">592</div><div class="l"><span class="en">tests passing · hs-code profile</span><span class="vi">test xanh · profile hs-code</span></div></div>
-      <div class="stat"><div class="n" data-count="68">68</div><div class="l"><span class="en">skills · 16 floor + 52 opt-in</span><span class="vi">skill · 16 lõi + 52 tùy chọn</span></div></div>
+      <div class="stat"><div class="n" data-count="68">68</div><div class="l"><span class="en">skills · 16 floor + 26 opt-in + 26 on</span><span class="vi">skill · 16 lõi + 26 tùy chọn + 26 bật sẵn</span></div></div>
       <div class="stat"><div class="n" data-count="64">64</div><div class="l"><span class="en">hooks · 15 rules · 26 agents</span><span class="vi">hook · 15 rule · 26 agent</span></div></div>
     </div>
 
@@ -1007,6 +1073,10 @@ body.pal-open{overflow:hidden}
     <div class="ver" style="margin-top:26px;opacity:.72"><span class="en">Previous cuts</span><span class="vi">Các bản trước</span></div>
 
     <div class="cards grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3><span class="pin"></span><span class="en">v7.2.0 · 2026-10-09 — plans that say where they stand, and lanes that take turns</span><span class="vi">v7.2.0 · 2026-10-09 — plan tự nói nó đang ở đâu, lane biết nhường lượt</span></h3>
+        <p><span class="en"><code>plan_approval.py --status</code> reads an approval's standing and writes nothing; a plan section can live in a reference file the approval hash pins; <code>decision_register.py --amend</code> rewords a live ruling; <code>cook next</code> answers <code>phase_paused</code> and names the phases <code>ready_alongside</code>. hs-rops runs on one lane take turns, <code>--lock NAME</code> queues across the machine, <code>run --at &lt;rev&gt;</code> runs a clean commit; <code>hs-code graph grep</code> tells a use from a mention and <code>change impact --data-key</code> follows a data key.</span><span class="vi"><code>plan_approval.py --status</code> đọc tình trạng phê duyệt mà không ghi gì; một mục plan có thể nằm ở tệp tham chiếu mà băm phê duyệt ghim; <code>decision_register.py --amend</code> sửa lời một phán quyết còn hiệu lực; <code>cook next</code> trả <code>phase_paused</code> và nêu các phase <code>ready_alongside</code>. Các lượt hs-rops trên một lane lần lượt chạy, <code>--lock NAME</code> xếp hàng trên cả máy, <code>run --at &lt;rev&gt;</code> chạy một commit sạch; <code>hs-code graph grep</code> phân biệt chỗ dùng với chỗ nhắc tên và <code>change impact --data-key</code> lần theo một khoá dữ liệu.</span></p>
+      </div>
       <div class="card">
         <h3><span class="pin"></span><span class="en">v7.0.0 · 2026-09-29 — the harness keeps its own map of your code</span><span class="vi">v7.0.0 · 2026-09-29 — harness giữ bản đồ riêng cho code của bạn</span></h3>
         <p><span class="en"><b>hs-code</b> builds a structural map of the codebase and <b>hs-run</b> argues from facts that map can prove; <b>hs-secrets</b> gives agents attributed access to secrets, and a context firewall bounds what one read, search or shell call may pull into context. The skill catalog was cut to what the repo uses, and the tier-2 orchestrator and the unattended-run subsystem are gone.</span><span class="vi"><b>hs-code</b> dựng bản đồ cấu trúc của codebase và <b>hs-run</b> lập luận từ những sự thật bản đồ đó chứng minh được; <b>hs-secrets</b> cho agent truy cập secret có ghi danh, và một tường lửa ngữ cảnh chặn trần những gì một lượt đọc, tìm kiếm hay lệnh shell được kéo vào ngữ cảnh. Bộ skill được cắt còn đúng những gì repo thực dùng, orchestrator tầng-2 và hệ chạy-không-người-trông đã bị gỡ.</span></p>
@@ -1139,8 +1209,10 @@ body.pal-open{overflow:hidden}
       <p class="muted" style="font-size:.9rem;margin-top:12px"><span class="en">Windows PowerShell: <code>irm https://hieubui2409.github.io/sdlc-harness-release/install.ps1 | iex</code>. The post-install test suite is <b>opt-in</b> — pass <code>--run-tests</code> (PowerShell: <code>-RunTests</code>) if you want the full suite too; the strict install check already confirms the install without it. <span class="realtag">real output</span></span><span class="vi">Windows PowerShell: <code>irm https://hieubui2409.github.io/sdlc-harness-release/install.ps1 | iex</code>. Bộ test sau cài là <b>tùy chọn</b> — thêm <code>--run-tests</code> (PowerShell: <code>-RunTests</code>) nếu muốn chạy cả bộ test; kiểm strict lúc cài đã xác nhận cài đúng mà không cần nó. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh | sh</span></div>
-        <pre>WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
-… 9 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
+        <pre>WARN harness/bin/hs-cli: not reachable on PATH — skill bodies tell the user to type `hs-cli`. Fix: `ln -s &lt;repo&gt;/harness/bin/hs-cli ~/.local/bin/hs-cli` (or `install.py --cli` for every launcher; Windows: add &lt;repo&gt;/harness/bin to PATH)
+… 5 more of the same shape (hs-run, hs-code, hs-rops, hs-secrets, hs-usage: a launcher not yet linked onto PATH)
+WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
+… 8 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
 WARN harness/data/harness-hooks.yaml: hash mismatch (deployer-localized config — expected to differ from the shipped baseline)
 verify_install OK: manifest + hook registration consistent
 </pre>
@@ -1195,7 +1267,7 @@ verify_install OK: manifest + hook registration consistent
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "12775 passed, 164 skipped"
+            "detail": "22207 passed, 418 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -1303,8 +1375,10 @@ verify_install OK: manifest + hook registration consistent
     <p class="muted" style="font-size:.9rem;margin-top:18px"><span class="en"><b>Watch one thing: the closing verify.</b> After it copies <code>harness/</code> and wires the hooks into <code>.claude/settings.json</code> (additively — your own hooks survive), the installer runs <code>verify_install --strict</code> as the final gate. A clean run ends with <code>verify_install OK</code> and exit 0. It is not silent: a fresh install prints ~12 WARN lines, and every one is expected — ten name a hook the shipped table disables whose entrypoint stays wired (it spawns and self-no-ops, costing a spawn and nothing else), and one names the config you are meant to localize. The verdict line is the proof, not the absence of warnings. <span class="realtag">real output</span></span><span class="vi"><b>Chỉ cần nhìn một thứ: verify chốt.</b> Sau khi copy <code>harness/</code> và gắn hook vào <code>.claude/settings.json</code> (cộng thêm — hook của bạn vẫn còn), trình cài chạy <code>verify_install --strict</code> làm gate cuối. Một lần chạy sạch kết thúc bằng <code>verify_install OK</code> và exit 0. Nó KHÔNG im lặng: bản cài mới in ~12 dòng WARN, và tất cả đều nằm trong dự kiến — mười dòng gọi tên một hook mà bảng ship tắt sẵn nhưng entrypoint vẫn còn gắn (nó spawn rồi tự no-op, tốn một lần spawn chứ không gì khác), một dòng gọi tên đúng phần cấu hình bạn được quyền chỉnh. Dòng phán quyết mới là bằng chứng, không phải việc vắng cảnh báo. <span class="realtag">đầu ra thật</span></span></p>
     <div class="term">
       <div class="tbar"><i></i><i></i><i></i><span class="tcmd">curl -fsSL …/install.sh | sh</span></div>
-      <pre>WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
-… 9 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
+      <pre>WARN harness/bin/hs-cli: not reachable on PATH — skill bodies tell the user to type `hs-cli`. Fix: `ln -s &lt;repo&gt;/harness/bin/hs-cli ~/.local/bin/hs-cli` (or `install.py --cli` for every launcher; Windows: add &lt;repo&gt;/harness/bin to PATH)
+… 5 more of the same shape (hs-run, hs-code, hs-rops, hs-secrets, hs-usage: a launcher not yet linked onto PATH)
+WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
+… 8 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
 WARN harness/data/harness-hooks.yaml: hash mismatch (deployer-localized config — expected to differ from the shipped baseline)
 verify_install OK: manifest + hook registration consistent
 </pre>
@@ -1552,7 +1626,7 @@ verify_install OK: manifest + hook registration consistent
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "12775 passed, 164 skipped"
+            "detail": "22207 passed, 418 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -1969,7 +2043,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
 
     <div class="callout" style="--ac:var(--spec);margin-top:16px">
       <span class="ci">🎯</span>
-      <div><span class="en"><b>Deferred-suite plans scope each phase, and owe one full run.</b> When the plan stamped <code>defer_suite: true</code> (from <a href="#plan">hs:plan --defer-suite</a>), each phase runs only the test files its plan-graph node declares — resolved against the tree the plan itself lives in, never the ambient one. The debt comes due at the end: <code>cook close</code> refuses (state <code>suite_debt_unpaid</code>, exit 3) until one run is recorded and <b>stamped as the deferred-suite run</b>. Verdict alone was not enough — every per-phase verify overwrote the same record, so the last phase settled the debt silently. Stated limit: the stamp says which run it was, not how much it ran.</span><span class="vi"><b>Plan hoãn suite thu hẹp từng phase, và nợ một lượt chạy đầy đủ.</b> Khi plan đóng dấu <code>defer_suite: true</code> (từ <a href="#plan">hs:plan --defer-suite</a>), mỗi phase chỉ chạy đúng tập test mà node của nó khai trong plan-graph — phân giải theo cây mà chính plan sống trong đó, không bao giờ theo cây môi trường. Nợ đến hạn ở cuối: <code>cook close</code> từ chối (trạng thái <code>suite_debt_unpaid</code>, exit 3) cho tới khi có một lượt chạy được ghi nhận và <b>đóng dấu đúng là lượt trả nợ</b>. Chỉ verdict thôi thì không đủ — mọi lượt verify per-phase đều ghi đè cùng một bản ghi, nên phase cuối trả nợ hộ trong im lặng. Giới hạn nói thẳng: con dấu nói lượt chạy ĐÓ là lượt nào, không nói nó chạy bao nhiêu.</span></div>
+      <div><span class="en"><b>Deferred-suite plans scope each phase, and owe one full run.</b> When the plan stamped <code>defer_suite: true</code> (from <a href="#plan">hs:plan --defer-suite</a>), each phase runs only the test files its plan-graph node declares — resolved against the tree the plan itself lives in, never the ambient one. The debt comes due at the end: <code>cook close</code> refuses (state <code>suite_debt_unpaid</code>, exit 3) until one run is recorded and <b>stamped as the deferred-suite run</b>. Verdict alone was not enough — every per-phase verify overwrote the same record, so the last phase settled the debt silently. Stated limit: the stamp says which run it was, not how much it ran. A paused phase left once every counted one passes stops the plan too: <code>cook next</code> asks <code>paused_remaining</code> (exit 10) whether to build it or close without it (<code>closes_without: true</code>), and <code>cook close</code> refuses with <code>phases_paused</code> (exit 3) until one is chosen.</span><span class="vi"><b>Plan hoãn suite thu hẹp từng phase, và nợ một lượt chạy đầy đủ.</b> Khi plan đóng dấu <code>defer_suite: true</code> (từ <a href="#plan">hs:plan --defer-suite</a>), mỗi phase chỉ chạy đúng tập test mà node của nó khai trong plan-graph — phân giải theo cây mà chính plan sống trong đó, không bao giờ theo cây môi trường. Nợ đến hạn ở cuối: <code>cook close</code> từ chối (trạng thái <code>suite_debt_unpaid</code>, exit 3) cho tới khi có một lượt chạy được ghi nhận và <b>đóng dấu đúng là lượt trả nợ</b>. Chỉ verdict thôi thì không đủ — mọi lượt verify per-phase đều ghi đè cùng một bản ghi, nên phase cuối trả nợ hộ trong im lặng. Giới hạn nói thẳng: con dấu nói lượt chạy ĐÓ là lượt nào, không nói nó chạy bao nhiêu. Một phase tạm dừng còn lại khi mọi phase được đếm đã qua cũng chặn plan: <code>cook next</code> hỏi <code>paused_remaining</code> (exit 10) xây nó hay đóng plan không có nó (<code>closes_without: true</code>), và <code>cook close</code> từ chối với <code>phases_paused</code> (exit 3) cho tới khi chọn một trong hai.</span></div>
     </div>
 
 
@@ -2052,6 +2126,11 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
       </div>
     </div>
 
+    <div class="callout" style="--ac:var(--ok);margin-top:14px">
+      <span class="ci">🧪</span>
+      <div><span class="en"><b>A TypeScript repo's tests are run by the harness itself.</b> <code>hs-code test run</code> runs the vitest or jest a repo declares in <code>codemap.yaml</code> (on an hs-rops lane with <code>--rops</code>), reads the verdict from the tool's own result file, never its exit code, and says how many tests ran, failed and were skipped. A test file the runner could not load is a FAIL naming it. <code>test prove</code>, <code>test mutation</code> and <code>test isolation-bisect</code> run the same tests in a copy of the tree.</span><span class="vi"><b>Test của repo TypeScript do chính harness chạy.</b> <code>hs-code test run</code> chạy vitest hoặc jest mà repo khai trong <code>codemap.yaml</code> (trên lane hs-rops với <code>--rops</code>), đọc verdict từ tệp kết quả của chính công cụ, không bao giờ từ exit code, và nói bao nhiêu test đã chạy, đỏ và bị bỏ qua. Tệp test runner không nạp được là FAIL nêu tên tệp. <code>test prove</code>, <code>test mutation</code> và <code>test isolation-bisect</code> chạy cùng các test đó trong một bản sao của cây.</span></div>
+    </div>
+
     <!-- ============ HERO: real pytest + the verdict it produces ============ -->
     <h2 class="sectitle" id="test-example"><span class="en">A real run, and the verdict</span><span class="vi">Lần chạy thật, và verdict</span></h2>
     <div class="hero-ex" style="--ac:var(--crit)">
@@ -2063,14 +2142,14 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
       </p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 -m pytest harness/tests/ -q</span></div>
-        <pre>........................................................................ [ 96%]
-........................................................................ [ 97%]
-........................................................................ [ 97%]
-..............................s....................s.s.................. [ 98%]
-...s..................................s...............s...ss.ssss..s.... [ 98%]
-........ssssssssss......s.....s....ss...sssss................sssssssssss [ 99%]
-sssss.ssssssssssssss...........................                          [100%]
-12775 passed, 164 skipped, 3 warnings in 407.18s (0:06:47)
+        <pre>........................................................................ [ 98%]
+........................................................................ [ 98%]
+........................................................................ [ 98%]
+........................................................................ [ 99%]
+........................................................................ [ 99%]
+........................................................................ [ 99%]
+..................                                                       [100%]
+22207 passed, 418 skipped, 1 xfailed, 19 warnings in 278.97s (0:04:38)
 </pre>
       </div>
 
@@ -2096,7 +2175,7 @@ sssss.ssssssssssssss...........................                          [100%]
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "12775 passed, 164 skipped"
+            "detail": "22207 passed, 418 skipped"
         },
         {
             "name": "schema load yaml+json",
@@ -3182,7 +3261,8 @@ exit: 0 (0 = winner)
         <tr><td>fix · git · port · review · review-pr · security · setup · ship · skills · suite · test</td><td><code>next</code> <span class="x"><span class="en">(one door each)</span><span class="vi">(một cửa mỗi cái)</span></span></td></tr>
         <tr><td>cook</td><td><code>close, next, open, preflight, prompt, record, status, verify</code></td></tr>
         <tr><td>plan</td><td><code>graph, next, prompt, record, scaffold</code></td></tr>
-        <tr><td><code>hs-cli</code> <span class="x"><span class="en">(the config door, not the step engine)</span><span class="vi">(cửa cấu hình, không phải engine bước)</span></span></td><td><code>version, doctor, status, gates, guards, hooks, capabilities, list, emit, render, migrate, components, skills, cleanup, install, trust, docs</code></td></tr>
+        <tr><td><code>hs-code</code> <span class="x"><span class="en">(the code map: Python + TypeScript via language packs)</span><span class="vi">(bản đồ code: Python + TypeScript qua gói ngôn ngữ)</span></span></td><td><code>8 domains · 101 verbs</code> <span class="x"><span class="en">(<code>hs-code --list</code>)</span><span class="vi">(<code>hs-code --list</code>)</span></span></td></tr>
+        <tr><td><code>hs-cli</code> <span class="x"><span class="en">(the config door, not the step engine)</span><span class="vi">(cửa cấu hình, không phải engine bước)</span></span></td><td><code>version, doctor, status, gates, guards, hooks, capabilities, list, emit, render, migrate, components, skills, cleanup, install, trust, docs, policy</code></td></tr>
       </tbody>
     </table>
     <p class="muted" style="font-size:.84rem;margin-top:10px"><span class="en">Two of the <code>hs-cli</code> verbs are new in v6.2.0: <code>hooks</code> reports every hook's resolved posture and <b>which layer decided it</b>, with <code>--off/--on &lt;csv&gt;</code> writing only this project's overlay; <code>emit --target &lt;runtime&gt;</code> projects the hook registrations onto another coding agent, read-only unless you pass <code>--out DIR</code>.</span><span class="vi">Hai verb của <code>hs-cli</code> là mới ở v6.2.0: <code>hooks</code> báo tư thế đã giải của mọi hook và <b>tầng nào đã quyết</b>, với <code>--off/--on &lt;csv&gt;</code> chỉ ghi tầng phủ của dự án này; <code>emit --target &lt;runtime&gt;</code> chiếu các đăng ký hook sang một coding agent khác, chỉ-đọc trừ khi bạn truyền <code>--out DIR</code>.</span></p>
@@ -3623,6 +3703,12 @@ _sessions analyzed: 62 · sufficient: True · gated: False_
       </div>
     </div>
 
+    <!-- CLI family -->
+    <h2 class="sectitle" id="rig-cli"><span class="en">Six launchers, one envelope</span><span class="vi">Sáu launcher, một envelope</span></h2>
+    <div class="card" style="margin-top:14px;--ac:var(--tel)">
+      <p><span class="en"><code>harness/bin/</code> holds 168 commands over one shared core, across <code>hs-run</code> (the step engine), <code>hs-cli</code> (the config door), <code>hs-code</code> (the code map), <code>hs-rops</code> (remote runs), <code>hs-secrets</code> and <code>hs-usage</code>. Every exit, a crash or a refusal included, is one JSON line on stdout (<code>hs-envelope/1</code>); <code>--text</code> prints for a person instead. See <a href="#cheatsheet">the cheatsheet</a> for the verbs.</span><span class="vi"><code>harness/bin/</code> chứa 168 lệnh trên một lõi chung, chia cho <code>hs-run</code> (engine bước), <code>hs-cli</code> (cửa cấu hình), <code>hs-code</code> (bản đồ code), <code>hs-rops</code> (chạy trên máy xa), <code>hs-secrets</code> và <code>hs-usage</code>. Mọi lối ra, kể cả crash hay từ chối, là một dòng JSON trên stdout (<code>hs-envelope/1</code>); <code>--text</code> in cho người đọc thay vào đó. Xem verb ở <a href="#cheatsheet">cheatsheet</a>.</span></p>
+    </div>
+
     <!-- coordination -->
     <h2 class="sectitle" id="rig-coord"><span class="en">Multi-agent coordination (W2)</span><span class="vi">Phối hợp đa-agent (W2)</span></h2>
     <div class="card" style="margin-top:14px;--ac:var(--tel)">
@@ -3682,8 +3768,10 @@ _sessions analyzed: 62 · sufficient: True · gated: False_
       <p class="muted" style="font-size:.9rem"><span class="en">The manifest hashes every git-tracked harness file; <code>--strict</code> also checks that registered hooks match. Tamper with a tracked file and this fails. <span class="realtag">real output</span></span><span class="vi">Manifest hash mọi file harness tracked git; <code>--strict</code> còn kiểm hook đã đăng ký khớp. Sửa một file tracked là cái này fail. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 harness/scripts/verify_install.py --strict</span></div>
-        <pre>WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
-… 9 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
+        <pre>WARN harness/bin/hs-cli: not reachable on PATH — skill bodies tell the user to type `hs-cli`. Fix: `ln -s &lt;repo&gt;/harness/bin/hs-cli ~/.local/bin/hs-cli` (or `install.py --cli` for every launcher; Windows: add &lt;repo&gt;/harness/bin to PATH)
+… 5 more of the same shape (hs-run, hs-code, hs-rops, hs-secrets, hs-usage: a launcher not yet linked onto PATH)
+WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
+… 8 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
 WARN harness/data/harness-hooks.yaml: hash mismatch (deployer-localized config — expected to differ from the shipped baseline)
 verify_install OK: manifest + hook registration consistent
 </pre>

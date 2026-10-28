@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>hs:test — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="hs:test — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="hs:test — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -122,6 +122,11 @@
       </div>
     </div>
 
+    <div class="callout" style="--ac:var(--ok);margin-top:14px">
+      <span class="ci">🧪</span>
+      <div><span class="en"><b>A TypeScript repo's tests are run by the harness itself.</b> <code>hs-code test run</code> runs the vitest or jest a repo declares in <code>codemap.yaml</code> (on an hs-rops lane with <code>--rops</code>), reads the verdict from the tool's own result file, never its exit code, and says how many tests ran, failed and were skipped. A test file the runner could not load is a FAIL naming it. <code>test prove</code>, <code>test mutation</code> and <code>test isolation-bisect</code> run the same tests in a copy of the tree.</span><span class="vi"><b>Test của repo TypeScript do chính harness chạy.</b> <code>hs-code test run</code> chạy vitest hoặc jest mà repo khai trong <code>codemap.yaml</code> (trên lane hs-rops với <code>--rops</code>), đọc verdict từ tệp kết quả của chính công cụ, không bao giờ từ exit code, và nói bao nhiêu test đã chạy, đỏ và bị bỏ qua. Tệp test runner không nạp được là FAIL nêu tên tệp. <code>test prove</code>, <code>test mutation</code> và <code>test isolation-bisect</code> chạy cùng các test đó trong một bản sao của cây.</span></div>
+    </div>
+
     <!-- ============ HERO: real pytest + the verdict it produces ============ -->
     <h2 class="sectitle" id="test-example"><span class="en">A real run, and the verdict</span><span class="vi">Lần chạy thật, và verdict</span></h2>
     <div class="hero-ex" style="--ac:var(--crit)">
@@ -133,14 +138,14 @@
       </p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">python3 -m pytest harness/tests/ -q</span></div>
-        <pre>........................................................................ [ 96%]
-........................................................................ [ 97%]
-........................................................................ [ 97%]
-..............................s....................s.s.................. [ 98%]
-...s..................................s...............s...ss.ssss..s.... [ 98%]
-........ssssssssss......s.....s....ss...sssss................sssssssssss [ 99%]
-sssss.ssssssssssssss...........................                          [100%]
-12775 passed, 164 skipped, 3 warnings in 407.18s (0:06:47)
+        <pre>........................................................................ [ 98%]
+........................................................................ [ 98%]
+........................................................................ [ 98%]
+........................................................................ [ 99%]
+........................................................................ [ 99%]
+........................................................................ [ 99%]
+..................                                                       [100%]
+22207 passed, 418 skipped, 1 xfailed, 19 warnings in 278.97s (0:04:38)
 </pre>
       </div>
 
@@ -166,7 +171,7 @@ sssss.ssssssssssssss...........................                          [100%]
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "12775 passed, 164 skipped"
+            "detail": "22207 passed, 418 skipped"
         },
         {
             "name": "schema load yaml+json",

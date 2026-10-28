@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Quick start — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Quick start — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Quick start — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -111,8 +111,10 @@
       <p class="muted" style="font-size:.9rem;margin-top:12px"><span class="en">Windows PowerShell: <code>irm https://hieubui2409.github.io/sdlc-harness-release/install.ps1 | iex</code>. The post-install test suite is <b>opt-in</b> — pass <code>--run-tests</code> (PowerShell: <code>-RunTests</code>) if you want the full suite too; the strict install check already confirms the install without it. <span class="realtag">real output</span></span><span class="vi">Windows PowerShell: <code>irm https://hieubui2409.github.io/sdlc-harness-release/install.ps1 | iex</code>. Bộ test sau cài là <b>tùy chọn</b> — thêm <code>--run-tests</code> (PowerShell: <code>-RunTests</code>) nếu muốn chạy cả bộ test; kiểm strict lúc cài đã xác nhận cài đúng mà không cần nó. <span class="realtag">đầu ra thật</span></span></p>
       <div class="term">
         <div class="tbar"><i></i><i></i><i></i><span class="tcmd">curl -fsSL https://hieubui2409.github.io/sdlc-harness-release/install.sh | sh</span></div>
-        <pre>WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
-… 9 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
+        <pre>WARN harness/bin/hs-cli: not reachable on PATH — skill bodies tell the user to type `hs-cli`. Fix: `ln -s &lt;repo&gt;/harness/bin/hs-cli ~/.local/bin/hs-cli` (or `install.py --cli` for every launcher; Windows: add &lt;repo&gt;/harness/bin to PATH)
+… 5 more of the same shape (hs-run, hs-code, hs-rops, hs-secrets, hs-usage: a launcher not yet linked onto PATH)
+WARN harness/data/harness-hooks.yaml: bash_write_guard: enabled=false in the SSOT but its entrypoint is still wired in .claude/settings.json — not a bug (the process spawns and self-no-ops each matching event under the wire-then-toggle pattern), but it costs a spawn; unwire it there too if you want zero per-event cost
+… 8 more of the same shape (a hook disabled in the SSOT whose entrypoint stays wired)
 WARN harness/data/harness-hooks.yaml: hash mismatch (deployer-localized config — expected to differ from the shipped baseline)
 verify_install OK: manifest + hook registration consistent
 </pre>
@@ -167,7 +169,7 @@ verify_install OK: manifest + hook registration consistent
         {
             "name": "pytest harness/tests",
             "status": "PASS",
-            "detail": "12775 passed, 164 skipped"
+            "detail": "22207 passed, 418 skipped"
         },
         {
             "name": "schema load yaml+json",

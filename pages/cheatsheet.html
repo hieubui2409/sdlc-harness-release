@@ -9,14 +9,14 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
 <title>Cheatsheet — SDLC Harness</title>
-<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
 <meta property="og:title" content="Cheatsheet — SDLC Harness" />
-<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Cheatsheet — SDLC Harness" />
-<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 129 hs:* skills, 62 hooks, 28 agents, a compliance gate, and honest telemetry." />
+<meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
 <body class="view-guide">
@@ -287,7 +287,8 @@
         <tr><td>fix · git · port · review · review-pr · security · setup · ship · skills · suite · test</td><td><code>next</code> <span class="x"><span class="en">(one door each)</span><span class="vi">(một cửa mỗi cái)</span></span></td></tr>
         <tr><td>cook</td><td><code>close, next, open, preflight, prompt, record, status, verify</code></td></tr>
         <tr><td>plan</td><td><code>graph, next, prompt, record, scaffold</code></td></tr>
-        <tr><td><code>hs-cli</code> <span class="x"><span class="en">(the config door, not the step engine)</span><span class="vi">(cửa cấu hình, không phải engine bước)</span></span></td><td><code>version, doctor, status, gates, guards, hooks, capabilities, list, emit, render, migrate, components, skills, cleanup, install, trust, docs</code></td></tr>
+        <tr><td><code>hs-code</code> <span class="x"><span class="en">(the code map: Python + TypeScript via language packs)</span><span class="vi">(bản đồ code: Python + TypeScript qua gói ngôn ngữ)</span></span></td><td><code>8 domains · 101 verbs</code> <span class="x"><span class="en">(<code>hs-code --list</code>)</span><span class="vi">(<code>hs-code --list</code>)</span></span></td></tr>
+        <tr><td><code>hs-cli</code> <span class="x"><span class="en">(the config door, not the step engine)</span><span class="vi">(cửa cấu hình, không phải engine bước)</span></span></td><td><code>version, doctor, status, gates, guards, hooks, capabilities, list, emit, render, migrate, components, skills, cleanup, install, trust, docs, policy</code></td></tr>
       </tbody>
     </table>
     <p class="muted" style="font-size:.84rem;margin-top:10px"><span class="en">Two of the <code>hs-cli</code> verbs are new in v6.2.0: <code>hooks</code> reports every hook's resolved posture and <b>which layer decided it</b>, with <code>--off/--on &lt;csv&gt;</code> writing only this project's overlay; <code>emit --target &lt;runtime&gt;</code> projects the hook registrations onto another coding agent, read-only unless you pass <code>--out DIR</code>.</span><span class="vi">Hai verb của <code>hs-cli</code> là mới ở v6.2.0: <code>hooks</code> báo tư thế đã giải của mọi hook và <b>tầng nào đã quyết</b>, với <code>--off/--on &lt;csv&gt;</code> chỉ ghi tầng phủ của dự án này; <code>emit --target &lt;runtime&gt;</code> chiếu các đăng ký hook sang một coding agent khác, chỉ-đọc trừ khi bạn truyền <code>--out DIR</code>.</span></p>

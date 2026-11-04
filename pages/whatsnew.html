@@ -8,14 +8,14 @@
 <style>html{background:#070b16}</style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script>try{if(localStorage.getItem('hs-lang')==='en'){var d=document.documentElement;d.classList.remove('lang-vi');d.classList.add('lang-en');d.lang='en';}}catch(e){}</script>
-<title>What's new · v7.5.0 — SDLC Harness</title>
+<title>What's new · v7.5.1 — SDLC Harness</title>
 <meta name="description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SDLC Harness" />
-<meta property="og:title" content="What's new · v7.5.0 — SDLC Harness" />
+<meta property="og:title" content="What's new · v7.5.1 — SDLC Harness" />
 <meta property="og:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="What's new · v7.5.0 — SDLC Harness" />
+<meta name="twitter:title" content="What's new · v7.5.1 — SDLC Harness" />
 <meta name="twitter:description" content="An interactive, standalone tour of the SDLC Harness: a file-based discipline for Claude Code — 68 hs:* skills, 66 hooks, 26 agents, a compliance gate, and honest telemetry." />
 <link rel="stylesheet" href="../assets/showcase.css" />
 </head>
@@ -76,18 +76,26 @@
   <a href="../pages/ref-rules.html" class="side-link" data-nav="ref-rules"><span class="en">Rule layer</span><span class="vi">Lớp luật</span></a>
 </aside>
 <main class="docs-main" id="main-content" tabindex="-1">
-<!-- ===================== WHAT'S NEW · v7.5.0 + v7.4.0 ===================== -->
+<!-- ===================== WHAT'S NEW · v7.5.1 + v7.5.0 + v7.4.0 ===================== -->
 <section id="whatsnew">
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--gold)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M20 4l4.5 9.5L35 15l-7.5 7 1.8 10.5L20 27.5 10.7 32.5 12.5 22 5 15l10.5-1.5L20 4Z" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/></svg></div>
       <div class="ttl"><div class="who" style="color:var(--gold)"><span class="en">Release highlights · what is on main and what landed in the latest cut</span><span class="vi">Điểm nổi bật · những gì đã vào main và những gì bản release gần nhất mang</span></div><h2><span class="en">What's new</span><span class="vi">Có gì mới</span></h2></div>
-      <div class="ver">v7.5.0 · 2026-11-03</div>
+      <div class="ver">v7.5.1 · 2026-11-04</div>
     </div>
     <div class="divider" style="--ac:var(--gold)"></div>
 
+    <!-- ===== v7.5.1 ===== -->
+    <h2 class="sectitle" id="whatsnew-latest" style="font-size:1.3rem;margin-top:18px"><span class="en">What's new · v7.5.1</span><span class="vi">Có gì mới · v7.5.1</span></h2>
+    <div class="callout" style="--ac:var(--ok);margin-top:14px">
+      <span class="ci">🩹</span>
+      <div><span class="en"><b>A patch: the install gate is green on Windows and macOS again.</b> The Windows <code>hs-*.cmd</code> launchers ship CRLF and run under cmd.exe; packing on Windows stays under the command-line limit; the installers take the first Python ≥3.12 that already has the deps, honor a <code>HARNESS_PY</code> you set, and print which one they took; and a finished <code>hs-rops</code> run takes down what it left in its process group. Full notes: <code>CHANGELOG.md → [7.5.1]</code>.</span><span class="vi"><b>Bản vá: cổng cài đặt xanh lại trên Windows và macOS.</b> Launcher <code>hs-*.cmd</code> trên Windows nay xuống dòng CRLF và chạy được dưới cmd.exe; đóng gói trên Windows không vượt giới hạn dòng lệnh; trình cài chọn Python ≥3.12 đầu tiên đã có đủ thư viện, theo đúng <code>HARNESS_PY</code> bạn đặt, và in ra bản nó chọn; và lượt <code>hs-rops</code> đã xong sẽ dọn những gì còn sót trong process group. Đầy đủ: <code>CHANGELOG.md → [7.5.1]</code>.</span></div>
+    </div>
+
     <!-- ===== v7.5.0 ===== -->
-    <h2 class="sectitle" id="whatsnew-latest" style="font-size:1.3rem;margin-top:18px"><span class="en">What's new · v7.5.0</span><span class="vi">Có gì mới · v7.5.0</span></h2>
+    <div class="ver" style="margin-top:30px">v7.5.0 · 2026-11-03</div>
+    <h2 class="sectitle" style="font-size:1.3rem;margin-top:18px"><span class="en">What's new · v7.5.0</span><span class="vi">Có gì mới · v7.5.0</span></h2>
     <div class="callout" style="--ac:var(--ok);margin-top:14px">
       <span class="ci">🛡️</span>
       <div><span class="en"><b>The harness reaches a ninth runtime, and a gate can ask you instead of only refusing.</b> OpenCode v2 joins the install targets through a bridge shared with pi; secret-file reads, shell reads included, wait for your yes; an agent can check a credential without seeing it; and <code>hs-usage admit</code> sizes a fan-out by the machine's load and the quota. Alongside: hs-rops fixes for runs that stall or lose their session. Full notes: <code>CHANGELOG.md → [7.5.0]</code>.</span><span class="vi"><b>Harness có runtime thứ chín, và gate có thể hỏi bạn thay vì chỉ từ chối.</b> OpenCode v2 vào danh sách đích cài qua bridge dùng chung với pi; đọc tệp bí mật, kể cả qua shell, phải chờ bạn đồng ý; agent kiểm được credential mà không nhìn thấy nó; và <code>hs-usage admit</code> định cỡ fan-out theo tải máy và quota. Cùng đợt: các bản sửa hs-rops cho lượt chạy bị treo hoặc rớt session. Đầy đủ: <code>CHANGELOG.md → [7.5.0]</code>.</span></div>

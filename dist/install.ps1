@@ -147,19 +147,35 @@ function Invoke-Py {
     & $script:PyExe @($script:PyBase + $PyArgs)
 }
 
+# A HARNESS_PY already set is the one used, as long as it clears the floor. Otherwise
+# the first candidate is only a guess: once the bundle is unpacked (step 3) the first
+# one that already has the deps wins -- as install.sh does.
 $probe = 'import sys; raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'
-foreach ($cand in @(
-        @{ exe = 'py';      base = @('-3') },
-        @{ exe = 'python';  base = @() },
-        @{ exe = 'python3'; base = @() })) {
-    if (-not (Get-Command $cand.exe -ErrorAction SilentlyContinue)) { continue }
-    try {
-        & $cand.exe @($cand.base + @('-c', $probe)) 2>$null
-    } catch { continue }
-    if ($LASTEXITCODE -eq 0) {
-        $script:PyExe = $cand.exe
-        $script:PyBase = $cand.base
-        break
+$script:PyCands = @(
+    @{ exe = 'py';      base = @('-3') },
+    @{ exe = 'python';  base = @() },
+    @{ exe = 'python3'; base = @() })
+function Test-PyFloor($cand) {
+    if (-not (Get-Command $cand.exe -ErrorAction SilentlyContinue)) { return $false }
+    try { & $cand.exe @($cand.base + @('-c', $probe)) 2>$null } catch { return $false }
+    return ($LASTEXITCODE -eq 0)
+}
+$script:PyPreset = $false
+if ($env:HARNESS_PY) {
+    if (-not (Test-PyFloor @{ exe = $env:HARNESS_PY; base = @() })) {
+        Write-Error "HARNESS_PY=$($env:HARNESS_PY) is not a Python >=3.12 -- unset it, or name one that is."
+        exit 1
+    }
+    $script:PyExe = $env:HARNESS_PY
+    $script:PyPreset = $true
+}
+if (-not $script:PyExe) {
+    foreach ($cand in $script:PyCands) {
+        if (Test-PyFloor $cand) {
+            $script:PyExe = $cand.exe
+            $script:PyBase = $cand.base
+            break
+        }
     }
 }
 if (-not $script:PyExe) {
@@ -172,8 +188,6 @@ Install Python 3, then re-run:
 '@
     exit 1
 }
-# install.py wires THIS interpreter into the hook commands.
-$env:HARNESS_PY = $script:PyExe
 
 $Work = Join-Path ([System.IO.Path]::GetTempPath()) ("harness-install-" + [System.IO.Path]::GetRandomFileName())
 New-Item -ItemType Directory -Path $Work -Force | Out-Null
@@ -294,8 +308,24 @@ with tarfile.open(bundle, "r:gz") as tf:
     Remove-Item -LiteralPath $guardPy -Force -ErrorAction SilentlyContinue
 
     # 3. dependencies first - the installer and the harness both need them ----------
+    $preflight = Join-Path $Work 'harness\scripts\preflight_deps.py'
+    if (-not $script:PyPreset) {
+        foreach ($cand in $script:PyCands) {
+            if (-not (Test-PyFloor $cand)) { continue }
+            & $cand.exe @($cand.base + @($preflight)) *> $null
+            if ($LASTEXITCODE -eq 0) {
+                $script:PyExe = $cand.exe
+                $script:PyBase = $cand.base
+                break
+            }
+        }
+    }
+    # install.py wires THIS interpreter into the hook commands.
+    $env:HARNESS_PY = $script:PyExe
+    $pyPath = & $script:PyExe @($script:PyBase + @('-c', 'import sys; print(sys.executable)')) 2>$null
+    Write-Host "python: $(@($script:PyExe) + $script:PyBase -join ' ') ($pyPath)"
     Write-Host 'checking dependencies ...'
-    Invoke-Py @((Join-Path $Work 'harness\scripts\preflight_deps.py'))
+    Invoke-Py @($preflight)
     if ($LASTEXITCODE -ne 0) { Write-Error 'dependency preflight failed'; exit $LASTEXITCODE }
 
     # 3a. -Global: the engine goes to the shared home -- never this temp tree, which the

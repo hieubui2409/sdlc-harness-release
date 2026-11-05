@@ -45,9 +45,9 @@
           "value": "false"
         }
       ],
-      "purl": "pkg:pypi/ast-serialize@0.6.0",
+      "purl": "pkg:pypi/ast-serialize@0.13.1",
       "type": "library",
-      "version": "0.6.0"
+      "version": "0.13.1"
     },
     {
       "name": "attrs",
@@ -177,9 +177,9 @@
           "value": "false"
         }
       ],
-      "purl": "pkg:pypi/cssselect2@0.9.0",
+      "purl": "pkg:pypi/cssselect2@0.10.1",
       "type": "library",
-      "version": "0.9.0"
+      "version": "0.10.1"
     },
     {
       "name": "defusedxml",
@@ -393,9 +393,9 @@
           "value": "false"
         }
       ],
-      "purl": "pkg:pypi/librt@0.13.0",
+      "purl": "pkg:pypi/librt@0.16.0",
       "type": "library",
-      "version": "0.13.0"
+      "version": "0.16.0"
     },
     {
       "name": "markdown-it-py",
@@ -489,9 +489,9 @@
           "value": "false"
         }
       ],
-      "purl": "pkg:pypi/mypy-extensions@1.1.0",
+      "purl": "pkg:pypi/mypy-extensions@1.2.0",
       "type": "library",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "name": "numpy",
@@ -549,9 +549,9 @@
           "value": "false"
         }
       ],
-      "purl": "pkg:pypi/pillow@12.2.0",
+      "purl": "pkg:pypi/pillow@13.0.0",
       "type": "library",
-      "version": "12.2.0"
+      "version": "13.0.0"
     },
     {
       "name": "platformdirs",
@@ -933,11 +933,11 @@
           "value": "false"
         }
       ],
-      "purl": "pkg:pypi/webencodings@0.5.1",
+      "purl": "pkg:pypi/webencodings@0.6.1",
       "type": "library",
-      "version": "0.5.1"
+      "version": "0.6.1"
     }
   ],
-  "serialNumber": "urn:uuid:78606f1c-775b-f18b-5378-d452b4db5a91",
+  "serialNumber": "urn:uuid:92552b00-8c76-38c4-3144-9fc453f93f54",
   "specVersion": "1.5"
 }

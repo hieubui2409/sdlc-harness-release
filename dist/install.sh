@@ -114,14 +114,29 @@ fi
 #    same floor right after this probe — a lower probe floor here would let an
 #    interpreter through that preflight then rejects with exit 2).
 #    HARNESS_PY is then exported so install.py wires that SAME interpreter into the
-#    hook commands.
+#    hook commands. A HARNESS_PY already set is the one used, as long as it clears the
+#    floor. Otherwise the newest is only the first guess: once the bundle is unpacked
+#    (step 3), the first candidate that already has the deps wins -- a runner-
+#    preinstalled python3.13 the deps never went into stopped every macOS install.
 PY=""
-for cand in python3.13 python3.12 python3 python "py -3"; do
-  name=${cand%% *}
-  command -v "$name" >/dev/null 2>&1 || continue
-  if $cand -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 12) else 1)' 2>/dev/null; then
-    PY="$cand"; break
+PY_PRESET=0
+PY_CANDS='python3.13 python3.12 python3 python py_3'
+py_floor() {
+  $1 -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 12) else 1)' 2>/dev/null
+}
+py_cmd() { [ "$1" = py_3 ] && echo "py -3" || echo "$1"; }
+if [ -n "${HARNESS_PY:-}" ]; then
+  if ! py_floor "$HARNESS_PY"; then
+    echo "error: HARNESS_PY=$HARNESS_PY is not a Python >=3.12 -- unset it, or name one that is." >&2
+    exit 1
   fi
+  PY="$HARNESS_PY"; PY_PRESET=1
+fi
+for c in $PY_CANDS; do
+  [ -z "$PY" ] || break
+  cand=$(py_cmd "$c")
+  command -v "${cand%% *}" >/dev/null 2>&1 || continue
+  if py_floor "$cand"; then PY="$cand"; fi
 done
 if [ -z "$PY" ]; then
   echo "error: no Python >=3.12 found (looked for: python3.13, python3.12, python3," >&2
@@ -133,7 +148,6 @@ if [ -z "$PY" ]; then
   echo "         Windows:       https://www.python.org/downloads/" >&2
   exit 1
 fi
-export HARNESS_PY="$PY"
 
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
@@ -265,6 +279,16 @@ tar -xzf "$BUNDLE" -C "$WORK"
 # 3. dependencies first — the installer and the harness both need them, so check
 #    before installing. preflight_deps.py prints the exact pip command and exits
 #    non-zero when something is missing, and set -e stops the script here.
+if [ "$PY_PRESET" -eq 0 ]; then
+  for c in $PY_CANDS; do
+    cand=$(py_cmd "$c")
+    command -v "${cand%% *}" >/dev/null 2>&1 || continue
+    py_floor "$cand" || continue
+    if $cand "$WORK/harness/scripts/preflight_deps.py" >/dev/null 2>&1; then PY="$cand"; break; fi
+  done
+fi
+export HARNESS_PY="$PY"
+echo "python: $PY ($($PY -c 'import sys; print(sys.executable)' 2>/dev/null))"
 echo "checking dependencies ..."
 $PY "$WORK/harness/scripts/preflight_deps.py"
 

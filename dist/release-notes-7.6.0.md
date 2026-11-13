@@ -1,0 +1,32 @@
+### Added
+- **`hs:deliver` carries one request from idea to verified delivery.** Three gates in order: lock scope and Done through `hs:goal-warmup`, collect every prerequisite in one batch, then run unattended until each Done item has evidence. `hs-run deliver` projects the gate from an append-only `deliver.jsonl`, `deliver_ledger.py` is its only writer and refuses a record whose precondition is not on file, and the stop list is a shipped floor a project may only add to. Ships on; routed from `hs:dispatch` and `hs:find-skills`.
+- **`hs:forge` tracks work as GitHub or GitLab issues.** One script drives `gh` or `glab` (picked from the origin remote): it searches every state before filing, moves status labels one step forward with the evidence comment posted first, files out-of-scope findings as their own issue, and reads CI and PR/MR status without writing. Ships off; `hs:deliver`, `hs:triage` and `hs:ship` fall back to `BACKLOG.md` while it is off.
+- **A measured difference is judged by the interval of its effect.** `effect_interval.py` gives a seeded bootstrap interval for the difference or ratio of two measured series and a verdict — higher, lower, within_margin or inconclusive, never a pass when inconclusive. The new `measured-effect` rule owns the claim grammar, and a QA report comparing a measured value without an effect verdict holds `hs-run test` at `effect_unjudged`. `hs:bakeoff` now crowns a winner only when that interval excludes no-change.
+- **`hs-cli doctor` reports each installed runtime.** It reads every runtime ownership ledger back: state, files placed, files edited or removed since, user files held in backup, the runtime's capability limits and the command that removes it. An interrupted install or an unreadable ledger is a finding.
+- **Every family CLI suggests the nearest command for a typo.** The shared CLI base appends a did-you-mean hint to its unknown-command refusal.
+- **Each skill invocation records which revision ran.** Telemetry carries `skill_digest`, the sha256-12 of the `SKILL.md` the name resolved to at that moment.
+- **Every subagent ends with the shared status block.** `subagent_init` injects the orchestration protocol's status block, read from the rule so there is one copy.
+- **Review leaves to a configured checker only what it owns.** `detect_techstack.py` reports which review categories (unused symbols, magic numbers, style, commit message) a checker configured in the repo owns; the review checklists skip those and keep the rest as findings.
+- **The DoD gate reads Playwright JSON and istanbul summaries**, and `--draft` runs every check and says what it would record without recording it.
+- **`hs:deploy` teaches from one table.** Every shell line the skill teaches is a row of `harness/data/deploy-clis.yaml`; its live rows (deploy, rollback, stop) become deploy-stage patterns only when the table's gate or `HARNESS_DEPLOY_CLI_GATE=on` arms them. Ships off.
+- **`ROPS_PLANS_EXTRA` carries more plan file kinds to a lane** (a catch-all glob is refused).
+
+### Changed
+- **The release preflight runs its CI once per tree.** The confirm gate splits a cut into two calls, and each ran every CI cell again on the same bytes — 13 homelab cells twice on the 7.5.1 cut. A passed CI now leaves a receipt keyed by tree hash, job list and placement; the same tree skips the cells and says so, any other tree runs them all. The cheap checks still run every call.
+- **The secret-file read guard ships off.** Asking before every `.env` / key read interrupted ordinary env work; `hs-cli hooks --on privacy_read_guard` turns it back on.
+- **`hs:deploy` hands live commands to the human.** The human runs every deploy, rollback, stop and preview; a key goes in at the CLI's prompt or on stdin, never in argv; a deploy holds one of queued, running, unverified, healthy or failed; prices are quoted only as read live.
+- **Skill guidance tightened** for `hs:fix`, `hs:debug`, `hs:plan`, `hs:code-review` and the agents (mode picked from the confirmed cause, machine-written text is never approval, the file-size limit read from the repo, build and test commands taken from the stack detector).
+
+### Fixed
+- **A mirrored release carries its own tree, not the previous one's.** GitHub archives the tag's tree as the release's "Source code", and `sandbox-setup.sh` installs what its default pin names; the mirror uploaded assets only and let `gh release create` tag whatever the public repo's `main` held, so 7.5.0 and 7.5.1 shipped with `dist/` and the sandbox default still at 7.4.0. `release/dist_sync.py` now replaces the previous release in `dist/` (tarball, sidecar, installers, SBOM, notes extracted as `release.yml` does) and moves both pins; the mirror commits that and tags the commit, moving an existing tag onto it. A tag older than the repo's `VERSION` leaves the tree alone (exit 3); a `sandbox-setup.sh` with no default pin to move, or assets without the tarball, refuse before anything is written.
+- **A runtime install owns only the files it places.** The ledger is computed from staging and journalled first; a user file in the way needs `--accept-risks` for that exact list and is backed up and restored on uninstall; a merged hooks file loses only the harness's entries, and a flat hook file (cursor) stays flat with its top-level keys.
+- **The path guards read a Windows path in the spelling their patterns use** — a secret or gate file named with backslashes was allowed.
+- **`secrets approve` refuses under an agent** and the allows it writes expire like a grant's.
+- **The stage gate arms the detector with the deploy table**, so the detector imports nothing of the tree; the table's gate word is quoted so both YAML loaders read the string `off`.
+- **A missing YAML reader names the interpreter and the install line** in the hook dispatcher's fail-closed refusal.
+- **SessionStart steps trace whether a step is absent or broken.**
+- **The dev wiring check covers a project that borrows another checkout's dev layer.**
+- **`hs:cook` refuses a phase's merged commits taken from the main checkout** unless `--sha` names them.
+- **The backlog register appends and edits in place** and writes nothing on refusal.
+- **`hs-rops`**: `lane --name X` builds a lane whose env templates the lane; a foreign-owned pytest basetemp and a green suite under a red rc are named.
+- **The `eval-bootstrap` sandbox mounts its own `/tmp`**, and doctor reports a looping engine root as unresolvable.

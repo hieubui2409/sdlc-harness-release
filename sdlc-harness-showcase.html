@@ -732,8 +732,8 @@ body.pal-open{overflow:hidden}
       <span class="en"><b>Observe</b></span><span class="vi"><b>Quan sát</b></span>
     </div>
     <p class="lead">
-      <span class="en">Not prose reminders — a coordinated <code>.claude</code>-style rig that enforces the workflow at runtime: 68 <code>hs:*</code> skills, 66 hooks in three tiers, 273 scripts, and a compliance gate that <b>advises</b> push / pr / ship and traces every step — with an agent cage that hard-blocks forgery on the spot and safety floors that never loosen. Every gate, approval, and decision is traced with an <code>actor</code>.</span>
-      <span class="vi">Không phải lời nhắc — mà cả một bộ kiểu <code>.claude</code> phối hợp, ép quy trình ngay lúc chạy: 68 skill <code>hs:*</code>, 66 hook ba hạng, 273 script, và một gate compliance <b>khuyên</b> push / pr / ship và ghi trace mọi bước — kèm cũi agent chặn cứng giả-mạo tại chỗ và các safety floor không bao giờ nới lỏng. Mọi gate, duyệt và quyết định đều được trace kèm <code>actor</code>.</span>
+      <span class="en">Not prose reminders — a coordinated <code>.claude</code>-style rig that enforces the workflow at runtime: 70 <code>hs:*</code> skills, 66 hooks in three tiers, 280 scripts, and a compliance gate that <b>advises</b> push / pr / ship and traces every step — with an agent cage that hard-blocks forgery on the spot and safety floors that never loosen. Every gate, approval, and decision is traced with an <code>actor</code>.</span>
+      <span class="vi">Không phải lời nhắc — mà cả một bộ kiểu <code>.claude</code> phối hợp, ép quy trình ngay lúc chạy: 70 skill <code>hs:*</code>, 66 hook ba hạng, 280 script, và một gate compliance <b>khuyên</b> push / pr / ship và ghi trace mọi bước — kèm cũi agent chặn cứng giả-mạo tại chỗ và các safety floor không bao giờ nới lỏng. Mọi gate, duyệt và quyết định đều được trace kèm <code>actor</code>.</span>
     </p>
 
     <div class="cta-row">
@@ -771,8 +771,8 @@ body.pal-open{overflow:hidden}
     <div class="callout" style="--ac:var(--gold)">
       <span class="ci">✨</span>
       <div>
-        <span class="en"><b>New in v7.5.1 —</b> a patch: the Windows launchers run under cmd.exe, the installers take a Python that has the deps, and a finished hs-rops run leaves nothing behind. <b>v7.5.0 —</b> the harness installs onto OpenCode v2, its ninth runtime besides Claude Code, through a bridge shared with pi; a compliance gate can ask you instead of only refusing, so a secret-file read, shell reads included, waits for your yes; <code>hs-secrets compare</code> and <code>hint</code> check a credential without showing it; <code>hs-usage admit</code> sizes a fan-out by the machine's load and the quota; and hs-rops runs that stall, lose their session or start in a fresh tmux pane now finish or say why. → <a href="#whatsnew"><b>What's new</b></a> · <a href="#harness">The rig</a></span>
-        <span class="vi"><b>Mới ở v7.5.1 —</b> bản vá: launcher Windows chạy được dưới cmd.exe, trình cài chọn Python đã có đủ thư viện, và lượt hs-rops đã xong không để sót gì. <b>v7.5.0 —</b> harness cài được lên OpenCode v2, runtime thứ chín ngoài Claude Code, qua bridge dùng chung với pi; gate compliance có thể hỏi bạn thay vì chỉ từ chối, nên đọc tệp bí mật, kể cả qua shell, phải chờ bạn đồng ý; <code>hs-secrets compare</code> và <code>hint</code> kiểm credential mà không hiện nó ra; <code>hs-usage admit</code> định cỡ fan-out theo tải máy và quota; và các lượt hs-rops bị treo, rớt session hay khởi động trong pane tmux mới giờ chạy xong hoặc nói rõ vì sao. → <a href="#whatsnew"><b>Có gì mới</b></a> · <a href="#harness">Bộ máy</a></span>
+        <span class="en"><b>New in v7.6.0 —</b> <code>hs:deliver</code> carries one request from idea to verified delivery through three ledger-backed gates; <code>hs:forge</code> (ships off) tracks work as GitHub or GitLab issues; a measured difference is judged by the interval of its effect; and a runtime install owns only the files it places. <b>v7.5.1 —</b> a patch: the Windows launchers run under cmd.exe, the installers take a Python that has the deps, and a finished hs-rops run leaves nothing behind. <b>v7.5.0 —</b> the harness installs onto OpenCode v2, its ninth runtime besides Claude Code, through a bridge shared with pi; a compliance gate can ask you instead of only refusing, so a secret-file read, shell reads included, waits for your yes; <code>hs-secrets compare</code> and <code>hint</code> check a credential without showing it; <code>hs-usage admit</code> sizes a fan-out by the machine's load and the quota; and hs-rops runs that stall, lose their session or start in a fresh tmux pane now finish or say why. → <a href="#whatsnew"><b>What's new</b></a> · <a href="#harness">The rig</a></span>
+        <span class="vi"><b>Mới ở v7.6.0 —</b> <code>hs:deliver</code> đưa một yêu cầu từ ý tưởng tới giao hàng có kiểm chứng qua ba cổng có sổ ghi; <code>hs:forge</code> (mặc định tắt) theo dõi việc bằng issue GitHub hoặc GitLab; chênh lệch đo được xét bằng khoảng tin cậy của hiệu ứng; và lượt cài runtime chỉ nhận phần những tệp nó đặt vào. <b>v7.5.1 —</b> bản vá: launcher Windows chạy được dưới cmd.exe, trình cài chọn Python đã có đủ thư viện, và lượt hs-rops đã xong không để sót gì. <b>v7.5.0 —</b> harness cài được lên OpenCode v2, runtime thứ chín ngoài Claude Code, qua bridge dùng chung với pi; gate compliance có thể hỏi bạn thay vì chỉ từ chối, nên đọc tệp bí mật, kể cả qua shell, phải chờ bạn đồng ý; <code>hs-secrets compare</code> và <code>hint</code> kiểm credential mà không hiện nó ra; <code>hs-usage admit</code> định cỡ fan-out theo tải máy và quota; và các lượt hs-rops bị treo, rớt session hay khởi động trong pane tmux mới giờ chạy xong hoặc nói rõ vì sao. → <a href="#whatsnew"><b>Có gì mới</b></a> · <a href="#harness">Bộ máy</a></span>
       </div>
     </div>
   </div>
@@ -863,7 +863,7 @@ body.pal-open{overflow:hidden}
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="n" data-count="68">68</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
+      <div class="stat"><div class="n" data-count="70">70</div><div class="l"><span class="en">hs:* skills in the suite</span><span class="vi">skill hs:* trong bộ</span></div></div>
       <div class="stat"><div class="n" data-count="66">66</div><div class="l"><span class="en">hooks · 3 tiers</span><span class="vi">hook đăng ký · 3 hạng</span></div></div>
       <div class="stat"><div class="n" data-count="18447">18447</div><div class="l"><span class="en">unit + invariant tests pass (948f7a1a3)</span><span class="vi">test unit + invariant pass (948f7a1a3)</span></div></div>
       <div class="stat"><div class="n" data-count="0">0</div><div class="l"><span class="en">network calls in the gate path</span><span class="vi">lần gọi mạng trong đường gate</span></div></div>
@@ -879,10 +879,10 @@ body.pal-open{overflow:hidden}
     <p class="lead"><span class="en">The product is the <code>harness/</code> tree: skills, hooks, scripts, rules, data, schemas, install, tests. Delete the directory and the harness is gone — a CI invariant forbids the string <code>.claude/skills/</code> inside <code>harness/</code>.</span><span class="vi">Sản phẩm là cây <code>harness/</code>: skills, hooks, scripts, rules, data, schemas, install, tests. Xóa thư mục là gỡ sạch — một invariant CI cấm chuỗi <code>.claude/skills/</code> trong <code>harness/</code>.</span></p>
 
     <div class="rig">
-      <div class="rcell"><div class="rt">🧩 <span class="en">68 skills</span><span class="vi">68 skill</span><span class="rn">plugins/hs</span></div><ul><li><span class="en">SDLC spine: plan · cook · test · ship</span><span class="vi">Xương sống: plan · cook · test · ship</span></li><li><span class="en">orchestrators, review, debug, research, ideation, docs</span><span class="vi">điều phối, review, debug, nghiên cứu, ý tưởng, docs</span></li><li><span class="en">packaged as plugin <code>hs</code> → <code>/hs:plan</code></span><span class="vi">đóng gói plugin <code>hs</code> → <code>/hs:plan</code></span></li></ul></div>
+      <div class="rcell"><div class="rt">🧩 <span class="en">70 skills</span><span class="vi">70 skill</span><span class="rn">plugins/hs</span></div><ul><li><span class="en">SDLC spine: plan · cook · test · ship</span><span class="vi">Xương sống: plan · cook · test · ship</span></li><li><span class="en">orchestrators, review, debug, research, ideation, docs</span><span class="vi">điều phối, review, debug, nghiên cứu, ý tưởng, docs</span></li><li><span class="en">packaged as plugin <code>hs</code> → <code>/hs:plan</code></span><span class="vi">đóng gói plugin <code>hs</code> → <code>/hs:plan</code></span></li></ul></div>
       <div class="rcell"><div class="rt">🪝 <span class="en">66 hooks · 3 tiers</span><span class="vi">66 hook · 3 hạng</span><span class="rn">/hooks</span></div><ul><li><span class="en">telemetry sinks (ON, fail-open)</span><span class="vi">sink telemetry (ON, fail-open)</span></li><li><span class="en">memory-gap nudge (OFF)</span><span class="vi">memory-gap nudge (OFF)</span></li><li><span class="en">gate_stage · write_guard (compliance)</span><span class="vi">gate_stage · write_guard (compliance)</span></li></ul></div>
-      <div class="rcell"><div class="rt">🛠️ <span class="en">273 scripts</span><span class="vi">273 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · plan_approval · plan_graph</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
-      <div class="rcell"><div class="rt">📐 <span class="en">15 rules</span><span class="vi">15 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤75 lines, always-load)</span><span class="vi">(≤75 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · counting-discipline</li><li><span class="en">+ process-management, the newest</span><span class="vi">+ process-management, mới nhất</span></li></ul></div>
+      <div class="rcell"><div class="rt">🛠️ <span class="en">280 scripts</span><span class="vi">280 script</span><span class="rn">/scripts</span></div><ul><li><span class="en">stage_detector · artifact_check · fs_guard</span><span class="vi">stage_detector · artifact_check · fs_guard</span></li><li>claims · plan_approval · plan_graph</li><li>analyze_telemetry · spec_graph · decision_register</li></ul></div>
+      <div class="rcell"><div class="rt">📐 <span class="en">16 rules</span><span class="vi">16 rule</span><span class="rn">/rules</span></div><ul><li><code>harness-contract.md</code> <span class="en">(≤75 lines, always-load)</span><span class="vi">(≤75 dòng, luôn-load)</span></li><li>tdd-discipline · verification-mechanism</li><li>workflow-handoffs · counting-discipline</li><li><span class="en">+ process-management, the newest</span><span class="vi">+ process-management, mới nhất</span></li></ul></div>
       <div class="rcell"><div class="rt">🧪 <span class="en">16 schemas</span><span class="vi">16 schema</span><span class="rn">/schemas</span></div><ul><li><code>artifact-verification</code> · <code>review-decision</code></li><li><code>plan-approval</code> · <code>critique-consensus</code></li><li><code>bakeoff-verdict</code> · <code>harness-release</code></li></ul></div>
       <div class="rcell"><div class="rt">📦 <span class="en">Install + manifest</span><span class="vi">Cài + manifest</span><span class="rn">/install</span></div><ul><li><code>install.py --target</code> <span class="en">(one command)</span><span class="vi">(một lệnh)</span></li><li><code>manifest.json</code> <span class="en">(sha256 tracked files)</span><span class="vi">(sha256 file tracked)</span></li><li><code>verify_install.py --strict</code></li></ul></div>
     </div>
@@ -899,7 +899,7 @@ body.pal-open{overflow:hidden}
   <div class="wrap reveal">
     <div class="eyebrow"><span class="en">Under the hood</span><span class="vi">Bên trong</span></div>
     <h2 class="sectitle"><span class="en">One dispatch CLI drives every skill — <code>hs-run</code></span><span class="vi">Một CLI dispatch chạy mọi skill — <code>hs-run</code></span></h2>
-    <p class="lead"><span class="en">Every SDLC-spine skill drives <code>hs-run &lt;domain&gt; &lt;verb&gt;</code>, a deterministic step-sequence engine: 13 domains, 24 verbs. Most domains expose one <code>next</code> door; <code>cook</code> has 8 verbs and <code>plan</code> has 5. Each verb returns a JSON envelope (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) on one of six exit codes — <code>0</code> done, <code>1</code> findings, <code>2</code> broken, <code>3</code> deliberate refusal, <code>10</code> needs a model turn, <code>11</code> one more deterministic step. Configuration and admin are a separate CLI, <code>hs-cli</code>: <code>skills --on/--off</code> (restart to apply), <code>components</code>, <code>migrate</code>, <code>trust</code>.</span><span class="vi">Mọi skill trong xương sống SDLC chạy <code>hs-run &lt;domain&gt; &lt;verb&gt;</code>, một engine bước chạy tất định: 13 domain, 24 verb. Hầu hết domain chỉ có một cửa <code>next</code>; <code>cook</code> có 8 verb và <code>plan</code> có 5. Mỗi verb trả envelope JSON (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) trên một trong sáu mã thoát — <code>0</code> xong, <code>1</code> phát hiện, <code>2</code> hỏng, <code>3</code> từ chối có chủ đích, <code>10</code> cần lượt model, <code>11</code> còn một bước tất định. Cấu hình và quản trị nằm ở một CLI riêng, <code>hs-cli</code>: <code>skills --on/--off</code> (khởi động lại để áp dụng), <code>components</code>, <code>migrate</code>, <code>trust</code>.</span></p>
+    <p class="lead"><span class="en">Every SDLC-spine skill drives <code>hs-run &lt;domain&gt; &lt;verb&gt;</code>, a deterministic step-sequence engine: 14 domains, 25 verbs. Most domains expose one <code>next</code> door; <code>cook</code> has 8 verbs and <code>plan</code> has 5. Each verb returns a JSON envelope (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) on one of six exit codes — <code>0</code> done, <code>1</code> findings, <code>2</code> broken, <code>3</code> deliberate refusal, <code>10</code> needs a model turn, <code>11</code> one more deterministic step. Configuration and admin are a separate CLI, <code>hs-cli</code>: <code>skills --on/--off</code> (restart to apply), <code>components</code>, <code>migrate</code>, <code>trust</code>.</span><span class="vi">Mọi skill trong xương sống SDLC chạy <code>hs-run &lt;domain&gt; &lt;verb&gt;</code>, một engine bước chạy tất định: 14 domain, 25 verb. Hầu hết domain chỉ có một cửa <code>next</code>; <code>cook</code> có 8 verb và <code>plan</code> có 5. Mỗi verb trả envelope JSON (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) trên một trong sáu mã thoát — <code>0</code> xong, <code>1</code> phát hiện, <code>2</code> hỏng, <code>3</code> từ chối có chủ đích, <code>10</code> cần lượt model, <code>11</code> còn một bước tất định. Cấu hình và quản trị nằm ở một CLI riêng, <code>hs-cli</code>: <code>skills --on/--off</code> (khởi động lại để áp dụng), <code>components</code>, <code>migrate</code>, <code>trust</code>.</span></p>
   </div>
 </section>
 
@@ -926,18 +926,62 @@ body.pal-open{overflow:hidden}
 <div class="wrap"><div class="page-nav" style="--ac:var(--spec)"><span class="pv" style="flex:1"></span><a class="nx" href="#whatsnew"><span class="k"><span class="en">Next</span><span class="vi">Sau</span> →</span><span class="v"><span class="en">What's new</span><span class="vi">Có gì mới</span></span></a></div></div>
 </div>
 <div class="route" data-route="whatsnew">
-<!-- ===================== WHAT'S NEW · v7.5.1 + v7.5.0 + v7.4.0 ===================== -->
+<!-- ===================== WHAT'S NEW · v7.6.0 + v7.5.1 + v7.5.0 ===================== -->
 <section id="whatsnew">
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--gold)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M20 4l4.5 9.5L35 15l-7.5 7 1.8 10.5L20 27.5 10.7 32.5 12.5 22 5 15l10.5-1.5L20 4Z" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/></svg></div>
       <div class="ttl"><div class="who" style="color:var(--gold)"><span class="en">Release highlights · what is on main and what landed in the latest cut</span><span class="vi">Điểm nổi bật · những gì đã vào main và những gì bản release gần nhất mang</span></div><h2><span class="en">What's new</span><span class="vi">Có gì mới</span></h2></div>
-      <div class="ver">v7.5.1 · 2026-11-04</div>
+      <div class="ver">v7.6.0 · 2026-11-14</div>
     </div>
     <div class="divider" style="--ac:var(--gold)"></div>
 
+    <!-- ===== v7.6.0 ===== -->
+    <h2 class="sectitle" id="whatsnew-latest" style="font-size:1.3rem;margin-top:18px"><span class="en">What's new · v7.6.0</span><span class="vi">Có gì mới · v7.6.0</span></h2>
+    <div class="callout" style="--ac:var(--ok);margin-top:14px">
+      <span class="ci">🚚</span>
+      <div><span class="en"><b>One conversation up front, then delivery without babysitting.</b> <code>hs:deliver</code> locks scope and Done, collects every prerequisite in one batch, then runs until each Done item has evidence; <code>hs:forge</code> (ships off) tracks the work as GitHub or GitLab issues; a measured difference is judged by the interval of its effect, never by eye; and a runtime install owns only the files it places. Full notes: <code>CHANGELOG.md → [7.6.0]</code>.</span><span class="vi"><b>Một lượt trao đổi đầu, rồi giao hàng không cần trông.</b> <code>hs:deliver</code> chốt phạm vi và tiêu chí Done, gom mọi điều kiện cần trong một lượt, rồi chạy cho tới khi mỗi mục Done có bằng chứng; <code>hs:forge</code> (mặc định tắt) theo dõi việc dưới dạng issue GitHub hoặc GitLab; một chênh lệch đo được phải xét bằng khoảng tin cậy của hiệu ứng, không xét bằng mắt; và lượt cài runtime chỉ nhận phần những tệp nó đặt vào. Đầy đủ: <code>CHANGELOG.md → [7.6.0]</code>.</span></div>
+    </div>
+
+    <div class="cards grid-2" style="margin-top:18px">
+      <div class="card" style="--ac:var(--ok)">
+        <h3><span class="pin"></span><span class="en">🚚 hs:deliver — idea to verified delivery</span><span class="vi">🚚 hs:deliver — từ ý tưởng tới giao hàng có kiểm chứng</span></h3>
+        <p><span class="en">Three gates in order: lock scope and Done through <code>hs:goal-warmup</code>, collect every prerequisite in one batch, then deliver unattended. <code>hs-run deliver</code> reads the gate from an append-only <code>deliver.jsonl</code>; <code>deliver_ledger.py</code> is its only writer and refuses a record whose precondition is not on file. The stop list is a shipped floor a project may only add to. Ships on.</span><span class="vi">Ba cổng theo thứ tự: chốt phạm vi và Done qua <code>hs:goal-warmup</code>, gom mọi điều kiện cần trong một lượt, rồi giao hàng không cần người trông. <code>hs-run deliver</code> đọc cổng từ sổ chỉ-ghi-thêm <code>deliver.jsonl</code>; <code>deliver_ledger.py</code> là nơi ghi duy nhất và từ chối bản ghi khi điều kiện trước nó chưa có trong sổ. Danh sách điểm dừng là mức sàn đi kèm bản cài, dự án chỉ được thêm. Mặc định bật.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">3 gates</span><span class="chip">hs-run deliver</span><span class="chip">append-only ledger</span></div>
+      </div>
+      <div class="card" style="--ac:var(--spec)">
+        <h3><span class="pin"></span><span class="en">🏷️ hs:forge — work as issues</span><span class="vi">🏷️ hs:forge — theo dõi việc bằng issue</span></h3>
+        <p><span class="en">One script drives <code>gh</code> or <code>glab</code>, picked from the origin remote: it searches every state before filing, moves a status label one step forward only after posting the evidence comment, files out-of-scope findings as their own issue, and reads CI and PR/MR status without writing. Ships off; deliver, triage and ship fall back to <code>BACKLOG.md</code> while it is off.</span><span class="vi">Một script điều khiển <code>gh</code> hoặc <code>glab</code>, chọn theo remote origin: tìm ở mọi trạng thái trước khi tạo issue, chỉ dời nhãn trạng thái lên một bước sau khi đã đăng bình luận bằng chứng, tách phát hiện ngoài phạm vi thành issue riêng, và đọc trạng thái CI cùng PR/MR mà không ghi gì. Mặc định tắt; khi tắt, deliver, triage và ship quay về <code>BACKLOG.md</code>.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">gh · glab</span><span class="chip">dedup first</span><span class="chip">ships off</span></div>
+      </div>
+      <div class="card" style="--ac:var(--gold)">
+        <h3><span class="pin"></span><span class="en">📏 A difference needs the interval of its effect</span><span class="vi">📏 Chênh lệch phải có khoảng tin cậy của hiệu ứng</span></h3>
+        <p><span class="en"><code>effect_interval.py</code> gives a seeded bootstrap interval for the difference or ratio of two measured series and a verdict: higher, lower, within_margin or inconclusive, and inconclusive is never a pass. The new <code>measured-effect</code> rule owns the wording; a QA report that compares without it holds <code>hs-run test</code> at <code>effect_unjudged</code>, and <code>hs:bakeoff</code> crowns a winner only when the interval excludes no-change.</span><span class="vi"><code>effect_interval.py</code> cho khoảng bootstrap có seed của hiệu hoặc tỉ số giữa hai chuỗi số đo, kèm kết luận: cao hơn, thấp hơn, trong biên, hoặc chưa kết luận được, và chưa kết luận được thì không bao giờ là đạt. Luật mới <code>measured-effect</code> giữ cách viết; báo cáo QA so sánh mà thiếu nó sẽ giữ <code>hs-run test</code> ở <code>effect_unjudged</code>, và <code>hs:bakeoff</code> chỉ chọn người thắng khi khoảng này loại trừ khả năng không đổi.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">effect_interval.py</span><span class="chip">measured-effect rule</span><span class="chip">inconclusive ≠ pass</span></div>
+      </div>
+      <div class="card" style="--ac:var(--crit)">
+        <h3><span class="pin"></span><span class="en">🧰 An install owns only what it places</span><span class="vi">🧰 Lượt cài chỉ nhận phần những gì nó đặt vào</span></h3>
+        <p><span class="en">A runtime install computes its ledger from staging and journals it first; a user file in the way needs <code>--accept-risks</code> for that exact list, is backed up and comes back on uninstall; a merged hooks file loses only the harness's entries. <code>hs-cli doctor</code> now reads each ledger back: what it placed, what changed since, what it holds in backup, and the command that removes it.</span><span class="vi">Lượt cài runtime tính sổ sở hữu từ thư mục dàn dựng và ghi sổ trước; tệp của người dùng nằm chắn đường cần <code>--accept-risks</code> cho đúng danh sách đó, được sao lưu và trả lại khi gỡ; tệp hooks đã gộp chỉ mất các mục của harness. <code>hs-cli doctor</code> nay đọc lại từng sổ: đã đặt gì, cái gì đổi từ đó, đang giữ bản sao lưu nào, và lệnh để gỡ.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">ownership ledger</span><span class="chip">--accept-risks</span><span class="chip">doctor per runtime</span></div>
+      </div>
+    </div>
+
+    <div class="cards grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3><span class="pin"></span><span class="en">Also in v7.6.0</span><span class="vi">Cũng có ở v7.6.0</span></h3>
+        <ul>
+          <li><span class="en">The secret-file read guard ships off; <code>hs-cli hooks --on privacy_read_guard</code> turns it back on.</span><span class="vi">Guard đọc tệp bí mật mặc định tắt; <code>hs-cli hooks --on privacy_read_guard</code> bật lại.</span></li>
+          <li><span class="en">The path guards read a Windows path (backslashes) in the spelling their patterns use.</span><span class="vi">Các guard đường dẫn đọc đường dẫn Windows (dấu gạch ngược) theo đúng cách viết mà mẫu của chúng dùng.</span></li>
+          <li><span class="en"><code>hs:deploy</code> hands every live command to you and keeps keys out of argv; its taught commands live in one table, armed only when its gate is on.</span><span class="vi"><code>hs:deploy</code> trao mọi lệnh thật cho bạn chạy và không để khoá trong argv; các lệnh nó dạy nằm trong một bảng, chỉ có hiệu lực khi cổng của bảng bật.</span></li>
+          <li><span class="en">Every family CLI suggests the nearest command for a typo; telemetry records which revision of a skill ran; every subagent ends with the shared status block.</span><span class="vi">Mọi CLI trong họ gợi ý lệnh gần nhất khi gõ nhầm; telemetry ghi lại bản sửa nào của skill đã chạy; mọi subagent kết thúc bằng khối trạng thái dùng chung.</span></li>
+          <li><span class="en">Review skips a category a configured checker in the repo already owns; the DoD gate reads Playwright JSON and istanbul summaries.</span><span class="vi">Review bỏ qua hạng mục mà một công cụ kiểm đã cấu hình trong repo đảm nhận; cổng DoD đọc được Playwright JSON và bản tóm tắt istanbul.</span></li>
+        </ul>
+      </div>
+    </div>
+
     <!-- ===== v7.5.1 ===== -->
-    <h2 class="sectitle" id="whatsnew-latest" style="font-size:1.3rem;margin-top:18px"><span class="en">What's new · v7.5.1</span><span class="vi">Có gì mới · v7.5.1</span></h2>
+    <div class="ver" style="margin-top:30px">v7.5.1 · 2026-11-04</div>
+    <h2 class="sectitle" style="font-size:1.3rem;margin-top:18px"><span class="en">What's new · v7.5.1</span><span class="vi">Có gì mới · v7.5.1</span></h2>
     <div class="callout" style="--ac:var(--ok);margin-top:14px">
       <span class="ci">🩹</span>
       <div><span class="en"><b>A patch: the install gate is green on Windows and macOS again.</b> The Windows <code>hs-*.cmd</code> launchers ship CRLF and run under cmd.exe; packing on Windows stays under the command-line limit; the installers take the first Python ≥3.12 that already has the deps, honor a <code>HARNESS_PY</code> you set, and print which one they took; and a finished <code>hs-rops</code> run takes down what it left in its process group. Full notes: <code>CHANGELOG.md → [7.5.1]</code>.</span><span class="vi"><b>Bản vá: cổng cài đặt xanh lại trên Windows và macOS.</b> Launcher <code>hs-*.cmd</code> trên Windows nay xuống dòng CRLF và chạy được dưới cmd.exe; đóng gói trên Windows không vượt giới hạn dòng lệnh; trình cài chọn Python ≥3.12 đầu tiên đã có đủ thư viện, theo đúng <code>HARNESS_PY</code> bạn đặt, và in ra bản nó chọn; và lượt <code>hs-rops</code> đã xong sẽ dọn những gì còn sót trong process group. Đầy đủ: <code>CHANGELOG.md → [7.5.1]</code>.</span></div>
@@ -1348,7 +1392,7 @@ verify_install OK: manifest + hook registration consistent
       <details><summary><span class="en">Does any of this hit the network?</span><span class="vi">Có thứ gì gọi mạng không?</span></summary><div class="fa"><span class="en">Installing fetches the release bundle — that's the one network hop. After that, there are <b>0 network calls in the gate path</b>: plan · cook · test · ship run entirely offline, and the e2e runs in a temp dir. Even this showcase makes no external requests.</span><span class="vi">Cài đặt có tải bundle release — đó là lượt gọi mạng duy nhất. Sau đó, <b>0 lần gọi mạng trong đường gate</b>: plan · cook · test · ship chạy hoàn toàn offline, và e2e chạy trong thư mục tạm. Ngay cả showcase này cũng không gọi mạng.</span></div></details>
       <details><summary><span class="en">Which autonomy mode should I start with?</span><span class="vi">Nên bắt đầu với mức tự chủ nào?</span></summary><div class="fa"><span class="en"><code>default</code> — it pauses at exactly two human checkpoints (plan approval + ship). No mode auto-ships, so it's a safe place to learn the loop.</span><span class="vi"><code>default</code> — dừng ở đúng hai chốt người (duyệt plan + ship). Không mức nào tự ship, nên đây là chỗ an toàn để học vòng lặp.</span></div></details>
       <details><summary><span class="en">When should I add <code>--grid</code> to a plan?</span><span class="vi">Khi nào thêm <code>--grid</code> vào plan?</span></summary><div class="fa"><span class="en">For a higher-risk change where "did we think of everything?" matters. <code>hs:plan --grid</code> builds a coverage grid from the plan's own features/risks (never hand-typed), makes you resolve thin cells, and emits a <code>coverage-grid</code> artifact that later stages read. It's an optional planning mode — the deep dive is on <a href="#methodology">Methodology</a>.</span><span class="vi">Cho thay đổi rủi ro cao khi "đã nghĩ hết chưa?" quan trọng. <code>hs:plan --grid</code> dựng coverage grid từ chính features/risks của plan (không gõ tay), bắt bạn giải các ô mỏng, và emit một artifact <code>coverage-grid</code> mà các bước sau đọc. Đây là chế độ plan tùy chọn — đi sâu ở <a href="#methodology">Phương pháp</a>.</span></div></details>
-      <details><summary><span class="en">What actually runs behind <code>/hs:plan</code> and <code>/hs:cook</code>?</span><span class="vi"><code>/hs:plan</code> và <code>/hs:cook</code> chạy cái gì bên dưới?</span></summary><div class="fa"><span class="en">Each skill drives <code>hs-run &lt;domain&gt; &lt;verb&gt;</code> — the deterministic step-sequence engine, 13 domains / 24 verbs. Most domains expose one <code>next</code> verb; <code>cook</code> has 8 (<code>close, next, open, preflight, prompt, record, status, verify</code>) and <code>plan</code> has 5 (<code>graph, next, prompt, record, scaffold</code>). Every verb returns a JSON envelope (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) on one of six exit codes: <code>0</code> done, <code>1</code> findings, <code>2</code> broken, <code>3</code> deliberate refusal, <code>10</code> needs a model turn, <code>11</code> one more deterministic step. You never call it by hand in this walkthrough — the skill does.</span><span class="vi">Mỗi skill chạy <code>hs-run &lt;domain&gt; &lt;verb&gt;</code> — engine bước chạy tất định, 13 domain / 24 verb. Hầu hết domain chỉ có một cửa <code>next</code>; <code>cook</code> có 8 (<code>close, next, open, preflight, prompt, record, status, verify</code>) và <code>plan</code> có 5 (<code>graph, next, prompt, record, scaffold</code>). Mỗi verb trả envelope JSON (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) trên một trong sáu mã thoát: <code>0</code> xong, <code>1</code> phát hiện, <code>2</code> hỏng, <code>3</code> từ chối có chủ đích, <code>10</code> cần lượt model, <code>11</code> còn một bước tất định. Ở mạch này bạn không gọi tay — skill tự gọi.</span></div></details>
+      <details><summary><span class="en">What actually runs behind <code>/hs:plan</code> and <code>/hs:cook</code>?</span><span class="vi"><code>/hs:plan</code> và <code>/hs:cook</code> chạy cái gì bên dưới?</span></summary><div class="fa"><span class="en">Each skill drives <code>hs-run &lt;domain&gt; &lt;verb&gt;</code> — the deterministic step-sequence engine, 14 domains / 25 verbs. Most domains expose one <code>next</code> verb; <code>cook</code> has 8 (<code>close, next, open, preflight, prompt, record, status, verify</code>) and <code>plan</code> has 5 (<code>graph, next, prompt, record, scaffold</code>). Every verb returns a JSON envelope (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) on one of six exit codes: <code>0</code> done, <code>1</code> findings, <code>2</code> broken, <code>3</code> deliberate refusal, <code>10</code> needs a model turn, <code>11</code> one more deterministic step. You never call it by hand in this walkthrough — the skill does.</span><span class="vi">Mỗi skill chạy <code>hs-run &lt;domain&gt; &lt;verb&gt;</code> — engine bước chạy tất định, 14 domain / 25 verb. Hầu hết domain chỉ có một cửa <code>next</code>; <code>cook</code> có 8 (<code>close, next, open, preflight, prompt, record, status, verify</code>) và <code>plan</code> có 5 (<code>graph, next, prompt, record, scaffold</code>). Mỗi verb trả envelope JSON (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) trên một trong sáu mã thoát: <code>0</code> xong, <code>1</code> phát hiện, <code>2</code> hỏng, <code>3</code> từ chối có chủ đích, <code>10</code> cần lượt model, <code>11</code> còn một bước tất định. Ở mạch này bạn không gọi tay — skill tự gọi.</span></div></details>
     </div>
   </div>
 </section>
@@ -2043,7 +2087,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
     <!-- hs-run under the hood -->
     <h2 class="sectitle" id="cook-hsrun"><span class="en">Under the hood — <code>hs-run cook</code></span><span class="vi">Bên trong — <code>hs-run cook</code></span></h2>
     <div class="card" style="margin-top:14px;--ac:var(--rel)">
-      <p><span class="en">The skill drives the cook domain of <code>hs-run</code> — the deterministic step-sequence engine — through 8 verbs: <code>open</code>, <code>preflight</code>, <code>next</code>, <code>record</code>, <code>verify</code>, <code>status</code>, <code>close</code>, <code>prompt</code>. Each returns a JSON envelope (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) on one of six exit codes: <code>0</code> done, <code>1</code> findings, <code>2</code> broken, <code>3</code> deliberate refusal, <code>10</code> needs a model turn, <code>11</code> one more deterministic step — only <code>cook</code> and <code>plan</code> have more than one door into the chain; the other 11 domains expose just <code>next</code>.</span><span class="vi">Skill chạy domain cook của <code>hs-run</code> — engine bước chạy tất định — qua 8 verb: <code>open</code>, <code>preflight</code>, <code>next</code>, <code>record</code>, <code>verify</code>, <code>status</code>, <code>close</code>, <code>prompt</code>. Mỗi verb trả envelope JSON (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) trên một trong sáu mã thoát: <code>0</code> xong, <code>1</code> phát hiện, <code>2</code> hỏng, <code>3</code> từ chối có chủ đích, <code>10</code> cần lượt model, <code>11</code> còn một bước tất định — chỉ <code>cook</code> và <code>plan</code> có nhiều hơn một cửa vào chuỗi; 11 domain còn lại chỉ có <code>next</code>.</span></p>
+      <p><span class="en">The skill drives the cook domain of <code>hs-run</code> — the deterministic step-sequence engine — through 8 verbs: <code>open</code>, <code>preflight</code>, <code>next</code>, <code>record</code>, <code>verify</code>, <code>status</code>, <code>close</code>, <code>prompt</code>. Each returns a JSON envelope (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) on one of six exit codes: <code>0</code> done, <code>1</code> findings, <code>2</code> broken, <code>3</code> deliberate refusal, <code>10</code> needs a model turn, <code>11</code> one more deterministic step — only <code>cook</code> and <code>plan</code> have more than one door into the chain; the other 12 domains expose just <code>next</code>.</span><span class="vi">Skill chạy domain cook của <code>hs-run</code> — engine bước chạy tất định — qua 8 verb: <code>open</code>, <code>preflight</code>, <code>next</code>, <code>record</code>, <code>verify</code>, <code>status</code>, <code>close</code>, <code>prompt</code>. Mỗi verb trả envelope JSON (<code>state</code>, <code>next_action</code>, <code>artifacts</code>, <code>refs</code>) trên một trong sáu mã thoát: <code>0</code> xong, <code>1</code> phát hiện, <code>2</code> hỏng, <code>3</code> từ chối có chủ đích, <code>10</code> cần lượt model, <code>11</code> còn một bước tất định — chỉ <code>cook</code> và <code>plan</code> có nhiều hơn một cửa vào chuỗi; 12 domain còn lại chỉ có <code>next</code>.</span></p>
     </div>
 
     <div class="callout" style="--ac:var(--gold);margin-top:16px">
@@ -2465,7 +2509,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
 
     <!-- ============ GOVERNANCE RULES ============ -->
     <h2 class="sectitle" id="methodology-rules" style="margin-top:38px"><span class="en">Methodology rules in the layer today</span><span class="vi">Rule phương pháp trong lớp luật hôm nay</span></h2>
-    <p class="muted" style="font-size:.95rem"><span class="en">The harness already forces artifacts to anchor claims in evidence. The rule layer — consolidated to <b>15</b> rules after the merge folded the old methodology split into the survivors — carries that discipline in <code>harness/rules/</code>, loaded on demand. Two of the old methodology rules still stand as their own files; the rest of that discipline now lives inside the merged rules and the registers they point at.</span><span class="vi">Harness vốn đã ép artifact neo claim vào bằng chứng. Lớp luật — hợp nhất còn <b>15</b> rule sau đợt gộp nhập phần phương pháp vào các rule còn sống — mang kỷ luật đó trong <code>harness/rules/</code>, nạp khi cần. Hai rule phương pháp cũ vẫn đứng thành tệp riêng; phần kỷ luật còn lại nay sống trong các rule đã gộp và các register mà chúng trỏ tới.</span></p>
+    <p class="muted" style="font-size:.95rem"><span class="en">The harness already forces artifacts to anchor claims in evidence. The rule layer — consolidated to <b>16</b> rules after the merge folded the old methodology split into the survivors — carries that discipline in <code>harness/rules/</code>, loaded on demand. Two of the old methodology rules still stand as their own files; the rest of that discipline now lives inside the merged rules and the registers they point at.</span><span class="vi">Harness vốn đã ép artifact neo claim vào bằng chứng. Lớp luật — hợp nhất còn <b>16</b> rule sau đợt gộp nhập phần phương pháp vào các rule còn sống — mang kỷ luật đó trong <code>harness/rules/</code>, nạp khi cần. Hai rule phương pháp cũ vẫn đứng thành tệp riêng; phần kỷ luật còn lại nay sống trong các rule đã gộp và các register mà chúng trỏ tới.</span></p>
     <div class="cards grid-2" style="margin-top:16px">
       <div class="card" style="--ac:var(--spec)">
         <h3><span class="pin"></span><code>anti-tautology-detection</code></h3>
@@ -2503,7 +2547,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
 
     <div class="callout" style="--ac:var(--spec);margin-top:22px">
       <span class="ci">📘</span>
-      <div><span class="en"><b>See it in the pipeline:</b> grid mode as a plan step on <a href="#plan">hs:plan</a>, its presence gate on <a href="#cook">hs:cook</a>, the coverage artifact consumed on <a href="#test">hs:test</a>. All 15 rules are listed on the <a href="#ref-rules">rule-layer reference</a>; the full skill catalog on <a href="#catalog">All skills</a>.</span><span class="vi"><b>Xem trong pipeline:</b> grid mode như một bước plan ở <a href="#plan">hs:plan</a>, presence gate của nó ở <a href="#cook">hs:cook</a>, artifact coverage được tiêu thụ ở <a href="#test">hs:test</a>. Toàn bộ 15 rule liệt kê ở <a href="#ref-rules">tham chiếu lớp luật</a>; catalog skill đầy đủ ở <a href="#catalog">Toàn bộ skill</a>.</span></div>
+      <div><span class="en"><b>See it in the pipeline:</b> grid mode as a plan step on <a href="#plan">hs:plan</a>, its presence gate on <a href="#cook">hs:cook</a>, the coverage artifact consumed on <a href="#test">hs:test</a>. All 16 rules are listed on the <a href="#ref-rules">rule-layer reference</a>; the full skill catalog on <a href="#catalog">All skills</a>.</span><span class="vi"><b>Xem trong pipeline:</b> grid mode như một bước plan ở <a href="#plan">hs:plan</a>, presence gate của nó ở <a href="#cook">hs:cook</a>, artifact coverage được tiêu thụ ở <a href="#test">hs:test</a>. Toàn bộ 16 rule liệt kê ở <a href="#ref-rules">tham chiếu lớp luật</a>; catalog skill đầy đủ ở <a href="#catalog">Toàn bộ skill</a>.</span></div>
     </div>
   </div>
 </section>
@@ -2521,7 +2565,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
     </div>
     <div class="divider" style="--ac:var(--gold)"></div>
 
-    <p class="lead" style="margin-bottom:18px"><span class="en">Several candidate directions, undecidable by reasoning. Build a cheap probe for each, run every probe on the <b>same input</b> and the <b>same mechanical metric</b>, and let the numbers pick the winner. The asset isn't "pick the biggest number" — an LLM does that too. It's the part that <b>refuses to crown a winner</b> when the gap sits inside the measured noise. Trust reality, accept token cost — <b>but only when justified</b>.</span><span class="vi">Nhiều hướng ứng viên, lập luận không tách được. Dựng một probe rẻ cho mỗi hướng, chạy mọi probe trên <b>cùng một input</b> và <b>cùng một metric cơ học</b>, rồi để số liệu chọn. Tài sản không phải "chọn số lớn nhất" — LLM cũng làm được. Nó là phần <b>từ chối trao chiến thắng</b> khi chênh lệch nằm trong vùng nhiễu đo được. Tin thực tế, chấp nhận tốn token — <b>nhưng chỉ khi đáng</b>.</span></p>
+    <p class="lead" style="margin-bottom:18px"><span class="en">Several candidate directions, undecidable by reasoning. Build a cheap probe for each, run every probe on the <b>same input</b> and the <b>same mechanical metric</b>, and let the numbers pick the winner. The asset isn't "pick the biggest number" — an LLM does that too. It's the part that <b>refuses to crown a winner</b> when the runs cannot tell the candidates apart. Trust reality, accept token cost — <b>but only when justified</b>.</span><span class="vi">Nhiều hướng ứng viên, lập luận không tách được. Dựng một probe rẻ cho mỗi hướng, chạy mọi probe trên <b>cùng một input</b> và <b>cùng một metric cơ học</b>, rồi để số liệu chọn. Tài sản không phải "chọn số lớn nhất" — LLM cũng làm được. Nó là phần <b>từ chối trao chiến thắng</b> khi các lần chạy không phân biệt được các ứng viên. Tin thực tế, chấp nhận tốn token — <b>nhưng chỉ khi đáng</b>.</span></p>
 
     <!-- when to use -->
     <h2 class="sectitle" id="bo-when"><span class="en">When to use</span><span class="vi">Khi nào dùng</span></h2>
@@ -2539,7 +2583,7 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
         <ul>
           <li><span class="en">bake-off a decision a minute of reasoning settles → <code>hs:predict</code></span><span class="vi">bake-off một quyết định lập luận giải trong 1 phút → <code>hs:predict</code></span></li>
           <li><span class="en">accept an LLM-scored "quality" metric — that's fake objectivity</span><span class="vi">nhận metric "chất lượng" do LLM chấm — đó là giả-khách-quan</span></li>
-          <li><span class="en">invent a winner inside the noise band, or hide the losers' scores</span><span class="vi">bịa ra kẻ thắng trong vùng nhiễu, hay giấu điểm kẻ thua</span></li>
+          <li><span class="en">invent a winner the runs cannot tell apart, or hide the losers' scores</span><span class="vi">bịa ra kẻ thắng khi các lần chạy không phân biệt được, hay giấu điểm kẻ thua</span></li>
         </ul>
       </div>
     </div>
@@ -2547,13 +2591,13 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
     <!-- how to run it -->
     <h2 class="sectitle" id="bo-run"><span class="en">How to run it</span><span class="vi">Cách chạy</span></h2>
     <div class="card" style="margin-top:14px;--ac:var(--gold)">
-      <p><span class="en">Invoke it with the decision and the contenders — e.g. <code>/hs:bakeoff cache layer --candidates redis,in-memory,sqlite --metric './bench.sh' --noise medium</code>. Missing inputs are collected up front via one question.</span><span class="vi">Gọi kèm quyết định và các ứng viên — ví dụ <code>/hs:bakeoff lớp cache --candidates redis,in-memory,sqlite --metric './bench.sh' --noise medium</code>. Thiếu input sẽ được hỏi gom một lần.</span></p>
+      <p><span class="en">Invoke it with the decision and the contenders — e.g. <code>/hs:bakeoff cache layer --candidates redis,in-memory,sqlite --metric './bench.sh' --paired</code>. Missing inputs are collected up front via one question.</span><span class="vi">Gọi kèm quyết định và các ứng viên — ví dụ <code>/hs:bakeoff lớp cache --candidates redis,in-memory,sqlite --metric './bench.sh' --paired</code>. Thiếu input sẽ được hỏi gom một lần.</span></p>
       <div class="steps" style="--ac:var(--gold)">
         <div class="step"><h4><span class="en">Preflight</span><span class="vi">Preflight</span></h4><p><span class="en"><code>bakeoff_rank.py preflight</code> checks N∈[2,4], a safety-scan of the metric command, and the budget ceiling, plus a dry-run (one number, exit 0). Any fail → it refuses and falls back to <code>hs:predict</code>.</span><span class="vi"><code>bakeoff_rank.py preflight</code> kiểm N∈[2,4], safety-scan lệnh metric, trần budget, cộng một dry-run (một số, exit 0). Thiếu bất kỳ → từ chối và lùi về <code>hs:predict</code>.</span></p></div>
         <div class="step"><h4><span class="en">Fan-out</span><span class="vi">Toả nhánh</span></h4><p><span class="en">One isolated worktree per candidate (via <code>hs:worktree</code>), each holding a minimal throwaway probe that measures <b>only</b> the contested axis — never a full feature.</span><span class="vi">Một worktree cách ly cho mỗi ứng viên (qua <code>hs:worktree</code>), mỗi cái chứa một probe vứt-đi tối thiểu đo <b>chỉ</b> trục đang tranh chấp — không phải feature đầy đủ.</span></p></div>
-        <div class="step"><h4><span class="en">Measure</span><span class="vi">Đo</span></h4><p><span class="en">Run the SAME metric on the SAME input in each worktree — trials per noise level (low 1 · medium 2 worse-of · high 3–5 median) — recording each value plus elapsed time and tokens.</span><span class="vi">Chạy CÙNG metric trên CÙNG input ở mỗi worktree — số trial theo mức nhiễu (low 1 · medium 2 lấy-tệ-hơn · high 3–5 median) — ghi từng giá trị kèm thời gian và token.</span></p></div>
-        <div class="step"><h4><span class="en">Rank</span><span class="vi">Xếp hạng</span></h4><p><span class="en"><code>bakeoff_rank.py rank</code> applies the noise band: exit <code>0</code> = a winner, <code>3</code> = tie within noise, <code>4</code> = insufficient trials.</span><span class="vi"><code>bakeoff_rank.py rank</code> áp dải nhiễu: exit <code>0</code> = có kẻ thắng, <code>3</code> = hoà trong nhiễu, <code>4</code> = thiếu trial.</span></p></div>
-        <div class="step"><h4><span class="en">Report</span><span class="vi">Báo cáo</span></h4><p><span class="en">Print the full scoreboard — every candidate's score, spread, and any over-budget — losers never dropped. On a tie or insufficient trials, hand to a human; never invent a winner.</span><span class="vi">In đầy đủ bảng điểm — điểm, spread, và over-budget của mọi ứng viên — không bỏ kẻ thua. Khi hoà hoặc thiếu trial, giao người; không bịa kẻ thắng.</span></p></div>
+        <div class="step"><h4><span class="en">Measure</span><span class="vi">Đo</span></h4><p><span class="en">Run the SAME metric on the SAME input in each worktree — at least 5 trials each, fixed up front and interleaved run by run — recording each value plus elapsed time and tokens.</span><span class="vi">Chạy CÙNG metric trên CÙNG input ở mỗi worktree — ít nhất 5 trial mỗi bên, chốt trước và chạy xen kẽ từng lượt — ghi từng giá trị kèm thời gian và token.</span></p></div>
+        <div class="step"><h4><span class="en">Rank</span><span class="vi">Xếp hạng</span></h4><p><span class="en"><code>bakeoff_rank.py rank</code> computes the interval of the effect (runner-up median minus best median): exit <code>0</code> = a winner, <code>3</code> = inconclusive, <code>4</code> = insufficient trials.</span><span class="vi"><code>bakeoff_rank.py rank</code> tính khoảng tin cậy của hiệu ứng (median nhì trừ median nhất): exit <code>0</code> = có kẻ thắng, <code>3</code> = chưa kết luận được, <code>4</code> = thiếu trial.</span></p></div>
+        <div class="step"><h4><span class="en">Report</span><span class="vi">Báo cáo</span></h4><p><span class="en">Print the full scoreboard — every candidate's score, spread, and any over-budget — losers never dropped. On inconclusive or insufficient trials, hand to a human; never invent a winner.</span><span class="vi">In đầy đủ bảng điểm — điểm, spread, và over-budget của mọi ứng viên — không bỏ kẻ thua. Khi chưa kết luận được hoặc thiếu trial, giao người; không bịa kẻ thắng.</span></p></div>
         <div class="step"><h4><span class="en">Cleanup</span><span class="vi">Dọn dẹp</span></h4><p><span class="en">Prune the candidate worktrees (<code>hs:worktree remove</code>), keep the winner's branch if useful, and return the winning direction to whoever called the bake-off.</span><span class="vi">Xoá các worktree ứng viên (<code>hs:worktree remove</code>), giữ nhánh kẻ thắng nếu cần, và trả hướng thắng về cho người đã gọi bake-off.</span></p></div>
       </div>
     </div>
@@ -2564,59 +2608,69 @@ e2e: 2026-07-14T03:48:22Z | 27 passed, 0 failed | transport=simulated-stdin
       <div class="xlabel"><span class="en">Worked example — the asset</span><span class="vi">Ví dụ thật — chính tài sản</span></div>
       <h3 style="margin:2px 0 6px"><span class="en">Two cache designs, ~equal — it refuses to pick</span><span class="vi">Hai thiết kế cache, ~ngang nhau — nó từ chối chọn</span></h3>
       <p class="muted" style="font-size:.9rem">
-        <span class="en">Latency in ms, 3 trials each. Each design swings ±8ms run-to-run, but the gap between them is only 2ms. A human reading the table would "explain" why write-through wins; the script won't. The band <b>widens to the measured noise</b> (<code>band = max(5%·rep, observed_spread)</code>), so a 2ms gap inside 8ms of noise can't be a real win. <span class="realtag">real CLI</span></span>
-        <span class="vi">Độ trễ ms, 3 trial mỗi bên. Mỗi thiết kế dao động ±8ms giữa các lần, nhưng chênh lệch chỉ 2ms. Người đọc bảng sẽ "giải thích" vì sao write-through thắng; script thì không. Dải nhiễu <b>tự nong theo nhiễu đo được</b> (<code>band = max(5%·rep, observed_spread)</code>), nên gap 2ms trong 8ms nhiễu không thể là thắng thật. <span class="realtag">CLI thật</span></span>
+        <span class="en">Latency in ms, 5 trials each. Each design swings 12–14ms run-to-run, but the medians sit only 1ms apart. A human reading the table would "explain" why write-back wins; the script won't. It computes the <b>interval of the effect</b> — write-through's median minus write-back's, 95% CI [−10, 9] — and that interval contains 0, so the runs cannot tell the two apart. <span class="realtag">real CLI</span></span>
+        <span class="vi">Độ trễ ms, 5 trial mỗi bên. Mỗi thiết kế dao động 12–14ms giữa các lần, nhưng hai median chỉ cách 1ms. Người đọc bảng sẽ "giải thích" vì sao write-back thắng; script thì không. Nó tính <b>khoảng tin cậy của hiệu ứng</b> — median write-through trừ median write-back, CI 95% [−10, 9] — và khoảng đó chứa 0, nên các lần chạy không phân biệt được hai bên. <span class="realtag">CLI thật</span></span>
       </p>
       <div class="term">
-        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">bakeoff_rank.py rank --run tie --direction lower --noise high</span></div>
+        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">bakeoff_rank.py rank --run tie --direction lower</span></div>
         <pre>{
   "direction": "lower",
-  "noise": "high",
-  "rel_band": 0.05,
+  "stat": "median",
+  "conf": 0.95,
+  "paired": false,
+  "seed": 0,
+  "resamples": 10000,
+  "min_trials": 5,
   "candidates": [
-    {
-      "candidate": "write-through",
-      "trials": [
-        100.0,
-        108.0,
-        104.0
-      ],
-      "rep": 104.0,
-      "spread": 8.0,
-      "n": 3
-    },
     {
       "candidate": "write-back",
       "trials": [
         103.0,
         111.0,
-        106.0
+        106.0,
+        99.0,
+        101.0
       ],
-      "rep": 106.0,
-      "spread": 8.0,
-      "n": 3
+      "median": 103.0,
+      "spread": 12.0,
+      "n": 5
+    },
+    {
+      "candidate": "write-through",
+      "trials": [
+        100.0,
+        108.0,
+        104.0,
+        96.0,
+        110.0
+      ],
+      "median": 104.0,
+      "spread": 14.0,
+      "n": 5
     }
   ],
   "ranking": [
-    "write-through",
-    "write-back"
+    "write-back",
+    "write-through"
   ],
-  "observed_spread_floor": 8.0,
-  "band": 8.0,
-  "gap": 2.0,
-  "verdict": "tie_within_noise",
+  "gap": 1.0,
+  "interval": [
+    -10.0,
+    9.0
+  ],
+  "verdict": "inconclusive",
   "winner": null,
-  "rationale": "gap 2 &lt;= band 8 (max of 5% relative and observed spread 8) -&gt; tie within noise",
+  "rationale": "write-through minus write-back = 1, 95% CI [-10, 9] contains no-change -&gt; the runs cannot tell them apart; hand to human",
   "schema": "artifact-bakeoff-verdict",
   "run": "tie",
   "actor": "user:hieubt@local",
-  "ts": "2026-06-15T10:42:22.758092+00:00",
+  "ts": "2026-11-13T13:19:48.080507+00:00",
   "over_budget": []
 }
-exit: 3 (3 = tie_within_noise -&gt; hand to human)
+exit: 3 (3 = inconclusive -&gt; hand to human)
 </pre>
       </div>
-      <p class="faint" style="font-size:.76rem;margin-top:10px"><span class="en">Exit <code>3</code> = <code>tie_within_noise</code> → hand to a human. Often this verdict is itself the signal: <i>your metric doesn't discriminate</i>. Knowing when you may <b>not</b> declare a winner is the thing an LLM won't do for you.</span><span class="vi">Exit <code>3</code> = <code>tie_within_noise</code> → giao người. Thường chính verdict này là tín hiệu: <i>metric của bạn không phân biệt được</i>. Biết khi nào <b>không</b> được phép tuyên bố kẻ thắng mới là thứ LLM không tự làm cho bạn.</span></p>
+      <p class="faint" style="font-size:.76rem;margin-top:10px"><span class="en">Exit <code>3</code> = <code>inconclusive</code> → hand to a human. It is not a tie and never a pass. Often this verdict is itself the signal: <i>your metric doesn't discriminate</i>. Knowing when you may <b>not</b> declare a winner is the thing an LLM won't do for you.</span><span class="vi">Exit <code>3</code> = <code>inconclusive</code> → giao người. Đó không phải hoà và không bao giờ là đạt. Thường chính verdict này là tín hiệu: <i>metric của bạn không phân biệt được</i>. Biết khi nào <b>không</b> được phép tuyên bố kẻ thắng mới là thứ LLM không tự làm cho bạn.</span></p>
     </div>
 
     <!-- gate-first preconditions -->
@@ -2651,51 +2705,61 @@ exit: 2
     <!-- a clear winner -->
     <h2 class="sectitle" id="bo-winner"><span class="en">When the numbers are clear, it commits</span><span class="vi">Khi số liệu rõ, nó chốt</span></h2>
     <div class="card" style="margin-top:14px;--ac:var(--gold)">
-      <p class="muted" style="font-size:.9rem"><span class="en">Same metric, real separation: an indexed lookup at ~40ms against a full scan at ~95ms. Gap 55 ≫ band → a winner, exit <code>0</code>. Every candidate's score, spread and trial count is reported — <b>losers are never silently dropped</b> — alongside the time/token each probe cost.</span><span class="vi">Cùng metric, tách thật: tra cứu có index ~40ms so với quét toàn bộ ~95ms. Gap 55 ≫ band → có kẻ thắng, exit <code>0</code>. Điểm, spread và số trial của MỌI ứng viên đều được báo — <b>kẻ thua không bao giờ bị cắt lặng</b> — kèm thời gian/token mỗi probe đã tốn.</span></p>
+      <p class="muted" style="font-size:.9rem"><span class="en">Same metric, real separation: an indexed lookup at a 41ms median against a full scan at 96ms, 5 trials each. The effect is 55ms, 95% CI [52, 58] — far from 0 → a winner, exit <code>0</code>. Every candidate's score, spread and trial count is reported — <b>losers are never silently dropped</b> — alongside the time/token each probe cost.</span><span class="vi">Cùng metric, tách thật: tra cứu có index median 41ms so với quét toàn bộ 96ms, 5 trial mỗi bên. Hiệu ứng 55ms, CI 95% [52, 58] — xa 0 → có kẻ thắng, exit <code>0</code>. Điểm, spread và số trial của MỌI ứng viên đều được báo — <b>kẻ thua không bao giờ bị cắt lặng</b> — kèm thời gian/token mỗi probe đã tốn.</span></p>
       <div class="term" style="margin-top:12px">
-        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">bakeoff_rank.py rank --run win --direction lower --noise high</span></div>
+        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">bakeoff_rank.py rank --run win --direction lower</span></div>
         <pre>{
   "direction": "lower",
-  "noise": "high",
-  "rel_band": 0.05,
+  "stat": "median",
+  "conf": 0.95,
+  "paired": false,
+  "seed": 0,
+  "resamples": 10000,
+  "min_trials": 5,
   "candidates": [
     {
       "candidate": "sqlite-index",
       "trials": [
         40.0,
+        42.0,
+        39.0,
         41.0,
-        40.0
+        43.0
       ],
-      "rep": 40.0,
-      "spread": 1.0,
-      "n": 3
+      "median": 41.0,
+      "spread": 4.0,
+      "n": 5
     },
     {
       "candidate": "full-scan",
       "trials": [
         95.0,
+        98.0,
+        93.0,
         96.0,
-        94.0
+        97.0
       ],
-      "rep": 95.0,
-      "spread": 2.0,
-      "n": 3
+      "median": 96.0,
+      "spread": 5.0,
+      "n": 5
     }
   ],
   "ranking": [
     "sqlite-index",
     "full-scan"
   ],
-  "observed_spread_floor": 2.0,
-  "band": 2.0,
   "gap": 55.0,
+  "interval": [
+    52.0,
+    58.0
+  ],
   "verdict": "winner",
   "winner": "sqlite-index",
-  "rationale": "gap 55 &gt; band 2 -&gt; sqlite-index wins",
+  "rationale": "full-scan minus sqlite-index = 55, 95% CI [52, 58] excludes no-change -&gt; sqlite-index wins",
   "schema": "artifact-bakeoff-verdict",
   "run": "win",
   "actor": "user:hieubt@local",
-  "ts": "2026-06-15T10:42:23.137241+00:00",
+  "ts": "2026-11-13T13:19:48.171506+00:00",
   "over_budget": []
 }
 exit: 0 (0 = winner)
@@ -2711,8 +2775,8 @@ exit: 0 (0 = winner)
 
     <div class="gate" style="margin-top:16px">
       <b>HARD-GATE — <span class="en">wiring is real.</span><span class="vi">wiring là thật.</span></b>
-      <span class="en"> <code>bakeoff_rank.py</code> refuses N∉[2,4] / an unsafe metric / an over-budget probe at <code>preflight</code>, and refuses to name a winner when <code>gap ≤ band</code> or trials fall below the noise minimum (low 1 / medium 2 / high 3). The score ledger is append-only JSONL under <code>state/bakeoff/</code> with an actor and an aware-UTC timestamp on every line — re-derive any verdict, see exactly which candidate cost what. No t-tests, no p-values: at n≤5 they are pseudo-science.</span>
-      <span class="vi"> <code>bakeoff_rank.py</code> từ chối N∉[2,4] / metric nguy hiểm / probe vượt budget ở <code>preflight</code>, và từ chối nêu kẻ thắng khi <code>gap ≤ band</code> hoặc số trial dưới mức tối thiểu theo nhiễu (low 1 / medium 2 / high 3). Sổ điểm là JSONL append-only dưới <code>state/bakeoff/</code>, mỗi dòng có actor và timestamp aware-UTC — kiểm lại mọi verdict, thấy đúng ứng viên nào tốn gì. Không t-test, không p-value: với n≤5 chúng là rởm-khoa-học.</span>
+      <span class="en"> <code>bakeoff_rank.py</code> refuses N∉[2,4] / an unsafe metric / an over-budget probe at <code>preflight</code>, and refuses to name a winner unless the effect interval against the runner-up excludes 0, or while any candidate has fewer than 5 trials. The score ledger is append-only JSONL under <code>state/bakeoff/</code> with an actor and an aware-UTC timestamp on every line — re-derive any verdict, see exactly which candidate cost what. The interval comes from <code>effect_interval.py</code>, the same engine a QA report uses (rule <code>measured-effect</code>).</span>
+      <span class="vi"> <code>bakeoff_rank.py</code> từ chối N∉[2,4] / metric nguy hiểm / probe vượt budget ở <code>preflight</code>, và từ chối nêu kẻ thắng trừ khi khoảng tin cậy của hiệu ứng so với ứng viên nhì loại được 0, hoặc khi còn ứng viên dưới 5 trial. Sổ điểm là JSONL append-only dưới <code>state/bakeoff/</code>, mỗi dòng có actor và timestamp aware-UTC — kiểm lại mọi verdict, thấy đúng ứng viên nào tốn gì. Khoảng tin cậy lấy từ <code>effect_interval.py</code>, cùng công cụ mà QA report dùng (rule <code>measured-effect</code>).</span>
     </div>
 
     <!-- FAQ -->
@@ -2720,9 +2784,9 @@ exit: 0 (0 = winner)
     <div class="faq" style="--ac:var(--gold)">
       <details><summary><span class="en">How is this different from hs:loop?</span><span class="vi">Khác hs:loop chỗ nào?</span></summary><div class="fa"><span class="en">bakeoff is the <b>comparison axis</b> — N candidates measured at one moment. <code>hs:loop</code> is the <b>time axis</b> — improving ONE solution over repeated iterations against a metric.</span><span class="vi">bakeoff là <b>trục so sánh</b> — N ứng viên đo ở một thời điểm. <code>hs:loop</code> là <b>trục thời gian</b> — cải thiện MỘT giải pháp qua nhiều vòng theo một metric.</span></div></details>
       <details><summary><span class="en">Can the metric be an LLM "quality score"?</span><span class="vi">Metric có thể là "điểm chất lượng" do LLM chấm?</span></summary><div class="fa"><span class="en">No — that's fake objectivity. The metric must be a shell command that prints one number and exits 0. With no mechanical metric, use <code>hs:predict</code> instead.</span><span class="vi">Không — đó là giả-khách-quan. Metric phải là lệnh shell in một số và exit 0. Không có metric cơ học thì dùng <code>hs:predict</code>.</span></div></details>
-      <details><summary><span class="en">Why does it sometimes refuse to pick a winner?</span><span class="vi">Vì sao đôi khi nó từ chối chọn?</span></summary><div class="fa"><span class="en">When <code>gap ≤ band</code> (<code>band = max(rel_band·rep, observed_spread)</code>) or trials fall below the noise minimum. Often the tie is itself the signal: your metric doesn't discriminate the options.</span><span class="vi">Khi <code>gap ≤ band</code> (<code>band = max(rel_band·rep, observed_spread)</code>) hoặc số trial dưới mức tối thiểu. Thường chính cái hoà là tín hiệu: metric của bạn không phân biệt được.</span></div></details>
+      <details><summary><span class="en">Why does it sometimes refuse to pick a winner?</span><span class="vi">Vì sao đôi khi nó từ chối chọn?</span></summary><div class="fa"><span class="en">When the interval of the effect still contains 0, or a candidate has fewer than 5 trials. Often <code>inconclusive</code> is itself the signal: your metric doesn't discriminate the options, or there are too few runs.</span><span class="vi">Khi khoảng tin cậy của hiệu ứng còn chứa 0, hoặc có ứng viên dưới 5 trial. Thường chính <code>inconclusive</code> là tín hiệu: metric của bạn không phân biệt được, hoặc chạy quá ít lần.</span></div></details>
       <details><summary><span class="en">Does the verdict block my pipeline?</span><span class="vi">Verdict có chặn pipeline không?</span></summary><div class="fa"><span class="en">No. The verdict (<code>artifact-bakeoff-verdict.json</code>) is a handoff artifact, not a stage gate — it doesn't call <code>gate_stage.py</code>. It just feeds the winning direction back to the caller.</span><span class="vi">Không. Verdict (<code>artifact-bakeoff-verdict.json</code>) là handoff artifact, không phải stage gate — không gọi <code>gate_stage.py</code>. Nó chỉ trả hướng thắng về cho người gọi.</span></div></details>
-      <details><summary><span class="en">Why no t-tests or p-values?</span><span class="vi">Vì sao không t-test hay p-value?</span></summary><div class="fa"><span class="en">At n≤5 trials they're pseudo-science. The honest call is the noise band — a gap only counts if it beats the larger of the relative margin and the observed spread.</span><span class="vi">Với n≤5 trial chúng là rởm-khoa-học. Cách trung thực là dải nhiễu — một gap chỉ tính khi vượt cái lớn hơn giữa biên tương đối và spread quan sát.</span></div></details>
+      <details><summary><span class="en">Why an interval, not a fixed margin?</span><span class="vi">Vì sao dùng khoảng tin cậy, không dùng biên cố định?</span></summary><div class="fa"><span class="en">A fixed margin judges the size of a gap; the question is whether the runs can tell the candidates apart. A small gap between tight runs is real, a large gap between wild runs is not — the bootstrap interval of the effect answers that directly, seeded so the verdict is reproducible.</span><span class="vi">Biên cố định đo độ lớn của khoảng cách; câu hỏi thật là các lần chạy có phân biệt được hai ứng viên không. Khoảng cách nhỏ giữa các lần chạy đều thì là thật, khoảng cách lớn giữa các lần chạy lộn xộn thì không — khoảng tin cậy bootstrap của hiệu ứng trả lời thẳng câu đó, có seed để verdict tái lập được.</span></div></details>
     </div>
   </div>
 </section>
@@ -2746,7 +2810,7 @@ exit: 0 (0 = winner)
         <div class="who" style="color:var(--rel)"><span class="en">The full hs:* suite — grouped by family</span><span class="vi">Toàn bộ bộ hs:* — nhóm theo họ</span></div>
         <h2><span class="en">All skills</span><span class="vi">Toàn bộ skill</span></h2>
       </div>
-      <div class="ver">68 skills</div>
+      <div class="ver">70 skills</div>
     </div>
     <div class="divider" style="--ac:var(--rel)"></div>
 
@@ -2852,7 +2916,7 @@ exit: 0 (0 = winner)
     <div class="cards grid-2">
       <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:brainstorm <span class="ttag workflow">workflow</span></h3><p><span class="en">Honest trade-off analysis — generates options, evaluates each, and recommends with explicit caveats.</span><span class="vi">Phân tích đánh đổi trung thực — tạo options, đánh giá từng cái, và đề xuất với cảnh báo rõ ràng.</span></p></div>
       <div class="card" style="--ac:var(--tel)"><h3><span class="pin"></span>hs:loop <span class="ttag workflow">workflow</span></h3><p><span class="en">In-session self-optimization loop against a metric — iterate until the target is met or a limit hit.</span><span class="vi">Vòng lặp tự tối ưu trong phiên theo metric — lặp đến khi đạt mục tiêu hoặc chạm giới hạn.</span></p></div>
-      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:bakeoff <span class="ttag workflow">workflow</span></h3><p><span class="en">Empirical bake-off — run 2–4 candidate probes on one mechanical metric and pick the winner by numbers, or refuse to when the gap is inside the measured noise band.</span><span class="vi">Bake-off thực nghiệm — chạy 2–4 probe trên một metric cơ học, chọn kẻ thắng bằng số, hoặc từ chối khi chênh lệch nằm trong vùng nhiễu đo được.</span></p></div>
+      <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:bakeoff <span class="ttag workflow">workflow</span></h3><p><span class="en">Empirical bake-off — run 2–4 candidate probes on one mechanical metric and pick the winner by numbers, or refuse to when the runs cannot tell them apart.</span><span class="vi">Bake-off thực nghiệm — chạy 2–4 probe trên một metric cơ học, chọn kẻ thắng bằng số, hoặc từ chối khi các lần chạy không phân biệt được.</span></p></div>
       <div class="card" style="--ac:var(--gold)"><h3><span class="pin"></span>hs:advise <span class="ttag workflow">workflow</span></h3><p><span class="en">Should you build it, and how — a one-question-at-a-time interview reframes a raw idea into requirements, then delivers an honest verdict with alternatives and trade-offs.</span><span class="vi">Có nên làm không và làm thế nào — phỏng vấn từng-câu-một biến ý tưởng thô thành yêu cầu, rồi trả verdict trung thực kèm phương án thay thế và đánh đổi.</span></p></div>
     </div>
 
@@ -2934,8 +2998,8 @@ exit: 0 (0 = winner)
       <ul>
         <li><span class="en">Every <code>hs:*</code> skill is a structured prompt. It guides Claude Code but does not block the model from deviating.</span><span class="vi">Mỗi skill <code>hs:*</code> là prompt có cấu trúc. Nó hướng dẫn Claude Code nhưng không chặn model sai lệch.</span></li>
         <li><span class="en">Blocking happens in hooks and scripts — <code>gate_stage</code> (compliance), <code>write_guard</code>, and the git pre-push backstop.</span><span class="vi">Chặn xảy ra trong hook và script — <code>gate_stage</code> (compliance), <code>write_guard</code> và git pre-push backstop.</span></li>
-        <li><span class="en">Skills also lean on a shared rule layer for cross-cutting conventions, not just the cards above — <code>harness/rules/</code> now holds <b>15</b> rules: the always-load contract (<code>harness-contract</code>, <code>no-orphan-code</code>), the task-matched discipline (<code>counting-discipline</code>, <code>mutation-proof</code>, <code>sampled-rate-reporting</code>, <code>verification-mechanism</code>), and the newest, <code>process-management</code>, for anything long-running a step starts and must later stop — loaded on demand instead of baked into every skill.</span><span class="vi">Skill còn dựa vào một lớp rule dùng chung cho quy ước xuyên-suốt, không chỉ các thẻ ở trên — <code>harness/rules/</code> giờ có <b>15</b> rule: hợp đồng luôn-nạp (<code>harness-contract</code>, <code>no-orphan-code</code>), kỷ luật theo-việc (<code>counting-discipline</code>, <code>mutation-proof</code>, <code>sampled-rate-reporting</code>, <code>verification-mechanism</code>), và cái mới nhất, <code>process-management</code>, cho mọi tiến trình chạy-dài mà một bước khởi động rồi phải dừng lại — nạp theo nhu cầu thay vì nhúng cứng vào từng skill.</span></li>
-        <li><span class="en"><b>68</b> invocable skills as of this build. Skills are added over time — <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi"><b>68</b> skill người-gọi-được tính đến bản build này. Skill được thêm theo thời gian — <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></li>
+        <li><span class="en">Skills also lean on a shared rule layer for cross-cutting conventions, not just the cards above — <code>harness/rules/</code> now holds <b>16</b> rules: the always-load contract (<code>harness-contract</code>, <code>no-orphan-code</code>), the task-matched discipline (<code>counting-discipline</code>, <code>mutation-proof</code>, <code>sampled-rate-reporting</code>, <code>measured-effect</code>, <code>verification-mechanism</code>), and the newest, <code>process-management</code>, for anything long-running a step starts and must later stop — loaded on demand instead of baked into every skill.</span><span class="vi">Skill còn dựa vào một lớp rule dùng chung cho quy ước xuyên-suốt, không chỉ các thẻ ở trên — <code>harness/rules/</code> giờ có <b>16</b> rule: hợp đồng luôn-nạp (<code>harness-contract</code>, <code>no-orphan-code</code>), kỷ luật theo-việc (<code>counting-discipline</code>, <code>mutation-proof</code>, <code>sampled-rate-reporting</code>, <code>measured-effect</code>, <code>verification-mechanism</code>), và cái mới nhất, <code>process-management</code>, cho mọi tiến trình chạy-dài mà một bước khởi động rồi phải dừng lại — nạp theo nhu cầu thay vì nhúng cứng vào từng skill.</span></li>
+        <li><span class="en"><b>70</b> invocable skills as of this build. Skills are added over time — <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi"><b>70</b> skill người-gọi-được tính đến bản build này. Skill được thêm theo thời gian — <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></li>
       </ul>
     </div>
 
@@ -2945,7 +3009,7 @@ exit: 0 (0 = winner)
       <details><summary><span class="en">Are skills the thing that blocks bad output?</span><span class="vi">Skill có phải thứ chặn đầu ra xấu?</span></summary><div class="fa"><span class="en">No. A skill is prose — a structured prompt. Blocking happens in hooks and scripts (<code>gate_stage</code>, <code>write_guard</code>, the pre-push backstop). A skill is only as strong as the hook that enforces it.</span><span class="vi">Không. Skill là prose — một prompt có cấu trúc. Việc chặn nằm ở hook và script (<code>gate_stage</code>, <code>write_guard</code>, backstop pre-push). Skill chỉ mạnh bằng hook thực thi nó.</span></div></details>
       <details><summary><span class="en">How do I invoke a skill?</span><span class="vi">Gọi một skill thế nào?</span></summary><div class="fa"><span class="en">Type <code>/hs:&lt;name&gt;</code> in Claude Code — e.g. <code>/hs:plan</code>. Skills can be chained (orchestrators spawn subagents) or invoked standalone.</span><span class="vi">Gõ <code>/hs:&lt;tên&gt;</code> trong Claude Code — ví dụ <code>/hs:plan</code>. Skill có thể nối (orchestrator sinh subagent) hoặc dùng độc lập.</span></div></details>
       <details><summary><span class="en">I don't know which skill fits — what now?</span><span class="vi">Không biết skill nào hợp — làm sao?</span></summary><div class="fa"><span class="en"><code>hs:find-skills</code> analyzes your intent and routes you to the right one, with the exact invoke command.</span><span class="vi"><code>hs:find-skills</code> phân tích ý định và định tuyến bạn đến đúng skill, kèm lệnh gọi chính xác.</span></div></details>
-      <details><summary><span class="en">Is the count exact?</span><span class="vi">Số lượng có chính xác không?</span></summary><div class="fa"><span class="en">Yes — <b>68</b> skills at this build (a skill is a dir with its own <code>SKILL.md</code>; 2 more dirs — <code>_docslib</code>, <code>_shared</code> — are shared libraries, not invocable skills). New skills land over time; <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi">Có — <b>68</b> skill ở bản build này (một skill là một thư mục có <code>SKILL.md</code> riêng; 2 thư mục khác — <code>_docslib</code>, <code>_shared</code> — là thư viện dùng chung, không phải skill gọi được). Skill mới được thêm theo thời gian; <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></div></details>
+      <details><summary><span class="en">Is the count exact?</span><span class="vi">Số lượng có chính xác không?</span></summary><div class="fa"><span class="en">Yes — <b>70</b> skills at this build (a skill is a dir with its own <code>SKILL.md</code>; 2 more dirs — <code>_docslib</code>, <code>_shared</code> — are shared libraries, not invocable skills). New skills land over time; <code>harness/plugins/hs/</code> is the live source of truth.</span><span class="vi">Có — <b>70</b> skill ở bản build này (một skill là một thư mục có <code>SKILL.md</code> riêng; 2 thư mục khác — <code>_docslib</code>, <code>_shared</code> — là thư viện dùng chung, không phải skill gọi được). Skill mới được thêm theo thời gian; <code>harness/plugins/hs/</code> là nguồn chuẩn trực tiếp.</span></div></details>
     </div>
   </div>
 </section>
@@ -3102,7 +3166,7 @@ exit: 0 (0 = winner)
 
     <!-- ── 2. Commands by family ── -->
     <h2 class="sectitle" id="cs-commands"><span class="en">All commands</span><span class="vi">Toàn bộ lệnh</span></h2>
-    <p class="muted" style="margin:-4px 0 14px"><span class="en">A quick-reference to the most-used <code>hs:*</code> skills, grouped by what you're trying to do. Invoke any with <code>/hs:&lt;name&gt;</code>. All 68 with full descriptions live in the <a href="#catalog">catalog</a>.</span><span class="vi">Bảng tra nhanh các skill <code>hs:*</code> hay dùng nhất, nhóm theo điều bạn đang muốn làm. Gọi bất kỳ với <code>/hs:&lt;tên&gt;</code>. Toàn bộ 68 kèm mô tả đầy đủ nằm trong <a href="#catalog">catalog</a>.</span></p>
+    <p class="muted" style="margin:-4px 0 14px"><span class="en">A quick-reference to the most-used <code>hs:*</code> skills, grouped by what you're trying to do. Invoke any with <code>/hs:&lt;name&gt;</code>. All 70 with full descriptions live in the <a href="#catalog">catalog</a>.</span><span class="vi">Bảng tra nhanh các skill <code>hs:*</code> hay dùng nhất, nhóm theo điều bạn đang muốn làm. Gọi bất kỳ với <code>/hs:&lt;tên&gt;</code>. Toàn bộ 70 kèm mô tả đầy đủ nằm trong <a href="#catalog">catalog</a>.</span></p>
 
     <div class="eyebrow"><span class="en">SDLC spine — the gated four</span><span class="vi">Xương sống SDLC — bốn bước bị gate</span></div>
     <table class="modetable" style="--ac:var(--spec)">
@@ -3264,7 +3328,7 @@ exit: 0 (0 = winner)
 
     <!-- ── hs-run / hs-cli ── -->
     <h2 class="sectitle" id="cs-hsrun"><span class="en"><code>hs-run</code> / <code>hs-cli</code> reference</span><span class="vi">Tra cứu <code>hs-run</code> / <code>hs-cli</code></span></h2>
-    <p class="muted" style="margin:-4px 0 14px"><span class="en"><code>hs-run &lt;domain&gt; &lt;verb&gt;</code> is the deterministic step-sequence engine every <code>hs:*</code> skill drives underneath — 13 domains, 24 verbs. <code>hs-cli</code> is the separate operator CLI for config/admin.</span><span class="vi"><code>hs-run &lt;domain&gt; &lt;verb&gt;</code> là engine bước chạy tất định mà mọi skill <code>hs:*</code> chạy bên dưới — 13 domain, 24 verb. <code>hs-cli</code> là CLI vận hành riêng cho config/admin.</span></p>
+    <p class="muted" style="margin:-4px 0 14px"><span class="en"><code>hs-run &lt;domain&gt; &lt;verb&gt;</code> is the deterministic step-sequence engine every <code>hs:*</code> skill drives underneath — 14 domains, 25 verbs. <code>hs-cli</code> is the separate operator CLI for config/admin.</span><span class="vi"><code>hs-run &lt;domain&gt; &lt;verb&gt;</code> là engine bước chạy tất định mà mọi skill <code>hs:*</code> chạy bên dưới — 14 domain, 25 verb. <code>hs-cli</code> là CLI vận hành riêng cho config/admin.</span></p>
     <table class="modetable" style="--ac:var(--gold)">
       <thead><tr><th><span class="en">Domain(s)</span><span class="vi">Domain</span></th><th><span class="en">Verbs</span><span class="vi">Verb</span></th></tr></thead>
       <tbody>
@@ -3586,7 +3650,7 @@ exit: 0 (0 = winner)
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
 
-    <p class="lead" style="margin-bottom:18px"><span class="en">Behind the 68 skills sits the enforcement layer: 66 registered hooks in three tiers, a multi-agent coordination layer (claims · plan-approval · write-guard), and read-only telemetry that ends every report with what it <b>cannot</b> measure. It reports whether the <i>machinery runs</i> — never whether the <i>product wins the market</i>.</span><span class="vi">Sau 68 skill là lớp cưỡng chế: 66 hook đã đăng ký chia ba hạng, một lớp phối hợp đa-agent (claims · plan-approval · write-guard), và telemetry chỉ-đọc kết mỗi báo cáo bằng cái nó <b>không</b> đo được. Nó báo <i>máy móc có chạy không</i> — không bao giờ báo <i>sản phẩm có thắng thị trường không</i>.</span></p>
+    <p class="lead" style="margin-bottom:18px"><span class="en">Behind the 70 skills sits the enforcement layer: 66 registered hooks in three tiers, a multi-agent coordination layer (claims · plan-approval · write-guard), and read-only telemetry that ends every report with what it <b>cannot</b> measure. It reports whether the <i>machinery runs</i> — never whether the <i>product wins the market</i>.</span><span class="vi">Sau 70 skill là lớp cưỡng chế: 66 hook đã đăng ký chia ba hạng, một lớp phối hợp đa-agent (claims · plan-approval · write-guard), và telemetry chỉ-đọc kết mỗi báo cáo bằng cái nó <b>không</b> đo được. Nó báo <i>máy móc có chạy không</i> — không bao giờ báo <i>sản phẩm có thắng thị trường không</i>.</span></p>
 
     <!-- when to use -->
     <h2 class="sectitle" id="rig-limits"><span class="en">What it can and can't tell you</span><span class="vi">Nó nói được gì và không nói được gì</span></h2>
@@ -4243,8 +4307,8 @@ verify_install OK: manifest + hook registration consistent
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--rel)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><rect x="6" y="6" width="12" height="12" rx="3" stroke="var(--rel)" stroke-width="2"/><rect x="22" y="6" width="12" height="12" rx="3" stroke="var(--rel)" stroke-width="2"/><rect x="6" y="22" width="12" height="12" rx="3" stroke="var(--rel)" stroke-width="2"/><rect x="22" y="22" width="12" height="12" rx="3" stroke="var(--rel)" stroke-width="2"/></svg></div>
-      <div class="ttl"><div class="who"><span class="en">The complete hs:* reference — 68 invocable skills</span><span class="vi">Tham chiếu hs:* đầy đủ — 68 skill gọi được</span></div><h2><span class="en">Every skill</span><span class="vi">Mọi skill</span></h2></div>
-      <div class="ver">68 skills</div>
+      <div class="ttl"><div class="who"><span class="en">The complete hs:* reference — 70 invocable skills</span><span class="vi">Tham chiếu hs:* đầy đủ — 70 skill gọi được</span></div><h2><span class="en">Every skill</span><span class="vi">Mọi skill</span></h2></div>
+      <div class="ver">70 skills</div>
     </div>
     <div class="divider" style="--ac:var(--rel)"></div>
     
@@ -4256,10 +4320,10 @@ verify_install OK: manifest + hook registration consistent
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:handoff</h3><p>Create a concise, redacted conversation handoff for a fresh agent session. Use when switching context, ending a work session, or preserving decisions and blockers.</p></div>
     </div>
     <div class="eyebrow" style="margin-top:30px"><span class="en">Other</span><span class="vi">Khác</span></div>
-    <h2 class="sectitle" id="rs-other" style="font-size:1.1rem;margin-bottom:12px"><span class="en">Other</span><span class="vi">Khác</span> <span class="muted" style="font-size:.8rem">(64)</span></h2>
+    <h2 class="sectitle" id="rs-other" style="font-size:1.1rem;margin-bottom:12px"><span class="en">Other</span><span class="vi">Khác</span> <span class="muted" style="font-size:.8rem">(66)</span></h2>
     <div class="cards grid-2">
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:advise</h3><p>Pressure-test an idea, plan, or design one question at a time, then give an honest verdict — what to do, what to avoid, better alternatives, trade-offs. Use for a second opinion or a sanity check before planning.</p></div>
-      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:bakeoff</h3><p>Empirical bake-off — run 2-4 candidate probes on one mechanical metric, pick the winner by numbers or hand to a human when inside the noise band. Use when reasoning can't separate measurable options.</p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:bakeoff</h3><p>Empirical bake-off — run 2-4 candidate probes on one mechanical metric, pick the winner by numbers or hand to a human when the runs cannot tell them apart. Use when reasoning can't separate measurable options.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:bootstrap</h3><p>Bootstrap a new project from scratch -- clarify requirements, init git, create doc structure, delegate to hs:plan + hs:cook. Use when starting a new repo or resetting a project's SDLC foundation.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:brainstorm</h3><p>Brainstorm solutions with honest trade-off analysis — ideation, architecture decisions, technical debate, feasibility exploration. Use before committing to an approach.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:cleanup</h3><p>Remove files an over-install left behind, safely: auto-clear pristine version-dropped files, and decide modified ones interactively (keep or change). Use after upgrading the harness or when verify reports orphans.</p></div>
@@ -4272,6 +4336,7 @@ verify_install OK: manifest + hook registration consistent
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:cook</h3><p>Execute an approved plan phase by phase — TDD red→green, generate verification/review-decision artifacts, trace every step. Use when a human-approved plan is ready to implement.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:critique</h3><p>Multi-lens adversarial critique — fan independent lenses at an artifact, consolidate into one ranked verdict. Advisory by default; gate mode writes a machine verdict; optional --loop refute cycle.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:debug</h3><p>Systematic debugging with root-cause analysis before fixing. Use when something fails or behaves unexpectedly and the cause is not yet known.</p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:deliver</h3><p>Carry one request from idea to verified delivery in three gates — lock scope and Done, collect every prerequisite in one batch, then run unattended until each Done item has evidence. Resumable from a ledger; stops only on a listed stop.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:deploy</h3><p>Deploy a project to any platform, target auto-detected from config files and docs/deployment.md. Use when the user wants a project released to a hosting platform.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:diagram</h3><p>Compile typed JSON IR (architecture, dataflow, lifecycle, sequence, workflow) into a validated interactive system map -- SVG, fragment, or self-contained HTML. Use for a topology or state-machine diagram whose data must be checked before it renders.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:discover</h3><p>Shape an ambiguous problem into a discovery brief for hs:plan — research + brainstorm chain -&gt; direction summary, trade-offs, open questions.</p></div>
@@ -4283,6 +4348,7 @@ verify_install OK: manifest + hook registration consistent
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:eval-bootstrap</h3><p>Bootstrap a full evals/ framework for THIS repo — deterministic scorer, ground truth, optional LLM judge, CI, API-key-free. Two human gates.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:find-skills</h3><p>Locate and route to the correct hs:* skill — analyze intent, query the hs plugin registry, return the exact invoke command. Use when unsure which skill fits or to browse the full hs:* catalog.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:fix</h3><p>Fix bugs, test failures, and CI/CD failures with an evidence-based workflow. Use when there is a concrete bug, a clear error, or a red test.</p></div>
+      <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:forge</h3><p>Track work on the repo's forge, GitHub or GitLab alike — find or file issues with a dedup search first, move lifecycle labels with an evidence comment, read CI runs and PR/MR status. Forge detected from the remote; driven through gh or glab.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:gemini</h3><p>Delegate an advisory or coding job to the gemini partner lane — research, review, adversarial review, or a worktree-staged code task. Use for a second-engine pass whose output stays provenance-stamped and separate.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:git</h3><p>Git operations with conventional commits. Use for commit, push, PR, merge. Auto-split commits by type/scope. Scan for secrets before committing.</p></div>
       <div class="card" style="--ac:var(--rel)"><h3><span class="pin"></span>hs:goal</h3><p>Prepare a built-in /goal run at authoring time — interview the objective into a NEW self-contained goal.md, arm the autonomy bell, scaffold the cycle dir — then hand the loop over. Use for an unattended objective-until-met run.</p></div>
@@ -4389,7 +4455,7 @@ verify_install OK: manifest + hook registration consistent
     </div>
     <div class="divider" style="--ac:var(--tel)"></div>
     
-    <p class="lead"><span class="en">A hook is a small program the harness runs around a tool call. Its <b>tier</b> is a code constant (<code>HOOK_CLASS</code>) — config can toggle a hook on/off but never change its tier, and the fail posture follows the tier. The 83 files under <code>harness/hooks/</code> hold 67 tiered hooks (grouped below) and 16 shared libraries with no tier. See <a href="#harness">the rig</a> for how the gate uses them.</span><span class="vi">Hook là một chương trình nhỏ harness chạy quanh mỗi lần gọi tool. <b>Hạng</b> của nó là hằng số trong code (<code>HOOK_CLASS</code>) — config bật/tắt được nhưng không đổi được hạng, và tư thế-khi-lỗi theo hạng. 83 tệp dưới <code>harness/hooks/</code> gồm 67 hook có hạng (nhóm bên dưới) và 16 thư viện dùng chung, không có hạng. Xem <a href="#harness">the rig</a> để biết gate dùng chúng thế nào.</span></p>
+    <p class="lead"><span class="en">A hook is a small program the harness runs around a tool call. Its <b>tier</b> is a code constant (<code>HOOK_CLASS</code>) — config can toggle a hook on/off but never change its tier, and the fail posture follows the tier. The 84 files under <code>harness/hooks/</code> hold 67 tiered hooks (grouped below) and 17 shared libraries with no tier. See <a href="#harness">the rig</a> for how the gate uses them.</span><span class="vi">Hook là một chương trình nhỏ harness chạy quanh mỗi lần gọi tool. <b>Hạng</b> của nó là hằng số trong code (<code>HOOK_CLASS</code>) — config bật/tắt được nhưng không đổi được hạng, và tư thế-khi-lỗi theo hạng. 84 tệp dưới <code>harness/hooks/</code> gồm 67 hook có hạng (nhóm bên dưới) và 17 thư viện dùng chung, không có hạng. Xem <a href="#harness">the rig</a> để biết gate dùng chúng thế nào.</span></p>
     <div class="eyebrow" style="margin-top:28px"><span class="ttag compliance">compliance</span></div>
     <h2 class="sectitle" id="rh-compliance" style="font-size:1.1rem;margin-bottom:4px"><span class="en">Compliance</span><span class="vi">Cưỡng chế</span> <span class="muted" style="font-size:.8rem">(16)</span></h2>
     <p class="muted" style="margin:0 0 12px;font-size:.85rem">fail-closed, exit 2 — blocks the tool and prints the fix when it trips.</p>
@@ -4483,8 +4549,8 @@ verify_install OK: manifest + hook registration consistent
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--spec)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M11 6h14l5 5v23H11z" stroke="var(--spec)" stroke-width="2" stroke-linejoin="round"/><path d="M16 18h10M16 24h10M16 12h6" stroke="var(--spec)" stroke-width="2" stroke-linecap="round"/></svg></div>
-      <div class="ttl"><div class="who"><span class="en">Shared discipline loaded on demand — 15 rules</span><span class="vi">Kỷ luật chung nạp khi cần — 15 luật</span></div><h2><span class="en">The rule layer</span><span class="vi">Lớp luật</span></h2></div>
-      <div class="ver">15 rules</div>
+      <div class="ttl"><div class="who"><span class="en">Shared discipline loaded on demand — 16 rules</span><span class="vi">Kỷ luật chung nạp khi cần — 16 luật</span></div><h2><span class="en">The rule layer</span><span class="vi">Lớp luật</span></h2></div>
+      <div class="ver">16 rules</div>
     </div>
     <div class="divider" style="--ac:var(--spec)"></div>
     
@@ -4496,6 +4562,7 @@ verify_install OK: manifest + hook registration consistent
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>claim-verification</code></h3><p>Claim verification (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>counting-discipline</code></h3><p>Counting discipline (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>harness-contract</code></h3><p>Harness contract (always-load, &lt;=75 lines)</p></div>
+      <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>measured-effect</code></h3><p>Measured effect (on-demand)</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>mutation-proof</code></h3><p>a gate counts only after something made it RED</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>no-orphan-code</code></h3><p>code you write is always plugged in</p></div>
       <div class="card" style="--ac:var(--spec)"><h3><span class="pin"></span><code>orchestration-protocol</code></h3><p>Orchestration protocol (on-demand)</p></div>

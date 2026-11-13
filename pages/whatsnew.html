@@ -76,18 +76,62 @@
   <a href="../pages/ref-rules.html" class="side-link" data-nav="ref-rules"><span class="en">Rule layer</span><span class="vi">Lớp luật</span></a>
 </aside>
 <main class="docs-main" id="main-content" tabindex="-1">
-<!-- ===================== WHAT'S NEW · v7.5.1 + v7.5.0 + v7.4.0 ===================== -->
+<!-- ===================== WHAT'S NEW · v7.6.0 + v7.5.1 + v7.5.0 ===================== -->
 <section id="whatsnew">
   <div class="wrap reveal">
     <div class="skill-head" style="--ac:var(--gold)">
       <div class="badge"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M20 4l4.5 9.5L35 15l-7.5 7 1.8 10.5L20 27.5 10.7 32.5 12.5 22 5 15l10.5-1.5L20 4Z" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/></svg></div>
       <div class="ttl"><div class="who" style="color:var(--gold)"><span class="en">Release highlights · what is on main and what landed in the latest cut</span><span class="vi">Điểm nổi bật · những gì đã vào main và những gì bản release gần nhất mang</span></div><h2><span class="en">What's new</span><span class="vi">Có gì mới</span></h2></div>
-      <div class="ver">v7.5.1 · 2026-11-04</div>
+      <div class="ver">v7.6.0 · 2026-11-14</div>
     </div>
     <div class="divider" style="--ac:var(--gold)"></div>
 
+    <!-- ===== v7.6.0 ===== -->
+    <h2 class="sectitle" id="whatsnew-latest" style="font-size:1.3rem;margin-top:18px"><span class="en">What's new · v7.6.0</span><span class="vi">Có gì mới · v7.6.0</span></h2>
+    <div class="callout" style="--ac:var(--ok);margin-top:14px">
+      <span class="ci">🚚</span>
+      <div><span class="en"><b>One conversation up front, then delivery without babysitting.</b> <code>hs:deliver</code> locks scope and Done, collects every prerequisite in one batch, then runs until each Done item has evidence; <code>hs:forge</code> (ships off) tracks the work as GitHub or GitLab issues; a measured difference is judged by the interval of its effect, never by eye; and a runtime install owns only the files it places. Full notes: <code>CHANGELOG.md → [7.6.0]</code>.</span><span class="vi"><b>Một lượt trao đổi đầu, rồi giao hàng không cần trông.</b> <code>hs:deliver</code> chốt phạm vi và tiêu chí Done, gom mọi điều kiện cần trong một lượt, rồi chạy cho tới khi mỗi mục Done có bằng chứng; <code>hs:forge</code> (mặc định tắt) theo dõi việc dưới dạng issue GitHub hoặc GitLab; một chênh lệch đo được phải xét bằng khoảng tin cậy của hiệu ứng, không xét bằng mắt; và lượt cài runtime chỉ nhận phần những tệp nó đặt vào. Đầy đủ: <code>CHANGELOG.md → [7.6.0]</code>.</span></div>
+    </div>
+
+    <div class="cards grid-2" style="margin-top:18px">
+      <div class="card" style="--ac:var(--ok)">
+        <h3><span class="pin"></span><span class="en">🚚 hs:deliver — idea to verified delivery</span><span class="vi">🚚 hs:deliver — từ ý tưởng tới giao hàng có kiểm chứng</span></h3>
+        <p><span class="en">Three gates in order: lock scope and Done through <code>hs:goal-warmup</code>, collect every prerequisite in one batch, then deliver unattended. <code>hs-run deliver</code> reads the gate from an append-only <code>deliver.jsonl</code>; <code>deliver_ledger.py</code> is its only writer and refuses a record whose precondition is not on file. The stop list is a shipped floor a project may only add to. Ships on.</span><span class="vi">Ba cổng theo thứ tự: chốt phạm vi và Done qua <code>hs:goal-warmup</code>, gom mọi điều kiện cần trong một lượt, rồi giao hàng không cần người trông. <code>hs-run deliver</code> đọc cổng từ sổ chỉ-ghi-thêm <code>deliver.jsonl</code>; <code>deliver_ledger.py</code> là nơi ghi duy nhất và từ chối bản ghi khi điều kiện trước nó chưa có trong sổ. Danh sách điểm dừng là mức sàn đi kèm bản cài, dự án chỉ được thêm. Mặc định bật.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">3 gates</span><span class="chip">hs-run deliver</span><span class="chip">append-only ledger</span></div>
+      </div>
+      <div class="card" style="--ac:var(--spec)">
+        <h3><span class="pin"></span><span class="en">🏷️ hs:forge — work as issues</span><span class="vi">🏷️ hs:forge — theo dõi việc bằng issue</span></h3>
+        <p><span class="en">One script drives <code>gh</code> or <code>glab</code>, picked from the origin remote: it searches every state before filing, moves a status label one step forward only after posting the evidence comment, files out-of-scope findings as their own issue, and reads CI and PR/MR status without writing. Ships off; deliver, triage and ship fall back to <code>BACKLOG.md</code> while it is off.</span><span class="vi">Một script điều khiển <code>gh</code> hoặc <code>glab</code>, chọn theo remote origin: tìm ở mọi trạng thái trước khi tạo issue, chỉ dời nhãn trạng thái lên một bước sau khi đã đăng bình luận bằng chứng, tách phát hiện ngoài phạm vi thành issue riêng, và đọc trạng thái CI cùng PR/MR mà không ghi gì. Mặc định tắt; khi tắt, deliver, triage và ship quay về <code>BACKLOG.md</code>.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">gh · glab</span><span class="chip">dedup first</span><span class="chip">ships off</span></div>
+      </div>
+      <div class="card" style="--ac:var(--gold)">
+        <h3><span class="pin"></span><span class="en">📏 A difference needs the interval of its effect</span><span class="vi">📏 Chênh lệch phải có khoảng tin cậy của hiệu ứng</span></h3>
+        <p><span class="en"><code>effect_interval.py</code> gives a seeded bootstrap interval for the difference or ratio of two measured series and a verdict: higher, lower, within_margin or inconclusive, and inconclusive is never a pass. The new <code>measured-effect</code> rule owns the wording; a QA report that compares without it holds <code>hs-run test</code> at <code>effect_unjudged</code>, and <code>hs:bakeoff</code> crowns a winner only when the interval excludes no-change.</span><span class="vi"><code>effect_interval.py</code> cho khoảng bootstrap có seed của hiệu hoặc tỉ số giữa hai chuỗi số đo, kèm kết luận: cao hơn, thấp hơn, trong biên, hoặc chưa kết luận được, và chưa kết luận được thì không bao giờ là đạt. Luật mới <code>measured-effect</code> giữ cách viết; báo cáo QA so sánh mà thiếu nó sẽ giữ <code>hs-run test</code> ở <code>effect_unjudged</code>, và <code>hs:bakeoff</code> chỉ chọn người thắng khi khoảng này loại trừ khả năng không đổi.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">effect_interval.py</span><span class="chip">measured-effect rule</span><span class="chip">inconclusive ≠ pass</span></div>
+      </div>
+      <div class="card" style="--ac:var(--crit)">
+        <h3><span class="pin"></span><span class="en">🧰 An install owns only what it places</span><span class="vi">🧰 Lượt cài chỉ nhận phần những gì nó đặt vào</span></h3>
+        <p><span class="en">A runtime install computes its ledger from staging and journals it first; a user file in the way needs <code>--accept-risks</code> for that exact list, is backed up and comes back on uninstall; a merged hooks file loses only the harness's entries. <code>hs-cli doctor</code> now reads each ledger back: what it placed, what changed since, what it holds in backup, and the command that removes it.</span><span class="vi">Lượt cài runtime tính sổ sở hữu từ thư mục dàn dựng và ghi sổ trước; tệp của người dùng nằm chắn đường cần <code>--accept-risks</code> cho đúng danh sách đó, được sao lưu và trả lại khi gỡ; tệp hooks đã gộp chỉ mất các mục của harness. <code>hs-cli doctor</code> nay đọc lại từng sổ: đã đặt gì, cái gì đổi từ đó, đang giữ bản sao lưu nào, và lệnh để gỡ.</span></p>
+        <div class="chips" style="margin-top:10px"><span class="chip">ownership ledger</span><span class="chip">--accept-risks</span><span class="chip">doctor per runtime</span></div>
+      </div>
+    </div>
+
+    <div class="cards grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3><span class="pin"></span><span class="en">Also in v7.6.0</span><span class="vi">Cũng có ở v7.6.0</span></h3>
+        <ul>
+          <li><span class="en">The secret-file read guard ships off; <code>hs-cli hooks --on privacy_read_guard</code> turns it back on.</span><span class="vi">Guard đọc tệp bí mật mặc định tắt; <code>hs-cli hooks --on privacy_read_guard</code> bật lại.</span></li>
+          <li><span class="en">The path guards read a Windows path (backslashes) in the spelling their patterns use.</span><span class="vi">Các guard đường dẫn đọc đường dẫn Windows (dấu gạch ngược) theo đúng cách viết mà mẫu của chúng dùng.</span></li>
+          <li><span class="en"><code>hs:deploy</code> hands every live command to you and keeps keys out of argv; its taught commands live in one table, armed only when its gate is on.</span><span class="vi"><code>hs:deploy</code> trao mọi lệnh thật cho bạn chạy và không để khoá trong argv; các lệnh nó dạy nằm trong một bảng, chỉ có hiệu lực khi cổng của bảng bật.</span></li>
+          <li><span class="en">Every family CLI suggests the nearest command for a typo; telemetry records which revision of a skill ran; every subagent ends with the shared status block.</span><span class="vi">Mọi CLI trong họ gợi ý lệnh gần nhất khi gõ nhầm; telemetry ghi lại bản sửa nào của skill đã chạy; mọi subagent kết thúc bằng khối trạng thái dùng chung.</span></li>
+          <li><span class="en">Review skips a category a configured checker in the repo already owns; the DoD gate reads Playwright JSON and istanbul summaries.</span><span class="vi">Review bỏ qua hạng mục mà một công cụ kiểm đã cấu hình trong repo đảm nhận; cổng DoD đọc được Playwright JSON và bản tóm tắt istanbul.</span></li>
+        </ul>
+      </div>
+    </div>
+
     <!-- ===== v7.5.1 ===== -->
-    <h2 class="sectitle" id="whatsnew-latest" style="font-size:1.3rem;margin-top:18px"><span class="en">What's new · v7.5.1</span><span class="vi">Có gì mới · v7.5.1</span></h2>
+    <div class="ver" style="margin-top:30px">v7.5.1 · 2026-11-04</div>
+    <h2 class="sectitle" style="font-size:1.3rem;margin-top:18px"><span class="en">What's new · v7.5.1</span><span class="vi">Có gì mới · v7.5.1</span></h2>
     <div class="callout" style="--ac:var(--ok);margin-top:14px">
       <span class="ci">🩹</span>
       <div><span class="en"><b>A patch: the install gate is green on Windows and macOS again.</b> The Windows <code>hs-*.cmd</code> launchers ship CRLF and run under cmd.exe; packing on Windows stays under the command-line limit; the installers take the first Python ≥3.12 that already has the deps, honor a <code>HARNESS_PY</code> you set, and print which one they took; and a finished <code>hs-rops</code> run takes down what it left in its process group. Full notes: <code>CHANGELOG.md → [7.5.1]</code>.</span><span class="vi"><b>Bản vá: cổng cài đặt xanh lại trên Windows và macOS.</b> Launcher <code>hs-*.cmd</code> trên Windows nay xuống dòng CRLF và chạy được dưới cmd.exe; đóng gói trên Windows không vượt giới hạn dòng lệnh; trình cài chọn Python ≥3.12 đầu tiên đã có đủ thư viện, theo đúng <code>HARNESS_PY</code> bạn đặt, và in ra bản nó chọn; và lượt <code>hs-rops</code> đã xong sẽ dọn những gì còn sót trong process group. Đầy đủ: <code>CHANGELOG.md → [7.5.1]</code>.</span></div>

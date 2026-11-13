@@ -86,7 +86,7 @@
     </div>
     <div class="divider" style="--ac:var(--gold)"></div>
 
-    <p class="lead" style="margin-bottom:18px"><span class="en">Several candidate directions, undecidable by reasoning. Build a cheap probe for each, run every probe on the <b>same input</b> and the <b>same mechanical metric</b>, and let the numbers pick the winner. The asset isn't "pick the biggest number" — an LLM does that too. It's the part that <b>refuses to crown a winner</b> when the gap sits inside the measured noise. Trust reality, accept token cost — <b>but only when justified</b>.</span><span class="vi">Nhiều hướng ứng viên, lập luận không tách được. Dựng một probe rẻ cho mỗi hướng, chạy mọi probe trên <b>cùng một input</b> và <b>cùng một metric cơ học</b>, rồi để số liệu chọn. Tài sản không phải "chọn số lớn nhất" — LLM cũng làm được. Nó là phần <b>từ chối trao chiến thắng</b> khi chênh lệch nằm trong vùng nhiễu đo được. Tin thực tế, chấp nhận tốn token — <b>nhưng chỉ khi đáng</b>.</span></p>
+    <p class="lead" style="margin-bottom:18px"><span class="en">Several candidate directions, undecidable by reasoning. Build a cheap probe for each, run every probe on the <b>same input</b> and the <b>same mechanical metric</b>, and let the numbers pick the winner. The asset isn't "pick the biggest number" — an LLM does that too. It's the part that <b>refuses to crown a winner</b> when the runs cannot tell the candidates apart. Trust reality, accept token cost — <b>but only when justified</b>.</span><span class="vi">Nhiều hướng ứng viên, lập luận không tách được. Dựng một probe rẻ cho mỗi hướng, chạy mọi probe trên <b>cùng một input</b> và <b>cùng một metric cơ học</b>, rồi để số liệu chọn. Tài sản không phải "chọn số lớn nhất" — LLM cũng làm được. Nó là phần <b>từ chối trao chiến thắng</b> khi các lần chạy không phân biệt được các ứng viên. Tin thực tế, chấp nhận tốn token — <b>nhưng chỉ khi đáng</b>.</span></p>
 
     <!-- when to use -->
     <h2 class="sectitle" id="bo-when"><span class="en">When to use</span><span class="vi">Khi nào dùng</span></h2>
@@ -104,7 +104,7 @@
         <ul>
           <li><span class="en">bake-off a decision a minute of reasoning settles → <code>hs:predict</code></span><span class="vi">bake-off một quyết định lập luận giải trong 1 phút → <code>hs:predict</code></span></li>
           <li><span class="en">accept an LLM-scored "quality" metric — that's fake objectivity</span><span class="vi">nhận metric "chất lượng" do LLM chấm — đó là giả-khách-quan</span></li>
-          <li><span class="en">invent a winner inside the noise band, or hide the losers' scores</span><span class="vi">bịa ra kẻ thắng trong vùng nhiễu, hay giấu điểm kẻ thua</span></li>
+          <li><span class="en">invent a winner the runs cannot tell apart, or hide the losers' scores</span><span class="vi">bịa ra kẻ thắng khi các lần chạy không phân biệt được, hay giấu điểm kẻ thua</span></li>
         </ul>
       </div>
     </div>
@@ -112,13 +112,13 @@
     <!-- how to run it -->
     <h2 class="sectitle" id="bo-run"><span class="en">How to run it</span><span class="vi">Cách chạy</span></h2>
     <div class="card" style="margin-top:14px;--ac:var(--gold)">
-      <p><span class="en">Invoke it with the decision and the contenders — e.g. <code>/hs:bakeoff cache layer --candidates redis,in-memory,sqlite --metric './bench.sh' --noise medium</code>. Missing inputs are collected up front via one question.</span><span class="vi">Gọi kèm quyết định và các ứng viên — ví dụ <code>/hs:bakeoff lớp cache --candidates redis,in-memory,sqlite --metric './bench.sh' --noise medium</code>. Thiếu input sẽ được hỏi gom một lần.</span></p>
+      <p><span class="en">Invoke it with the decision and the contenders — e.g. <code>/hs:bakeoff cache layer --candidates redis,in-memory,sqlite --metric './bench.sh' --paired</code>. Missing inputs are collected up front via one question.</span><span class="vi">Gọi kèm quyết định và các ứng viên — ví dụ <code>/hs:bakeoff lớp cache --candidates redis,in-memory,sqlite --metric './bench.sh' --paired</code>. Thiếu input sẽ được hỏi gom một lần.</span></p>
       <div class="steps" style="--ac:var(--gold)">
         <div class="step"><h4><span class="en">Preflight</span><span class="vi">Preflight</span></h4><p><span class="en"><code>bakeoff_rank.py preflight</code> checks N∈[2,4], a safety-scan of the metric command, and the budget ceiling, plus a dry-run (one number, exit 0). Any fail → it refuses and falls back to <code>hs:predict</code>.</span><span class="vi"><code>bakeoff_rank.py preflight</code> kiểm N∈[2,4], safety-scan lệnh metric, trần budget, cộng một dry-run (một số, exit 0). Thiếu bất kỳ → từ chối và lùi về <code>hs:predict</code>.</span></p></div>
         <div class="step"><h4><span class="en">Fan-out</span><span class="vi">Toả nhánh</span></h4><p><span class="en">One isolated worktree per candidate (via <code>hs:worktree</code>), each holding a minimal throwaway probe that measures <b>only</b> the contested axis — never a full feature.</span><span class="vi">Một worktree cách ly cho mỗi ứng viên (qua <code>hs:worktree</code>), mỗi cái chứa một probe vứt-đi tối thiểu đo <b>chỉ</b> trục đang tranh chấp — không phải feature đầy đủ.</span></p></div>
-        <div class="step"><h4><span class="en">Measure</span><span class="vi">Đo</span></h4><p><span class="en">Run the SAME metric on the SAME input in each worktree — trials per noise level (low 1 · medium 2 worse-of · high 3–5 median) — recording each value plus elapsed time and tokens.</span><span class="vi">Chạy CÙNG metric trên CÙNG input ở mỗi worktree — số trial theo mức nhiễu (low 1 · medium 2 lấy-tệ-hơn · high 3–5 median) — ghi từng giá trị kèm thời gian và token.</span></p></div>
-        <div class="step"><h4><span class="en">Rank</span><span class="vi">Xếp hạng</span></h4><p><span class="en"><code>bakeoff_rank.py rank</code> applies the noise band: exit <code>0</code> = a winner, <code>3</code> = tie within noise, <code>4</code> = insufficient trials.</span><span class="vi"><code>bakeoff_rank.py rank</code> áp dải nhiễu: exit <code>0</code> = có kẻ thắng, <code>3</code> = hoà trong nhiễu, <code>4</code> = thiếu trial.</span></p></div>
-        <div class="step"><h4><span class="en">Report</span><span class="vi">Báo cáo</span></h4><p><span class="en">Print the full scoreboard — every candidate's score, spread, and any over-budget — losers never dropped. On a tie or insufficient trials, hand to a human; never invent a winner.</span><span class="vi">In đầy đủ bảng điểm — điểm, spread, và over-budget của mọi ứng viên — không bỏ kẻ thua. Khi hoà hoặc thiếu trial, giao người; không bịa kẻ thắng.</span></p></div>
+        <div class="step"><h4><span class="en">Measure</span><span class="vi">Đo</span></h4><p><span class="en">Run the SAME metric on the SAME input in each worktree — at least 5 trials each, fixed up front and interleaved run by run — recording each value plus elapsed time and tokens.</span><span class="vi">Chạy CÙNG metric trên CÙNG input ở mỗi worktree — ít nhất 5 trial mỗi bên, chốt trước và chạy xen kẽ từng lượt — ghi từng giá trị kèm thời gian và token.</span></p></div>
+        <div class="step"><h4><span class="en">Rank</span><span class="vi">Xếp hạng</span></h4><p><span class="en"><code>bakeoff_rank.py rank</code> computes the interval of the effect (runner-up median minus best median): exit <code>0</code> = a winner, <code>3</code> = inconclusive, <code>4</code> = insufficient trials.</span><span class="vi"><code>bakeoff_rank.py rank</code> tính khoảng tin cậy của hiệu ứng (median nhì trừ median nhất): exit <code>0</code> = có kẻ thắng, <code>3</code> = chưa kết luận được, <code>4</code> = thiếu trial.</span></p></div>
+        <div class="step"><h4><span class="en">Report</span><span class="vi">Báo cáo</span></h4><p><span class="en">Print the full scoreboard — every candidate's score, spread, and any over-budget — losers never dropped. On inconclusive or insufficient trials, hand to a human; never invent a winner.</span><span class="vi">In đầy đủ bảng điểm — điểm, spread, và over-budget của mọi ứng viên — không bỏ kẻ thua. Khi chưa kết luận được hoặc thiếu trial, giao người; không bịa kẻ thắng.</span></p></div>
         <div class="step"><h4><span class="en">Cleanup</span><span class="vi">Dọn dẹp</span></h4><p><span class="en">Prune the candidate worktrees (<code>hs:worktree remove</code>), keep the winner's branch if useful, and return the winning direction to whoever called the bake-off.</span><span class="vi">Xoá các worktree ứng viên (<code>hs:worktree remove</code>), giữ nhánh kẻ thắng nếu cần, và trả hướng thắng về cho người đã gọi bake-off.</span></p></div>
       </div>
     </div>
@@ -129,59 +129,69 @@
       <div class="xlabel"><span class="en">Worked example — the asset</span><span class="vi">Ví dụ thật — chính tài sản</span></div>
       <h3 style="margin:2px 0 6px"><span class="en">Two cache designs, ~equal — it refuses to pick</span><span class="vi">Hai thiết kế cache, ~ngang nhau — nó từ chối chọn</span></h3>
       <p class="muted" style="font-size:.9rem">
-        <span class="en">Latency in ms, 3 trials each. Each design swings ±8ms run-to-run, but the gap between them is only 2ms. A human reading the table would "explain" why write-through wins; the script won't. The band <b>widens to the measured noise</b> (<code>band = max(5%·rep, observed_spread)</code>), so a 2ms gap inside 8ms of noise can't be a real win. <span class="realtag">real CLI</span></span>
-        <span class="vi">Độ trễ ms, 3 trial mỗi bên. Mỗi thiết kế dao động ±8ms giữa các lần, nhưng chênh lệch chỉ 2ms. Người đọc bảng sẽ "giải thích" vì sao write-through thắng; script thì không. Dải nhiễu <b>tự nong theo nhiễu đo được</b> (<code>band = max(5%·rep, observed_spread)</code>), nên gap 2ms trong 8ms nhiễu không thể là thắng thật. <span class="realtag">CLI thật</span></span>
+        <span class="en">Latency in ms, 5 trials each. Each design swings 12–14ms run-to-run, but the medians sit only 1ms apart. A human reading the table would "explain" why write-back wins; the script won't. It computes the <b>interval of the effect</b> — write-through's median minus write-back's, 95% CI [−10, 9] — and that interval contains 0, so the runs cannot tell the two apart. <span class="realtag">real CLI</span></span>
+        <span class="vi">Độ trễ ms, 5 trial mỗi bên. Mỗi thiết kế dao động 12–14ms giữa các lần, nhưng hai median chỉ cách 1ms. Người đọc bảng sẽ "giải thích" vì sao write-back thắng; script thì không. Nó tính <b>khoảng tin cậy của hiệu ứng</b> — median write-through trừ median write-back, CI 95% [−10, 9] — và khoảng đó chứa 0, nên các lần chạy không phân biệt được hai bên. <span class="realtag">CLI thật</span></span>
       </p>
       <div class="term">
-        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">bakeoff_rank.py rank --run tie --direction lower --noise high</span></div>
+        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">bakeoff_rank.py rank --run tie --direction lower</span></div>
         <pre>{
   "direction": "lower",
-  "noise": "high",
-  "rel_band": 0.05,
+  "stat": "median",
+  "conf": 0.95,
+  "paired": false,
+  "seed": 0,
+  "resamples": 10000,
+  "min_trials": 5,
   "candidates": [
-    {
-      "candidate": "write-through",
-      "trials": [
-        100.0,
-        108.0,
-        104.0
-      ],
-      "rep": 104.0,
-      "spread": 8.0,
-      "n": 3
-    },
     {
       "candidate": "write-back",
       "trials": [
         103.0,
         111.0,
-        106.0
+        106.0,
+        99.0,
+        101.0
       ],
-      "rep": 106.0,
-      "spread": 8.0,
-      "n": 3
+      "median": 103.0,
+      "spread": 12.0,
+      "n": 5
+    },
+    {
+      "candidate": "write-through",
+      "trials": [
+        100.0,
+        108.0,
+        104.0,
+        96.0,
+        110.0
+      ],
+      "median": 104.0,
+      "spread": 14.0,
+      "n": 5
     }
   ],
   "ranking": [
-    "write-through",
-    "write-back"
+    "write-back",
+    "write-through"
   ],
-  "observed_spread_floor": 8.0,
-  "band": 8.0,
-  "gap": 2.0,
-  "verdict": "tie_within_noise",
+  "gap": 1.0,
+  "interval": [
+    -10.0,
+    9.0
+  ],
+  "verdict": "inconclusive",
   "winner": null,
-  "rationale": "gap 2 &lt;= band 8 (max of 5% relative and observed spread 8) -&gt; tie within noise",
+  "rationale": "write-through minus write-back = 1, 95% CI [-10, 9] contains no-change -&gt; the runs cannot tell them apart; hand to human",
   "schema": "artifact-bakeoff-verdict",
   "run": "tie",
   "actor": "user:hieubt@local",
-  "ts": "2026-06-15T10:42:22.758092+00:00",
+  "ts": "2026-11-13T13:19:48.080507+00:00",
   "over_budget": []
 }
-exit: 3 (3 = tie_within_noise -&gt; hand to human)
+exit: 3 (3 = inconclusive -&gt; hand to human)
 </pre>
       </div>
-      <p class="faint" style="font-size:.76rem;margin-top:10px"><span class="en">Exit <code>3</code> = <code>tie_within_noise</code> → hand to a human. Often this verdict is itself the signal: <i>your metric doesn't discriminate</i>. Knowing when you may <b>not</b> declare a winner is the thing an LLM won't do for you.</span><span class="vi">Exit <code>3</code> = <code>tie_within_noise</code> → giao người. Thường chính verdict này là tín hiệu: <i>metric của bạn không phân biệt được</i>. Biết khi nào <b>không</b> được phép tuyên bố kẻ thắng mới là thứ LLM không tự làm cho bạn.</span></p>
+      <p class="faint" style="font-size:.76rem;margin-top:10px"><span class="en">Exit <code>3</code> = <code>inconclusive</code> → hand to a human. It is not a tie and never a pass. Often this verdict is itself the signal: <i>your metric doesn't discriminate</i>. Knowing when you may <b>not</b> declare a winner is the thing an LLM won't do for you.</span><span class="vi">Exit <code>3</code> = <code>inconclusive</code> → giao người. Đó không phải hoà và không bao giờ là đạt. Thường chính verdict này là tín hiệu: <i>metric của bạn không phân biệt được</i>. Biết khi nào <b>không</b> được phép tuyên bố kẻ thắng mới là thứ LLM không tự làm cho bạn.</span></p>
     </div>
 
     <!-- gate-first preconditions -->
@@ -216,51 +226,61 @@ exit: 2
     <!-- a clear winner -->
     <h2 class="sectitle" id="bo-winner"><span class="en">When the numbers are clear, it commits</span><span class="vi">Khi số liệu rõ, nó chốt</span></h2>
     <div class="card" style="margin-top:14px;--ac:var(--gold)">
-      <p class="muted" style="font-size:.9rem"><span class="en">Same metric, real separation: an indexed lookup at ~40ms against a full scan at ~95ms. Gap 55 ≫ band → a winner, exit <code>0</code>. Every candidate's score, spread and trial count is reported — <b>losers are never silently dropped</b> — alongside the time/token each probe cost.</span><span class="vi">Cùng metric, tách thật: tra cứu có index ~40ms so với quét toàn bộ ~95ms. Gap 55 ≫ band → có kẻ thắng, exit <code>0</code>. Điểm, spread và số trial của MỌI ứng viên đều được báo — <b>kẻ thua không bao giờ bị cắt lặng</b> — kèm thời gian/token mỗi probe đã tốn.</span></p>
+      <p class="muted" style="font-size:.9rem"><span class="en">Same metric, real separation: an indexed lookup at a 41ms median against a full scan at 96ms, 5 trials each. The effect is 55ms, 95% CI [52, 58] — far from 0 → a winner, exit <code>0</code>. Every candidate's score, spread and trial count is reported — <b>losers are never silently dropped</b> — alongside the time/token each probe cost.</span><span class="vi">Cùng metric, tách thật: tra cứu có index median 41ms so với quét toàn bộ 96ms, 5 trial mỗi bên. Hiệu ứng 55ms, CI 95% [52, 58] — xa 0 → có kẻ thắng, exit <code>0</code>. Điểm, spread và số trial của MỌI ứng viên đều được báo — <b>kẻ thua không bao giờ bị cắt lặng</b> — kèm thời gian/token mỗi probe đã tốn.</span></p>
       <div class="term" style="margin-top:12px">
-        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">bakeoff_rank.py rank --run win --direction lower --noise high</span></div>
+        <div class="tbar"><i></i><i></i><i></i><span class="tcmd">bakeoff_rank.py rank --run win --direction lower</span></div>
         <pre>{
   "direction": "lower",
-  "noise": "high",
-  "rel_band": 0.05,
+  "stat": "median",
+  "conf": 0.95,
+  "paired": false,
+  "seed": 0,
+  "resamples": 10000,
+  "min_trials": 5,
   "candidates": [
     {
       "candidate": "sqlite-index",
       "trials": [
         40.0,
+        42.0,
+        39.0,
         41.0,
-        40.0
+        43.0
       ],
-      "rep": 40.0,
-      "spread": 1.0,
-      "n": 3
+      "median": 41.0,
+      "spread": 4.0,
+      "n": 5
     },
     {
       "candidate": "full-scan",
       "trials": [
         95.0,
+        98.0,
+        93.0,
         96.0,
-        94.0
+        97.0
       ],
-      "rep": 95.0,
-      "spread": 2.0,
-      "n": 3
+      "median": 96.0,
+      "spread": 5.0,
+      "n": 5
     }
   ],
   "ranking": [
     "sqlite-index",
     "full-scan"
   ],
-  "observed_spread_floor": 2.0,
-  "band": 2.0,
   "gap": 55.0,
+  "interval": [
+    52.0,
+    58.0
+  ],
   "verdict": "winner",
   "winner": "sqlite-index",
-  "rationale": "gap 55 &gt; band 2 -&gt; sqlite-index wins",
+  "rationale": "full-scan minus sqlite-index = 55, 95% CI [52, 58] excludes no-change -&gt; sqlite-index wins",
   "schema": "artifact-bakeoff-verdict",
   "run": "win",
   "actor": "user:hieubt@local",
-  "ts": "2026-06-15T10:42:23.137241+00:00",
+  "ts": "2026-11-13T13:19:48.171506+00:00",
   "over_budget": []
 }
 exit: 0 (0 = winner)
@@ -276,8 +296,8 @@ exit: 0 (0 = winner)
 
     <div class="gate" style="margin-top:16px">
       <b>HARD-GATE — <span class="en">wiring is real.</span><span class="vi">wiring là thật.</span></b>
-      <span class="en"> <code>bakeoff_rank.py</code> refuses N∉[2,4] / an unsafe metric / an over-budget probe at <code>preflight</code>, and refuses to name a winner when <code>gap ≤ band</code> or trials fall below the noise minimum (low 1 / medium 2 / high 3). The score ledger is append-only JSONL under <code>state/bakeoff/</code> with an actor and an aware-UTC timestamp on every line — re-derive any verdict, see exactly which candidate cost what. No t-tests, no p-values: at n≤5 they are pseudo-science.</span>
-      <span class="vi"> <code>bakeoff_rank.py</code> từ chối N∉[2,4] / metric nguy hiểm / probe vượt budget ở <code>preflight</code>, và từ chối nêu kẻ thắng khi <code>gap ≤ band</code> hoặc số trial dưới mức tối thiểu theo nhiễu (low 1 / medium 2 / high 3). Sổ điểm là JSONL append-only dưới <code>state/bakeoff/</code>, mỗi dòng có actor và timestamp aware-UTC — kiểm lại mọi verdict, thấy đúng ứng viên nào tốn gì. Không t-test, không p-value: với n≤5 chúng là rởm-khoa-học.</span>
+      <span class="en"> <code>bakeoff_rank.py</code> refuses N∉[2,4] / an unsafe metric / an over-budget probe at <code>preflight</code>, and refuses to name a winner unless the effect interval against the runner-up excludes 0, or while any candidate has fewer than 5 trials. The score ledger is append-only JSONL under <code>state/bakeoff/</code> with an actor and an aware-UTC timestamp on every line — re-derive any verdict, see exactly which candidate cost what. The interval comes from <code>effect_interval.py</code>, the same engine a QA report uses (rule <code>measured-effect</code>).</span>
+      <span class="vi"> <code>bakeoff_rank.py</code> từ chối N∉[2,4] / metric nguy hiểm / probe vượt budget ở <code>preflight</code>, và từ chối nêu kẻ thắng trừ khi khoảng tin cậy của hiệu ứng so với ứng viên nhì loại được 0, hoặc khi còn ứng viên dưới 5 trial. Sổ điểm là JSONL append-only dưới <code>state/bakeoff/</code>, mỗi dòng có actor và timestamp aware-UTC — kiểm lại mọi verdict, thấy đúng ứng viên nào tốn gì. Khoảng tin cậy lấy từ <code>effect_interval.py</code>, cùng công cụ mà QA report dùng (rule <code>measured-effect</code>).</span>
     </div>
 
     <!-- FAQ -->
@@ -285,9 +305,9 @@ exit: 0 (0 = winner)
     <div class="faq" style="--ac:var(--gold)">
       <details><summary><span class="en">How is this different from hs:loop?</span><span class="vi">Khác hs:loop chỗ nào?</span></summary><div class="fa"><span class="en">bakeoff is the <b>comparison axis</b> — N candidates measured at one moment. <code>hs:loop</code> is the <b>time axis</b> — improving ONE solution over repeated iterations against a metric.</span><span class="vi">bakeoff là <b>trục so sánh</b> — N ứng viên đo ở một thời điểm. <code>hs:loop</code> là <b>trục thời gian</b> — cải thiện MỘT giải pháp qua nhiều vòng theo một metric.</span></div></details>
       <details><summary><span class="en">Can the metric be an LLM "quality score"?</span><span class="vi">Metric có thể là "điểm chất lượng" do LLM chấm?</span></summary><div class="fa"><span class="en">No — that's fake objectivity. The metric must be a shell command that prints one number and exits 0. With no mechanical metric, use <code>hs:predict</code> instead.</span><span class="vi">Không — đó là giả-khách-quan. Metric phải là lệnh shell in một số và exit 0. Không có metric cơ học thì dùng <code>hs:predict</code>.</span></div></details>
-      <details><summary><span class="en">Why does it sometimes refuse to pick a winner?</span><span class="vi">Vì sao đôi khi nó từ chối chọn?</span></summary><div class="fa"><span class="en">When <code>gap ≤ band</code> (<code>band = max(rel_band·rep, observed_spread)</code>) or trials fall below the noise minimum. Often the tie is itself the signal: your metric doesn't discriminate the options.</span><span class="vi">Khi <code>gap ≤ band</code> (<code>band = max(rel_band·rep, observed_spread)</code>) hoặc số trial dưới mức tối thiểu. Thường chính cái hoà là tín hiệu: metric của bạn không phân biệt được.</span></div></details>
+      <details><summary><span class="en">Why does it sometimes refuse to pick a winner?</span><span class="vi">Vì sao đôi khi nó từ chối chọn?</span></summary><div class="fa"><span class="en">When the interval of the effect still contains 0, or a candidate has fewer than 5 trials. Often <code>inconclusive</code> is itself the signal: your metric doesn't discriminate the options, or there are too few runs.</span><span class="vi">Khi khoảng tin cậy của hiệu ứng còn chứa 0, hoặc có ứng viên dưới 5 trial. Thường chính <code>inconclusive</code> là tín hiệu: metric của bạn không phân biệt được, hoặc chạy quá ít lần.</span></div></details>
       <details><summary><span class="en">Does the verdict block my pipeline?</span><span class="vi">Verdict có chặn pipeline không?</span></summary><div class="fa"><span class="en">No. The verdict (<code>artifact-bakeoff-verdict.json</code>) is a handoff artifact, not a stage gate — it doesn't call <code>gate_stage.py</code>. It just feeds the winning direction back to the caller.</span><span class="vi">Không. Verdict (<code>artifact-bakeoff-verdict.json</code>) là handoff artifact, không phải stage gate — không gọi <code>gate_stage.py</code>. Nó chỉ trả hướng thắng về cho người gọi.</span></div></details>
-      <details><summary><span class="en">Why no t-tests or p-values?</span><span class="vi">Vì sao không t-test hay p-value?</span></summary><div class="fa"><span class="en">At n≤5 trials they're pseudo-science. The honest call is the noise band — a gap only counts if it beats the larger of the relative margin and the observed spread.</span><span class="vi">Với n≤5 trial chúng là rởm-khoa-học. Cách trung thực là dải nhiễu — một gap chỉ tính khi vượt cái lớn hơn giữa biên tương đối và spread quan sát.</span></div></details>
+      <details><summary><span class="en">Why an interval, not a fixed margin?</span><span class="vi">Vì sao dùng khoảng tin cậy, không dùng biên cố định?</span></summary><div class="fa"><span class="en">A fixed margin judges the size of a gap; the question is whether the runs can tell the candidates apart. A small gap between tight runs is real, a large gap between wild runs is not — the bootstrap interval of the effect answers that directly, seeded so the verdict is reproducible.</span><span class="vi">Biên cố định đo độ lớn của khoảng cách; câu hỏi thật là các lần chạy có phân biệt được hai ứng viên không. Khoảng cách nhỏ giữa các lần chạy đều thì là thật, khoảng cách lớn giữa các lần chạy lộn xộn thì không — khoảng tin cậy bootstrap của hiệu ứng trả lời thẳng câu đó, có seed để verdict tái lập được.</span></div></details>
     </div>
   </div>
 </section>
